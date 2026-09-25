@@ -19,32 +19,54 @@ html{
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#080808;
     color:#fff;
-    line-height:1.6;
+    background:#080808;
+    background-image:var(--page-bg);
+    background-size:cover;
+    background-position:center top;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    min-height:100vh;
 }
 
-/* =========================
-   HEADER
-========================= */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.88),
+            rgba(0,0,0,.66)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.35),
+            #080808 92%
+        );
+    z-index:-1;
+}
+
+/* HEADER */
 
 header{
     height:76px;
-    background:rgba(5,5,5,.96);
-    border-bottom:1px solid rgba(255,205,0,.18);
+    background:rgba(4,4,4,.92);
+    border-bottom:1px solid rgba(255,208,0,.18);
     display:flex;
     align-items:center;
     position:sticky;
     top:0;
     z-index:100;
+    backdrop-filter:blur(12px);
 }
 
 .nav{
-    width:min(1180px, calc(100% - 40px));
+    width:min(1180px,calc(100% - 40px));
     margin:auto;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
@@ -59,15 +81,15 @@ header{
 
 nav{
     display:flex;
-    gap:32px;
+    gap:30px;
 }
 
 nav a{
     color:#888;
     text-decoration:none;
-    font-size:13px;
-    font-weight:700;
-    letter-spacing:1px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
     transition:.2s;
 }
 
@@ -76,100 +98,47 @@ nav a.active{
     color:#ffd000;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
-.about-hero{
-    min-height:430px;
-    display:flex;
-    align-items:center;
-    position:relative;
-    overflow:hidden;
-    background:
-        linear-gradient(90deg,
-            #080808 0%,
-            rgba(8,8,8,.94) 42%,
-            rgba(8,8,8,.72) 100%
-        ),
-        url("freefire-bg.jpg") center/cover no-repeat;
-}
-
-.about-hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        180deg,
-        rgba(0,0,0,.15),
-        #080808 100%
-    );
-    pointer-events:none;
-}
-
-.about-wrap{
-    width:min(1180px, calc(100% - 40px));
+.hero{
+    width:min(1180px,calc(100% - 40px));
     margin:auto;
-    position:relative;
-    z-index:2;
-}
-
-/* =========================
-   MAIN HERO CONTENT
-========================= */
-
-.about-main{
+    min-height:610px;
     display:grid;
     grid-template-columns:380px 1fr;
     gap:70px;
     align-items:center;
+    padding:70px 0;
 }
 
-/* PHOTO */
-
-.photo-box{
+.photo{
     width:100%;
-    height:440px;
+    height:470px;
     overflow:hidden;
     border:1px solid rgba(255,208,0,.45);
     background:#111;
-    position:relative;
 }
 
-.photo-box::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        180deg,
-        transparent 65%,
-        rgba(0,0,0,.45)
-    );
-}
-
-.photo-box img{
+.photo img{
     width:100%;
     height:100%;
     object-fit:cover;
-    object-position:center;
     display:block;
 }
 
-/* TEXT */
-
 .eyebrow{
     color:#ffd000;
-    font-size:12px;
-    font-weight:800;
+    font-size:11px;
+    font-weight:900;
     letter-spacing:4px;
     margin-bottom:14px;
 }
 
 h1{
-    font-size:clamp(52px, 7vw, 88px);
-    line-height:.9;
-    letter-spacing:-4px;
-    margin-bottom:25px;
+    font-size:clamp(55px,7vw,92px);
+    line-height:.88;
+    letter-spacing:-5px;
+    margin-bottom:28px;
 }
 
 h1 span{
@@ -177,100 +146,102 @@ h1 span{
 }
 
 .description{
+    max-width:620px;
     color:#aaa;
     font-size:16px;
-    max-width:620px;
-    margin-bottom:30px;
+    line-height:1.8;
+    margin-bottom:18px;
 }
 
 .description strong{
     color:#fff;
 }
 
-/* =========================
-   FACTS
-========================= */
+/* FACTS */
 
 .facts{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:10px;
+    margin-top:30px;
 }
 
 .fact{
-    min-height:86px;
-    border:1px solid rgba(255,255,255,.10);
-    background:rgba(255,255,255,.035);
+    min-height:88px;
     padding:16px;
+    background:rgba(15,15,15,.78);
+    border:1px solid rgba(255,255,255,.1);
 }
 
 .fact strong{
     display:block;
     color:#ffd000;
     font-size:20px;
-    margin-bottom:3px;
+    margin-bottom:4px;
 }
 
 .fact span{
     color:#777;
-    font-size:10px;
+    font-size:9px;
     text-transform:uppercase;
     letter-spacing:1px;
 }
 
-/* =========================
-   CONTENT
-========================= */
+/* CONTENT */
 
 .content{
-    width:min(1180px, calc(100% - 40px));
-    margin:0 auto;
-    padding:80px 0;
+    width:min(1180px,calc(100% - 40px));
+    margin:auto;
+    padding:70px 0 100px;
 }
 
 .section-title{
-    margin-bottom:35px;
+    margin-bottom:30px;
 }
 
 .section-title small{
     display:block;
     color:#ffd000;
-    font-size:11px;
-    font-weight:800;
+    font-size:10px;
+    font-weight:900;
     letter-spacing:4px;
     margin-bottom:8px;
 }
 
 .section-title h2{
     font-size:38px;
-    line-height:1;
 }
 
-/* =========================
-   SPECIALIZATION
-========================= */
+/* SPECIALIZATION */
 
 .specialization{
     display:grid;
     grid-template-columns:1.3fr .7fr;
-    gap:18px;
+    gap:15px;
+}
+
+.spec-card,
+.spec-item,
+.contact{
+    background:rgba(12,12,12,.82);
+    border:1px solid rgba(255,255,255,.09);
+    backdrop-filter:blur(8px);
 }
 
 .spec-card{
-    border:1px solid rgba(255,255,255,.10);
-    background:#0d0d0d;
-    padding:32px;
+    padding:30px;
 }
 
 .spec-card h3{
     color:#ffd000;
-    font-size:25px;
+    font-size:24px;
     margin-bottom:12px;
 }
 
 .spec-card p{
     color:#999;
-    font-size:15px;
+    font-size:14px;
+    line-height:1.8;
 }
 
 .spec-list{
@@ -280,7 +251,6 @@ h1 span{
 
 .spec-item{
     padding:18px;
-    background:#111;
     border-left:2px solid #ffd000;
 }
 
@@ -291,26 +261,22 @@ h1 span{
 
 .spec-item span{
     color:#777;
-    font-size:12px;
+    font-size:11px;
 }
 
-/* =========================
-   CONTACTS
-========================= */
+/* CONTACTS */
 
 .contacts{
-    margin-top:70px;
+    margin-top:50px;
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:12px;
 }
 
 .contact{
+    padding:22px;
     text-decoration:none;
     color:#fff;
-    background:#0d0d0d;
-    border:1px solid rgba(255,255,255,.09);
-    padding:24px;
     transition:.2s;
 }
 
@@ -320,48 +286,45 @@ h1 span{
 }
 
 .contact small{
-    color:#777;
     display:block;
-    font-size:10px;
+    color:#777;
+    font-size:9px;
     letter-spacing:2px;
-    margin-bottom:5px;
+    margin-bottom:6px;
 }
 
 .contact strong{
-    font-size:17px;
+    font-size:16px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
     border-top:1px solid rgba(255,255,255,.08);
-    padding:25px;
+    padding:24px;
     text-align:center;
     color:#555;
-    font-size:12px;
+    font-size:11px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:850px){
 
-    .about-main{
+    body{
+        background-attachment:scroll;
+    }
+
+    .hero{
         grid-template-columns:1fr;
         gap:35px;
+        padding:55px 0;
     }
 
-    .photo-box{
-        width:min(420px,100%);
+    .photo{
+        width:min(390px,100%);
         height:420px;
         margin:auto;
-    }
-
-    .about-hero{
-        padding:60px 0;
     }
 
     .facts{
@@ -375,19 +338,13 @@ footer{
     .contacts{
         grid-template-columns:1fr;
     }
-
-    nav{
-        gap:14px;
-    }
-
-    nav a{
-        font-size:11px;
-    }
 }
 
 @media(max-width:500px){
 
-    .nav{
+    .nav,
+    .hero,
+    .content{
         width:calc(100% - 24px);
     }
 
@@ -396,29 +353,20 @@ footer{
     }
 
     nav{
-        gap:10px;
+        gap:11px;
     }
 
-    .about-wrap,
-    .content{
-        width:calc(100% - 24px);
+    nav a{
+        font-size:9px;
     }
 
     h1{
-        font-size:54px;
+        font-size:55px;
         letter-spacing:-3px;
     }
 
-    .photo-box{
+    .photo{
         height:360px;
-    }
-
-    .facts{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .fact{
-        padding:13px;
     }
 }
 </style>
@@ -443,61 +391,53 @@ footer{
 </header>
 
 
-<section class="about-hero">
+<section class="hero">
 
-    <div class="about-wrap">
+    <div class="photo">
+        <img src="my-photo.jpg" alt="Психошка">
+    </div>
 
-        <div class="about-main">
+    <div>
 
-            <div class="photo-box">
-                <img src="my-photo.jpg" alt="Психошка">
+        <div class="eyebrow">ОБО МНЕ</div>
+
+        <h1>
+            ПСИХО<span>ШКА</span>
+        </h1>
+
+        <p class="description">
+            Я игрок <strong>Free Fire из Казахстана</strong>.
+            В игре уже около <strong>8 лет</strong>.
+            За это время основной упор сделал на механику,
+            скорость реакции и игру один на один.
+        </p>
+
+        <p class="description">
+            Мой основной профиль — <strong>1v1 и КВ</strong>.
+            Играю на двух пальцах и стараюсь брать преимущество
+            за счёт скорости реакции и механики.
+        </p>
+
+        <div class="facts">
+
+            <div class="fact">
+                <strong>8 лет</strong>
+                <span>В Free Fire</span>
             </div>
 
-            <div>
+            <div class="fact">
+                <strong>1v1</strong>
+                <span>Основная специализация</span>
+            </div>
 
-                <div class="eyebrow">ОБО МНЕ</div>
+            <div class="fact">
+                <strong>КВ</strong>
+                <span>Командные игры</span>
+            </div>
 
-                <h1>
-                    ПСИХО<span>ШКА</span>
-                </h1>
-
-                <p class="description">
-                    Я игрок <strong>Free Fire из Казахстана</strong>.
-                    В игре уже около <strong>8 лет</strong>.
-                    За это время основной упор сделал на механику,
-                    скорость реакции и игру один на один.
-                </p>
-
-                <p class="description">
-                    Мой основной профиль — <strong>1v1 и КВ</strong>.
-                    Играю на двух пальцах и стараюсь брать преимущество
-                    именно за счёт скорости, реакции и механики.
-                </p>
-
-                <div class="facts">
-
-                    <div class="fact">
-                        <strong>8 лет</strong>
-                        <span>В Free Fire</span>
-                    </div>
-
-                    <div class="fact">
-                        <strong>1v1</strong>
-                        <span>Основная специализация</span>
-                    </div>
-
-                    <div class="fact">
-                        <strong>КВ</strong>
-                        <span>Командные игры</span>
-                    </div>
-
-                    <div class="fact">
-                        <strong>2 пальца</strong>
-                        <span>Стиль управления</span>
-                    </div>
-
-                </div>
-
+            <div class="fact">
+                <strong>2 пальца</strong>
+                <span>Управление</span>
             </div>
 
         </div>
@@ -513,7 +453,6 @@ footer{
         <small>ИГРОВОЙ СТИЛЬ</small>
         <h2>Моя специализация</h2>
     </div>
-
 
     <div class="specialization">
 
@@ -532,13 +471,11 @@ footer{
 
             <p>
                 В КВ предпочитаю играть активно,
-                искать возможность для первого преимущества
-                и использовать механику персонажа и оружия
-                максимально эффективно.
+                использовать механику персонажа и оружия
+                и искать возможность получить преимущество.
             </p>
 
         </div>
-
 
         <div class="spec-list">
 
@@ -554,7 +491,7 @@ footer{
 
             <div class="spec-item">
                 <strong>Скорость</strong>
-                <span>Быстрая реакция и движение</span>
+                <span>Реакция и движение</span>
             </div>
 
             <div class="spec-item">
@@ -572,28 +509,20 @@ footer{
         <a class="contact"
            href="https://www.tiktok.com/@erko_zr"
            target="_blank">
-
             <small>TIKTOK</small>
             <strong>@erko_zr</strong>
-
         </a>
-
 
         <a class="contact"
            href="https://wa.me/77053536952"
            target="_blank">
-
             <small>WHATSAPP</small>
             <strong>Написать мне</strong>
-
         </a>
 
-
         <div class="contact">
-
             <small>СТРАНА</small>
             <strong>Казахстан 🇰🇿</strong>
-
         </div>
 
     </div>
@@ -604,6 +533,32 @@ footer{
 <footer>
     © Психошка — Free Fire Player
 </footer>
+
+
+<script>
+const desktopBackgrounds = [
+    "background-pc-1.jpg",
+    "background-pc-2.jpg"
+];
+
+const mobileBackgrounds = [
+    "background-mobile-1.jpg",
+    "background-mobile-2.jpg",
+    "background-mobile-3.jpg"
+];
+
+const backgrounds = window.matchMedia("(max-width: 768px)").matches
+    ? mobileBackgrounds
+    : desktopBackgrounds;
+
+const randomBackground =
+    backgrounds[Math.floor(Math.random() * backgrounds.length)];
+
+document.documentElement.style.setProperty(
+    "--page-bg",
+    `url("${randomBackground}")`
+);
+</script>
 
 </body>
 </html>
