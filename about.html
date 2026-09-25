@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Обо мне | Психошка</title>
+<title>Обо мне | 2V Психошка</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -20,103 +21,148 @@ html{
 body{
     font-family:Arial, Helvetica, sans-serif;
     color:#fff;
-    background:#080808;
-    background-image:var(--page-bg);
-    background-size:cover;
-    background-position:center top;
-    background-attachment:fixed;
-    background-repeat:no-repeat;
+    background:#070707;
     min-height:100vh;
+    position:relative;
 }
 
 body::before{
     content:"";
     position:fixed;
     inset:0;
-    background:
+
+    background-image:
         linear-gradient(
-            90deg,
-            rgba(0,0,0,.88),
-            rgba(0,0,0,.66)
+            rgba(0,0,0,.20),
+            rgba(0,0,0,.30)
         ),
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,.35),
-            #080808 92%
-        );
+        var(--page-bg);
+
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+
+    z-index:-2;
+    pointer-events:none;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.08);
+
     z-index:-1;
+    pointer-events:none;
+}
+
+.container{
+    width:min(1180px, calc(100% - 32px));
+    margin:auto;
 }
 
 /* HEADER */
 
 header{
-    height:76px;
-    background:rgba(4,4,4,.92);
-    border-bottom:1px solid rgba(255,208,0,.18);
-    display:flex;
-    align-items:center;
     position:sticky;
     top:0;
-    z-index:100;
+    z-index:50;
+
+    background:rgba(5,5,5,.88);
     backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,193,7,.25);
 }
 
 .nav{
-    width:min(1180px,calc(100% - 40px));
-    margin:auto;
+    min-height:70px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-}
-
-.logo{
-    font-size:24px;
-    font-weight:900;
-    letter-spacing:-1px;
-}
-
-.logo span{
-    color:#ffd000;
-}
-
-nav{
-    display:flex;
     gap:30px;
 }
 
-nav a{
-    color:#888;
-    text-decoration:none;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:1.5px;
-    transition:.2s;
+.logo{
+    color:#ffc400;
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:1px;
 }
 
-nav a:hover,
-nav a.active{
-    color:#ffd000;
+.nav-links{
+    display:flex;
+    gap:28px;
+}
+
+.nav-links a{
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.nav-links a:hover{
+    color:#ffc400;
 }
 
 /* HERO */
 
 .hero{
-    width:min(1180px,calc(100% - 40px));
-    margin:auto;
-    min-height:610px;
+    padding:70px 0 45px;
+}
+
+.hero-grid{
     display:grid;
-    grid-template-columns:380px 1fr;
-    gap:70px;
+    grid-template-columns:1fr 380px;
+    gap:55px;
     align-items:center;
-    padding:70px 0;
+}
+
+.tag{
+    display:inline-block;
+
+    padding:8px 14px;
+    margin-bottom:18px;
+
+    background:#ffc400;
+    color:#080808;
+
+    font-size:12px;
+    font-weight:900;
+}
+
+h1{
+    font-size:clamp(45px,6vw,75px);
+    line-height:.95;
+    font-weight:1000;
+    text-transform:uppercase;
+}
+
+h1 span{
+    color:#ffc400;
+}
+
+.hero-text{
+    margin-top:22px;
+
+    color:#ddd;
+    font-size:18px;
+    line-height:1.7;
+    max-width:650px;
 }
 
 .photo{
-    width:100%;
-    height:470px;
+    height:440px;
+
+    border-radius:20px;
     overflow:hidden;
-    border:1px solid rgba(255,208,0,.45);
-    background:#111;
+
+    border:1px solid rgba(255,196,0,.35);
+
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
 }
 
 .photo img{
@@ -126,35 +172,47 @@ nav a.active{
     display:block;
 }
 
-.eyebrow{
-    color:#ffd000;
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:4px;
-    margin-bottom:14px;
+/* SECTIONS */
+
+section{
+    padding:45px 0;
 }
 
-h1{
-    font-size:clamp(55px,7vw,92px);
-    line-height:.88;
-    letter-spacing:-5px;
-    margin-bottom:28px;
+.section-title{
+    margin-bottom:25px;
+
+    font-size:30px;
+    font-weight:1000;
+    text-transform:uppercase;
 }
 
-h1 span{
-    color:#ffd000;
+.section-title span{
+    color:#ffc400;
 }
 
-.description{
-    max-width:620px;
-    color:#aaa;
-    font-size:16px;
+/* ABOUT */
+
+.about-card{
+    padding:30px;
+
+    background:rgba(8,8,8,.78);
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:16px;
+
+    backdrop-filter:blur(8px);
+}
+
+.about-card p{
+    color:#ccc;
+    font-size:17px;
     line-height:1.8;
+
     margin-bottom:18px;
 }
 
-.description strong{
-    color:#fff;
+.about-card p:last-child{
+    margin-bottom:0;
 }
 
 /* FACTS */
@@ -162,227 +220,252 @@ h1 span{
 .facts{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin-top:30px;
+    gap:15px;
 }
 
 .fact{
-    min-height:88px;
-    padding:16px;
-    background:rgba(15,15,15,.78);
-    border:1px solid rgba(255,255,255,.1);
+    padding:25px;
+
+    background:rgba(8,8,8,.78);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:15px;
 }
 
 .fact strong{
     display:block;
-    color:#ffd000;
-    font-size:20px;
-    margin-bottom:4px;
-}
 
-.fact span{
-    color:#777;
-    font-size:9px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
+    color:#ffc400;
+    font-size:32px;
+    font-weight:1000;
 
-/* CONTENT */
-
-.content{
-    width:min(1180px,calc(100% - 40px));
-    margin:auto;
-    padding:70px 0 100px;
-}
-
-.section-title{
-    margin-bottom:30px;
-}
-
-.section-title small{
-    display:block;
-    color:#ffd000;
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:4px;
     margin-bottom:8px;
 }
 
-.section-title h2{
-    font-size:38px;
+.fact span{
+    color:#aaa;
+    font-size:13px;
 }
 
 /* SPECIALIZATION */
 
-.specialization{
+.special-grid{
     display:grid;
-    grid-template-columns:1.3fr .7fr;
-    gap:15px;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
 }
 
-.spec-card,
-.spec-item,
-.contact{
-    background:rgba(12,12,12,.82);
-    border:1px solid rgba(255,255,255,.09);
-    backdrop-filter:blur(8px);
+.special{
+    padding:25px;
+
+    background:rgba(8,8,8,.78);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:15px;
 }
 
-.spec-card{
-    padding:30px;
+.special h3{
+    color:#ffc400;
+    font-size:22px;
+    margin-bottom:10px;
 }
 
-.spec-card h3{
-    color:#ffd000;
-    font-size:24px;
-    margin-bottom:12px;
+.special p{
+    color:#aaa;
+    line-height:1.6;
 }
 
-.spec-card p{
-    color:#999;
-    font-size:14px;
-    line-height:1.8;
+/* CONTACT */
+
+.contact-card{
+    padding:28px;
+
+    background:rgba(8,8,8,.78);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:15px;
 }
 
-.spec-list{
-    display:grid;
-    gap:10px;
+.contact-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:17px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.07);
 }
 
-.spec-item{
-    padding:18px;
-    border-left:2px solid #ffd000;
+.contact-row:last-child{
+    border-bottom:0;
 }
 
-.spec-item strong{
-    display:block;
-    font-size:16px;
-}
-
-.spec-item span{
+.contact-label{
     color:#777;
-    font-size:11px;
+    font-size:12px;
+    text-transform:uppercase;
 }
 
-/* CONTACTS */
-
-.contacts{
-    margin-top:50px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-}
-
-.contact{
-    padding:22px;
-    text-decoration:none;
+.contact-value{
     color:#fff;
-    transition:.2s;
+    font-weight:800;
 }
 
-.contact:hover{
-    border-color:#ffd000;
-    transform:translateY(-3px);
-}
-
-.contact small{
-    display:block;
-    color:#777;
-    font-size:9px;
-    letter-spacing:2px;
-    margin-bottom:6px;
-}
-
-.contact strong{
-    font-size:16px;
+.contact-value a{
+    color:#ffc400;
+    text-decoration:none;
 }
 
 /* FOOTER */
 
 footer{
+    margin-top:50px;
+    padding:30px 0;
+
     border-top:1px solid rgba(255,255,255,.08);
-    padding:24px;
+
+    color:#777;
     text-align:center;
-    color:#555;
-    font-size:11px;
+    font-size:12px;
 }
 
 /* MOBILE */
 
-@media(max-width:850px){
+@media(max-width:900px){
 
-    body{
-        background-attachment:scroll;
-    }
-
-    .hero{
+    .hero-grid{
         grid-template-columns:1fr;
-        gap:35px;
-        padding:55px 0;
     }
 
     .photo{
-        width:min(390px,100%);
         height:420px;
-        margin:auto;
     }
 
     .facts{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .specialization{
-        grid-template-columns:1fr;
-    }
-
-    .contacts{
+    .special-grid{
         grid-template-columns:1fr;
     }
 }
 
-@media(max-width:500px){
+@media(max-width:768px){
 
-    .nav,
-    .hero,
-    .content{
-        width:calc(100% - 24px);
+    body::before{
+        background-size:cover;
+        background-position:center top;
+    }
+
+    .container{
+        width:min(100% - 22px,600px);
+    }
+
+    .nav{
+        min-height:62px;
     }
 
     .logo{
-        font-size:20px;
+        font-size:18px;
     }
 
-    nav{
-        gap:11px;
+    .nav-links{
+        gap:14px;
     }
 
-    nav a{
+    .nav-links a{
+        font-size:10px;
+    }
+
+    .hero{
+        padding:40px 0 25px;
+    }
+
+    h1{
+        font-size:48px;
+    }
+
+    .hero-text{
+        font-size:15px;
+    }
+
+    .photo{
+        height:390px;
+    }
+
+    section{
+        padding:30px 0;
+    }
+
+    .section-title{
+        font-size:23px;
+    }
+
+    .about-card{
+        padding:20px;
+    }
+
+    .about-card p{
+        font-size:15px;
+    }
+
+    .facts{
+        gap:10px;
+    }
+
+    .fact{
+        padding:18px;
+    }
+
+    .fact strong{
+        font-size:26px;
+    }
+
+    .contact-card{
+        padding:20px;
+    }
+
+    .contact-row{
+        gap:15px;
+    }
+}
+
+@media(max-width:430px){
+
+    .nav-links{
+        gap:10px;
+    }
+
+    .nav-links a{
         font-size:9px;
     }
 
     h1{
-        font-size:55px;
-        letter-spacing:-3px;
+        font-size:41px;
     }
 
     .photo{
-        height:360px;
+        height:350px;
+    }
+
+    .contact-row{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:6px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <div class="nav">
+    <div class="container nav">
 
         <div class="logo">
-            Психошка<span>.</span>
+            2V / ПСИХОШКА
         </div>
 
-        <nav>
-            <a href="about.html" class="active">ОБО МНЕ</a>
+        <nav class="nav-links">
+            <a href="about.html">ОБО МНЕ</a>
             <a href="index.html">ПРОФИЛЬ</a>
             <a href="guild.html">2VN</a>
         </nav>
@@ -391,53 +474,116 @@ footer{
 </header>
 
 
+<main>
+
+<!-- HERO -->
+
 <section class="hero">
 
-    <div class="photo">
-        <img src="my-photo.jpg" alt="Психошка">
+    <div class="container hero-grid">
+
+        <div>
+
+            <div class="tag">
+                PLAYER STORY
+            </div>
+
+            <h1>
+                ОБО<br>
+                <span>МНЕ</span>
+            </h1>
+
+            <p class="hero-text">
+                Психошка — игрок Free Fire из Казахстана.
+                Основной стиль игры — скорость, механика,
+                1v1 и КВ.
+            </p>
+
+        </div>
+
+        <div class="photo">
+            <img src="my-photo.jpg" alt="Психошка">
+        </div>
+
     </div>
 
-    <div>
+</section>
 
-        <div class="eyebrow">ОБО МНЕ</div>
 
-        <h1>
-            ПСИХО<span>ШКА</span>
-        </h1>
+<!-- STORY -->
 
-        <p class="description">
-            Я игрок <strong>Free Fire из Казахстана</strong>.
-            В игре уже около <strong>8 лет</strong>.
-            За это время основной упор сделал на механику,
-            скорость реакции и игру один на один.
-        </p>
+<section>
 
-        <p class="description">
-            Мой основной профиль — <strong>1v1 и КВ</strong>.
-            Играю на двух пальцах и стараюсь брать преимущество
-            за счёт скорости реакции и механики.
-        </p>
+    <div class="container">
+
+        <h2 class="section-title">
+            Моя <span>история</span>
+        </h2>
+
+        <div class="about-card">
+
+            <p>
+                Я играю в Free Fire уже около 8 лет.
+                За это время основной упор сделал на
+                СНС и КВ.
+            </p>
+
+            <p>
+                Моя главная специализация — 1v1.
+                Также хорошо чувствую себя в КВ,
+                где важны реакция, скорость принятия
+                решений и механика.
+            </p>
+
+            <p>
+                Играю двумя пальцами и стараюсь строить
+                стиль вокруг скорости и механики.
+                Для меня важны быстрые движения,
+                точность и контроль ситуации.
+            </p>
+
+            <p>
+                Сейчас я являюсь одним из ключевых игроков
+                гильдии 2VN.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FACTS -->
+
+<section>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Коротко <span>обо мне</span>
+        </h2>
 
         <div class="facts">
 
             <div class="fact">
-                <strong>8 лет</strong>
-                <span>В Free Fire</span>
+                <strong>8</strong>
+                <span>ЛЕТ В FREE FIRE</span>
             </div>
 
             <div class="fact">
                 <strong>1v1</strong>
-                <span>Основная специализация</span>
+                <span>ОСНОВНАЯ СПЕЦИАЛИЗАЦИЯ</span>
             </div>
 
             <div class="fact">
                 <strong>КВ</strong>
-                <span>Командные игры</span>
+                <span>ОСНОВНАЯ СФЕРА</span>
             </div>
 
             <div class="fact">
-                <strong>2 пальца</strong>
-                <span>Управление</span>
+                <strong>2</strong>
+                <span>ПАЛЬЦА</span>
             </div>
 
         </div>
@@ -447,95 +593,124 @@ footer{
 </section>
 
 
-<main class="content">
+<!-- SPECIALIZATION -->
 
-    <div class="section-title">
-        <small>ИГРОВОЙ СТИЛЬ</small>
-        <h2>Моя специализация</h2>
-    </div>
+<section>
 
-    <div class="specialization">
+    <div class="container">
 
-        <div class="spec-card">
+        <h2 class="section-title">
+            Мой <span>стиль</span>
+        </h2>
 
-            <h3>Скорость + механика</h3>
+        <div class="special-grid">
 
-            <p>
-                Основной стиль игры — быстрые действия,
-                хорошая реакция и контроль ситуации.
-                Больше всего внимания уделяю дуэлям
-                и игре один на один.
-            </p>
-
-            <br>
-
-            <p>
-                В КВ предпочитаю играть активно,
-                использовать механику персонажа и оружия
-                и искать возможность получить преимущество.
-            </p>
-
-        </div>
-
-        <div class="spec-list">
-
-            <div class="spec-item">
-                <strong>1v1</strong>
-                <span>Основное направление</span>
+            <div class="special">
+                <h3>⚡ Скорость</h3>
+                <p>
+                    Быстрое перемещение и реакция являются
+                    важной частью моего игрового стиля.
+                </p>
             </div>
 
-            <div class="spec-item">
-                <strong>КВ</strong>
-                <span>Командные сражения</span>
+            <div class="special">
+                <h3>🎯 Механика</h3>
+                <p>
+                    Контроль персонажа, точность и
+                    правильное использование оружия.
+                </p>
             </div>
 
-            <div class="spec-item">
-                <strong>Скорость</strong>
-                <span>Реакция и движение</span>
+            <div class="special">
+                <h3>🥊 1v1</h3>
+                <p>
+                    Основная специализация — дуэли
+                    один на один.
+                </p>
             </div>
 
-            <div class="spec-item">
-                <strong>Механика</strong>
-                <span>Контроль и точность</span>
+            <div class="special">
+                <h3>🏆 КВ</h3>
+                <p>
+                    Участие в командных играх и
+                    соревновательных матчах.
+                </p>
             </div>
 
         </div>
 
     </div>
 
+</section>
 
-    <div class="contacts">
 
-        <a class="contact"
-           href="https://www.tiktok.com/@erko_zr"
-           target="_blank">
-            <small>TIKTOK</small>
-            <strong>@erko_zr</strong>
-        </a>
+<!-- CONTACTS -->
 
-        <a class="contact"
-           href="https://wa.me/77053536952"
-           target="_blank">
-            <small>WHATSAPP</small>
-            <strong>Написать мне</strong>
-        </a>
+<section>
 
-        <div class="contact">
-            <small>СТРАНА</small>
-            <strong>Казахстан 🇰🇿</strong>
+    <div class="container">
+
+        <h2 class="section-title">
+            <span>Контакты</span>
+        </h2>
+
+        <div class="contact-card">
+
+            <div class="contact-row">
+                <div class="contact-label">TikTok</div>
+
+                <div class="contact-value">
+                    <a href="https://www.tiktok.com/@erko_zr"
+                       target="_blank">
+                        @erko_zr
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-row">
+                <div class="contact-label">WhatsApp</div>
+
+                <div class="contact-value">
+                    <a href="https://wa.me/77053536952"
+                       target="_blank">
+                        Написать в WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-row">
+                <div class="contact-label">Страна</div>
+                <div class="contact-value">
+                    Казахстан 🇰🇿
+                </div>
+            </div>
+
+            <div class="contact-row">
+                <div class="contact-label">Фраза</div>
+
+                <div class="contact-value">
+                    Люблю тебя моя Жузи &lt;3
+                </div>
+            </div>
+
         </div>
 
     </div>
+
+</section>
 
 </main>
 
 
 <footer>
-    © Психошка — Free Fire Player
+    <div class="container">
+        2V ПСИХОШКА © 2026 · FREE FIRE PLAYER
+    </div>
 </footer>
 
 
 <script>
+
 const desktopBackgrounds = [
     "background-pc-1.jpg",
     "background-pc-2.jpg"
@@ -547,17 +722,24 @@ const mobileBackgrounds = [
     "background-mobile-3.jpg"
 ];
 
-const backgrounds = window.matchMedia("(max-width: 768px)").matches
-    ? mobileBackgrounds
-    : desktopBackgrounds;
+const isMobile =
+    window.matchMedia("(max-width: 768px)").matches;
+
+const backgrounds =
+    isMobile
+        ? mobileBackgrounds
+        : desktopBackgrounds;
 
 const randomBackground =
-    backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    backgrounds[
+        Math.floor(Math.random() * backgrounds.length)
+    ];
 
 document.documentElement.style.setProperty(
     "--page-bg",
     `url("${randomBackground}")`
 );
+
 </script>
 
 </body>
