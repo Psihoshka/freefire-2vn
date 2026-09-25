@@ -22,23 +22,28 @@ html{
 body{
     font-family:Arial,Helvetica,sans-serif;
 
-    color:#f2f2f2;
+    color:#f5f5f5;
 
-    background:#080808;
+    background:#050505;
 
     min-height:100vh;
 
     overflow-x:hidden;
 }
 
+/* =====================================================
+   FIXED BACKGROUND
+===================================================== */
+
 body::before{
     content:"";
 
     position:fixed;
-
     inset:0;
 
-    z-index:-3;
+    z-index:-10;
+
+    background-image:var(--bg);
 
     background-position:center;
     background-size:cover;
@@ -49,12 +54,11 @@ body::after{
     content:"";
 
     position:fixed;
-
     inset:0;
 
-    z-index:-2;
+    z-index:-9;
 
-    background:rgba(0,0,0,.45);
+    background:rgba(0,0,0,.30);
 }
 
 /* =====================================================
@@ -68,29 +72,31 @@ header{
 
     z-index:1000;
 
-    background:rgba(8,8,8,.94);
+    background:rgba(5,5,5,.88);
 
     border-bottom:1px solid rgba(255,193,7,.35);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(10px);
+
+    box-shadow:0 5px 20px rgba(0,0,0,.22);
 }
 
 .nav{
-    width:min(1080px,92%);
+    width:min(1050px,92%);
 
-    min-height:68px;
+    min-height:65px;
 
     margin:auto;
 
     display:flex;
 
-    justify-content:space-between;
-
     align-items:center;
+
+    justify-content:space-between;
 }
 
 .logo{
-    font-size:22px;
+    font-size:21px;
     font-weight:900;
 }
 
@@ -100,7 +106,7 @@ header{
 
 .nav-links{
     display:flex;
-    gap:8px;
+    gap:7px;
 }
 
 .nav-links a{
@@ -108,20 +114,19 @@ header{
 
     text-decoration:none;
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:800;
 
-    padding:10px 14px;
+    padding:9px 13px;
 
-    border-radius:9px;
+    border-radius:8px;
 }
 
 .nav-links a:hover,
 .nav-links a.active{
     background:#ffc400;
-
-    color:#080808;
+    color:#050505;
 }
 
 /* =====================================================
@@ -129,27 +134,45 @@ header{
 ===================================================== */
 
 main{
-    width:min(1080px,92%);
+    position:relative;
+    z-index:1;
+
+    width:min(1000px,92%);
 
     margin:auto;
 
-    padding:42px 0 120px;
+    padding:34px 0 120px;
 }
 
 section{
-    margin-bottom:34px;
+    margin-bottom:22px;
+
+    background:rgba(7,7,7,.80);
+
+    border:1px solid rgba(255,193,7,.28);
+
+    border-radius:16px;
+
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.28);
+
+    backdrop-filter:blur(3px);
 }
+
+/* =====================================================
+   TITLES
+===================================================== */
 
 .title{
     display:flex;
 
     align-items:center;
 
-    gap:12px;
+    gap:10px;
 
-    margin-bottom:15px;
+    padding:18px 18px 0;
 
-    font-size:24px;
+    font-size:21px;
 
     font-weight:900;
 }
@@ -157,8 +180,8 @@ section{
 .title::before{
     content:"";
 
-    width:5px;
-    height:27px;
+    width:4px;
+    height:23px;
 
     border-radius:5px;
 
@@ -169,27 +192,28 @@ section{
 }
 
 /* =====================================================
-   GUILD BANNER — SMALL
+   BANNER
 ===================================================== */
 
+.banner-box{
+    padding:18px;
+}
+
 .guild-banner{
-
-    width:min(700px,100%);
-
-    height:230px;
+    width:min(650px,100%);
+    height:205px;
 
     margin:0 auto;
 
-    background:#050505;
-
-    border:1px solid rgba(255,193,7,.45);
-
-    border-radius:15px;
-
     overflow:hidden;
 
-    box-shadow:
-        0 15px 45px rgba(0,0,0,.4);
+    background:#030303;
+
+    border:1px solid rgba(255,193,7,.40);
+
+    border-radius:12px;
+
+    box-shadow:0 7px 20px rgba(0,0,0,.25);
 }
 
 .guild-banner img{
@@ -206,26 +230,27 @@ section{
 ===================================================== */
 
 .guild-info{
-
-    margin-top:15px;
+    padding:14px 18px 18px;
 
     display:grid;
 
     grid-template-columns:repeat(4,1fr);
 
-    gap:9px;
+    gap:8px;
 }
 
 .info{
-    background:rgba(8,8,8,.88);
+    padding:11px;
+
+    text-align:center;
+
+    background:#090909;
 
     border:1px solid #292929;
 
-    border-radius:10px;
+    border-radius:9px;
 
-    padding:13px;
-
-    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.18);
 }
 
 .info b{
@@ -233,34 +258,49 @@ section{
 
     color:#ffc400;
 
-    font-size:18px;
+    font-size:16px;
 
     margin-bottom:4px;
 }
 
 .info small{
-    color:#999;
+    color:#888;
 
-    font-size:11px;
+    font-size:10px;
 }
 
 /* =====================================================
-   GUILD SCREENSHOT — SMALL
+   PROFILE SCREEN
 ===================================================== */
+
+.profile-layout{
+
+    padding:14px 18px 18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+}
 
 .guild-screen-card{
 
-    width:min(620px,100%);
+    flex:0 0 330px;
 
-    margin:0 auto;
+    width:330px;
 
-    background:#050505;
+    height:220px;
+
+    overflow:hidden;
+
+    background:#030303;
 
     border:1px solid rgba(255,193,7,.35);
 
-    border-radius:14px;
+    border-radius:11px;
 
-    overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.22);
 }
 
 .guild-screen-card img{
@@ -268,12 +308,36 @@ section{
     display:block;
 
     width:100%;
-
-    height:auto;
-
-    max-height:400px;
+    height:100%;
 
     object-fit:contain;
+}
+
+.profile-description{
+
+    flex:1;
+
+    min-width:0;
+}
+
+.profile-description h3{
+
+    color:#ffc400;
+
+    font-size:21px;
+
+    margin-bottom:8px;
+}
+
+.profile-description p{
+
+    color:#aaa;
+
+    font-size:12px;
+
+    line-height:1.6;
+
+    margin-bottom:7px;
 }
 
 /* =====================================================
@@ -282,25 +346,31 @@ section{
 
 .players{
 
+    padding:14px 18px 18px;
+
     display:grid;
 
     grid-template-columns:repeat(3,1fr);
 
-    gap:10px;
+    gap:9px;
 }
 
 .player{
 
-    background:rgba(8,8,8,.9);
+    padding:13px;
+
+    background:#090909;
 
     border:1px solid #292929;
 
-    border-radius:11px;
+    border-radius:9px;
 
-    padding:14px;
+    box-shadow:0 5px 15px rgba(0,0,0,.18);
 }
 
 .player-name{
+
+    font-size:13px;
 
     font-weight:900;
 
@@ -313,32 +383,39 @@ section{
 
 .player p{
 
-    color:#999;
+    color:#888;
 
-    font-size:12px;
+    font-size:10px;
 }
 
 /* =====================================================
    BUTTON
 ===================================================== */
 
+.guild-link-box{
+
+    padding:0 18px 18px;
+}
+
 .guild-link{
 
     display:inline-block;
 
-    margin-top:15px;
-
-    padding:11px 17px;
-
-    border-radius:9px;
-
-    text-decoration:none;
+    padding:10px 14px;
 
     background:#ffc400;
 
-    color:#080808;
+    color:#050505;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-size:12px;
 
     font-weight:900;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.25);
 
     transition:.2s;
 }
@@ -347,7 +424,7 @@ section{
 
     background:#ff3030;
 
-    color:white;
+    color:#fff;
 }
 
 /* =====================================================
@@ -359,20 +436,19 @@ section{
     position:fixed;
 
     left:50%;
-
-    bottom:15px;
+    bottom:13px;
 
     transform:translateX(-50%);
 
-    z-index:2000;
+    z-index:3000;
 
     display:flex;
 
-    gap:8px;
+    gap:7px;
 
     width:max-content;
 
-    max-width:calc(100% - 24px);
+    max-width:calc(100% - 20px);
 }
 
 .social-button{
@@ -381,21 +457,19 @@ section{
 
     display:flex;
 
+    justify-content:center;
     align-items:center;
 
-    justify-content:center;
+    padding:11px 14px;
 
-    padding:12px 17px;
-
-    border-radius:10px;
+    border-radius:9px;
 
     text-decoration:none;
 
+    font-size:12px;
     font-weight:900;
 
-    font-size:13px;
-
-    box-shadow:0 7px 25px rgba(0,0,0,.55);
+    box-shadow:0 7px 22px rgba(0,0,0,.55);
 }
 
 .social-tiktok{
@@ -403,13 +477,15 @@ section{
     background:#111;
 
     color:#fff;
+
+    border:1px solid #444;
 }
 
 .social-whatsapp{
 
     background:#ffc400;
 
-    color:#080808;
+    color:#050505;
 }
 
 /* =====================================================
@@ -419,94 +495,180 @@ section{
 @media(max-width:700px){
 
     .nav{
-        min-height:60px;
+        min-height:59px;
     }
 
     .logo{
-        font-size:18px;
+        font-size:17px;
+    }
+
+    .nav-links{
+        gap:3px;
     }
 
     .nav-links a{
-        padding:8px;
-        font-size:11px;
+        padding:7px 8px;
+        font-size:10px;
     }
 
     main{
         width:94%;
 
-        padding-top:25px;
+        padding-top:23px;
+        padding-bottom:100px;
+    }
 
-        padding-bottom:105px;
+    .title{
+        font-size:18px;
+
+        padding:14px 14px 0;
+    }
+
+    .title::before{
+        height:20px;
     }
 
     /* SMALL BANNER */
+
+    .banner-box{
+        padding:14px;
+    }
 
     .guild-banner{
 
         width:100%;
 
-        height:145px;
+        height:135px;
 
-        border-radius:11px;
+        margin:0;
+
+        border-radius:10px;
     }
+
+    /* INFO */
 
     .guild-info{
 
-        grid-template-columns:repeat(2,1fr);
+        padding:11px 14px 14px;
 
-        gap:7px;
+        grid-template-columns:repeat(2,1fr);
     }
 
     .info{
-
-        padding:10px;
+        padding:9px;
     }
 
     .info b{
+        font-size:14px;
+    }
 
-        font-size:16px;
+    /* =================================================
+       IMPORTANT:
+       PHOTO LEFT + TEXT RIGHT
+       BOTH ON SAME LEVEL
+    ================================================= */
+
+    .profile-layout{
+
+        padding:11px 14px 14px;
+
+        display:flex;
+
+        flex-direction:row;
+
+        align-items:center;
+
+        justify-content:flex-start;
+
+        gap:10px;
     }
 
     .guild-screen-card{
 
-        width:100%;
+        flex:0 0 125px;
+
+        width:125px;
+
+        height:115px;
+
+        margin:0;
+
+        align-self:center;
     }
 
-    .guild-screen-card img{
+    .profile-description{
 
-        max-height:300px;
+        flex:1;
+
+        min-width:0;
+
+        align-self:center;
     }
+
+    .profile-description h3{
+
+        font-size:16px;
+
+        margin-bottom:5px;
+    }
+
+    .profile-description p{
+
+        font-size:9px;
+
+        line-height:1.45;
+
+        margin-bottom:4px;
+    }
+
+    /* PLAYERS */
 
     .players{
 
+        padding:11px 14px 14px;
+
         grid-template-columns:1fr 1fr;
     }
+
+    .player{
+
+        padding:10px;
+    }
+
+    /* SOCIAL */
 
     .social-button{
 
         min-width:135px;
 
-        padding:11px 12px;
+        padding:10px;
 
-        font-size:12px;
+        font-size:11px;
     }
 }
 
 @media(max-width:380px){
 
-    .guild-banner{
-        height:125px;
+    .guild-screen-card{
+
+        flex-basis:110px;
+
+        width:110px;
+
+        height:105px;
     }
 
-    .players{
-        grid-template-columns:1fr;
+    .profile-description h3{
+        font-size:14px;
+    }
+
+    .profile-description p{
+        font-size:8px;
     }
 
     .social-button{
-
         min-width:125px;
-
-        font-size:11px;
+        font-size:10px;
     }
 }
 
@@ -553,12 +715,16 @@ section{
 
 <section>
 
-    <div class="guild-banner">
+    <div class="banner-box">
 
-        <img
-            src="guild-banner.jpg"
-            alt="2VN The Best Guild"
-        >
+        <div class="guild-banner">
+
+            <img
+                src="guild-banner.jpg"
+                alt="2VN The Best Guild"
+            >
+
+        </div>
 
     </div>
 
@@ -566,7 +732,7 @@ section{
 
 
 <!-- =====================================================
-     INFO
+     GUILD INFO
 ===================================================== -->
 
 <section>
@@ -613,7 +779,7 @@ section{
 
 
 <!-- =====================================================
-     GUILD SCREENSHOT
+     GUILD PROFILE
 ===================================================== -->
 
 <section>
@@ -622,12 +788,38 @@ section{
         Профиль гильдии
     </h2>
 
-    <div class="guild-screen-card">
+    <div class="profile-layout">
 
-        <img
-            src="guild.jpg"
-            alt="Профиль гильдии 2VN"
-        >
+        <div class="guild-screen-card">
+
+            <img
+                src="guild.jpg"
+                alt="Профиль 2VN"
+            >
+
+        </div>
+
+        <div class="profile-description">
+
+            <h3>2VN</h3>
+
+            <p>
+                Гильдия уровня 5.
+            </p>
+
+            <p>
+                В составе — до 55 игроков,
+                сейчас занято 38 мест.
+            </p>
+
+            <p>
+                Игрок:
+                <strong style="color:#ffc400;">
+                    2V Психошка
+                </strong>
+            </p>
+
+        </div>
 
     </div>
 
@@ -687,18 +879,18 @@ section{
 </section>
 
 
-<!-- =====================================================
-     BACK
-===================================================== -->
-
 <section>
 
-    <a
-        class="guild-link"
-        href="index.html"
-    >
-        ← Вернуться в профиль
-    </a>
+    <div class="guild-link-box">
+
+        <a
+            class="guild-link"
+            href="index.html"
+        >
+            ← Вернуться в профиль
+        </a>
+
+    </div>
 
 </section>
 
@@ -706,9 +898,7 @@ section{
 </main>
 
 
-<!-- =====================================================
-     FIXED SOCIAL
-===================================================== -->
+<!-- FIXED SOCIAL -->
 
 <div class="social-bar">
 
@@ -733,7 +923,7 @@ section{
 
 <script>
 
-const desktopBackgrounds = [
+const pcBackgrounds=[
     "bg-pc-1.jpg",
     "bg-pc-2.jpg",
     "bg-pc-3.jpg",
@@ -741,7 +931,7 @@ const desktopBackgrounds = [
     "bg-pc-5.jpg"
 ];
 
-const mobileBackgrounds = [
+const mobileBackgrounds=[
     "bg-mobile-1.jpg",
     "bg-mobile-2.jpg",
     "bg-mobile-3.jpg",
@@ -749,17 +939,19 @@ const mobileBackgrounds = [
     "bg-mobile-5.jpg"
 ];
 
-const list =
-    window.innerWidth <= 700
+const backgrounds=
+    window.innerWidth<=700
     ? mobileBackgrounds
-    : desktopBackgrounds;
+    : pcBackgrounds;
 
-const image =
-    list[Math.floor(Math.random()*list.length)];
+const selected=
+    backgrounds[
+        Math.floor(Math.random()*backgrounds.length)
+    ];
 
-document.body.style.setProperty(
-    "background-image",
-    `url("${image}")`
+document.documentElement.style.setProperty(
+    "--bg",
+    `url("${selected}")`
 );
 
 </script>
