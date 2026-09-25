@@ -1,1741 +1,1959 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-
-    <!-- Адаптация под телефон -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>2VN | Free Fire Player</title>
-
-    <style>
-        /* =========================================
-           ОСНОВА
-        ========================================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #fff;
-            background: #08030d;
-            overflow-x: hidden;
-        }
-
-        /* =========================================
-           ФИКСИРОВАННЫЙ BACKGROUND
-        ========================================= */
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -3;
-
-            background-image:
-                linear-gradient(
-                    rgba(8, 2, 15, 0.48),
-                    rgba(8, 2, 15, 0.68)
-                ),
-                url("freefire-bg.jpg");
-
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-
-            background:
-                radial-gradient(
-                    circle at 20% 20%,
-                    rgba(145, 0, 255, 0.18),
-                    transparent 35%
-                ),
-                radial-gradient(
-                    circle at 80% 70%,
-                    rgba(255, 0, 70, 0.18),
-                    transparent 35%
-                );
-        }
-
-        /* =========================================
-           ОБЩИЕ ЭЛЕМЕНТЫ
-        ========================================= */
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .container {
-            width: min(1150px, 90%);
-            margin: auto;
-        }
-
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 55px;
-        }
-
-        .section-title h2 {
-            font-size: 42px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .section-title span {
-            display: block;
-            width: 70px;
-            height: 4px;
-            margin: auto;
-
-            background: linear-gradient(
-                90deg,
-                #8b00ff,
-                #ff1744
-            );
-
-            border-radius: 10px;
-        }
-
-        .section-title p {
-            margin-top: 18px;
-            color: #cfc5d8;
-        }
-
-        /* =========================================
-           NAVIGATION
-        ========================================= */
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-
-            background: rgba(5, 2, 10, 0.82);
-            backdrop-filter: blur(12px);
-
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .nav-container {
-            width: min(1150px, 92%);
-            margin: auto;
-
-            min-height: 70px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 23px;
-            font-weight: 900;
-            letter-spacing: 2px;
-
-            background: linear-gradient(
-                90deg,
-                #b400ff,
-                #ff1744
-            );
-
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        nav ul {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            list-style: none;
-        }
-
-        nav a {
-            color: #eee;
-            font-size: 14px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #ff1744;
-        }
-
-        /* =========================================
-           HERO
-        ========================================= */
-
-        .hero {
-            min-height: 100vh;
-
-            display: flex;
-            align-items: center;
-
-            padding-top: 100px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-label {
-            display: inline-block;
-
-            padding: 8px 15px;
-            margin-bottom: 20px;
-
-            border: 1px solid rgba(255,255,255,0.18);
-            border-radius: 30px;
-
-            background: rgba(130,0,255,0.15);
-
-            color: #e6c8ff;
-            font-size: 13px;
-            letter-spacing: 2px;
-        }
-
-        .hero h1 {
-            font-size: clamp(50px, 8vw, 90px);
-            line-height: 0.95;
-            text-transform: uppercase;
-            font-weight: 900;
-        }
-
-        .hero h1 span {
-            display: block;
-
-            background: linear-gradient(
-                90deg,
-                #a600ff,
-                #ff1744
-            );
-
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .hero-text {
-            margin-top: 25px;
-
-            max-width: 650px;
-
-            color: #ddd;
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 35px;
-        }
-
-        .btn {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-
-            min-height: 48px;
-            padding: 0 25px;
-
-            border-radius: 12px;
-
-            font-weight: bold;
-
-            transition:
-                transform 0.3s,
-                box-shadow 0.3s;
-        }
-
-        .btn-primary {
-            background: linear-gradient(
-                90deg,
-                #8b00ff,
-                #ff1744
-            );
-
-            box-shadow:
-                0 10px 30px rgba(180,0,255,0.25);
-        }
-
-        .btn-secondary {
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.06);
-        }
-
-        .btn:hover {
-            transform: translateY(-4px);
-        }
-
-        /* =========================================
-           ABOUT
-        ========================================= */
-
-        .glass {
-            background: rgba(10, 5, 18, 0.72);
-
-            border: 1px solid rgba(255,255,255,0.1);
-
-            backdrop-filter: blur(14px);
-
-            border-radius: 25px;
-        }
-
-        .about-box {
-            padding: 45px;
-        }
-
-        .about-box h3 {
-            font-size: 30px;
-            margin-bottom: 20px;
-        }
-
-        .about-box h3 span {
-            color: #c000ff;
-        }
-
-        .about-box p {
-            color: #ddd;
-            line-height: 1.8;
-            margin-bottom: 17px;
-            font-size: 17px;
-        }
-
-        .about-highlight {
-            margin-top: 30px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>2VN | Free Fire</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    overflow-x:hidden;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    color:#fff;
+    background:#07020d;
+    overflow-x:hidden;
+}
+
+/* =========================
+   FIXED BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+
+    background:
+        linear-gradient(
+            rgba(7,2,15,.30),
+            rgba(7,2,15,.62)
+        ),
+        url("freefire-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-4;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(150,0,255,.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(255,0,70,.18),
+            transparent 35%
+        );
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:94%;
+    max-width:1400px;
+    margin:auto;
+}
+
+section{
+    padding:90px 0;
+}
+
+.glass{
+    background:rgba(8,3,16,.72);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+/* =========================
+   NAV
+========================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    background:rgba(4,2,9,.80);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.nav{
+    width:94%;
+    max-width:1400px;
+    min-height:70px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:2px;
+
+    background:linear-gradient(90deg,#b000ff,#ff1744);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+nav ul{
+    list-style:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+nav a{
+    font-size:13px;
+    font-weight:bold;
+    color:#eee;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:#d000ff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    padding-top:100px;
+
+    display:flex;
+    align-items:center;
+}
+
+.hero-inner{
+    width:100%;
+
+    display:grid;
+    grid-template-columns:1.35fr .65fr;
+    gap:35px;
+    align-items:end;
+}
+
+.hero-main{
+    padding:55px 50px;
+
+    border-left:4px solid #a000ff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5,2,12,.78),
+            rgba(5,2,12,.35)
+        );
+
+    backdrop-filter:blur(5px);
+}
+
+.badge{
+    display:inline-block;
+
+    padding:9px 16px;
+    margin-bottom:25px;
+
+    border-radius:30px;
+
+    background:rgba(150,0,255,.18);
+    border:1px solid rgba(190,0,255,.4);
+
+    color:#e9caff;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.hero h1{
+    font-size:clamp(65px,9vw,130px);
+    line-height:.82;
+    text-transform:uppercase;
+    font-weight:900;
+}
+
+.hero h1 span{
+    display:block;
+
+    background:linear-gradient(
+        90deg,
+        #b000ff,
+        #ff1744
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero-description{
+    max-width:850px;
+    margin-top:30px;
+
+    color:#eee;
+    font-size:20px;
+    line-height:1.65;
+}
+
+.hero-buttons{
+    margin-top:35px;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+.btn{
+    min-height:50px;
+    padding:0 27px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.btn-primary{
+    background:linear-gradient(
+        90deg,
+        #8700ff,
+        #ff1744
+    );
+
+    box-shadow:0 10px 35px rgba(150,0,255,.3);
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+}
+
+/* Hero side */
+
+.hero-side{
+    padding:30px;
+
+    border-radius:20px;
+
+    background:rgba(5,2,12,.73);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(10px);
+}
+
+.hero-side-title{
+    color:#aaa;
+    font-size:12px;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.hero-side h2{
+    font-size:55px;
+
+    background:linear-gradient(
+        90deg,
+        #b000ff,
+        #ff1744
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero-side p{
+    color:#ccc;
+    margin-top:5px;
+}
+
+.hero-mini-stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:25px;
+}
+
+.mini{
+    padding:17px;
+
+    background:rgba(255,255,255,.05);
+    border-radius:12px;
+}
+
+.mini strong{
+    display:block;
+    font-size:24px;
+}
+
+.mini span{
+    color:#999;
+    font-size:12px;
+}
+
+/* =========================
+   TITLES
+========================= */
+
+.section-title{
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:clamp(38px,5vw,65px);
+    text-transform:uppercase;
+    line-height:1;
+}
+
+.section-title p{
+    color:#bbb;
+    font-size:17px;
+    margin-top:12px;
+}
+
+.line{
+    width:100px;
+    height:5px;
+    margin-top:18px;
+
+    background:linear-gradient(
+        90deg,
+        #9d00ff,
+        #ff1744
+    );
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-box{
+    padding:45px;
+    border-radius:22px;
+}
+
+.about-layout{
+    display:grid;
+    grid-template-columns:1.5fr .5fr;
+    gap:45px;
+}
+
+.about-text h3{
+    font-size:34px;
+    margin-bottom:20px;
+}
+
+.about-text h3 span{
+    color:#bd00ff;
+}
+
+.about-text p{
+    color:#ddd;
+    font-size:18px;
+    line-height:1.75;
+    margin-bottom:17px;
+}
+
+.about-facts{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+}
+
+.fact{
+    padding:20px;
+
+    border-left:3px solid #a000ff;
+
+    background:rgba(255,255,255,.045);
+}
+
+.fact strong{
+    display:block;
+    font-size:27px;
+
+    background:linear-gradient(
+        90deg,
+        #b000ff,
+        #ff1744
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.fact span{
+    display:block;
+    margin-top:5px;
+    color:#aaa;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+
+    align-items:stretch;
+}
+
+.profile-photo{
+    min-height:650px;
+    overflow:hidden;
+
+    border-radius:22px;
+}
+
+.profile-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    cursor:pointer;
+
+    transition:.6s;
+}
+
+.profile-photo:hover img{
+    transform:scale(1.04);
+}
+
+.profile-info{
+    padding:45px;
+
+    border-radius:22px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.profile-info .small-title{
+    color:#a900ff;
+    font-size:13px;
+    letter-spacing:3px;
+    font-weight:bold;
+}
+
+.profile-info h2{
+    margin-top:12px;
+    font-size:clamp(38px,5vw,65px);
+    line-height:.95;
+}
+
+.profile-info p{
+    margin-top:25px;
+
+    color:#ccc;
+    font-size:18px;
+    line-height:1.75;
+}
+
+.profile-tags{
+    margin-top:30px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.tag{
+    padding:22px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:14px;
+}
+
+.tag strong{
+    display:block;
+    font-size:27px;
+}
+
+.tag span{
+    color:#999;
+    font-size:13px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat{
+    min-height:190px;
+    padding:30px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:rgba(7,3,14,.75);
+    border:1px solid rgba(255,255,255,.1);
+
+    transition:.3s;
+}
+
+.stat:hover{
+    transform:translateY(-7px);
+    border-color:#9d00ff;
+}
+
+.stat strong{
+    font-size:52px;
+
+    background:linear-gradient(
+        90deg,
+        #b000ff,
+        #ff1744
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.stat h3{
+    margin-top:10px;
+    font-size:18px;
+}
+
+.stat p{
+    margin-top:7px;
+    color:#999;
+}
+
+/* =========================
+   2VN
+========================= */
+
+.guild-header{
+    min-height:400px;
+
+    border-radius:25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:50px;
+
+    background:
+        linear-gradient(
+            rgba(5,2,12,.55),
+            rgba(5,2,12,.82)
+        ),
+        url("guild-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.guild-header h2{
+    font-size:clamp(80px,14vw,180px);
+    line-height:.8;
+
+    background:linear-gradient(
+        90deg,
+        #a000ff,
+        #ff1744
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.guild-header p{
+    margin-top:25px;
+    font-size:18px;
+    letter-spacing:3px;
+}
+
+.guild-grid{
+    margin-top:20px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.guild-card{
+    padding:35px;
+    border-radius:20px;
+}
+
+.guild-card h3{
+    font-size:27px;
+    margin-bottom:20px;
+}
+
+.guild-card ul{
+    list-style:none;
+}
+
+.guild-card li{
+    padding:13px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    color:#ccc;
+}
+
+.guild-card li::before{
+    content:"✦";
+    color:#ff1744;
+    margin-right:10px;
+}
+
+/* =========================
+   RULES
+========================= */
+
+.rules{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.rule{
+    padding:35px;
+    border-radius:20px;
+}
+
+.rule h3{
+    font-size:26px;
+    margin-bottom:20px;
+}
+
+.rule ul{
+    padding-left:20px;
+}
+
+.rule li{
+    color:#ccc;
+    line-height:1.8;
+    margin-bottom:5px;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.gallery-item{
+    position:relative;
+    min-height:360px;
+
+    overflow:hidden;
+    border-radius:20px;
+
+    cursor:pointer;
+
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    min-height:360px;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.06);
+}
+
+.gallery-name{
+    position:absolute;
+    left:18px;
+    bottom:18px;
+
+    padding:9px 14px;
+
+    border-radius:9px;
+
+    background:rgba(0,0,0,.7);
 
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .highlight {
-            padding: 22px;
+    font-weight:bold;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    padding:55px;
+
+    border-radius:22px;
+
+    text-align:center;
+}
+
+.contact h2{
+    font-size:clamp(40px,6vw,70px);
+}
+
+.contact p{
+    margin-top:15px;
+    color:#aaa;
+    font-size:17px;
+}
+
+.contact-buttons{
+    margin-top:30px;
+
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:30px;
+
+    text-align:center;
+
+    background:rgba(3,1,7,.9);
+
+    color:#888;
+
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+footer strong{
+    color:#bd00ff;
+}
+
+/* =========================
+   PHOTO VIEWER
+========================= */
+
+.viewer{
+    position:fixed;
+    inset:0;
+
+    z-index:9999;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.95);
+}
+
+.viewer.active{
+    display:flex;
+}
+
+.viewer img{
+    max-width:95vw;
+    max-height:90vh;
+
+    object-fit:contain;
+
+    border-radius:10px;
+}
+
+.close{
+    position:absolute;
+
+    top:15px;
+    right:25px;
+
+    font-size:50px;
+    cursor:pointer;
+
+    z-index:2;
+}
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
 
-            background: rgba(255,255,255,0.045);
+.from-left{
+    opacity:0;
+    transform:translateX(-70px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.from-left.active{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.from-right{
+    opacity:0;
+    transform:translateX(70px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.from-right.active{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.zoom{
+    opacity:0;
+    transform:scale(.82);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.zoom.active{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:900px){
+
+    .hero-inner,
+    .about-layout,
+    .profile{
+        grid-template-columns:1fr;
+    }
+
+    .hero-side{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .about-facts{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+/* =========================
+   PHONE
+========================= */
 
-            border-radius: 17px;
+@media(max-width:600px){
+
+    .container{
+        width:94%;
+    }
+
+    section{
+        padding:65px 0;
+    }
+
+    /* NAV */
+
+    nav{
+        position:sticky;
+    }
+
+    .nav{
+        padding:12px 0;
+
+        flex-direction:column;
+        gap:10px;
+    }
+
+    nav ul{
+        width:100%;
+        gap:7px 12px;
+        justify-content:center;
+    }
+
+    nav a{
+        font-size:10px;
+    }
+
+    /* HERO */
+
+    .hero{
+        min-height:calc(100vh - 75px);
+        padding-top:40px;
+    }
 
-            border: 1px solid rgba(255,255,255,0.08);
+    .hero-main{
+        padding:38px 25px;
+        border-left:3px solid #a000ff;
+    }
+
+    .hero h1{
+        font-size:58px;
+    }
+
+    .hero-description{
+        font-size:16px;
+        line-height:1.6;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    /* ABOUT */
 
-            text-align: center;
-        }
+    .about-box{
+        padding:27px 22px;
+    }
 
-        .highlight strong {
-            display: block;
+    .about-layout{
+        gap:25px;
+    }
 
-            font-size: 27px;
+    .about-text h3{
+        font-size:27px;
+    }
 
-            background: linear-gradient(
-                90deg,
-                #b400ff,
-                #ff1744
-            );
+    .about-text p{
+        font-size:15px;
+        line-height:1.7;
+    }
+
+    .about-facts{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .fact{
+        padding:16px;
+    }
+
+    .fact strong{
+        font-size:22px;
+    }
 
-            -webkit-background-clip: text;
-            color: transparent;
-        }
+    .fact span{
+        font-size:11px;
+    }
 
-        .highlight small {
-            color: #aaa;
-            display: block;
-            margin-top: 6px;
-        }
+    /* PROFILE */
 
-        /* =========================================
-           MY PHOTO
-        ========================================= */
+    .profile-photo{
+        min-height:auto;
+        max-height:550px;
+    }
 
-        .my-photo-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
+    .profile-photo img{
+        height:auto;
+        max-height:550px;
+    }
 
-            align-items: center;
-
-            padding: 35px;
-        }
+    .profile-info{
+        padding:28px 22px;
+    }
 
-        .my-photo {
-            overflow: hidden;
-            border-radius: 22px;
+    .profile-info h2{
+        font-size:42px;
+    }
 
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+    .profile-info p{
+        font-size:15px;
+    }
 
-        .my-photo img {
-            width: 100%;
-            transition: transform 0.6s;
-        }
+    .profile-tags{
+        grid-template-columns:1fr 1fr;
+    }
 
-        .my-photo:hover img {
-            transform: scale(1.04);
-        }
+    .tag{
+        padding:17px 12px;
+    }
 
-        .photo-text h3 {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
+    .tag strong{
+        font-size:22px;
+    }
 
-        .photo-text p {
-            color: #ccc;
-            line-height: 1.8;
-        }
+    .tag span{
+        font-size:11px;
+    }
 
-        /* =========================================
-           STATS
-        ========================================= */
+    /* STATS */
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
 
-        .stat {
-            padding: 30px 20px;
+    .stat{
+        min-height:150px;
+        padding:20px 15px;
+    }
 
-            text-align: center;
-
-            background: rgba(9,4,16,0.78);
+    .stat strong{
+        font-size:40px;
+    }
 
-            border: 1px solid rgba(255,255,255,0.08);
-
-            border-radius: 20px;
+    .stat h3{
+        font-size:15px;
+    }
 
-            transition: 0.3s;
-        }
-
-        .stat:hover {
-            transform: translateY(-7px);
-
-            border-color: rgba(190,0,255,0.45);
+    /* GUILD */
 
-            box-shadow:
-                0 15px 40px rgba(120,0,255,0.15);
-        }
+    .guild-header{
+        min-height:300px;
+        padding:30px 20px;
+    }
 
-        .stat-number {
-            font-size: 42px;
-            font-weight: 900;
+    .guild-header h2{
+        font-size:90px;
+    }
 
-            background: linear-gradient(
-                90deg,
-                #b400ff,
-                #ff1744
-            );
+    .guild-header p{
+        font-size:13px;
+    }
 
-            -webkit-background-clip: text;
-            color: transparent;
-        }
+    .guild-grid{
+        grid-template-columns:1fr;
+    }
 
-        .stat p {
-            color: #aaa;
-            margin-top: 8px;
-        }
-
-        /* =========================================
-           GUILD
-        ========================================= */
-
-        .guild-banner {
-            min-height: 300px;
-
-            border-radius: 25px;
-
-            background:
-                linear-gradient(
-                    rgba(5,2,12,0.62),
-                    rgba(5,2,12,0.82)
-                ),
-                url("guild-bg.jpg");
-
-            background-size: cover;
-            background-position: center;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            padding: 30px;
-        }
-
-        .guild-banner h3 {
-            font-size: clamp(45px, 8vw, 80px);
-            font-weight: 900;
-
-            background: linear-gradient(
-                90deg,
-                #c000ff,
-                #ff1744
-            );
+    .guild-card{
+        padding:25px 20px;
+    }
 
-            -webkit-background-clip: text;
-            color: transparent;
-        }
+    /* RULES */
 
-        .guild-banner p {
-            margin-top: 10px;
-            color: #ddd;
-        }
+    .rules{
+        grid-template-columns:1fr;
+    }
 
-        /* =========================================
-           GUILD INFO
-        ========================================= */
+    .rule{
+        padding:25px 20px;
+    }
 
-        .guild-info {
-            margin-top: 25px;
+    /* GALLERY */
 
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
+    .gallery{
+        grid-template-columns:1fr;
+    }
 
-        .guild-card {
-            padding: 30px;
-        }
+    .gallery-item,
+    .gallery-item img{
+        min-height:0;
+        height:auto;
+    }
 
-        .guild-card h3 {
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
+    /* CONTACT */
 
-        .guild-card ul {
-            list-style: none;
-        }
+    .contact{
+        padding:40px 20px;
+    }
 
-        .guild-card li {
-            padding: 11px 0;
+    .contact-buttons{
+        flex-direction:column;
+    }
 
-            color: #d4d4d4;
+}
 
-            border-bottom: 1px solid rgba(255,255,255,0.07);
-        }
+/* =========================
+   SMALL PHONE
+========================= */
 
-        .guild-card li:last-child {
-            border-bottom: none;
-        }
+@media(max-width:380px){
 
-        .guild-card li::before {
-            content: "✦";
-            color: #ff1744;
-            margin-right: 10px;
-        }
+    .hero h1{
+        font-size:48px;
+    }
 
-        /* =========================================
-           RULES
-        ========================================= */
+    .about-facts,
+    .stats,
+    .profile-tags{
+        grid-template-columns:1fr;
+    }
 
-        .rules-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
+    nav ul{
+        gap:5px 8px;
+    }
 
-        .rule-card {
-            padding: 30px;
-        }
+    nav a{
+        font-size:9px;
+    }
 
-        .rule-card h3 {
-            color: #d000ff;
-            margin-bottom: 18px;
-        }
+}
 
-        .rule-card p,
-        .rule-card li {
-            color: #ccc;
-            line-height: 1.7;
-        }
-
-        .rule-card ul {
-            padding-left: 20px;
-        }
-
-        /* =========================================
-           GALLERY
-        ========================================= */
-
-        .gallery {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 20px;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-
-            border-radius: 20px;
-
-            cursor: pointer;
-
-            border: 1px solid rgba(255,255,255,0.1);
-
-            background: #09040f;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 300px;
-
-            object-fit: cover;
-
-            transition:
-                transform 0.6s,
-                filter 0.6s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.07);
-            filter: brightness(1.15);
-        }
-
-        .gallery-label {
-            position: absolute;
-            left: 15px;
-            bottom: 15px;
-
-            padding: 8px 12px;
-
-            border-radius: 10px;
-
-            background: rgba(0,0,0,0.65);
-
-            font-size: 13px;
-        }
-
-        /* =========================================
-           PHOTO VIEWER
-        ========================================= */
-
-        .photo-viewer {
-            position: fixed;
-            inset: 0;
-
-            z-index: 9999;
-
-            display: none;
-
-            justify-content: center;
-            align-items: center;
-
-            padding: 20px;
-
-            background: rgba(0,0,0,0.94);
-        }
-
-        .photo-viewer.active {
-            display: flex;
-        }
-
-        .photo-viewer img {
-            max-width: 95vw;
-            max-height: 90vh;
-
-            object-fit: contain;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 0 60px rgba(170,0,255,0.3);
-        }
-
-        .close-photo {
-            position: absolute;
-
-            top: 15px;
-            right: 25px;
-
-            font-size: 45px;
-            color: white;
-
-            cursor: pointer;
-
-            line-height: 1;
-        }
-
-        /* =========================================
-           CONTACT
-        ========================================= */
-
-        .contact-box {
-            text-align: center;
-            padding: 55px 30px;
-        }
-
-        .contact-box h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
-
-        .contact-box p {
-            color: #aaa;
-            margin-bottom: 30px;
-        }
-
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        /* =========================================
-           FOOTER
-        ========================================= */
-
-        footer {
-            padding: 30px 15px;
-
-            text-align: center;
-
-            background: rgba(3,1,7,0.88);
-
-            border-top: 1px solid rgba(255,255,255,0.08);
-
-            color: #888;
-        }
-
-        footer strong {
-            color: #c000ff;
-        }
-
-        /* =========================================
-           SCROLL ANIMATIONS
-        ========================================= */
-
-        .reveal {
-            opacity: 0;
-
-            transform:
-                translateY(60px)
-                scale(0.97);
-
-            transition:
-                opacity 0.9s ease,
-                transform 0.9s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-
-            transform:
-                translateY(0)
-                scale(1);
-        }
-
-        .reveal-left {
-            opacity: 0;
-
-            transform: translateX(-70px);
-
-            transition:
-                opacity 0.9s ease,
-                transform 0.9s ease;
-        }
-
-        .reveal-left.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .reveal-right {
-            opacity: 0;
-
-            transform: translateX(70px);
-
-            transition:
-                opacity 0.9s ease,
-                transform 0.9s ease;
-        }
-
-        .reveal-right.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .zoom-reveal {
-            opacity: 0;
-
-            transform: scale(0.75);
-
-            transition:
-                opacity 1s ease,
-                transform 1s ease;
-        }
-
-        .zoom-reveal.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* =========================================
-           MOBILE
-        ========================================= */
-
-        @media (max-width: 800px) {
-
-            nav {
-                position: sticky;
-            }
-
-            .nav-container {
-                min-height: auto;
-
-                padding: 13px 0;
-
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            nav ul {
-                width: 100%;
-
-                justify-content: center;
-
-                flex-wrap: wrap;
-
-                gap: 8px 13px;
-            }
-
-            nav a {
-                font-size: 11px;
-            }
-
-            section {
-                padding: 70px 0;
-            }
-
-            .hero {
-                min-height: 90vh;
-                padding-top: 60px;
-            }
-
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .hero-text {
-                font-size: 15px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .section-title h2 {
-                font-size: 30px;
-            }
-
-            .about-box {
-                padding: 25px 20px;
-            }
-
-            .about-box h3 {
-                font-size: 25px;
-            }
-
-            .about-box p {
-                font-size: 15px;
-            }
-
-            .about-highlight {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .highlight {
-                padding: 18px 10px;
-            }
-
-            .highlight strong {
-                font-size: 24px;
-            }
-
-            .my-photo-box {
-                grid-template-columns: 1fr;
-
-                padding: 20px;
-            }
-
-            .photo-text h3 {
-                font-size: 28px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .stat {
-                padding: 23px 12px;
-            }
-
-            .stat-number {
-                font-size: 32px;
-            }
-
-            .guild-info,
-            .rules-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .guild-card,
-            .rule-card {
-                padding: 23px 20px;
-            }
-
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-item img {
-                height: auto;
-                max-height: 500px;
-            }
-
-            .contact-box {
-                padding: 40px 20px;
-            }
-
-            .contact-box h2 {
-                font-size: 30px;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-            }
-
-            .contact-buttons .btn {
-                width: 100%;
-            }
-        }
-
-        /* =========================================
-           VERY SMALL PHONES
-        ========================================= */
-
-        @media (max-width: 420px) {
-
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .about-highlight {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            nav ul {
-                gap: 6px 9px;
-            }
-
-            nav a {
-                font-size: 10px;
-            }
-        }
-    </style>
+</style>
 </head>
+
 
 <body>
 
-<!-- =========================================
+<!-- =========================
      NAVIGATION
-========================================= -->
+========================= -->
 
 <nav>
-    <div class="nav-container">
 
-        <a href="#home" class="logo">
-            2VN
-        </a>
+<div class="nav">
 
-        <ul>
-            <li><a href="#about">Обо мне</a></li>
-            <li><a href="#photo">Фото</a></li>
-            <li><a href="#stats">Статы</a></li>
-            <li><a href="#guild">2VN</a></li>
-            <li><a href="#rules">Правила</a></li>
-            <li><a href="#gallery">Галерея</a></li>
-            <li><a href="#contact">Контакты</a></li>
-        </ul>
+<a href="#home" class="logo">
+2VN
+</a>
 
-    </div>
+<ul>
+<li><a href="#about">Обо мне</a></li>
+<li><a href="#profile">Профиль</a></li>
+<li><a href="#stats">Статы</a></li>
+<li><a href="#guild">2VN</a></li>
+<li><a href="#rules">Правила</a></li>
+<li><a href="#gallery">Галерея</a></li>
+<li><a href="#contact">Контакты</a></li>
+</ul>
+
+</div>
+
 </nav>
 
 
-<!-- =========================================
+<!-- =========================
      HERO
-========================================= -->
+========================= -->
 
 <section id="home" class="hero">
 
-    <div class="container">
+<div class="container">
 
-        <div class="hero-content reveal">
+<div class="hero-inner">
 
-            <div class="hero-label">
-                FREE FIRE • 2VN
-            </div>
+<div class="hero-main reveal">
 
-            <h1>
-                MY
-                <span>GAME.</span>
-            </h1>
+<div class="badge">
+FREE FIRE • 2VN
+</div>
 
-            <p class="hero-text">
-                8 лет в Free Fire. Опыт в СНС и КВ,
-                специализация 1v1 и быстрый стиль игры.
-                Два пальца — максимум механики.
-            </p>
+<h1>
+MY
+<span>GAME.</span>
+</h1>
 
-            <div class="hero-buttons">
+<p class="hero-description">
+8 лет в Free Fire. Половина этого пути —
+СНС и КВ. Моя специализация — 1v1.
+Играю на двух пальцах и предпочитаю
+быстрый стиль — Speedster.
+</p>
 
-                <a href="#about" class="btn btn-primary">
-                    Узнать обо мне
-                </a>
+<div class="hero-buttons">
 
-                <a href="#guild" class="btn btn-secondary">
-                    Гильдия 2VN
-                </a>
+<a href="#about" class="btn btn-primary">
+Обо мне
+</a>
 
-            </div>
+<a href="#guild" class="btn btn-secondary">
+Гильдия 2VN
+</a>
 
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     ABOUT
-========================================= -->
-
-<section id="about">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <h2>Обо мне</h2>
-
-            <span></span>
-
-            <p>
-                Мой путь в Free Fire
-            </p>
-
-        </div>
-
-
-        <div class="glass about-box reveal">
-
-            <h3>
-                8 лет в <span>Free Fire</span>
-            </h3>
-
-            <p>
-                Я нахожусь в Free Fire уже 8 лет.
-                За это время игра стала для меня не просто
-                развлечением, а пространством, где я постоянно
-                развиваю свою механику, скорость и игровой стиль.
-            </p>
-
-            <p>
-                Примерно половину своего игрового пути я посвятил
-                <strong>СНС и КВ-сферам</strong>. Именно там я получил
-                основной соревновательный опыт, научился играть
-                под давлением и принимать быстрые решения.
-            </p>
-
-            <p>
-                Моя главная специализация —
-                <strong>1v1</strong>. Именно в дуэлях я стараюсь
-                максимально раскрывать механику, реакцию и скорость.
-                При этом в КВ также уверенно показываю себя
-                и умею работать на результат команды.
-            </p>
-
-            <p>
-                Я играю всего на <strong>двух пальцах</strong>,
-                но мой стиль — это скорость. Я являюсь
-                <strong>спидстером</strong>: люблю быстрые движения,
-                резкие решения и агрессивный темп игры.
-            </p>
-
-
-            <div class="about-highlight">
-
-                <div class="highlight">
-                    <strong>8</strong>
-                    <small>лет в Free Fire</small>
-                </div>
-
-                <div class="highlight">
-                    <strong>1v1</strong>
-                    <small>моя специализация</small>
-                </div>
-
-                <div class="highlight">
-                    <strong>2</strong>
-                    <small>пальца</small>
-                </div>
-
-                <div class="highlight">
-                    <strong>⚡</strong>
-                    <small>Speedster</small>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     MY PHOTO
-========================================= -->
-
-<section id="photo">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <h2>Это я</h2>
-
-            <span></span>
-
-        </div>
-
-
-        <div class="glass my-photo-box">
-
-            <div class="my-photo reveal-left">
-
-                <img
-                    src="my-photo.jpg"
-                    alt="Моё фото"
-                    onclick="openPhoto(this.src)"
-                    style="cursor:pointer;"
-                >
-
-            </div>
-
-
-            <div class="photo-text reveal-right">
-
-                <h3>
-                    Игрок.
-                    <span style="color:#c000ff;">
-                        Скорость.
-                    </span>
-                    Механика.
-                </h3>
-
-                <p>
-                    За годы игры я сформировал свой собственный
-                    стиль. Мне нравится играть быстро,
-                    постоянно двигаться и использовать механику
-                    на максимум.
-                </p>
-
-                <p style="margin-top:15px;">
-                    Основной фокус — индивидуальная игра и
-                    1v1, но командный формат КВ также является
-                    важной частью моего опыта.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     STATS
-========================================= -->
-
-<section id="stats">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <h2>Мой стиль</h2>
-
-            <span></span>
-
-        </div>
-
-
-        <div class="stats">
-
-            <div class="stat reveal">
-                <div class="stat-number">8</div>
-                <p>лет в игре</p>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-number">1v1</div>
-                <p>главная специализация</p>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-number">2</div>
-                <p>пальца</p>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-number">⚡</div>
-                <p>Speedster</p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     GUILD 2VN
-========================================= -->
-
-<section id="guild">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <h2>Гильдия</h2>
-
-            <span></span>
-
-            <p>
-                2VN
-            </p>
-
-        </div>
-
-
-        <div class="guild-banner zoom-reveal">
-
-            <div>
-
-                <h3>2VN</h3>
-
-                <p>
-                    Команда • Дисциплина • Результат
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="guild-info">
-
-            <div class="glass guild-card reveal-left">
-
-                <h3>Состав руководства</h3>
-
-                <ul>
-
-                    <li>
-                        Leader — 2V Delimova-7095
-                    </li>
-
-                    <li>
-                        ОФФ — Некси
-                    </li>
-
-                    <li>
-                        ОФФ (Ка) — Талшын
-                    </li>
-
-                    <li>
-                        ОФФ (Ка) — Руся
-                    </li>
-
-                    <li>
-                        КВ ответственный — по назначению
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <div class="glass guild-card reveal-right">
-
-                <h3>Основные принципы</h3>
-
-                <ul>
-
-                    <li>
-                        Уважение между участниками
-                    </li>
-
-                    <li>
-                        Дисциплина
-                    </li>
-
-                    <li>
-                        Соблюдение правил КВ
-                    </li>
-
-                    <li>
-                        Командная работа
-                    </li>
-
-                    <li>
-                        Развитие игроков
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     RULES
-========================================= -->
-
-<section id="rules">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <h2>Правила 2VN</h2>
-
-            <span></span>
-
-        </div>
-
-
-        <div class="rules-grid">
-
-            <div class="glass rule-card reveal-left">
-
-                <h3>⚔️ Правила КВ</h3>
-
-                <ul>
-
-                    <li>Оружие: UMP, Desert Eagle, M1887</li>
-
-                    <li>13 раундов</li>
-
-                    <li>Без ограничения патронов</li>
-
-                    <li>Шлем — 2 уровень</li>
-
-                    <li>Аирдроп запрещён</li>
-
-                    <li>Только хедшоты</li>
-
-                    <li>Cyber Airdrop TP запрещён</li>
-
-                    <li>Roof / 2–3 floor TP запрещён</li>
-
-                </ul>
-
-            </div>
-
-
-            <div class="glass rule-card reveal-right">
-
-                <h3>🚫 Запрещено</h3>
-
-                <ul>
-
-                    <li>
-                        Все виды гранат — TP
-                    </li>
-
-                    <li>
-                        Баги и использование ошибок игры
-                    </li>
-
-                    <li>
-                        Читы и стороннее ПО — полный TP
-                    </li>
-
-                    <li>
-                        PC — TP
-                    </li>
-
-                    <li>
-                        Нарушение правил КВ
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <div class="glass rule-card reveal-left">
-
-                <h3>🎯 Навыки</h3>
-
-                <ul>
-
-                    <li>Kelly</li>
-                    <li>Moco</li>
-                    <li>Maxim</li>
-                    <li>Luna</li>
-                    <li>Nair</li>
-                    <li>Carolina</li>
-                    <li>Alok</li>
-
-                </ul>
-
-            </div>
-
-
-            <div class="glass rule-card reveal-right">
-
-                <h3>📌 Дополнительно</h3>
-
-                <ul>
-
-                    <li>
-                        Ник смена — 7 дней
-                    </li>
-
-                    <li>
-                        Уважение ко всем участникам
-                    </li>
-
-                    <li>
-                        Соблюдение командной дисциплины
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     GALLERY
-========================================= -->
-
-<section id="gallery">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <h2>Галерея</h2>
-
-            <span></span>
-
-            <p>
-                Нажми на фотографию, чтобы открыть её полностью
-            </p>
-
-        </div>
-
-
-        <div class="gallery">
-
-            <div
-                class="gallery-item zoom-reveal"
-                onclick="openPhoto('my-photo.jpg')"
-            >
-
-                <img
-                    src="my-photo.jpg"
-                    alt="Моё фото"
-                >
-
-                <div class="gallery-label">
-                    Это я
-                </div>
-
-            </div>
-
-
-            <div
-                class="gallery-item zoom-reveal"
-                onclick="openPhoto('profile.jpg')"
-            >
-
-                <img
-                    src="profile.jpg"
-                    alt="Free Fire профиль"
-                >
-
-                <div class="gallery-label">
-                    Free Fire Profile
-                </div>
-
-            </div>
-
-
-            <div
-                class="gallery-item zoom-reveal"
-                onclick="openPhoto('guild-bg.jpg')"
-            >
-
-                <img
-                    src="guild-bg.jpg"
-                    alt="2VN"
-                >
-
-                <div class="gallery-label">
-                    2VN
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     CONTACT
-========================================= -->
-
-<section id="contact">
-
-    <div class="container">
-
-        <div class="glass contact-box reveal">
-
-            <h2>
-                Связаться со мной
-            </h2>
-
-            <p>
-                Если хочешь связаться со мной —
-                используй один из способов ниже.
-            </p>
-
-
-            <div class="contact-buttons">
-
-                <a
-                    href="tel:+77053536952"
-                    class="btn btn-primary"
-                >
-                    📞 Позвонить
-                </a>
-
-
-                <a
-                    href="https://wa.me/77053536952"
-                    target="_blank"
-                    class="btn btn-secondary"
-                >
-                    💬 WhatsApp
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     FOOTER
-========================================= -->
-
-<footer>
-
-    <p>
-        © 2026 <strong>2VN</strong> • Free Fire Player
-    </p>
-
-</footer>
-
-
-<!-- =========================================
-     PHOTO VIEWER
-========================================= -->
-
-<div
-    id="photoViewer"
-    class="photo-viewer"
-    onclick="closePhoto()"
->
-
-    <span
-        class="close-photo"
-        onclick="closePhoto()"
-    >
-        &times;
-    </span>
-
-
-    <img
-        id="bigPhoto"
-        src=""
-        alt="Просмотр фотографии"
-        onclick="event.stopPropagation()"
-    >
+</div>
 
 </div>
 
 
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
+<div class="hero-side from-right">
+
+<div class="hero-side-title">
+PLAYER PROFILE
+</div>
+
+<h2>2VN</h2>
+
+<p>
+FREE FIRE PLAYER
+</p>
+
+<div class="hero-mini-stats">
+
+<div class="mini">
+<strong>8</strong>
+<span>лет в игре</span>
+</div>
+
+<div class="mini">
+<strong>1v1</strong>
+<span>специализация</span>
+</div>
+
+<div class="mini">
+<strong>2</strong>
+<span>пальца</span>
+</div>
+
+<div class="mini">
+<strong>⚡</strong>
+<span>Speedster</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<h2>Обо мне</h2>
+
+<div class="line"></div>
+
+<p>
+Мой путь, опыт и стиль игры
+</p>
+
+</div>
+
+
+<div class="glass about-box reveal">
+
+<div class="about-layout">
+
+<div class="about-text">
+
+<h3>
+8 лет в <span>Free Fire</span>
+</h3>
+
+<p>
+Я нахожусь в Free Fire уже 8 лет.
+За это время игра стала для меня не просто
+развлечением — я постоянно развивал механику,
+скорость и индивидуальный стиль.
+</p>
+
+<p>
+Половину своего игрового пути я посвятил
+<strong>СНС и КВ-сферам</strong>. Именно там
+сформировался мой основной соревновательный опыт.
+</p>
+
+<p>
+Моя специализация — <strong>1v1</strong>.
+В дуэлях я делаю основной акцент на реакции,
+механике, движении и скорости принятия решений.
+При этом в <strong>КВ</strong> также хорошо показываю
+себя и умею играть на командный результат.
+</p>
+
+<p>
+Мой стиль — <strong>Speedster</strong>.
+Я играю на двух пальцах и стараюсь использовать
+скорость и механику на максимум.
+</p>
+
+</div>
+
+
+<div class="about-facts">
+
+<div class="fact">
+<strong>8 лет</strong>
+<span>опыта в Free Fire</span>
+</div>
+
+<div class="fact">
+<strong>1v1</strong>
+<span>основная специализация</span>
+</div>
+
+<div class="fact">
+<strong>СНС / КВ</strong>
+<span>соревновательный опыт</span>
+</div>
+
+<div class="fact">
+<strong>2 пальца</strong>
+<span>мой способ управления</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     PROFILE
+========================= -->
+
+<section id="profile">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<h2>Игровой профиль</h2>
+
+<div class="line"></div>
+
+<p>
+Не просто фотография — мой игровой стиль
+</p>
+
+</div>
+
+
+<div class="profile">
+
+<div class="profile-photo from-left">
+
+<img
+src="my-photo.jpg"
+alt="Моё фото"
+onclick="openPhoto(this.src)"
+>
+
+</div>
+
+
+<div class="glass profile-info from-right">
+
+<div class="small-title">
+PLAYER STYLE
+</div>
+
+<h2>
+SPEED
+<br>
+<span style="color:#b000ff;">&</span>
+<br>
+MECHANICS
+</h2>
+
+<p>
+Основной фокус — индивидуальная игра.
+1v1 является моей специализацией, а СНС и КВ
+дали мне большой соревновательный опыт.
+</p>
+
+<div class="profile-tags">
+
+<div class="tag">
+<strong>1v1</strong>
+<span>Главная специализация</span>
+</div>
+
+<div class="tag">
+<strong>⚡ Speedster</strong>
+<span>Быстрый стиль</span>
+</div>
+
+<div class="tag">
+<strong>2 пальца</strong>
+<span>Управление</span>
+</div>
+
+<div class="tag">
+<strong>КВ</strong>
+<span>Командная игра</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section id="stats">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<h2>Мой стиль</h2>
+
+<div class="line"></div>
+
+<p>
+Главные характеристики игрока
+</p>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat reveal">
+<strong>8</strong>
+<h3>ЛЕТ В ИГРЕ</h3>
+<p>Free Fire</p>
+</div>
+
+<div class="stat reveal">
+<strong>1v1</strong>
+<h3>СПЕЦИАЛИЗАЦИЯ</h3>
+<p>Индивидуальная игра</p>
+</div>
+
+<div class="stat reveal">
+<strong>2</strong>
+<h3>ПАЛЬЦА</h3>
+<p>Мой способ управления</p>
+</div>
+
+<div class="stat reveal">
+<strong>⚡</strong>
+<h3>SPEEDSTER</h3>
+<p>Скорость и механика</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     GUILD
+========================= -->
+
+<section id="guild">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<h2>2VN</h2>
+
+<div class="line"></div>
+
+<p>
+Гильдия и командная игра
+</p>
+
+</div>
+
+
+<div class="guild-header zoom">
+
+<div>
+
+<h2>2VN</h2>
+
+<p>
+TEAM • DISCIPLINE • RESULT
+</p>
+
+</div>
+
+</div>
+
+
+<div class="guild-grid">
+
+<div class="glass guild-card from-left">
+
+<h3>
+Руководство
+</h3>
+
+<ul>
+
+<li>Leader — 2V Delimova-7095</li>
+<li>ОФФ — Некси</li>
+<li>ОФФ (Ка) — Талшын</li>
+<li>ОФФ (Ка) — Руся</li>
+<li>КВ ответственный — по назначению</li>
+
+</ul>
+
+</div>
+
+
+<div class="glass guild-card from-right">
+
+<h3>
+Принципы 2VN
+</h3>
+
+<ul>
+
+<li>Уважение между участниками</li>
+<li>Дисциплина</li>
+<li>Командная работа</li>
+<li>Соблюдение правил</li>
+<li>Развитие игроков</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     RULES
+========================= -->
+
+<section id="rules">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<h2>Правила</h2>
+
+<div class="line"></div>
+
+<p>
+Основные правила 2VN
+</p>
+
+</div>
+
+
+<div class="rules">
+
+<div class="glass rule from-left">
+
+<h3>⚔️ КВ</h3>
+
+<ul>
+<li>Оружие: UMP, Desert Eagle, M1887</li>
+<li>13 раундов</li>
+<li>Без ограничения патронов</li>
+<li>Шлем 2 уровня</li>
+<li>Аирдроп запрещён</li>
+<li>Только хедшоты</li>
+<li>Cyber Airdrop TP запрещён</li>
+<li>Roof / 2–3 floor TP запрещён</li>
+</ul>
+
+</div>
+
+
+<div class="glass rule from-right">
+
+<h3>🚫 Запрещено</h3>
+
+<ul>
+<li>Все виды гранат — TP</li>
+<li>Баги</li>
+<li>Читы</li>
+<li>Стороннее ПО — полный TP</li>
+<li>PC — TP</li>
+<li>Нарушение правил КВ</li>
+</ul>
+
+</div>
+
+
+<div class="glass rule from-left">
+
+<h3>🎯 Навыки</h3>
+
+<ul>
+<li>Kelly</li>
+<li>Moco</li>
+<li>Maxim</li>
+<li>Luna</li>
+<li>Nair</li>
+<li>Carolina</li>
+<li>Alok</li>
+</ul>
+
+</div>
+
+
+<div class="glass rule from-right">
+
+<h3>📌 Дополнительно</h3>
+
+<ul>
+<li>Уважение между участниками</li>
+<li>Ник смена — 7 дней</li>
+<li>Соблюдение командной дисциплины</li>
+<li>Соблюдение правил КВ</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section id="gallery">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<h2>Галерея</h2>
+
+<div class="line"></div>
+
+<p>
+Нажми на фотографию для просмотра
+</p>
+
+</div>
+
+
+<div class="gallery">
+
+<div
+class="gallery-item zoom"
+onclick="openPhoto('my-photo.jpg')"
+>
+
+<img
+src="my-photo.jpg"
+alt="Моё фото"
+>
+
+<div class="gallery-name">
+МОЁ ФОТО
+</div>
+
+</div>
+
+
+<div
+class="gallery-item zoom"
+onclick="openPhoto('profile.jpg')"
+>
+
+<img
+src="profile.jpg"
+alt="Free Fire профиль"
+>
+
+<div class="gallery-name">
+FREE FIRE PROFILE
+</div>
+
+</div>
+
+
+<div
+class="gallery-item zoom"
+onclick="openPhoto('guild-bg.jpg')"
+>
+
+<img
+src="guild-bg.jpg"
+alt="2VN"
+>
+
+<div class="gallery-name">
+2VN
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="glass contact reveal">
+
+<h2>
+Связаться со мной
+</h2>
+
+<p>
+Если хочешь связаться со мной —
+используй любой удобный способ.
+</p>
+
+<div class="contact-buttons">
+
+<a
+href="tel:+77053536952"
+class="btn btn-primary"
+>
+📞 Позвонить
+</a>
+
+<a
+href="https://wa.me/77053536952"
+target="_blank"
+class="btn btn-secondary"
+>
+💬 WhatsApp
+</a>
+        <a
+    href="https://www.tiktok.com/@erko_zr"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn btn-secondary"
+>
+    🎵 TikTok
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<p>
+© 2026 <strong>2VN</strong> • Free Fire Player
+</p>
+
+</footer>
+
+
+<!-- =========================
+     PHOTO VIEWER
+========================= -->
+
+<div
+id="viewer"
+class="viewer"
+onclick="closePhoto()"
+>
+
+<span
+class="close"
+onclick="closePhoto()"
+>
+&times;
+</span>
+
+<img
+id="viewerImage"
+src=""
+alt="Фото"
+onclick="event.stopPropagation()"
+>
+
+</div>
+
 
 <script>
 
-    /* =========================
-       АНИМАЦИЯ ПРИ СКРОЛЛЕ
-    ========================= */
+/* =========================
+   SCROLL ANIMATIONS
+========================= */
 
-    const animatedElements =
-        document.querySelectorAll(
-            ".reveal, .reveal-left, .reveal-right, .zoom-reveal"
-        );
+const elements =
+document.querySelectorAll(
+".reveal,.from-left,.from-right,.zoom"
+);
 
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-
-            entries.forEach((entry) => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("active");
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
+const observer =
+new IntersectionObserver(
+(entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("active");
         }
-    );
-
-
-    animatedElements.forEach((element) => {
-
-        observer.observe(element);
-
     });
+},
+{
+    threshold:.12
+}
+);
+
+elements.forEach(el=>{
+    observer.observe(el);
+});
 
 
-    /* =========================
-       ПРОСМОТР ФОТО
-    ========================= */
+/* =========================
+   PHOTO VIEWER
+========================= */
 
-    function openPhoto(src) {
+function openPhoto(src){
 
-        const viewer =
-            document.getElementById("photoViewer");
+    document
+    .getElementById("viewerImage")
+    .src=src;
 
-        const bigPhoto =
-            document.getElementById("bigPhoto");
+    document
+    .getElementById("viewer")
+    .classList.add("active");
 
-        bigPhoto.src = src;
+    document.body.style.overflow="hidden";
+}
 
-        viewer.classList.add("active");
 
-        document.body.style.overflow = "hidden";
+function closePhoto(){
 
+    document
+    .getElementById("viewer")
+    .classList.remove("active");
+
+    document.body.style.overflow="";
+}
+
+
+document.addEventListener(
+"keydown",
+function(e){
+
+    if(e.key==="Escape"){
+        closePhoto();
     }
 
+});
 
-    function closePhoto() {
-
-        const viewer =
-            document.getElementById("photoViewer");
-
-        viewer.classList.remove("active");
-
-        document.body.style.overflow = "";
-
-    }
-
-
-    /* =========================
-       ESC — ЗАКРЫТЬ ФОТО
-    ========================= */
-
-    document.addEventListener(
-        "keydown",
-        function(event) {
-
-            if (event.key === "Escape") {
-
-                closePhoto();
-
-            }
-
-        }
-    );
 
 </script>
 
