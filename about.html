@@ -5,13 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Обо мне — 2V Психошка</title>
+<title>Обо мне | Психошка</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     margin:0;
@@ -24,677 +20,486 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    color:#111;
-    background:#111;
-
+    font-family:Arial,Helvetica,sans-serif;
+    color:#f2f2f2;
+    background:#080808;
     min-height:100vh;
-
     overflow-x:hidden;
 }
-
-:root{
-    --yellow:#ffd400;
-    --red:#e52b2b;
-    --black:#111;
-    --dark:#181818;
-}
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
 
 body::before{
     content:"";
     position:fixed;
     inset:0;
-    z-index:-2;
+    z-index:-3;
 
-    background-image:var(--bg-image);
-    background-size:cover;
+    background-image:url("bg-pc-1.jpg");
     background-position:center;
-    background-attachment:fixed;
+    background-size:cover;
+    background-repeat:no-repeat;
 }
 
 body::after{
     content:"";
     position:fixed;
     inset:0;
-    z-index:-1;
+    z-index:-2;
 
-    background:rgba(0,0,0,.12);
-
-    pointer-events:none;
+    background:rgba(0,0,0,.43);
 }
-
-/* =========================================================
-   CONTAINER
-========================================================= */
-
-.container{
-    width:min(1080px,calc(100% - 32px));
-    margin:auto;
-}
-
-/* =========================================================
-   HEADER
-========================================================= */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
 
-    background:rgba(255,255,255,.94);
+    background:rgba(8,8,8,.94);
+
+    border-bottom:1px solid rgba(255,193,7,.35);
 
     backdrop-filter:blur(12px);
-
-    border-bottom:3px solid #111;
 }
 
 .nav{
-    height:66px;
+    width:min(1080px,92%);
+    margin:auto;
+
+    min-height:68px;
 
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 }
 
 .logo{
-    text-decoration:none;
-
-    color:#111;
-
-    font-size:21px;
-    font-weight:1000;
+    font-size:22px;
+    font-weight:900;
 }
 
 .logo span{
-    color:var(--red);
+    color:#ff3030;
 }
 
 .nav-links{
     display:flex;
-    gap:7px;
+    gap:8px;
 }
 
 .nav-links a{
+    color:#eee;
     text-decoration:none;
 
-    color:#111;
+    font-size:14px;
+    font-weight:800;
 
     padding:10px 14px;
-
-    border-radius:10px;
-
-    font-size:12px;
-    font-weight:900;
-
-    transition:.2s;
+    border-radius:9px;
 }
 
-.nav-links a:hover{
-    background:#111;
-    color:#fff;
+.nav-links a:hover,
+.nav-links a.active{
+    background:#ffc400;
+    color:#080808;
 }
 
-.nav-links .active{
-    background:#111;
-    color:#fff;
-
-    border-bottom:3px solid var(--yellow);
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-    padding:45px 0 25px;
-}
-
-.about-hero{
-    width:min(900px,100%);
+main{
+    width:min(1080px,92%);
     margin:auto;
 
+    padding:42px 0 120px;
+}
+
+section{
+    margin-bottom:35px;
+}
+
+.title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-bottom:15px;
+
+    font-size:24px;
+}
+
+.title::before{
+    content:"";
+
+    width:5px;
+    height:27px;
+
+    background:linear-gradient(
+        #ff3030 0 50%,
+        #ffc400 50%
+    );
+
+    border-radius:5px;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
     display:grid;
-    grid-template-columns:43% 57%;
 
-    background:rgba(255,255,255,.95);
+    grid-template-columns:350px 1fr;
 
-    border:3px solid #111;
-    border-radius:22px;
+    align-items:center;
+
+    gap:35px;
+
+    padding:25px;
+
+    background:rgba(8,8,8,.78);
+
+    border:1px solid rgba(255,193,7,.35);
+
+    border-radius:18px;
+}
+
+.hero-photo{
+    height:330px;
 
     overflow:hidden;
 
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.25);
+    border-radius:14px;
+
+    border:2px solid rgba(255,193,7,.6);
 }
 
-.about-photo{
-    min-height:350px;
-}
-
-.about-photo img{
-    display:block;
-
+.hero-photo img{
     width:100%;
     height:100%;
 
     object-fit:cover;
 }
 
-.about-info{
-    padding:38px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
 .kicker{
-    width:max-content;
+    color:#ffc400;
 
-    padding:6px 9px;
-
-    background:var(--yellow);
-
-    border-radius:6px;
-
-    font-size:9px;
-    font-weight:1000;
-    letter-spacing:1px;
-}
-
-.about-info h1{
-    margin-top:13px;
-
-    font-size:52px;
-    line-height:.95;
-
-    font-weight:1000;
-}
-
-.about-info h1 span{
-    color:var(--red);
-}
-
-.about-role{
-    margin-top:12px;
-
-    font-size:14px;
+    font-size:12px;
     font-weight:900;
 
-    line-height:1.6;
+    letter-spacing:3px;
+
+    margin-bottom:8px;
 }
 
-.about-role span{
-    color:var(--red);
+.hero h1{
+    font-size:43px;
+
+    margin-bottom:10px;
 }
 
-.about-description{
-    margin-top:13px;
-
-    color:#666;
-
-    font-size:12px;
-    line-height:1.6;
+.hero h1 span{
+    color:#ff3030;
 }
 
-/* =========================================================
-   SECTIONS
-========================================================= */
+.hero-text{
+    color:#bbb;
 
-.section{
-    padding:25px 0;
+    line-height:1.65;
+
+    max-width:540px;
 }
 
-.section-title{
-    margin-bottom:14px;
+/* =====================================================
+   INFO
+===================================================== */
 
-    font-size:29px;
-    font-weight:1000;
-}
+.info{
+    background:rgba(8,8,8,.8);
 
-.section-title span{
-    color:var(--red);
-}
-
-/* =========================================================
-   ABOUT CARD
-========================================================= */
-
-.about-card{
-    width:min(900px,100%);
-    margin:auto;
-
-    background:rgba(255,255,255,.95);
-
-    border:2px solid #111;
-
-    border-radius:17px;
-
-    padding:23px;
-}
-
-.about-card p{
-    font-size:13px;
-    line-height:1.75;
-}
-
-.about-card p + p{
-    margin-top:10px;
-}
-
-/* =========================================================
-   STYLE CARDS
-========================================================= */
-
-.style-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-}
-
-.style-card{
-    background:#111;
-    color:#fff;
-
-    border-radius:12px;
-
-    padding:17px;
-
-    border-bottom:4px solid var(--yellow);
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.2);
-}
-
-.style-card strong{
-    display:block;
-
-    color:var(--yellow);
-
-    font-size:14px;
-}
-
-.style-card span{
-    display:block;
-
-    margin-top:5px;
-
-    color:#aaa;
-
-    font-size:9px;
-    line-height:1.4;
-}
-
-/* =========================================================
-   PHOTOS
-========================================================= */
-
-.photos-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-
-    width:min(800px,100%);
-    margin:auto;
-}
-
-.photo-card{
-    background:#111;
-
-    border-radius:14px;
-    overflow:hidden;
-
-    border:2px solid #111;
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.2);
-}
-
-.photo-card img{
-    display:block;
-
-    width:100%;
-    height:auto;
-}
-
-/* =========================================================
-   STORY
-========================================================= */
-
-.story{
-    width:min(900px,100%);
-    margin:auto;
-
-    background:#111;
-    color:#fff;
-
-    border-radius:17px;
-
-    padding:25px;
-
-    border-left:5px solid var(--red);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.3);
-}
-
-.story-label{
-    color:var(--yellow);
-
-    font-size:9px;
-    font-weight:1000;
-    letter-spacing:1px;
-}
-
-.story h2{
-    margin-top:8px;
-
-    font-size:27px;
-}
-
-.story p{
-    margin-top:12px;
-
-    color:#ccc;
-
-    font-size:12px;
-    line-height:1.75;
-}
-
-/* =========================================================
-   CONTACT BAR
-========================================================= */
-
-.contact-bar{
-    position:fixed;
-
-    left:50%;
-    bottom:18px;
-
-    transform:translateX(-50%);
-
-    z-index:9999;
-
-    display:flex;
-
-    flex-direction:row;
-
-    gap:8px;
-
-    padding:7px;
-
-    background:rgba(17,17,17,.94);
-
-    backdrop-filter:blur(14px);
-
-    border:2px solid #222;
+    border:1px solid #292929;
 
     border-radius:15px;
 
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.4);
+    padding:20px;
 }
 
-.contact-btn{
-    min-width:175px;
-    height:54px;
+.info p{
+    color:#ccc;
+    line-height:1.7;
 
+    margin-bottom:8px;
+}
+
+.info strong{
+    color:#ffc400;
+}
+
+/* =====================================================
+   STYLE
+===================================================== */
+
+.style-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:10px;
+}
+
+.style-item{
+    background:rgba(8,8,8,.86);
+
+    border:1px solid #292929;
+
+    border-radius:11px;
+
+    padding:17px;
+
+    text-align:center;
+
+    font-weight:900;
+}
+
+.style-item span{
+    display:block;
+
+    margin-top:6px;
+
+    color:#ffc400;
+    font-size:12px;
+}
+
+/* =====================================================
+   PHOTOS
+===================================================== */
+
+.photos{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:14px;
+}
+
+.photo{
+    height:260px;
+
+    background:#080808;
+
+    border:1px solid #292929;
+
+    border-radius:13px;
+
+    overflow:hidden;
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+/* =====================================================
+   STORY
+===================================================== */
+
+.story{
+    background:rgba(8,8,8,.83);
+
+    border-left:4px solid #ff3030;
+
+    border-radius:12px;
+
+    padding:20px;
+}
+
+.story p{
+    color:#ccc;
+    line-height:1.8;
+}
+
+/* =====================================================
+   CONTACTS
+===================================================== */
+
+.contacts{
     display:flex;
-    align-items:center;
 
-    gap:9px;
+    flex-wrap:wrap;
 
-    padding:7px 12px;
+    gap:10px;
+}
 
+.contact{
     text-decoration:none;
+
+    padding:12px 17px;
+
+    border-radius:9px;
+
+    font-weight:900;
+
+    background:#111;
 
     color:#fff;
 
-    border-radius:10px;
+    border:1px solid #333;
 
     transition:.2s;
 }
 
-.contact-btn:hover{
-    transform:translateY(-3px);
+.contact:hover{
+    border-color:#ffc400;
+    transform:translateY(-2px);
 }
 
-.tiktok-btn{
-    background:#050505;
-
-    border:1px solid #444;
+.contact.yellow{
+    background:#ffc400;
+    color:#080808;
 }
 
-.whatsapp-btn{
-    background:#159447;
+/* =====================================================
+   FIXED SOCIAL
+===================================================== */
 
-    border:1px solid #35d87d;
+.social-bar{
+    position:fixed;
+
+    left:50%;
+    bottom:15px;
+
+    transform:translateX(-50%);
+
+    z-index:2000;
+
+    display:flex;
+    gap:8px;
+
+    width:max-content;
+    max-width:calc(100% - 24px);
 }
 
-.contact-icon{
-    width:32px;
-    height:32px;
-
-    flex:0 0 32px;
+.social-button{
+    min-width:145px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    background:rgba(255,255,255,.12);
+    padding:12px 17px;
 
-    border-radius:8px;
+    border-radius:10px;
 
-    font-size:18px;
-    font-weight:1000;
-}
+    text-decoration:none;
 
-.contact-btn small{
-    display:block;
-
-    color:rgba(255,255,255,.65);
-
-    font-size:8px;
     font-weight:900;
+    font-size:13px;
 
-    text-transform:uppercase;
+    box-shadow:0 7px 25px rgba(0,0,0,.55);
 }
 
-.contact-btn strong{
-    display:block;
-
-    margin-top:2px;
-
-    font-size:11px;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    padding:30px 0 100px;
-
-    text-align:center;
-
+.social-tiktok{
+    background:#111;
     color:#fff;
 }
 
-footer strong{
-    color:var(--yellow);
+.social-whatsapp{
+    background:#ffc400;
+    color:#080808;
 }
 
-footer p{
-    margin-top:5px;
-
-    color:#aaa;
-
-    font-size:9px;
-}
-
-/* =========================================================
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
-@media(max-width:800px){
-
-    .container{
-        width:min(100% - 18px,600px);
-    }
+@media(max-width:700px){
 
     .nav{
-        height:58px;
+        min-height:60px;
     }
 
     .logo{
-        font-size:17px;
-    }
-
-    .nav-links{
-        gap:2px;
+        font-size:18px;
     }
 
     .nav-links a{
         padding:8px;
-        font-size:9px;
+        font-size:11px;
     }
+
+    main{
+        width:94%;
+        padding-top:25px;
+        padding-bottom:105px;
+    }
+
+    /* IMPORTANT:
+       PHOTO + TEXT STAY SIDE BY SIDE */
 
     .hero{
-        padding:22px 0 15px;
+        grid-template-columns:115px 1fr;
+
+        gap:15px;
+
+        padding:15px;
     }
 
-    /*
-       ВАЖНО:
-       фото и текст остаются рядом
-    */
-
-    .about-hero{
-        grid-template-columns:43% 57%;
-
-        border-radius:16px;
+    .hero-photo{
+        height:155px;
     }
 
-    .about-photo{
-        min-height:250px;
+    .hero h1{
+        font-size:25px;
     }
 
-    .about-info{
-        padding:17px 12px;
+    .hero-text{
+        font-size:11px;
+        line-height:1.5;
     }
 
-    .about-info h1{
-        font-size:29px;
-    }
-
-    .about-role{
-        font-size:9px;
-        line-height:1.45;
-    }
-
-    .about-description{
+    .kicker{
         font-size:8px;
-        line-height:1.4;
-    }
-
-    .section{
-        padding:17px 0;
-    }
-
-    .section-title{
-        font-size:23px;
-    }
-
-    .about-card{
-        padding:16px;
-    }
-
-    .about-card p{
-        font-size:10px;
-        line-height:1.6;
+        letter-spacing:1.5px;
     }
 
     .style-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .style-card{
-        padding:13px;
+    .photos{
+        grid-template-columns:1fr 1fr;
     }
 
-    .style-card strong{
+    .photo{
+        height:170px;
+    }
+
+    .social-button{
+        min-width:135px;
+        padding:11px 12px;
         font-size:12px;
     }
+}
 
-    .style-card span{
-        font-size:8px;
+@media(max-width:380px){
+
+    .hero{
+        grid-template-columns:95px 1fr;
+        gap:10px;
     }
 
-    .photos-grid{
-        grid-template-columns:1fr 1fr;
-        gap:7px;
+    .hero-photo{
+        height:130px;
     }
 
-    .story{
-        padding:18px;
+    .hero h1{
+        font-size:21px;
     }
 
-    .story h2{
-        font-size:22px;
-    }
-
-    .story p{
+    .hero-text{
         font-size:10px;
-        line-height:1.65;
     }
 
-    /*
-       Контакты всегда одна строка
-    */
-
-    .contact-bar{
-        width:calc(100% - 18px);
-
-        max-width:430px;
-
-        bottom:9px;
-
-        gap:5px;
-
-        padding:5px;
-
-        border-radius:13px;
-    }
-
-    .contact-btn{
-        min-width:0;
-
-        width:50%;
-
-        height:49px;
-
-        padding:6px 8px;
-
-        gap:7px;
-    }
-
-    .contact-icon{
-        width:29px;
-        height:29px;
-        flex:0 0 29px;
-
-        font-size:16px;
-    }
-
-    .contact-btn small{
-        font-size:7px;
-    }
-
-    .contact-btn strong{
-        font-size:9px;
+    .social-button{
+        min-width:125px;
+        font-size:11px;
     }
 }
 
@@ -705,312 +510,283 @@ footer p{
 
 <header>
 
-<div class="container nav">
+<nav class="nav">
 
-    <a href="index.html" class="logo">
+    <div class="logo">
         <span>2V</span> Психошка
-    </a>
+    </div>
 
-    <nav class="nav-links">
-        <a href="about.html" class="active">Обо мне</a>
-        <a href="index.html">Профиль</a>
-        <a href="guild.html">2VN</a>
-    </nav>
+    <div class="nav-links">
 
-</div>
+        <a href="about.html" class="active">
+            Обо мне
+        </a>
+
+        <a href="index.html">
+            Профиль
+        </a>
+
+        <a href="guild.html">
+            2VN
+        </a>
+
+    </div>
+
+</nav>
 
 </header>
 
 
 <main>
 
-<!-- =====================================================
-     HERO
-===================================================== -->
 
-<section class="hero">
+<section>
 
-<div class="container">
+    <div class="hero">
 
-<div class="about-hero">
+        <div class="hero-photo">
 
-    <div class="about-photo">
-        <img src="my-photo.jpg" alt="Психошка">
+            <img
+                src="my-photo.jpg"
+                alt="Психошка"
+            >
+
+        </div>
+
+        <div>
+
+            <div class="kicker">
+                PLAYER STORY
+            </div>
+
+            <h1>
+                <span>Психошка</span>
+            </h1>
+
+            <p class="hero-text">
+
+                Игрок Free Fire из Казахстана.
+                Основной стиль игры — скорость,
+                механика, 1 на 1 и КВ.
+
+            </p>
+
+        </div>
+
     </div>
 
-    <div class="about-info">
+</section>
 
-        <div class="kicker">
-            PLAYER STORY
-        </div>
 
-        <h1>
-            <span>Психошка</span>
-        </h1>
+<section>
 
-        <div class="about-role">
-            Игрок<br>
-            Free Fire<br>
-            <span>Казахстан</span>
-        </div>
+    <h2 class="title">
+        Обо мне
+    </h2>
 
-        <p class="about-description">
-            Основной стиль игры — скорость,
-            механика, 1 на 1 и КВ.
+    <div class="info">
+
+        <p>
+            Играю в <strong>Free Fire около 8 лет</strong>.
+        </p>
+
+        <p>
+            <strong>1v1</strong> — моя основная специализация.
+        </p>
+
+        <p>
+            <strong>КВ</strong> — основная сфера игры.
+        </p>
+
+        <p>
+            Играю <strong>в два пальца</strong>.
         </p>
 
     </div>
 
-</div>
+</section>
 
-</div>
+
+<section>
+
+    <h2 class="title">
+        Мой стиль
+    </h2>
+
+    <div class="style-grid">
+
+        <div class="style-item">
+            ⚡
+            <span>Скорость</span>
+        </div>
+
+        <div class="style-item">
+            🎯
+            <span>Механика</span>
+        </div>
+
+        <div class="style-item">
+            ⚔
+            <span>1 на 1</span>
+        </div>
+
+        <div class="style-item">
+            🏆
+            <span>КВ</span>
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =====================================================
-     ABOUT
-===================================================== -->
+<section>
 
-<section class="section">
+    <h2 class="title">
+        Фотографии
+    </h2>
 
-<div class="container">
+    <div class="photos">
 
-<h2 class="section-title">
-    Обо <span>мне</span>
-</h2>
+        <div class="photo">
+            <img src="about-02.jpg" alt="">
+        </div>
 
-<div class="about-card">
+        <div class="photo">
+            <img src="about-03.jpg" alt="">
+        </div>
 
-    <p>
-        Я играю в Free Fire уже около 8 лет.
-        За это время основной упор сделал на СНС и КВ.
-    </p>
-
-    <p>
-        Моя главная специализация — 1v1.
-        Мне важны скорость, механика и умение
-        быстро принимать решения во время игры.
-    </p>
-
-    <p>
-        Играю в два пальца и предпочитаю
-        агрессивный стиль.
-    </p>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- =====================================================
-     STYLE
-===================================================== -->
+<section>
 
-<section class="section">
-
-<div class="container">
-
-<h2 class="section-title">
-    Стиль <span>игры</span>
-</h2>
-
-<div class="style-grid">
-
-    <div class="style-card">
-        <strong>Скорость</strong>
-        <span>
-            Быстрые действия и реакция.
-        </span>
-    </div>
-
-    <div class="style-card">
-        <strong>Механика</strong>
-        <span>
-            Контроль движения и стрельбы.
-        </span>
-    </div>
-
-    <div class="style-card">
-        <strong>1v1</strong>
-        <span>
-            Основная игровая специализация.
-        </span>
-    </div>
-
-    <div class="style-card">
-        <strong>КВ</strong>
-        <span>
-            Основная сфера игры.
-        </span>
-    </div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     PHOTOS
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-<h2 class="section-title">
-    Немного <span>меня</span>
-</h2>
-
-<div class="photos-grid">
-
-    <div class="photo-card">
-        <img src="about-02.jpg" alt="Психошка">
-    </div>
-
-    <div class="photo-card">
-        <img src="about-03.jpg" alt="Психошка">
-    </div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     STORY NEAR BOTTOM
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-<div class="story">
-
-    <div class="story-label">
-        MY STORY
-    </div>
-
-    <h2>
+    <h2 class="title">
         Моя история
     </h2>
 
-    <p>
-        Я играю в Free Fire уже около 8 лет.
-        За это время основной упор сделал на СНС и КВ.
-        Постепенно именно 1v1 стало моей главной
-        специализацией.
-    </p>
+    <div class="story">
 
-    <p>
-        Для меня игра — это прежде всего скорость,
-        механика и постоянное развитие своих навыков.
-        Сейчас я продолжаю играть, участвовать в КВ
-        и развивать свой стиль.
-    </p>
+        <p>
+            Я играю в Free Fire уже около 8 лет.
+            За это время основной упор сделал на
+            СНС и КВ. Моя главная специализация —
+            игра один на один, где особенно важны
+            скорость реакции, механика и контроль
+            движения.
+        </p>
 
-</div>
-
-</div>
+    </div>
 
 </section>
+
+
+<section>
+
+    <h2 class="title">
+        Контакты
+    </h2>
+
+    <div class="contacts">
+
+        <a
+            class="contact yellow"
+            href="https://www.tiktok.com/@erko_zr"
+            target="_blank"
+        >
+            TikTok @erko_zr
+        </a>
+
+        <a
+            class="contact"
+            href="https://wa.me/77053536952"
+            target="_blank"
+        >
+            WhatsApp
+        </a>
+
+        <div class="contact">
+            🇰🇿 Казахстан
+        </div>
+
+    </div>
+
+</section>
+
 
 </main>
 
 
-<!-- =====================================================
-     FIXED CONTACTS
-===================================================== -->
-
-<div class="contact-bar">
+<div class="social-bar">
 
     <a
-        class="contact-btn tiktok-btn"
+        class="social-button social-tiktok"
         href="https://www.tiktok.com/@erko_zr"
         target="_blank"
-        rel="noopener"
     >
-
-        <span class="contact-icon">♪</span>
-
-        <span>
-            <small>TikTok</small>
-            <strong>@erko_zr</strong>
-        </span>
-
+        🎵 TikTok @erko_zr
     </a>
 
-
     <a
-        class="contact-btn whatsapp-btn"
+        class="social-button social-whatsapp"
         href="https://wa.me/77053536952"
         target="_blank"
-        rel="noopener"
     >
-
-        <span class="contact-icon">◉</span>
-
-        <span>
-            <small>WhatsApp</small>
-            <strong>Написать</strong>
-        </span>
-
+        💬 WhatsApp
     </a>
 
 </div>
 
 
-<footer>
-
-    <strong>2V Психошка</strong>
-
-    <p>
-        Free Fire Player · Kazakhstan · 2VN
-    </p>
-
-</footer>
-
-
 <script>
 
-const pcBackgrounds = [
-    "bg-pc-1.jpg",
-    "bg-pc-2.jpg",
-    "bg-pc-3.jpg",
-    "bg-pc-4.jpg",
-    "bg-pc-5.jpg"
-];
+function setMobileBackground(){
 
-const mobileBackgrounds = [
-    "bg-mobile-1.jpg",
-    "bg-mobile-2.jpg",
-    "bg-mobile-3.jpg",
-    "bg-mobile-4.jpg",
-    "bg-mobile-5.jpg"
-];
+    if(window.innerWidth <= 700){
 
-const backgrounds =
-    window.innerWidth <= 800
-        ? mobileBackgrounds
-        : pcBackgrounds;
+        const backgrounds = [
+            "bg-mobile-1.jpg",
+            "bg-mobile-2.jpg",
+            "bg-mobile-3.jpg",
+            "bg-mobile-4.jpg",
+            "bg-mobile-5.jpg"
+        ];
 
-const selected =
-    backgrounds[
-        Math.floor(
-            Math.random() * backgrounds.length
-        )
-    ];
+        const image =
+            backgrounds[
+                Math.floor(Math.random()*backgrounds.length)
+            ];
 
-document.documentElement.style.setProperty(
-    "--bg-image",
-    `url("${selected}")`
-);
+        document.body.style.setProperty(
+            "background-image",
+            `url("${image}")`
+        );
+
+    }else{
+
+        const backgrounds = [
+            "bg-pc-1.jpg",
+            "bg-pc-2.jpg",
+            "bg-pc-3.jpg",
+            "bg-pc-4.jpg",
+            "bg-pc-5.jpg"
+        ];
+
+        const image =
+            backgrounds[
+                Math.floor(Math.random()*backgrounds.length)
+            ];
+
+        document.body.style.setProperty(
+            "background-image",
+            `url("${image}")`
+        );
+    }
+}
+
+setMobileBackground();
 
 </script>
 
