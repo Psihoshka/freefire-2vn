@@ -4,14 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>2V Психошка | Free Fire Player</title>
+<title>Психошка | Free Fire Player</title>
 
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
 *{
     margin:0;
     padding:0;
@@ -23,844 +18,983 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
     background:#070707;
-    min-height:100vh;
-    position:relative;
+    color:#fff;
+    overflow-x:hidden;
 }
 
-/* =====================================================
-   FIXED BACKGROUND
-===================================================== */
+/* =========================
+   RANDOM BACKGROUND
+========================= */
 
 body::before{
     content:"";
     position:fixed;
     inset:0;
+    z-index:-3;
 
-    background-image:
-        linear-gradient(
-            rgba(0,0,0,.20),
-            rgba(0,0,0,.30)
-        ),
-        var(--page-bg);
-
+    background-image:var(--site-bg);
     background-size:cover;
-    background-position:center center;
+    background-position:center top;
     background-repeat:no-repeat;
-
-    z-index:-2;
-    pointer-events:none;
 }
 
 body::after{
     content:"";
     position:fixed;
     inset:0;
+    z-index:-2;
 
-    background:rgba(0,0,0,.08);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.88),
+            rgba(0,0,0,.58),
+            rgba(0,0,0,.82)
+        );
 
-    z-index:-1;
     pointer-events:none;
 }
 
-/* =====================================================
-   CONTAINER
-===================================================== */
-
-.container{
-    width:min(1180px, calc(100% - 32px));
-    margin:auto;
-}
-
-/* =====================================================
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
 header{
+    height:72px;
     position:sticky;
     top:0;
-    z-index:50;
+    z-index:100;
 
-    background:rgba(5,5,5,.88);
+    background:rgba(5,5,5,.94);
+    border-bottom:1px solid rgba(255,208,0,.18);
     backdrop-filter:blur(12px);
-
-    border-bottom:1px solid rgba(255,193,7,.25);
 }
 
 .nav{
-    min-height:70px;
+    width:min(1180px,calc(100% - 40px));
+    height:100%;
+    margin:auto;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:30px;
 }
 
 .logo{
-    color:#ffc400;
     font-size:22px;
     font-weight:900;
-    letter-spacing:1px;
 }
 
-.nav-links{
+.logo span{
+    color:#ffd000;
+}
+
+nav{
     display:flex;
-    gap:28px;
-    align-items:center;
+    gap:30px;
 }
 
-.nav-links a{
-    color:#fff;
+nav a{
+    color:#888;
     text-decoration:none;
-    font-size:13px;
+    font-size:12px;
     font-weight:800;
-    letter-spacing:1px;
-    transition:.2s;
+    letter-spacing:1.2px;
 }
 
-.nav-links a:hover{
-    color:#ffc400;
+nav a:hover,
+nav a.active{
+    color:#ffd000;
 }
 
-/* =====================================================
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:min(1180px,calc(100% - 40px));
+    margin:auto;
+}
+
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero{
-    padding:70px 0 45px;
+    min-height:570px;
+    display:flex;
+    align-items:center;
+    padding:65px 0;
 }
 
 .hero-grid{
     display:grid;
-    grid-template-columns:1fr 420px;
-    gap:45px;
+    grid-template-columns:390px 1fr;
+    gap:65px;
     align-items:center;
 }
 
-.hero-title{
-    font-size:clamp(42px, 6vw, 78px);
-    line-height:.95;
-    font-weight:1000;
-    text-transform:uppercase;
-}
-
-.hero-title span{
-    color:#ffc400;
-}
-
-.hero-subtitle{
-    margin-top:20px;
-    max-width:650px;
-
-    font-size:18px;
-    line-height:1.6;
-    color:#ddd;
-}
-
-.hero-tag{
-    display:inline-block;
-    margin-bottom:18px;
-
-    padding:8px 14px;
-
-    background:#ffc400;
-    color:#080808;
-
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:1px;
-    text-transform:uppercase;
-}
-
-/* =====================================================
-   MY PHOTO
-===================================================== */
-
 .hero-photo{
-    position:relative;
-
-    height:440px;
-
-    border:1px solid rgba(255,196,0,.4);
-    border-radius:20px;
-
+    height:450px;
+    border:1px solid rgba(255,208,0,.38);
     overflow:hidden;
-
-    background:rgba(0,0,0,.45);
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.45),
-        0 0 40px rgba(255,196,0,.08);
+    background:#111;
+    position:relative;
 }
 
 .hero-photo img{
     width:100%;
     height:100%;
     object-fit:cover;
-    display:block;
+    object-position:center;
 }
 
 .hero-photo::after{
     content:"";
-
     position:absolute;
     inset:0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.55),
-            transparent 45%
-        );
-
-    pointer-events:none;
+    background:linear-gradient(
+        180deg,
+        transparent 60%,
+        rgba(0,0,0,.55)
+    );
 }
 
-/* =====================================================
-   SECTIONS
-===================================================== */
+.eyebrow{
+    color:#ffd000;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:4px;
+    margin-bottom:13px;
+}
+
+.hero h1{
+    font-size:clamp(55px,7vw,92px);
+    line-height:.85;
+    letter-spacing:-5px;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#ffd000;
+}
+
+.hero-sub{
+    color:#aaa;
+    max-width:600px;
+    font-size:16px;
+    line-height:1.7;
+}
+
+.hero-sub strong{
+    color:#fff;
+}
+
+.hero-tags{
+    margin-top:27px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.tag{
+    padding:9px 13px;
+    border:1px solid rgba(255,208,0,.25);
+    background:rgba(255,208,0,.05);
+    color:#ddd;
+    font-size:11px;
+    font-weight:700;
+}
+
+/* =========================
+   SECTION
+========================= */
 
 section{
-    padding:45px 0;
+    padding:75px 0;
 }
 
-.section-title{
-    margin-bottom:25px;
-
-    font-size:28px;
-    font-weight:1000;
-    text-transform:uppercase;
+.section-head{
+    margin-bottom:30px;
 }
 
-.section-title span{
-    color:#ffc400;
+.section-head small{
+    color:#ffd000;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:4px;
 }
 
-/* =====================================================
-   CARDS
-===================================================== */
-
-.card{
-    background:rgba(8,8,8,.78);
-    border:1px solid rgba(255,255,255,.10);
-
-    border-radius:16px;
-
-    box-shadow:0 15px 45px rgba(0,0,0,.30);
-
-    backdrop-filter:blur(8px);
+.section-head h2{
+    font-size:38px;
+    line-height:1;
+    margin-top:8px;
 }
 
-.card:hover{
-    border-color:rgba(255,196,0,.35);
-}
-
-/* =====================================================
+/* =========================
    PROFILE
-===================================================== */
+========================= */
 
 .profile-card{
     display:grid;
-    grid-template-columns:260px 1fr;
-    overflow:hidden;
+    grid-template-columns:340px 1fr;
+    gap:35px;
+
+    background:#0b0b0b;
+    border:1px solid rgba(255,255,255,.09);
+    padding:22px;
 }
 
 .profile-image{
-    min-height:300px;
+    height:330px;
+    overflow:hidden;
+    background:#111;
+    cursor:pointer;
 }
 
 .profile-image img{
     width:100%;
     height:100%;
     object-fit:cover;
-    display:block;
+    object-position:center;
+    transition:.25s;
+}
+
+.profile-image:hover img{
+    transform:scale(1.025);
 }
 
 .profile-info{
-    padding:30px;
-}
-
-.profile-name{
-    font-size:34px;
-    font-weight:1000;
-}
-
-.profile-name span{
-    color:#ffc400;
-}
-
-.profile-line{
-    height:2px;
-    background:linear-gradient(
-        90deg,
-        #ffc400,
-        transparent
-    );
-
-    margin:18px 0 25px;
-}
-
-.profile-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-}
-
-.profile-stat{
-    background:rgba(255,255,255,.04);
-    border-radius:10px;
-    padding:15px;
-}
-
-.profile-stat small{
-    display:block;
-    color:#888;
-    font-size:11px;
-    margin-bottom:6px;
-    text-transform:uppercase;
-}
-
-.profile-stat strong{
-    font-size:17px;
-}
-
-/* =====================================================
-   PRIME
-===================================================== */
-
-.prime-card{
-    padding:28px;
-}
-
-.prime-top{
     display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+    flex-direction:column;
+    justify-content:center;
 }
 
-.prime-title{
-    font-size:24px;
-    font-weight:1000;
-}
-
-.prime-title span{
-    color:#ffc400;
-}
-
-.prime-value{
+.profile-label{
+    color:#ffd000;
+    font-size:10px;
+    letter-spacing:3px;
     font-weight:900;
+    margin-bottom:12px;
 }
 
-.progress{
-    margin-top:18px;
-
-    width:100%;
-    height:12px;
-
-    background:#222;
-    border-radius:20px;
-    overflow:hidden;
+.profile-info h3{
+    font-size:38px;
+    line-height:1;
+    margin-bottom:18px;
 }
 
-.progress-fill{
-    height:100%;
-    width:64.65%;
-
-    background:linear-gradient(
-        90deg,
-        #ffb300,
-        #ffc400
-    );
+.profile-info h3 span{
+    color:#ffd000;
 }
 
-.prime-bottom{
-    margin-top:12px;
-
-    display:flex;
-    justify-content:space-between;
-
-    color:#999;
-    font-size:13px;
-}
-
-/* =====================================================
-   STATS
-===================================================== */
-
-.stats-grid{
+.profile-data{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:14px;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+    max-width:520px;
 }
 
-.stat-card{
-    padding:22px;
+.data{
+    background:#121212;
+    border:1px solid rgba(255,255,255,.06);
+    padding:13px;
 }
 
-.stat-card small{
+.data small{
+    color:#666;
     display:block;
-    color:#888;
-    text-transform:uppercase;
-    font-size:11px;
-    margin-bottom:10px;
+    font-size:9px;
+    letter-spacing:1px;
+    margin-bottom:4px;
 }
 
-.stat-card strong{
-    font-size:30px;
-    font-weight:1000;
-}
-
-.stat-card.accent{
-    border-color:rgba(255,196,0,.30);
-}
-
-.stat-card.accent strong{
-    color:#ffc400;
-}
-
-/* =====================================================
-   ROLE
-===================================================== */
-
-.role-card{
-    padding:28px;
-}
-
-.role-main{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-}
-
-.role-name{
-    font-size:25px;
-    font-weight:1000;
-}
-
-.role-percent{
-    color:#ffc400;
-    font-size:30px;
-    font-weight:1000;
-}
-
-.role-bar{
-    height:10px;
-    margin:18px 0;
-
-    background:#222;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.role-fill{
-    width:65%;
-    height:100%;
-    background:#ffc400;
-}
-
-.role-info{
-    display:flex;
-    justify-content:space-between;
-    color:#aaa;
+.data strong{
     font-size:14px;
 }
 
-/* =====================================================
-   WEAPONS
-===================================================== */
+/* =========================
+   PRIME
+========================= */
 
-.weapons-grid{
+.prime{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-}
+    grid-template-columns:170px 1fr;
+    min-height:210px;
 
-.weapon-card{
+    background:
+        linear-gradient(
+            90deg,
+            rgba(15,12,4,.96),
+            rgba(12,12,12,.96)
+        );
+
+    border:1px solid rgba(255,208,0,.35);
     overflow:hidden;
 }
 
-.weapon-image{
-    height:125px;
-    background:#111;
-    overflow:hidden;
-}
-
-.weapon-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-}
-
-.weapon-content{
-    padding:18px;
-}
-
-.weapon-name{
-    font-size:22px;
-    font-weight:1000;
-    margin-bottom:14px;
-}
-
-.weapon-row{
-    margin-top:11px;
-}
-
-.weapon-row-top{
+.prime-badge{
+    position:relative;
     display:flex;
-    justify-content:space-between;
+    align-items:center;
+    justify-content:center;
 
-    color:#aaa;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,208,0,.23),
+            transparent 65%
+        );
+}
+
+.prime-badge::before{
+    content:"";
+    position:absolute;
+    width:110px;
+    height:110px;
+    border:2px solid #ffd000;
+    transform:rotate(45deg);
+}
+
+.prime-number{
+    position:relative;
+    z-index:2;
+    font-size:75px;
+    font-weight:900;
+    color:#ffd000;
+}
+
+.prime-content{
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.prime-content small{
+    color:#ffd000;
+    font-weight:900;
+    letter-spacing:4px;
+    font-size:10px;
+}
+
+.prime-content h3{
+    font-size:32px;
+    margin:5px 0 10px;
+}
+
+.progress{
+    width:min(520px,100%);
+    height:8px;
+    background:#252525;
+    margin:12px 0;
+    overflow:hidden;
+}
+
+.progress div{
+    width:64.65%;
+    height:100%;
+    background:linear-gradient(90deg,#ffd000,#ff9d00);
+}
+
+.prime-content p{
+    color:#777;
     font-size:12px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:9px;
+}
+
+.stat{
+    background:#0c0c0c;
+    border:1px solid rgba(255,255,255,.08);
+    padding:18px;
+    min-height:100px;
+}
+
+.stat strong{
+    display:block;
+    color:#ffd000;
+    font-size:25px;
     margin-bottom:5px;
 }
 
-.weapon-bar{
-    height:6px;
-    background:#242424;
-    border-radius:10px;
+.stat span{
+    color:#666;
+    font-size:9px;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+}
+
+/* =========================
+   ROLE
+========================= */
+
+.role-card{
+    display:grid;
+    grid-template-columns:180px 1fr 180px;
+    gap:20px;
+    align-items:center;
+
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.08);
+    padding:25px;
+}
+
+.role-main strong{
+    display:block;
+    color:#ffd000;
+    font-size:28px;
+}
+
+.role-main span{
+    color:#666;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+.role-percent{
+    font-size:54px;
+    font-weight:900;
+    text-align:center;
+}
+
+.role-extra{
+    text-align:right;
+}
+
+.role-extra strong{
+    display:block;
+    font-size:18px;
+}
+
+.role-extra span{
+    color:#666;
+    font-size:10px;
+}
+
+/* =========================
+   WEAPONS
+========================= */
+
+.weapons{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.weapon{
+    background:#0c0c0c;
+    border:1px solid rgba(255,255,255,.08);
+    padding:15px;
+    min-width:0;
+}
+
+.weapon-top{
+    height:120px;
+    margin-bottom:14px;
     overflow:hidden;
+    background:#111;
+    position:relative;
 }
 
-.weapon-fill{
+.weapon-top img{
+    width:100%;
     height:100%;
-    background:#ffc400;
+    object-fit:cover;
 }
 
-/* =====================================================
+/*
+   Маленькие отдельные визуальные окна.
+   Используется weapons-cs.jpg как источник,
+   но каждый блок показывает только свою
+   небольшую область, а не весь скриншот.
+*/
+
+.weapon-image{
+    height:100%;
+    width:100%;
+    background-image:url("weapons-cs.jpg");
+    background-size:300% auto;
+    background-repeat:no-repeat;
+}
+
+.w1{background-position:0% 0%;}
+.w2{background-position:50% 0%;}
+.w3{background-position:100% 0%;}
+.w4{background-position:0% 100%;}
+.w5{background-position:50% 100%;}
+.w6{background-position:100% 100%;}
+
+.weapon h3{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.weapon-stat{
+    display:flex;
+    justify-content:space-between;
+    padding:6px 0;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.weapon-stat span{
+    color:#666;
+    font-size:10px;
+}
+
+.weapon-stat strong{
+    font-size:11px;
+    color:#ddd;
+}
+
+/* =========================
    MATCHES
-===================================================== */
+========================= */
 
 .matches{
-    overflow:hidden;
+    display:grid;
+    gap:7px;
 }
 
 .match{
     display:grid;
-    grid-template-columns:120px 1fr 100px;
-
-    gap:20px;
+    grid-template-columns:80px 1fr 70px;
     align-items:center;
 
-    padding:18px 20px;
-
-    border-bottom:1px solid rgba(255,255,255,.07);
-}
-
-.match:last-child{
-    border-bottom:0;
-}
-
-.match-date{
-    color:#888;
-    font-size:12px;
-}
-
-.match-name{
-    font-weight:900;
-}
-
-.match-sub{
-    color:#888;
-    font-size:12px;
-    margin-top:5px;
+    padding:15px 18px;
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.06);
 }
 
 .match-result{
-    text-align:right;
+    color:#ffd000;
+    font-size:10px;
     font-weight:900;
 }
 
-.win{
-    color:#ffc400;
+.match-name{
+    font-size:13px;
 }
 
-.loss{
-    color:#e44;
+.match-kills{
+    text-align:right;
+    color:#aaa;
+    font-size:12px;
 }
 
-/* =====================================================
+/* =========================
    GUILD PREVIEW
-===================================================== */
+========================= */
 
 .guild-preview{
     display:grid;
-    grid-template-columns:220px 1fr;
-    gap:25px;
-
-    padding:25px;
+    grid-template-columns:300px 1fr;
+    gap:30px;
     align-items:center;
+
+    background:#0b0b0b;
+    border:1px solid rgba(255,255,255,.08);
+    padding:20px;
 }
 
-.guild-preview img{
-    width:220px;
-    height:220px;
+.guild-preview-image{
+    height:210px;
+    overflow:hidden;
+}
 
-    border-radius:18px;
+.guild-preview-image img{
+    width:100%;
+    height:100%;
     object-fit:cover;
-
-    border:1px solid rgba(255,196,0,.3);
+    object-position:center;
 }
 
-.guild-title{
+.guild-preview h3{
     font-size:32px;
-    font-weight:1000;
+    margin-bottom:10px;
 }
 
-.guild-title span{
-    color:#ffc400;
-}
-
-.guild-description{
-    margin:12px 0 22px;
-    color:#aaa;
-    line-height:1.6;
-}
-
-.guild-stats{
-    display:flex;
-    gap:25px;
-    flex-wrap:wrap;
-}
-
-.guild-stat strong{
-    display:block;
-    font-size:21px;
-}
-
-.guild-stat small{
+.guild-preview p{
     color:#777;
-    font-size:11px;
+    font-size:13px;
+    max-width:500px;
 }
 
 .guild-button{
     display:inline-block;
-    margin-top:22px;
-
-    padding:12px 20px;
-
-    background:#ffc400;
-    color:#080808;
-
-    border-radius:8px;
-
+    margin-top:20px;
+    padding:12px 18px;
+    background:#ffd000;
+    color:#050505;
     text-decoration:none;
-    font-weight:1000;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1px;
 }
 
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 footer{
-    margin-top:50px;
-    padding:30px 0;
-
     border-top:1px solid rgba(255,255,255,.08);
-
-    color:#777;
     text-align:center;
-    font-size:12px;
+    padding:25px;
+    color:#555;
+    font-size:11px;
 }
 
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
-
-@media(max-width:900px){
-
-    .hero-grid{
-        grid-template-columns:1fr;
-    }
-
-    .hero-photo{
-        height:420px;
-    }
-
-    .profile-card{
-        grid-template-columns:1fr;
-    }
-
-    .profile-image{
-        height:300px;
-        min-height:0;
-    }
-
-    .profile-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .stats-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .weapons-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .guild-preview{
-        grid-template-columns:1fr;
-    }
-
-    .guild-preview img{
-        width:180px;
-        height:180px;
-    }
-}
+========================= */
 
 @media(max-width:768px){
 
-    body::before{
-        background-size:cover;
-        background-position:center top;
-    }
-
-    .container{
-        width:min(100% - 22px, 600px);
+    body::after{
+        background:
+            linear-gradient(
+                90deg,
+                rgba(0,0,0,.88),
+                rgba(0,0,0,.66),
+                rgba(0,0,0,.86)
+            );
     }
 
     .nav{
-        min-height:62px;
+        width:calc(100% - 24px);
     }
+
+    nav{
+        gap:13px;
+    }
+
+    nav a{
+        font-size:9px;
+    }
+
+    .container{
+        width:calc(100% - 24px);
+    }
+
+    .hero{
+        min-height:auto;
+        padding:38px 0;
+    }
+
+    /*
+       ВАЖНО:
+       фото и текст остаются рядом.
+       Фото НЕ становится полноэкранным.
+    */
+
+    .hero-grid{
+        grid-template-columns:42% 58%;
+        gap:10px;
+        align-items:center;
+    }
+
+    .hero-photo{
+        height:260px;
+    }
+
+    .hero h1{
+        font-size:38px;
+        letter-spacing:-2px;
+        margin-bottom:13px;
+    }
+
+    .hero-sub{
+        font-size:11px;
+        line-height:1.45;
+    }
+
+    .hero-tags{
+        margin-top:12px;
+        gap:5px;
+    }
+
+    .tag{
+        padding:6px 7px;
+        font-size:8px;
+    }
+
+    section{
+        padding:48px 0;
+    }
+
+    .section-head h2{
+        font-size:28px;
+    }
+
+    .profile-card{
+        grid-template-columns:38% 1fr;
+        gap:14px;
+        padding:12px;
+    }
+
+    .profile-image{
+        height:210px;
+    }
+
+    .profile-info h3{
+        font-size:22px;
+    }
+
+    .profile-data{
+        grid-template-columns:1fr;
+        gap:5px;
+    }
+
+    .data{
+        padding:8px;
+    }
+
+    .data small{
+        font-size:7px;
+    }
+
+    .data strong{
+        font-size:10px;
+    }
+
+    .prime{
+        grid-template-columns:105px 1fr;
+        min-height:155px;
+    }
+
+    .prime-number{
+        font-size:55px;
+    }
+
+    .prime-badge::before{
+        width:75px;
+        height:75px;
+    }
+
+    .prime-content{
+        padding:17px;
+    }
+
+    .prime-content h3{
+        font-size:24px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+        gap:6px;
+    }
+
+    .stat{
+        min-height:75px;
+        padding:12px;
+    }
+
+    .stat strong{
+        font-size:18px;
+    }
+
+    .stat span{
+        font-size:7px;
+    }
+
+    .role-card{
+        grid-template-columns:1fr 90px 1fr;
+        padding:15px;
+        gap:8px;
+    }
+
+    .role-main strong{
+        font-size:17px;
+    }
+
+    .role-percent{
+        font-size:31px;
+    }
+
+    .role-extra strong{
+        font-size:13px;
+    }
+
+    .role-extra span{
+        font-size:8px;
+    }
+
+    /*
+       На телефоне 2 колонки.
+       Поэтому оружие не превращается
+       в огромный вертикальный список.
+    */
+
+    .weapons{
+        grid-template-columns:repeat(2,1fr);
+        gap:7px;
+    }
+
+    .weapon{
+        padding:9px;
+    }
+
+    .weapon-top{
+        height:85px;
+        margin-bottom:8px;
+    }
+
+    .weapon h3{
+        font-size:13px;
+        margin-bottom:5px;
+    }
+
+    .weapon-stat{
+        padding:4px 0;
+    }
+
+    .weapon-stat span,
+    .weapon-stat strong{
+        font-size:8px;
+    }
+
+    .match{
+        grid-template-columns:65px 1fr 45px;
+        padding:11px;
+    }
+
+    .match-name{
+        font-size:10px;
+    }
+
+    .match-result,
+    .match-kills{
+        font-size:8px;
+    }
+
+    .guild-preview{
+        grid-template-columns:40% 1fr;
+        gap:12px;
+        padding:12px;
+    }
+
+    .guild-preview-image{
+        height:145px;
+    }
+
+    .guild-preview h3{
+        font-size:22px;
+    }
+
+    .guild-preview p{
+        font-size:10px;
+    }
+
+    .guild-button{
+        padding:9px 11px;
+        margin-top:10px;
+        font-size:8px;
+    }
+}
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:430px){
 
     .logo{
         font-size:18px;
     }
 
-    .nav-links{
-        gap:14px;
-    }
-
-    .nav-links a{
-        font-size:10px;
-    }
-
-    .hero{
-        padding:40px 0 25px;
-    }
-
-    .hero-title{
-        font-size:48px;
-    }
-
-    .hero-subtitle{
-        font-size:15px;
-    }
-
-    .hero-photo{
-        height:390px;
-    }
-
-    section{
-        padding:30px 0;
-    }
-
-    .section-title{
-        font-size:23px;
-    }
-
-    .profile-info{
-        padding:22px;
-    }
-
-    .profile-name{
-        font-size:27px;
-    }
-
-    .stats-grid{
-        gap:10px;
-    }
-
-    .stat-card{
-        padding:17px;
-    }
-
-    .stat-card strong{
-        font-size:24px;
-    }
-
-    .weapons-grid{
-        grid-template-columns:1fr;
-    }
-
-    .weapon-image{
-        height:145px;
-    }
-
-    .match{
-        grid-template-columns:75px 1fr 70px;
-        gap:10px;
-        padding:15px 12px;
-    }
-
-    .match-result{
-        font-size:12px;
-    }
-
-    .guild-preview{
-        padding:20px;
-    }
-}
-
-@media(max-width:430px){
-
-    .nav-links{
-        gap:10px;
-    }
-
-    .nav-links a{
-        font-size:9px;
-    }
-
-    .hero-title{
-        font-size:41px;
-    }
-
-    .hero-photo{
-        height:350px;
-    }
-
-    .profile-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .prime-card,
-    .role-card{
-        padding:20px;
-    }
-
-    .prime-top{
-        align-items:flex-start;
-        flex-direction:column;
+    nav{
         gap:8px;
     }
 
-    .role-main{
-        align-items:flex-start;
+    nav a{
+        font-size:8px;
     }
 
-    .role-percent{
-        font-size:25px;
+    .hero-grid{
+        grid-template-columns:40% 60%;
+    }
+
+    .hero-photo{
+        height:230px;
+    }
+
+    .hero h1{
+        font-size:31px;
+    }
+
+    .hero-sub{
+        font-size:10px;
+    }
+
+    .tag{
+        font-size:7px;
+    }
+
+    .profile-image{
+        height:185px;
+    }
+
+    .prime{
+        grid-template-columns:90px 1fr;
+    }
+
+    .prime-number{
+        font-size:46px;
     }
 }
-
 </style>
 </head>
 
 <body>
 
+<script>
+(function(){
+
+    const desktop = [
+        "background-pc-1.jpg",
+        "background-pc-2.jpg"
+    ];
+
+    const mobile = [
+        "background-mobile-1.jpg",
+        "background-mobile-2.jpg",
+        "background-mobile-3.jpg"
+    ];
+
+    const list = window.matchMedia("(max-width:768px)").matches
+        ? mobile
+        : desktop;
+
+    const chosen = list[Math.floor(Math.random() * list.length)];
+
+    document.documentElement.style.setProperty(
+        "--site-bg",
+        `url("${chosen}")`
+    );
+
+})();
+</script>
+
 <header>
-    <div class="container nav">
+    <div class="nav">
 
-        <div class="logo">2V / ПСИХОШКА</div>
+        <div class="logo">
+            Психошка<span>.</span>
+        </div>
 
-        <nav class="nav-links">
+        <nav>
             <a href="about.html">ОБО МНЕ</a>
-            <a href="index.html">ПРОФИЛЬ</a>
+            <a href="index.html" class="active">ПРОФИЛЬ</a>
             <a href="guild.html">2VN</a>
         </nav>
 
@@ -870,773 +1004,456 @@ footer{
 
 <main>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
-    <div class="container hero-grid">
+<div class="container">
 
-        <div>
+<div class="hero-grid">
 
-            <div class="hero-tag">
-                FREE FIRE PLAYER
-            </div>
+    <div class="hero-photo">
+        <img src="my-photo.jpg" alt="Психошка">
+    </div>
 
-            <h1 class="hero-title">
-                2V<br>
-                <span>ПСИХОШКА</span>
-            </h1>
+    <div>
 
-            <p class="hero-subtitle">
-                Игровой профиль Free Fire. Скорость, механика,
-                1v1 и КВ. Ключевой игрок гильдии 2VN.
-            </p>
-
+        <div class="eyebrow">
+            FREE FIRE PLAYER
         </div>
 
-        <div class="hero-photo">
-            <img src="my-photo.jpg" alt="Психошка">
+        <h1>
+            2V<br>
+            <span>ПСИХОШКА</span>
+        </h1>
+
+        <p class="hero-sub">
+            Игрок из <strong>Казахстана</strong>.
+            Основной стиль — скорость, механика,
+            <strong>1v1</strong> и <strong>КВ</strong>.
+        </p>
+
+        <div class="hero-tags">
+            <div class="tag">8 ЛЕТ В FREE FIRE</div>
+            <div class="tag">1V1</div>
+            <div class="tag">КВ</div>
+            <div class="tag">2 ПАЛЬЦА</div>
         </div>
 
     </div>
+
+</div>
+
+</div>
 </section>
 
 
-<!-- PROFILE -->
+<!-- ================= PROFILE ================= -->
 
 <section>
-    <div class="container">
+<div class="container">
 
-        <h2 class="section-title">
-            Игровой <span>профиль</span>
-        </h2>
+<div class="section-head">
+    <small>ИГРОВОЙ ПРОФИЛЬ</small>
+    <h2>Профиль</h2>
+</div>
 
-        <div class="card profile-card">
+<div class="profile-card">
 
-            <div class="profile-image">
-                <img src="profile.jpg" alt="Free Fire профиль">
+    <a class="profile-image"
+       href="profile.jpg"
+       target="_blank">
+
+        <img src="profile.jpg" alt="Профиль Free Fire">
+
+    </a>
+
+    <div class="profile-info">
+
+        <div class="profile-label">
+            FREE FIRE PROFILE
+        </div>
+
+        <h3>
+            2V <span>Психошка</span>
+        </h3>
+
+        <div class="profile-data">
+
+            <div class="data">
+                <small>UID</small>
+                <strong>492468395</strong>
             </div>
 
-            <div class="profile-info">
+            <div class="data">
+                <small>УРОВЕНЬ</small>
+                <strong>70</strong>
+            </div>
 
-                <div class="profile-name">
-                    2V <span>Психошка</span>
-                </div>
+            <div class="data">
+                <small>ГИЛЬДИЯ</small>
+                <strong>2VN</strong>
+            </div>
 
-                <div class="profile-line"></div>
+            <div class="data">
+                <small>ЛАЙКИ</small>
+                <strong>9 928</strong>
+            </div>
 
-                <div class="profile-grid">
+            <div class="data">
+                <small>TIKTOK</small>
+                <strong>@erko_zr</strong>
+            </div>
 
-                    <div class="profile-stat">
-                        <small>Уровень</small>
-                        <strong>70</strong>
-                    </div>
-
-                    <div class="profile-stat">
-                        <small>Гильдия</small>
-                        <strong>2VN</strong>
-                    </div>
-
-                    <div class="profile-stat">
-                        <small>UID</small>
-                        <strong>492468395</strong>
-                    </div>
-
-                    <div class="profile-stat">
-                        <small>Лайки</small>
-                        <strong>9 928</strong>
-                    </div>
-
-                </div>
-
+            <div class="data">
+                <small>СТАТУС</small>
+                <strong>ЗНАК МАСТЕРА</strong>
             </div>
 
         </div>
 
     </div>
+
+</div>
+
+</div>
 </section>
 
 
-<!-- PRIME -->
+<!-- ================= PRIME ================= -->
 
 <section>
-    <div class="container">
+<div class="container">
 
-        <h2 class="section-title">
-            <span>Prime</span>
-        </h2>
+<div class="section-head">
+    <small>ПРЕМИАЛЬНЫЙ ПРОФИЛЬ</small>
+    <h2>Prime</h2>
+</div>
 
-        <div class="card prime-card">
+<div class="prime">
 
-            <div class="prime-top">
+    <div class="prime-badge">
+        <div class="prime-number">7</div>
+    </div>
 
-                <div class="prime-title">
-                    PRIME <span>7</span>
-                </div>
+    <div class="prime-content">
 
-                <div class="prime-value">
-                    129 311 / 200 000
-                </div>
+        <small>PRIME LEVEL</small>
 
-            </div>
+        <h3>Prime 7</h3>
 
-            <div class="progress">
-                <div class="progress-fill"></div>
-            </div>
+        <p>
+            129 311 / 200 000 до Prime 8
+        </p>
 
-            <div class="prime-bottom">
-                <span>Прогресс</span>
-                <span>Осталось 70 689</span>
-            </div>
-
+        <div class="progress">
+            <div></div>
         </div>
 
+        <p>
+            Осталось 70 689
+        </p>
+
     </div>
+
+</div>
+
+</div>
 </section>
 
 
-<!-- STATS -->
+<!-- ================= STATS ================= -->
 
 <section>
-    <div class="container">
+<div class="container">
 
-        <h2 class="section-title">
-            Основная <span>статистика</span>
-        </h2>
+<div class="section-head">
+    <small>РЕЗУЛЬТАТЫ</small>
+    <h2>Основная статистика</h2>
+</div>
 
-        <div class="stats-grid">
+<div class="stats">
 
-            <div class="card stat-card">
-                <small>Матчи</small>
-                <strong>121</strong>
-            </div>
-
-            <div class="card stat-card accent">
-                <small>Победы</small>
-                <strong>66</strong>
-            </div>
-
-            <div class="card stat-card">
-                <small>Убийства</small>
-                <strong>370</strong>
-            </div>
-
-            <div class="card stat-card">
-                <small>KDA</small>
-                <strong>1.64</strong>
-            </div>
-
-            <div class="card stat-card accent">
-                <small>Win Rate</small>
-                <strong>54.55%</strong>
-            </div>
-
-            <div class="card stat-card">
-                <small>Рейтинг</small>
-                <strong>7.7</strong>
-            </div>
-
-            <div class="card stat-card">
-                <small>Средний урон</small>
-                <strong>1488</strong>
-            </div>
-
-            <div class="card stat-card">
-                <small>Хедшоты</small>
-                <strong>137</strong>
-            </div>
-
-            <div class="card stat-card">
-                <small>HS Rate</small>
-                <strong>37.03%</strong>
-            </div>
-
-            <div class="card stat-card">
-                <small>Нокдауны</small>
-                <strong>470</strong>
-            </div>
-
-        </div>
-
+    <div class="stat">
+        <strong>121</strong>
+        <span>Матчи</span>
     </div>
+
+    <div class="stat">
+        <strong>66</strong>
+        <span>Победы</span>
+    </div>
+
+    <div class="stat">
+        <strong>370</strong>
+        <span>Убийства</span>
+    </div>
+
+    <div class="stat">
+        <strong>1.64</strong>
+        <span>KDA</span>
+    </div>
+
+    <div class="stat">
+        <strong>7.7</strong>
+        <span>Рейтинг</span>
+    </div>
+
+    <div class="stat">
+        <strong>54.55%</strong>
+        <span>Win Rate</span>
+    </div>
+
+    <div class="stat">
+        <strong>137</strong>
+        <span>Хедшоты</span>
+    </div>
+
+    <div class="stat">
+        <strong>37.03%</strong>
+        <span>HS Rate</span>
+    </div>
+
+    <div class="stat">
+        <strong>470</strong>
+        <span>Нокдауны</span>
+    </div>
+
+    <div class="stat">
+        <strong>149</strong>
+        <span>Возрождения</span>
+    </div>
+
+    <div class="stat">
+        <strong>1488</strong>
+        <span>Средний урон</span>
+    </div>
+
+    <div class="stat">
+        <strong>6 / 18</strong>
+        <span>Золото / серебро</span>
+    </div>
+
+</div>
+
+</div>
 </section>
 
 
-<!-- ROLE -->
+<!-- ================= ROLE ================= -->
 
 <section>
-    <div class="container">
+<div class="container">
 
-        <h2 class="section-title">
-            Моя <span>роль</span>
-        </h2>
+<div class="section-head">
+    <small>ИГРОВОЙ СТИЛЬ</small>
+    <h2>Роль</h2>
+</div>
 
-        <div class="card role-card">
+<div class="role-card">
 
-            <div class="role-main">
-
-                <div class="role-name">
-                    ШТУРМОВИК
-                </div>
-
-                <div class="role-percent">
-                    65%
-                </div>
-
-            </div>
-
-            <div class="role-bar">
-                <div class="role-fill"></div>
-            </div>
-
-            <div class="role-info">
-
-                <span>
-                    233 убийства в ближнем бою
-                </span>
-
-                <span>
-                    MP5 — основное оружие
-                </span>
-
-            </div>
-
-        </div>
-
+    <div class="role-main">
+        <strong>Штурмовик</strong>
+        <span>Основная роль</span>
     </div>
+
+    <div class="role-percent">
+        65%
+    </div>
+
+    <div class="role-extra">
+        <strong>233</strong>
+        <span>Ближний бой</span>
+        <br>
+        <strong>MP5</strong>
+        <span>Основное оружие</span>
+    </div>
+
+</div>
+
+</div>
 </section>
 
 
-<!-- WEAPONS -->
+<!-- ================= WEAPONS ================= -->
 
 <section>
-    <div class="container">
+<div class="container">
 
-        <h2 class="section-title">
-            Оружие <span>CS</span>
-        </h2>
+<div class="section-head">
+    <small>ОРУЖИЕ</small>
+    <h2>Основные стволы</h2>
+</div>
 
-        <div class="weapons-grid">
+<div class="weapons">
 
-            <!-- MP5 -->
-            <div class="card weapon-card">
-
-                <div class="weapon-image">
-                    <img src="weapons-cs.jpg" alt="MP5">
-                </div>
-
-                <div class="weapon-content">
-
-                    <div class="weapon-name">MP5</div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>HS</span>
-                            <span>33.33%</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:33.33%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Макс. счёт</span>
-                            <span>1862</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:93%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Убийства</span>
-                            <span>60</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:60%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Мастерство</span>
-                            <span>11</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:73%"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- M500 -->
-            <div class="card weapon-card">
-
-                <div class="weapon-image">
-                    <img src="weapons-cs.jpg" alt="M500">
-                </div>
-
-                <div class="weapon-content">
-
-                    <div class="weapon-name">M500</div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>HS</span>
-                            <span>76.19%</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:76.19%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Макс. счёт</span>
-                            <span>1151</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:57%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Убийства</span>
-                            <span>21</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:21%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Мастерство</span>
-                            <span>14</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:93%"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- MP40 -->
-            <div class="card weapon-card">
-
-                <div class="weapon-image">
-                    <img src="weapons-cs.jpg" alt="MP40">
-                </div>
-
-                <div class="weapon-content">
-
-                    <div class="weapon-name">MP40</div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>HS</span>
-                            <span>18.75%</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:18.75%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Макс. счёт</span>
-                            <span>1082</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:54%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Убийства</span>
-                            <span>48</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:48%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Мастерство</span>
-                            <span>11</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:73%"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- M590 -->
-            <div class="card weapon-card">
-
-                <div class="weapon-image">
-                    <img src="weapons-cs.jpg" alt="M590">
-                </div>
-
-                <div class="weapon-content">
-
-                    <div class="weapon-name">M590</div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>HS</span>
-                            <span>18.18%</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:18.18%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Макс. счёт</span>
-                            <span>1043</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:52%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Убийства</span>
-                            <span>55</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:55%"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- M1873 -->
-            <div class="card weapon-card">
-
-                <div class="weapon-image">
-                    <img src="weapons-cs.jpg" alt="M1873">
-                </div>
-
-                <div class="weapon-content">
-
-                    <div class="weapon-name">M1873</div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>HS</span>
-                            <span>18.92%</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:18.92%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Макс. счёт</span>
-                            <span>859</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:43%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Убийства</span>
-                            <span>37</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:37%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Мастерство</span>
-                            <span>6</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:40%"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- UMP -->
-            <div class="card weapon-card">
-
-                <div class="weapon-image">
-                    <img src="weapons-cs.jpg" alt="UMP">
-                </div>
-
-                <div class="weapon-content">
-
-                    <div class="weapon-name">UMP</div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>HS</span>
-                            <span>63.16%</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:63.16%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Макс. счёт</span>
-                            <span>704</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:35%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Убийства</span>
-                            <span>19</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:19%"></div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-row">
-                        <div class="weapon-row-top">
-                            <span>Мастерство</span>
-                            <span>6</span>
-                        </div>
-                        <div class="weapon-bar">
-                            <div class="weapon-fill" style="width:40%"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
+    <div class="weapon">
+        <div class="weapon-top">
+            <div class="weapon-image w1"></div>
         </div>
-
+        <h3>MP5</h3>
+        <div class="weapon-stat"><span>Хедшоты</span><strong>33.33%</strong></div>
+        <div class="weapon-stat"><span>Очки</span><strong>1862</strong></div>
+        <div class="weapon-stat"><span>Убийства</span><strong>60</strong></div>
+        <div class="weapon-stat"><span>Уровень</span><strong>11</strong></div>
     </div>
+
+    <div class="weapon">
+        <div class="weapon-top">
+            <div class="weapon-image w2"></div>
+        </div>
+        <h3>M500</h3>
+        <div class="weapon-stat"><span>Хедшоты</span><strong>76.19%</strong></div>
+        <div class="weapon-stat"><span>Очки</span><strong>1151</strong></div>
+        <div class="weapon-stat"><span>Убийства</span><strong>21</strong></div>
+        <div class="weapon-stat"><span>Уровень</span><strong>14</strong></div>
+    </div>
+
+    <div class="weapon">
+        <div class="weapon-top">
+            <div class="weapon-image w3"></div>
+        </div>
+        <h3>MP40</h3>
+        <div class="weapon-stat"><span>Хедшоты</span><strong>18.75%</strong></div>
+        <div class="weapon-stat"><span>Очки</span><strong>1082</strong></div>
+        <div class="weapon-stat"><span>Убийства</span><strong>48</strong></div>
+        <div class="weapon-stat"><span>Уровень</span><strong>11</strong></div>
+    </div>
+
+    <div class="weapon">
+        <div class="weapon-top">
+            <div class="weapon-image w4"></div>
+        </div>
+        <h3>M590</h3>
+        <div class="weapon-stat"><span>Хедшоты</span><strong>18.18%</strong></div>
+        <div class="weapon-stat"><span>Очки</span><strong>1043</strong></div>
+        <div class="weapon-stat"><span>Убийства</span><strong>55</strong></div>
+        <div class="weapon-stat"><span>Уровень</span><strong>—</strong></div>
+    </div>
+
+    <div class="weapon">
+        <div class="weapon-top">
+            <div class="weapon-image w5"></div>
+        </div>
+        <h3>M1873</h3>
+        <div class="weapon-stat"><span>Хедшоты</span><strong>18.92%</strong></div>
+        <div class="weapon-stat"><span>Очки</span><strong>859</strong></div>
+        <div class="weapon-stat"><span>Убийства</span><strong>37</strong></div>
+        <div class="weapon-stat"><span>Уровень</span><strong>6</strong></div>
+    </div>
+
+    <div class="weapon">
+        <div class="weapon-top">
+            <div class="weapon-image w6"></div>
+        </div>
+        <h3>UMP</h3>
+        <div class="weapon-stat"><span>Хедшоты</span><strong>63.16%</strong></div>
+        <div class="weapon-stat"><span>Очки</span><strong>704</strong></div>
+        <div class="weapon-stat"><span>Убийства</span><strong>19</strong></div>
+        <div class="weapon-stat"><span>Уровень</span><strong>6</strong></div>
+    </div>
+
+</div>
+
+</div>
 </section>
 
 
-<!-- MATCHES -->
+<!-- ================= MATCHES ================= -->
 
 <section>
-    <div class="container">
+<div class="container">
 
-        <h2 class="section-title">
-            Последние <span>матчи</span>
-        </h2>
+<div class="section-head">
+    <small>24.09.2026</small>
+    <h2>Последние матчи</h2>
+</div>
 
-        <div class="card matches">
+<div class="matches">
 
-            <div class="match">
-                <div class="match-date">24.09<br>21:38</div>
-
-                <div>
-                    <div class="match-name">Комната — Ультиматум</div>
-                    <div class="match-sub">6 убийств</div>
-                </div>
-
-                <div class="match-result win">
-                    ПОБЕДА
-                </div>
-            </div>
-
-            <div class="match">
-                <div class="match-date">24.09<br>21:28</div>
-
-                <div>
-                    <div class="match-name">Комната — Ультиматум</div>
-                    <div class="match-sub">12 убийств</div>
-                </div>
-
-                <div class="match-result win">
-                    ПОБЕДА
-                </div>
-            </div>
-
-            <div class="match">
-                <div class="match-date">24.09<br>20:51</div>
-
-                <div>
-                    <div class="match-name">Комната — Заброшенная</div>
-                    <div class="match-sub">5 убийств</div>
-                </div>
-
-                <div class="match-result loss">
-                    ПОРАЖЕНИЕ
-                </div>
-            </div>
-
-            <div class="match">
-                <div class="match-date">24.09<br>20:07</div>
-
-                <div>
-                    <div class="match-name">Комната — Ультиматум</div>
-                    <div class="match-sub">5 убийств</div>
-                </div>
-
-                <div class="match-result win">
-                    ПОБЕДА
-                </div>
-            </div>
-
-            <div class="match">
-                <div class="match-date">24.09<br>20:01</div>
-
-                <div>
-                    <div class="match-name">Комната — Ультиматум</div>
-                    <div class="match-sub">4 убийства</div>
-                </div>
-
-                <div class="match-result win">
-                    ПОБЕДА
-                </div>
-            </div>
-
-            <div class="match">
-                <div class="match-date">24.09<br>19:53</div>
-
-                <div>
-                    <div class="match-name">БО-РЕЙТИНГ</div>
-                    <div class="match-sub">3 убийства</div>
-                </div>
-
-                <div class="match-result win">
-                    ПОБЕДА
-                </div>
-            </div>
-
-        </div>
-
+    <div class="match">
+        <div class="match-result">ПОБЕДА</div>
+        <div class="match-name">Комната — Ультиматум</div>
+        <div class="match-kills">6 убийств</div>
     </div>
+
+    <div class="match">
+        <div class="match-result">ПОБЕДА</div>
+        <div class="match-name">Комната — Ультиматум</div>
+        <div class="match-kills">12 убийств</div>
+    </div>
+
+    <div class="match">
+        <div class="match-result">ЗАБРОШЕНА</div>
+        <div class="match-name">Комната — Заброшена</div>
+        <div class="match-kills">5 убийств</div>
+    </div>
+
+    <div class="match">
+        <div class="match-result">ПОБЕДА</div>
+        <div class="match-name">Комната — Ультиматум</div>
+        <div class="match-kills">5 убийств</div>
+    </div>
+
+    <div class="match">
+        <div class="match-result">ПОБЕДА</div>
+        <div class="match-name">Комната — Ультиматум</div>
+        <div class="match-kills">4 убийства</div>
+    </div>
+
+    <div class="match">
+        <div class="match-result">ПОБЕДА</div>
+        <div class="match-name">БО-РЕЙТИНГ</div>
+        <div class="match-kills">3 убийства</div>
+    </div>
+
+</div>
+
+</div>
 </section>
 
 
-<!-- GUILD -->
+<!-- ================= GUILD ================= -->
 
 <section>
-    <div class="container">
+<div class="container">
 
-        <h2 class="section-title">
-            Моя <span>гильдия</span>
-        </h2>
+<div class="section-head">
+    <small>2VN</small>
+    <h2>Моя гильдия</h2>
+</div>
 
-        <div class="card guild-preview">
+<div class="guild-preview">
 
-            <img src="guild.jpg" alt="2VN">
+    <div class="guild-preview-image">
+        <img src="guild.jpg" alt="2VN">
+    </div>
 
-            <div>
+    <div>
 
-                <div class="guild-title">
-                    <span>2VN</span>
-                </div>
+        <h3>2VN</h3>
 
-                <p class="guild-description">
-                    СНГ-гильдия, в которой Психошка является
-                    одним из ключевых игроков.
-                </p>
+        <p>
+            Гильдия уровня 5, регион СНГ.
+            38 из 55 участников и 34 187 очков активности.
+        </p>
 
-                <div class="guild-stats">
-
-                    <div class="guild-stat">
-                        <strong>5</strong>
-                        <small>УРОВЕНЬ</small>
-                    </div>
-
-                    <div class="guild-stat">
-                        <strong>38/55</strong>
-                        <small>УЧАСТНИКИ</small>
-                    </div>
-
-                    <div class="guild-stat">
-                        <strong>34 187</strong>
-                        <small>АКТИВНОСТЬ</small>
-                    </div>
-
-                </div>
-
-                <a class="guild-button" href="guild.html">
-                    О ГИЛЬДИИ →
-                </a>
-
-            </div>
-
-        </div>
+        <a class="guild-button" href="guild.html">
+            ОТКРЫТЬ ГИЛЬДИЮ →
+        </a>
 
     </div>
+
+</div>
+
+</div>
 </section>
 
 </main>
 
 
 <footer>
-    <div class="container">
-        2V ПСИХОШКА © 2026 · FREE FIRE PLAYER
-    </div>
+    © Психошка · Free Fire Player
 </footer>
-
-
-<script>
-
-/* =====================================================
-   RANDOM BACKGROUND
-===================================================== */
-
-const desktopBackgrounds = [
-    "background-pc-1.jpg",
-    "background-pc-2.jpg"
-];
-
-const mobileBackgrounds = [
-    "background-mobile-1.jpg",
-    "background-mobile-2.jpg",
-    "background-mobile-3.jpg"
-];
-
-const isMobile =
-    window.matchMedia("(max-width: 768px)").matches;
-
-const backgrounds =
-    isMobile
-        ? mobileBackgrounds
-        : desktopBackgrounds;
-
-const randomBackground =
-    backgrounds[
-        Math.floor(Math.random() * backgrounds.length)
-    ];
-
-document.documentElement.style.setProperty(
-    "--page-bg",
-    `url("${randomBackground}")`
-);
-
-</script>
 
 </body>
 </html>
