@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>2VN — Гильдия</title>
+<title>2VN | Гильдия</title>
 
 <style>
 *{
@@ -13,262 +13,418 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#050505;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#070707;
     color:#fff;
 }
 
-a{
-    color:inherit;
-    text-decoration:none;
-}
+/* =========================
+   HEADER
+========================= */
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-2;
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(0,0,0,.94),
-            rgba(25,5,2,.82),
-            rgba(0,0,0,.96)
-        ),
-        url("guild-bg.jpg") center/cover;
-}
-
-nav{
-    height:70px;
-
+header{
+    height:76px;
+    background:rgba(5,5,5,.97);
+    border-bottom:1px solid rgba(255,208,0,.18);
     display:flex;
     align-items:center;
-
-    background:rgba(0,0,0,.82);
-
-    border-bottom:1px solid rgba(255,200,0,.12);
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .nav{
-    width:min(1200px,92%);
+    width:min(1180px, calc(100% - 40px));
     margin:auto;
-
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
-    font-size:21px;
+    font-size:24px;
     font-weight:900;
+    letter-spacing:-1px;
 }
 
-.logo::after{
-    content:".";
+.logo span{
     color:#ffd000;
 }
 
-.links{
+nav{
     display:flex;
-    gap:25px;
+    gap:32px;
 }
 
-.links a{
+nav a{
     color:#888;
-
-    font-size:10px;
-
-    text-transform:uppercase;
-
-    letter-spacing:1.5px;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1px;
 }
 
-.links a:hover,
-.links .active{
+nav a:hover,
+nav a.active{
     color:#ffd000;
 }
 
-.container{
-    width:min(1100px,92%);
-    margin:auto;
-}
+/* =========================
+   HERO
+========================= */
 
-.hero{
-    min-height:80vh;
-
-    display:grid;
-
-    grid-template-columns:1.2fr .8fr;
-
+.guild-hero{
+    min-height:560px;
+    display:flex;
     align-items:center;
+    position:relative;
+    overflow:hidden;
 
-    gap:60px;
-
-    padding:100px 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5,5,5,.98) 0%,
+            rgba(5,5,5,.93) 45%,
+            rgba(5,5,5,.65) 100%
+        ),
+        url("guild-bg.jpg") center/cover no-repeat;
 }
 
-.hero-text small{
+.guild-hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 50%,
+            #070707 100%
+        );
+
+    pointer-events:none;
+}
+
+.guild-wrap{
+    width:min(1180px, calc(100% - 40px));
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+/* =========================
+   GUILD HERO CONTENT
+========================= */
+
+.guild-main{
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:70px;
+    align-items:center;
+}
+
+/* TEXT */
+
+.guild-label{
     color:#ffd000;
+    font-size:12px;
+    font-weight:800;
     letter-spacing:4px;
-    font-size:10px;
+    margin-bottom:12px;
 }
 
-.hero-text h1{
-    margin-top:10px;
-
-    font-size:clamp(80px,13vw,170px);
-
-    line-height:.8;
-
-    letter-spacing:-8px;
+.guild-title{
+    font-size:clamp(70px, 9vw, 120px);
+    line-height:.85;
+    letter-spacing:-6px;
+    margin-bottom:25px;
 }
 
-.hero-text p{
-    max-width:600px;
-
-    margin-top:30px;
-
-    color:#888;
-
-    font-size:14px;
-
+.guild-description{
+    max-width:620px;
+    color:#999;
+    font-size:16px;
     line-height:1.8;
 }
 
+.guild-description strong{
+    color:#fff;
+}
+
+/* =========================
+   GUILD IMAGE
+========================= */
+
 .guild-image{
-    position:relative;
-
-    aspect-ratio:1/1;
-
-    overflow:hidden;
-
+    width:360px;
+    height:360px;
     border-radius:50%;
+    overflow:hidden;
 
     border:2px solid #ffd000;
 
+    background:#111;
+
     box-shadow:
-        0 0 60px rgba(255,190,0,.15);
+        0 0 0 8px rgba(255,208,0,.04),
+        0 20px 70px rgba(0,0,0,.8);
 }
 
 .guild-image img{
     width:100%;
     height:100%;
-
+    display:block;
     object-fit:cover;
+    object-position:center;
 }
 
-.guild-image::after{
-    content:"";
+/* =========================
+   STATS
+========================= */
 
-    position:absolute;
-    inset:15px;
+.guild-stats{
+    width:min(1180px, calc(100% - 40px));
+    margin:-45px auto 0;
+    position:relative;
+    z-index:5;
 
-    border:1px solid rgba(255,255,255,.2);
-
-    border-radius:50%;
-}
-
-.stats{
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
-    gap:8px;
-
-    margin-top:30px;
+    gap:10px;
 }
 
 .stat{
-    padding:25px;
-
-    background:rgba(255,255,255,.035);
-
-    border:1px solid rgba(255,255,255,.08);
+    background:#0e0e0e;
+    border:1px solid rgba(255,255,255,.10);
+    padding:22px;
+    min-height:105px;
 }
 
-.stat b{
+.stat strong{
     display:block;
-
-    font-size:27px;
-
     color:#ffd000;
+    font-size:25px;
+    margin-bottom:5px;
 }
 
 .stat span{
-    display:block;
-
-    margin-top:7px;
-
     color:#666;
-
-    font-size:9px;
-
+    font-size:10px;
+    letter-spacing:1.5px;
     text-transform:uppercase;
-
-    letter-spacing:1px;
 }
 
-.section{
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    width:min(1180px, calc(100% - 40px));
+    margin:auto;
     padding:90px 0;
 }
 
-.title small{
+.section-title{
+    margin-bottom:30px;
+}
+
+.section-title small{
     color:#ffd000;
-
-    font-size:10px;
-
+    font-size:11px;
+    font-weight:800;
     letter-spacing:4px;
 }
 
-.title h2{
+.section-title h2{
     margin-top:8px;
-
-    font-size:55px;
-
-    text-transform:uppercase;
+    font-size:38px;
 }
 
-.future{
-    margin-top:30px;
+/* =========================
+   INFO
+========================= */
 
-    padding:45px;
-
-    background:#0a0a0a;
-
-    border:1px solid rgba(255,255,255,.07);
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
-.future h3{
-    font-size:25px;
+.info-card{
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.09);
+    padding:28px;
 }
 
-.future p{
-    margin-top:10px;
+.info-card h3{
+    font-size:20px;
+    margin-bottom:12px;
+}
 
-    max-width:650px;
-
-    color:#777;
-
+.info-card p{
+    color:#888;
+    font-size:14px;
     line-height:1.7;
+}
 
+.info-card strong{
+    color:#ffd000;
+}
+
+/* =========================
+   PLAYER
+========================= */
+
+.player-card{
+    margin-top:15px;
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.09);
+    padding:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.player-name{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.player-avatar{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    overflow:hidden;
+    border:1px solid #ffd000;
+}
+
+.player-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.player-name strong{
+    display:block;
+    font-size:18px;
+}
+
+.player-name span{
+    color:#666;
+    font-size:11px;
+}
+
+.player-role{
+    color:#ffd000;
+    font-size:12px;
+    font-weight:700;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:25px;
+    text-align:center;
+    color:#555;
     font-size:12px;
 }
 
-@media(max-width:800px){
+/* =========================
+   MOBILE
+========================= */
 
-    .hero{
+@media(max-width:850px){
+
+    .guild-main{
         grid-template-columns:1fr;
+        gap:40px;
     }
 
     .guild-image{
-        width:75%;
+        width:300px;
+        height:300px;
         margin:auto;
     }
 
-    .stats{
-        grid-template-columns:1fr 1fr;
+    .guild-stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .player-card{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+}
+
+@media(max-width:500px){
+
+    .nav{
+        width:calc(100% - 24px);
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    nav{
+        gap:10px;
+    }
+
+    nav a{
+        font-size:10px;
+    }
+
+    .guild-wrap,
+    .guild-stats,
+    .content{
+        width:calc(100% - 24px);
+    }
+
+    .guild-hero{
+        min-height:auto;
+        padding:70px 0 80px;
+    }
+
+    .guild-title{
+        font-size:72px;
+        letter-spacing:-4px;
+    }
+
+    .guild-image{
+        width:250px;
+        height:250px;
+    }
+
+    .guild-stats{
+        margin:-25px auto 0;
+    }
+
+    .stat{
+        padding:16px;
+        min-height:90px;
+    }
+
+    .stat strong{
+        font-size:20px;
+    }
+
+    .content{
+        padding:60px 0;
     }
 }
 </style>
@@ -276,129 +432,180 @@ nav{
 
 <body>
 
-<nav>
+<header>
 
-<div class="nav">
+    <div class="nav">
 
-<a href="index.html" class="logo">
-    Психошка
-</a>
+        <div class="logo">
+            Психошка<span>.</span>
+        </div>
 
-<div class="links">
+        <nav>
+            <a href="about.html">ОБО МНЕ</a>
+            <a href="index.html">ПРОФИЛЬ</a>
+            <a href="guild.html" class="active">2VN</a>
+        </nav>
 
-<a href="about.html">
-    Обо мне
-</a>
+    </div>
 
-<a href="index.html">
-    Профиль
-</a>
-
-<a href="guild.html" class="active">
-    2VN
-</a>
-
-</div>
-
-</div>
-
-</nav>
+</header>
 
 
-<main>
+<section class="guild-hero">
 
-<section class="hero">
+    <div class="guild-wrap">
 
-<div class="hero-text">
+        <div class="guild-main">
 
-<small>ГИЛЬДИЯ</small>
+            <div>
 
-<h1>2VN</h1>
+                <div class="guild-label">
+                    ГИЛЬДИЯ
+                </div>
 
-<p>
-    Гильдия, частью которой является Психошка.
-    Здесь позже можно будет собрать полноценную
-    страницу состава, игроков, фотографий,
-    достижений и истории команды.
-</p>
+                <h1 class="guild-title">
+                    2VN
+                </h1>
 
+                <p class="guild-description">
+                    <strong>2VN</strong> — гильдия, частью которой является
+                    Психошка. Здесь собрана основная информация о команде,
+                    её активности и текущем составе.
+                </p>
 
-<div class="stats">
-
-<div class="stat">
-    <b>5</b>
-    <span>Уровень</span>
-</div>
-
-<div class="stat">
-    <b>38/55</b>
-    <span>Участники</span>
-</div>
-
-<div class="stat">
-    <b>34 187</b>
-    <span>Активность</span>
-</div>
-
-<div class="stat">
-    <b>СНГ</b>
-    <span>Регион</span>
-</div>
-
-</div>
-
-</div>
+            </div>
 
 
-<div class="guild-image">
+            <div class="guild-image">
 
-<img src="guild.jpg" alt="2VN">
+                <img src="guild.jpg" alt="Гильдия 2VN">
 
-</div>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<section class="section">
+<section class="guild-stats">
 
-<div class="container">
+    <div class="stat">
+        <strong>5</strong>
+        <span>Уровень гильдии</span>
+    </div>
 
-<div class="title">
+    <div class="stat">
+        <strong>38/55</strong>
+        <span>Участники</span>
+    </div>
 
-<small>2VN</small>
+    <div class="stat">
+        <strong>34 187</strong>
+        <span>Активность</span>
+    </div>
 
-<h2>Гильдия</h2>
-
-</div>
-
-
-<div class="future">
-
-<h3>
-    Здесь будет развиваться 2VN
-</h3>
-
-<p>
-    В дальнейшем сюда можно добавить игроков,
-    фотографии состава, ники участников,
-    достижения гильдии, историю КВ и другие
-    материалы. Сейчас это отдельная страница,
-    посвящённая именно гильдии.
-</p>
-
-<p style="margin-top:15px">
-    ID гильдии: <strong style="color:#fff">
-    3084263454
-    </strong>
-</p>
-
-</div>
-
-</div>
+    <div class="stat">
+        <strong>СНГ</strong>
+        <span>Регион</span>
+    </div>
 
 </section>
+
+
+<main class="content">
+
+    <div class="section-title">
+
+        <small>2VN</small>
+
+        <h2>О гильдии</h2>
+
+    </div>
+
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <h3>Основная информация</h3>
+
+            <p>
+                Уровень гильдии — <strong>5</strong>.
+                Сейчас в составе находится <strong>38 из 55</strong>
+                участников.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>Активность</h3>
+
+            <p>
+                Текущие очки активности:
+                <strong>34 187</strong>.
+                Регион гильдии — <strong>СНГ</strong>.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>ID гильдии</h3>
+
+            <p>
+                <strong>3084263454</strong>
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>Психошка в 2VN</h3>
+
+            <p>
+                Игровой ник в составе гильдии:
+                <strong>2V Психошка</strong>.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="player-card">
+
+        <div class="player-name">
+
+            <div class="player-avatar">
+                <img src="my-photo.jpg" alt="Психошка">
+            </div>
+
+            <div>
+                <strong>2V Психошка</strong>
+                <span>Участник гильдии 2VN</span>
+            </div>
+
+        </div>
+
+
+        <div class="player-role">
+            FREE FIRE PLAYER
+        </div>
+
+    </div>
 
 </main>
+
+
+<footer>
+    © Психошка · 2VN
+</footer>
 
 </body>
 </html>
