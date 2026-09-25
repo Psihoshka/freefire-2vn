@@ -9,10 +9,6 @@
 
 <style>
 
-/* =====================================================
-   RESET
-===================================================== */
-
 *{
     margin:0;
     padding:0;
@@ -37,22 +33,9 @@ body::before{
     z-index:-2;
 
     background:
-        radial-gradient(
-            circle at 20% 10%,
-            rgba(255,190,0,.13),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(120,50,255,.12),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #080808,
-            #100d18 50%,
-            #090909
-        );
+        radial-gradient(circle at 20% 10%,rgba(255,190,0,.13),transparent 30%),
+        radial-gradient(circle at 80% 70%,rgba(120,50,255,.12),transparent 35%),
+        linear-gradient(135deg,#080808,#100d18 50%,#090909);
 }
 
 body::after{
@@ -87,28 +70,15 @@ button{
     font-family:inherit;
 }
 
-
-/* =====================================================
-   VARIABLES
-===================================================== */
-
 :root{
     --gold:#ffc400;
     --gold2:#ffdc54;
     --yellow:#ffd000;
-
     --dark:#090909;
     --card:#111016;
-
     --border:rgba(255,255,255,.11);
-
     --muted:#999;
 }
-
-
-/* =====================================================
-   CONTAINER
-===================================================== */
 
 .container{
     width:92%;
@@ -120,18 +90,11 @@ section{
     padding:100px 0;
 }
 
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
 .navbar{
     position:fixed;
     top:0;
     left:0;
-
     width:100%;
-
     z-index:1000;
 
     background:rgba(5,5,7,.86);
@@ -143,15 +106,12 @@ section{
 .nav-inner{
     width:92%;
     max-width:1250px;
-
     min-height:68px;
-
     margin:auto;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     gap:30px;
 }
 
@@ -159,7 +119,6 @@ section{
     font-size:24px;
     font-weight:900;
     letter-spacing:2px;
-
     color:var(--gold);
 }
 
@@ -170,20 +129,15 @@ section{
 .nav-links{
     display:flex;
     gap:25px;
-
     list-style:none;
-
     overflow-x:auto;
 }
 
 .nav-links a{
     white-space:nowrap;
-
     font-size:12px;
     font-weight:bold;
-
     color:#aaa;
-
     transition:.25s;
 }
 
@@ -191,14 +145,8 @@ section{
     color:var(--gold);
 }
 
-
-/* =====================================================
-   HERO
-===================================================== */
-
 .hero{
     min-height:100vh;
-
     padding-top:120px;
 
     display:flex;
@@ -207,34 +155,23 @@ section{
 
 .hero-grid{
     display:grid;
-
-    grid-template-columns:
-        1.15fr
-        .85fr;
-
+    grid-template-columns:1.15fr .85fr;
     gap:55px;
-
     align-items:center;
 }
 
 .hero-label{
     color:var(--gold);
-
     font-size:13px;
     font-weight:bold;
-
     letter-spacing:4px;
-
     margin-bottom:18px;
 }
 
 .hero h1{
     font-size:clamp(58px,8vw,105px);
-
     line-height:.86;
-
     font-weight:900;
-
     text-transform:uppercase;
 }
 
@@ -244,52 +181,38 @@ section{
 
 .hero-subtitle{
     margin-top:25px;
-
     color:#ccc;
-
     font-size:20px;
-
     line-height:1.6;
-
     max-width:650px;
 }
 
 .hero-tags{
     margin-top:30px;
-
     display:flex;
     flex-wrap:wrap;
-
     gap:10px;
 }
 
 .hero-tag{
     padding:10px 15px;
-
     border:1px solid rgba(255,193,7,.28);
-
     background:rgba(255,193,7,.07);
-
     color:#ddd;
-
     font-size:12px;
     font-weight:bold;
-
     border-radius:5px;
 }
 
 .hero-buttons{
     margin-top:35px;
-
     display:flex;
     gap:12px;
-
     flex-wrap:wrap;
 }
 
 .btn{
     min-height:48px;
-
     padding:0 22px;
 
     display:inline-flex;
@@ -297,10 +220,8 @@ section{
     justify-content:center;
 
     border-radius:5px;
-
     font-size:13px;
     font-weight:bold;
-
     transition:.25s;
 }
 
@@ -311,9 +232,7 @@ section{
 
 .btn-secondary{
     background:#17151c;
-
     border:1px solid var(--border);
-
     color:#fff;
 }
 
@@ -321,23 +240,14 @@ section{
     transform:translateY(-3px);
 }
 
-
-/* =====================================================
-   PROFILE CARD
-===================================================== */
-
 .profile-card{
     position:relative;
-
     background:#0e0d12;
-
     border:1px solid rgba(255,193,7,.22);
 
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.5);
+    box-shadow:0 25px 80px rgba(0,0,0,.5);
 
     border-radius:12px;
-
     overflow:hidden;
 }
 
@@ -349,13 +259,11 @@ section{
     align-items:center;
 
     background:#17151c;
-
     border-bottom:1px solid var(--border);
 }
 
 .profile-card-top span:first-child{
     color:var(--gold);
-
     font-size:11px;
     font-weight:bold;
 }
@@ -367,20 +275,15 @@ section{
 
 .profile-image{
     position:relative;
-
     height:310px;
-
     overflow:hidden;
 }
 
 .profile-image img{
     width:100%;
     height:100%;
-
     object-fit:cover;
-
     cursor:pointer;
-
     transition:.5s;
 }
 
@@ -396,7 +299,6 @@ section{
     display:flex;
     justify-content:space-between;
     align-items:end;
-
     gap:15px;
 }
 
@@ -406,59 +308,41 @@ section{
 
 .level{
     color:var(--gold);
-
     font-weight:bold;
 }
 
 .profile-line{
     margin-top:8px;
-
     color:#888;
-
     font-size:12px;
 }
 
 .profile-mini{
     margin-top:18px;
-
     display:grid;
     grid-template-columns:repeat(3,1fr);
-
     gap:8px;
 }
 
 .profile-mini div{
     padding:13px;
-
     background:#17151c;
-
     border:1px solid var(--border);
-
     border-radius:6px;
 }
 
 .profile-mini strong{
     display:block;
-
     color:var(--gold);
-
     font-size:20px;
 }
 
 .profile-mini span{
     display:block;
-
     margin-top:3px;
-
     color:#777;
-
     font-size:10px;
 }
-
-
-/* =====================================================
-   SECTION TITLE
-===================================================== */
 
 .section-head{
     margin-bottom:40px;
@@ -466,47 +350,31 @@ section{
 
 .section-number{
     color:var(--gold);
-
     font-size:11px;
-
     font-weight:bold;
-
     letter-spacing:4px;
 }
 
 .section-head h2{
     margin-top:8px;
-
     font-size:clamp(38px,5vw,62px);
-
     line-height:1;
 }
 
 .section-head p{
     margin-top:13px;
-
     color:#888;
-
     font-size:15px;
 }
 
-
-/* =====================================================
-   STATISTICS
-===================================================== */
-
 .stat-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(6,1fr);
-
+    grid-template-columns:repeat(6,1fr);
     gap:10px;
 }
 
 .stat-card{
     padding:22px 15px;
-
     min-height:145px;
 
     display:flex;
@@ -514,78 +382,52 @@ section{
     justify-content:center;
 
     background:#101015;
-
     border:1px solid var(--border);
-
     border-radius:7px;
-
     transition:.25s;
 }
 
 .stat-card:hover{
     border-color:rgba(255,193,7,.45);
-
     transform:translateY(-4px);
 }
 
 .stat-card strong{
     color:var(--gold);
-
     font-size:30px;
 }
 
 .stat-card span{
     margin-top:8px;
-
     color:#aaa;
-
     font-size:11px;
-
     text-transform:uppercase;
 }
 
 .stat-card small{
     margin-top:5px;
-
     color:#666;
-
     font-size:10px;
 }
 
 .stat-main{
     margin-top:20px;
-
     display:grid;
-
-    grid-template-columns:
-        .9fr
-        1.1fr;
-
+    grid-template-columns:.9fr 1.1fr;
     gap:20px;
 }
 
-
-/* =====================================================
-   SCREEN CARD
-===================================================== */
-
 .screen-card{
     position:relative;
-
     background:#0e0d12;
-
     border:1px solid var(--border);
-
     border-radius:8px;
-
     overflow:hidden;
 }
 
 .screen-card img{
     width:100%;
-
     cursor:pointer;
-
     transition:.4s;
 }
 
@@ -595,68 +437,45 @@ section{
 
 .screen-label{
     padding:13px 15px;
-
     display:flex;
-
     justify-content:space-between;
-
     background:#121116;
-
     border-top:1px solid var(--border);
 }
 
 .screen-label strong{
     color:#fff;
-
     font-size:12px;
 }
 
 .screen-label span{
     color:var(--gold);
-
     font-size:10px;
 }
 
-
-/* =====================================================
-   PLAYSTYLE
-===================================================== */
-
 .style-grid{
     display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:20px;
 }
 
 .style-card{
     padding:30px;
-
     background:#101015;
-
     border:1px solid var(--border);
-
     border-radius:8px;
 }
 
 .style-card h3{
     color:var(--gold);
-
     font-size:12px;
-
     letter-spacing:2px;
-
     margin-bottom:25px;
 }
 
 .main-role{
     display:flex;
-
     justify-content:space-between;
-
     align-items:end;
 }
 
@@ -666,85 +485,58 @@ section{
 
 .main-role span{
     color:var(--gold);
-
     font-size:36px;
-
     font-weight:bold;
 }
 
 .progress{
     margin-top:15px;
-
     width:100%;
     height:7px;
-
     background:#25232b;
-
     border-radius:10px;
-
     overflow:hidden;
 }
 
 .progress div{
     height:100%;
-
     background:var(--gold);
 }
 
 .expertise{
     margin-top:25px;
-
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:10px;
 }
 
 .expertise-item{
     padding:13px;
-
     background:#17151c;
-
     border-radius:5px;
 }
 
 .expertise-item strong{
     display:block;
-
     color:#fff;
-
     font-size:14px;
 }
 
 .expertise-item span{
     color:#888;
-
     font-size:11px;
 }
 
-
-/* =====================================================
-   WEAPONS
-===================================================== */
-
 .weapon-layout{
     display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:20px;
 }
 
 .weapon-card{
     padding:28px;
-
     background:#101015;
-
     border:1px solid var(--border);
-
     border-radius:8px;
 }
 
@@ -758,30 +550,18 @@ section{
 
 .weapon-list{
     margin-top:20px;
-
     display:flex;
-
     flex-direction:column;
-
     gap:7px;
 }
 
 .weapon{
     display:grid;
-
-    grid-template-columns:
-        1fr
-        auto
-        auto;
-
+    grid-template-columns:1fr auto auto;
     gap:15px;
-
     padding:13px;
-
     background:#17151c;
-
     border-radius:5px;
-
     align-items:center;
 }
 
@@ -791,169 +571,107 @@ section{
 
 .weapon span{
     color:#bbb;
-
     font-size:11px;
 }
 
 .weapon b{
     color:var(--gold);
-
     font-size:12px;
 }
 
-
-/* =====================================================
-   RANKED
-===================================================== */
-
 .rank-grid{
     display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:20px;
 }
 
 .rank-card{
     padding:30px;
-
     background:#101015;
-
     border:1px solid var(--border);
-
     border-radius:8px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     gap:20px;
 }
 
 .rank-card span{
     color:#888;
-
     font-size:11px;
-
     display:block;
-
     margin-bottom:7px;
 }
 
 .rank-card h3{
     font-size:38px;
-
     color:var(--gold);
 }
 
 .rank-card p{
     margin-top:7px;
-
     color:#777;
-
     font-size:11px;
 }
 
-
-/* =====================================================
-   MATCH
-===================================================== */
-
 .match-grid{
     display:grid;
-
-    grid-template-columns:
-        .75fr
-        1.25fr;
-
+    grid-template-columns:.75fr 1.25fr;
     gap:20px;
 }
 
 .match-highlight{
     padding:35px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #16130a,
-            #111015
-        );
-
+    background:linear-gradient(145deg,#16130a,#111015);
     border:1px solid rgba(255,193,7,.2);
-
     border-radius:8px;
 }
 
 .match-result{
     color:var(--gold);
-
     font-size:12px;
-
     letter-spacing:3px;
 }
 
 .match-highlight h3{
     margin-top:15px;
-
     font-size:48px;
 }
 
 .match-date{
     margin-top:8px;
-
     color:#777;
-
     font-size:12px;
 }
 
 .match-stats{
     margin-top:30px;
-
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:8px;
 }
 
 .match-stat{
     padding:14px;
-
     background:#19171d;
-
     border-radius:5px;
 }
 
 .match-stat strong{
     display:block;
-
     color:var(--gold);
-
     font-size:23px;
 }
 
 .match-stat span{
     color:#777;
-
     font-size:9px;
 }
 
-
-/* =====================================================
-   PRIME
-===================================================== */
-
 .prime{
     display:grid;
-
-    grid-template-columns:
-        .7fr
-        1.3fr;
-
+    grid-template-columns:.7fr 1.3fr;
     gap:20px;
 }
 
@@ -969,193 +687,128 @@ section{
         #101015;
 
     border:1px solid rgba(255,193,7,.2);
-
     border-radius:8px;
 }
 
 .prime-label{
     color:#888;
-
     font-size:11px;
-
     letter-spacing:3px;
 }
 
 .prime-card h3{
     margin-top:8px;
-
     font-size:80px;
-
     color:var(--gold);
-
     line-height:1;
 }
 
 .prime-progress{
     margin-top:25px;
-
     height:9px;
-
     background:#28252c;
-
     border-radius:10px;
-
     overflow:hidden;
 }
 
 .prime-progress div{
     width:64.65%;
-
     height:100%;
-
     background:var(--gold);
 }
 
 .prime-number{
     margin-top:10px;
-
     color:#aaa;
-
     font-size:12px;
 }
 
-
-/* =====================================================
-   GUILD
-===================================================== */
-
 .guild{
     display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:20px;
 }
 
 .guild-info{
     padding:35px;
-
     background:#101015;
-
     border:1px solid var(--border);
-
     border-radius:8px;
 }
 
 .guild-info h3{
     font-size:45px;
-
     color:var(--gold);
 }
 
 .guild-info p{
     margin-top:10px;
-
     color:#888;
 }
 
 .guild-stats{
     margin-top:25px;
-
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:10px;
 }
 
 .guild-stat{
     padding:18px;
-
     background:#17151c;
-
     border-radius:5px;
 }
 
 .guild-stat strong{
     color:var(--gold);
-
     font-size:25px;
 }
 
 .guild-stat span{
     display:block;
-
     color:#777;
-
     font-size:10px;
-
     margin-top:5px;
 }
 
-
-/* =====================================================
-   SOCIAL
-===================================================== */
-
 .social{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:12px;
 }
 
 .social-card{
     padding:25px;
-
     background:#101015;
-
     border:1px solid var(--border);
-
     border-radius:7px;
-
     text-align:center;
-
     transition:.25s;
 }
 
 .social-card:hover{
     border-color:rgba(255,193,7,.4);
-
     transform:translateY(-3px);
 }
 
 .social-card strong{
     display:block;
-
     color:var(--gold);
-
     font-size:18px;
 }
 
 .social-card span{
     display:block;
-
     margin-top:8px;
-
     color:#888;
-
     font-size:12px;
 }
 
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
 footer{
     padding:35px 0;
-
     border-top:1px solid var(--border);
-
     text-align:center;
-
     color:#555;
-
     font-size:11px;
 }
 
@@ -1163,26 +816,14 @@ footer strong{
     color:var(--gold);
 }
 
-
-/* =====================================================
-   VIEWER
-===================================================== */
-
 .viewer{
     position:fixed;
-
     inset:0;
-
     z-index:9999;
-
     display:none;
-
     align-items:center;
-
     justify-content:center;
-
     padding:25px;
-
     background:rgba(0,0,0,.94);
 }
 
@@ -1192,54 +833,31 @@ footer strong{
 
 .viewer img{
     max-width:95vw;
-
     max-height:90vh;
-
     object-fit:contain;
-
     border:1px solid rgba(255,193,7,.25);
-
     border-radius:5px;
 }
 
 .close{
     position:absolute;
-
     top:15px;
     right:25px;
-
     color:#fff;
-
     font-size:45px;
-
     cursor:pointer;
 }
 
-
-/* =====================================================
-   REVEAL
-===================================================== */
-
 .reveal{
     opacity:0;
-
     transform:translateY(35px);
-
-    transition:
-        opacity .7s ease,
-        transform .7s ease;
+    transition:opacity .7s ease,transform .7s ease;
 }
 
 .reveal.active{
     opacity:1;
-
     transform:translateY(0);
 }
-
-
-/* =====================================================
-   TABLET
-===================================================== */
 
 @media(max-width:950px){
 
@@ -1254,20 +872,13 @@ footer strong{
     }
 
     .stat-grid{
-        grid-template-columns:
-            repeat(3,1fr);
+        grid-template-columns:repeat(3,1fr);
     }
 
     .rank-grid{
         grid-template-columns:1fr 1fr;
     }
-
 }
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
 
 @media(max-width:600px){
 
@@ -1312,8 +923,7 @@ footer strong{
     }
 
     .stat-grid{
-        grid-template-columns:
-            1fr 1fr;
+        grid-template-columns:1fr 1fr;
     }
 
     .stat-card{
@@ -1339,13 +949,7 @@ footer strong{
     .main-role strong{
         font-size:40px;
     }
-
 }
-
-
-/* =====================================================
-   SMALL PHONE
-===================================================== */
 
 @media(max-width:380px){
 
@@ -1360,20 +964,12 @@ footer strong{
     .stat-grid{
         grid-template-columns:1fr;
     }
-
 }
 
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     NAV
-===================================================== -->
 
 <header class="navbar">
 
@@ -1386,17 +982,11 @@ footer strong{
 <ul class="nav-links">
 
 <li><a href="#profile">PROFILE</a></li>
-
 <li><a href="#stats">STATS</a></li>
-
 <li><a href="#style">STYLE</a></li>
-
 <li><a href="#weapons">WEAPONS</a></li>
-
 <li><a href="#ranked">RANKED</a></li>
-
 <li><a href="#prime">PRIME</a></li>
-
 <li><a href="#guild">2VN</a></li>
 
 </ul>
@@ -1406,17 +996,11 @@ footer strong{
 </header>
 
 
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
 <section id="home" class="hero">
 
 <div class="container">
 
 <div class="hero-grid">
-
 
 <div class="reveal">
 
@@ -1430,38 +1014,20 @@ FREE FIRE PLAYER
 </h1>
 
 <p class="hero-subtitle">
-
 8 лет в Free Fire.
 Основной стиль — агрессивная игра,
 механика, тактика и быстрые решения.
-
 </p>
-
 
 <div class="hero-tags">
 
-<div class="hero-tag">
-1V1
-</div>
-
-<div class="hero-tag">
-СНС
-</div>
-
-<div class="hero-tag">
-КВ
-</div>
-
-<div class="hero-tag">
-SPEEDSTER
-</div>
-
-<div class="hero-tag">
-2 FINGERS
-</div>
+<div class="hero-tag">1V1</div>
+<div class="hero-tag">СНС</div>
+<div class="hero-tag">КВ</div>
+<div class="hero-tag">SPEEDSTER</div>
+<div class="hero-tag">2 FINGERS</div>
 
 </div>
-
 
 <div class="hero-buttons">
 
@@ -1478,36 +1044,30 @@ SPEEDSTER
 </div>
 
 
-
 <div class="profile-card reveal" id="profile">
 
 <div class="profile-card-top">
 
 <span>FREE FIRE PROFILE</span>
-
 <span>2VN</span>
 
 </div>
 
-
 <div class="profile-image">
 
 <img
-src="profile.jpg"
+src="profile.jpeg"
 alt="Профиль 2V Психошка"
 onclick="openPhoto(this.src)"
 >
 
 </div>
 
-
 <div class="profile-info">
 
 <div class="profile-name">
 
-<h2>
-2V Психошка
-</h2>
+<h2>2V Психошка</h2>
 
 <div class="level">
 LV.70
@@ -1515,36 +1075,25 @@ LV.70
 
 </div>
 
-
 <div class="profile-line">
 FREE FIRE • 2VN • @erko_zr
 </div>
 
-
 <div class="profile-mini">
 
 <div>
-
 <strong>70</strong>
-
 <span>Уровень</span>
-
 </div>
 
 <div>
-
 <strong>9 928</strong>
-
 <span>Лайков</span>
-
 </div>
 
 <div>
-
 <strong>2VN</strong>
-
 <span>Гильдия</span>
-
 </div>
 
 </div>
@@ -1553,23 +1102,15 @@ FREE FIRE • 2VN • @erko_zr
 
 </div>
 
-
 </div>
-
 </div>
 
 </section>
 
 
-
-<!-- =====================================================
-     PLAYER STATS
-===================================================== -->
-
 <section id="stats">
 
 <div class="container">
-
 
 <div class="section-head reveal">
 
@@ -1577,153 +1118,96 @@ FREE FIRE • 2VN • @erko_zr
 01 / PLAYER DATA
 </div>
 
-<h2>
-Статистика
-</h2>
+<h2>Статистика</h2>
 
-<p>
-Реальные показатели из игрового профиля
-</p>
+<p>Реальные показатели из игрового профиля</p>
 
 </div>
-
 
 <div class="stat-grid">
 
-
 <div class="stat-card reveal">
-
 <strong>54.55%</strong>
-
 <span>Win Rate</span>
-
 <small>66 побед / 121 матч</small>
-
 </div>
 
-
 <div class="stat-card reveal">
-
 <strong>370</strong>
-
 <span>Kills</span>
-
 <small>Battle Royale</small>
-
 </div>
 
-
 <div class="stat-card reveal">
-
 <strong>1.64</strong>
-
 <span>KDA</span>
-
 <small>Battle Royale</small>
-
 </div>
 
-
 <div class="stat-card reveal">
-
 <strong>1 488</strong>
-
 <span>Avg. Damage</span>
-
 <small>За матч</small>
-
 </div>
 
-
 <div class="stat-card reveal">
-
 <strong>37.03%</strong>
-
 <span>Headshots</span>
-
 <small>BO</small>
-
 </div>
-
 
 <div class="stat-card reveal">
-
 <strong>470</strong>
-
 <span>Knockdowns</span>
-
 <small>BO</small>
-
 </div>
 
 </div>
-
 
 <div class="stat-main">
-
 
 <div class="screen-card reveal">
 
 <img
-src="stats-bo.jpg"
+src="stats-bo.jpeg"
 alt="Статистика Battle Royale"
 onclick="openPhoto(this.src)"
 >
 
 <div class="screen-label">
-
 <strong>PLAYER STATISTICS</strong>
-
 <span>CLICK TO OPEN</span>
-
 </div>
 
 </div>
-
 
 <div class="style-card reveal">
 
-<h3>
-ADDITIONAL DATA
-</h3>
-
+<h3>ADDITIONAL DATA</h3>
 
 <div class="expertise">
 
 <div class="expertise-item">
-
 <strong>7.7</strong>
-
 <span>Рейтинг</span>
-
 </div>
 
 <div class="expertise-item">
-
 <strong>137</strong>
-
 <span>Выстрелов в голову</span>
-
 </div>
 
 <div class="expertise-item">
-
 <strong>149</strong>
-
 <span>Поднято</span>
-
 </div>
 
 <div class="expertise-item">
-
 <strong>121</strong>
-
 <span>Всего матчей</span>
-
 </div>
 
 </div>
-
 
 <p style="
 margin-top:25px;
@@ -1740,7 +1224,6 @@ line-height:1.7;
 
 </div>
 
-
 </div>
 
 </div>
@@ -1748,15 +1231,9 @@ line-height:1.7;
 </section>
 
 
-
-<!-- =====================================================
-     PLAYSTYLE
-===================================================== -->
-
 <section id="style">
 
 <div class="container">
-
 
 <div class="section-head reveal">
 
@@ -1764,28 +1241,17 @@ line-height:1.7;
 02 / PLAYSTYLE
 </div>
 
-<h2>
-Мой стиль
-</h2>
+<h2>Мой стиль</h2>
 
-<p>
-Игровые роли и экспертиза
-</p>
+<p>Игровые роли и экспертиза</p>
 
 </div>
 
-
 <div class="style-grid">
-
-
-<!-- BO -->
 
 <div class="style-card reveal">
 
-<h3>
-BATTLE ROYALE
-</h3>
-
+<h3>BATTLE ROYALE</h3>
 
 <div class="main-role">
 
@@ -1800,28 +1266,19 @@ margin-bottom:7px;
 ОСНОВНАЯ РОЛЬ
 </span>
 
-<strong>
-ШТУРМОВИК
-</strong>
+<strong>ШТУРМОВИК</strong>
 
 </div>
 
-<span>
-65%
-</span>
+<span>65%</span>
 
 </div>
-
 
 <div class="progress">
-
 <div style="width:65%;"></div>
-
 </div>
 
-
 <div class="expertise">
-
 
 <div class="expertise-item">
 <strong>Штурмовик</strong>
@@ -1853,15 +1310,9 @@ margin-bottom:7px;
 </div>
 
 
-
-<!-- CS -->
-
 <div class="style-card reveal">
 
-<h3>
-CLASH SQUAD
-</h3>
-
+<h3>CLASH SQUAD</h3>
 
 <div class="main-role">
 
@@ -1876,28 +1327,19 @@ margin-bottom:7px;
 ОСНОВНАЯ РОЛЬ
 </span>
 
-<strong>
-ШТУРМОВИК
-</strong>
+<strong>ШТУРМОВИК</strong>
 
 </div>
 
-<span>
-58%
-</span>
+<span>58%</span>
 
 </div>
-
 
 <div class="progress">
-
 <div style="width:58%;"></div>
-
 </div>
 
-
 <div class="expertise">
-
 
 <div class="expertise-item">
 <strong>Штурмовик</strong>
@@ -1928,7 +1370,6 @@ margin-bottom:7px;
 
 </div>
 
-
 </div>
 
 
@@ -1942,36 +1383,29 @@ gap:20px;
 <div class="screen-card reveal">
 
 <img
-src="roles-bo.jpg"
+src="roles-bo.jpeg"
 alt="Роли Battle Royale"
 onclick="openPhoto(this.src)"
 >
 
 <div class="screen-label">
-
 <strong>BO ROLE</strong>
-
 <span>65%</span>
-
 </div>
 
 </div>
-
 
 <div class="screen-card reveal">
 
 <img
-src="roles-cs.jpg"
+src="roles-cs.jpeg"
 alt="Роли Clash Squad"
 onclick="openPhoto(this.src)"
 >
 
 <div class="screen-label">
-
 <strong>CS ROLE</strong>
-
 <span>58%</span>
-
 </div>
 
 </div>
@@ -1983,15 +1417,9 @@ onclick="openPhoto(this.src)"
 </section>
 
 
-
-<!-- =====================================================
-     WEAPONS
-===================================================== -->
-
 <section id="weapons">
 
 <div class="container">
-
 
 <div class="section-head reveal">
 
@@ -1999,31 +1427,19 @@ onclick="openPhoto(this.src)"
 03 / WEAPONS
 </div>
 
-<h2>
-Оружие
-</h2>
+<h2>Оружие</h2>
 
-<p>
-Реальные показатели оружия из профиля
-</p>
+<p>Реальные показатели оружия из профиля</p>
 
 </div>
 
-
 <div class="weapon-layout">
-
-
-<!-- BR -->
 
 <div class="weapon-card reveal">
 
-<h3>
-BATTLE <span>ROYALE</span>
-</h3>
-
+<h3>BATTLE <span>ROYALE</span></h3>
 
 <div class="weapon-list">
-
 
 <div class="weapon">
 <strong>Desert Eagle</strong>
@@ -2066,18 +1482,11 @@ BATTLE <span>ROYALE</span>
 </div>
 
 
-
-<!-- CS -->
-
 <div class="weapon-card reveal">
 
-<h3>
-CLASH <span>SQUAD</span>
-</h3>
-
+<h3>CLASH <span>SQUAD</span></h3>
 
 <div class="weapon-list">
-
 
 <div class="weapon">
 <strong>MP5</strong>
@@ -2129,44 +1538,35 @@ grid-template-columns:1fr 1fr;
 gap:20px;
 ">
 
-
 <div class="screen-card reveal">
 
 <img
-src="weapons-br.jpg"
+src="weapons-br.jpeg"
 alt="Оружие Battle Royale"
 onclick="openPhoto(this.src)"
 >
 
 <div class="screen-label">
-
 <strong>BR WEAPONS</strong>
-
 <span>OPEN</span>
-
 </div>
 
 </div>
-
 
 <div class="screen-card reveal">
 
 <img
-src="weapons-cs.jpg"
+src="weapons-cs.jpeg"
 alt="Оружие Clash Squad"
 onclick="openPhoto(this.src)"
 >
 
 <div class="screen-label">
-
 <strong>CS WEAPONS</strong>
-
 <span>OPEN</span>
-
 </div>
 
 </div>
-
 
 </div>
 
@@ -2175,15 +1575,9 @@ onclick="openPhoto(this.src)"
 </section>
 
 
-
-<!-- =====================================================
-     RANKED
-===================================================== -->
-
 <section id="ranked">
 
 <div class="container">
-
 
 <div class="section-head reveal">
 
@@ -2191,41 +1585,27 @@ onclick="openPhoto(this.src)"
 04 / RANKED
 </div>
 
-<h2>
-Рейтинги
-</h2>
+<h2>Рейтинги</h2>
 
-<p>
-Текущие игровые ранги
-</p>
+<p>Текущие игровые ранги</p>
 
 </div>
 
-
 <div class="rank-grid">
-
 
 <div class="rank-card reveal">
 
 <div>
 
-<span>
-CLASH SQUAD
-</span>
+<span>CLASH SQUAD</span>
 
-<h3>
-S53
-</h3>
+<h3>S53</h3>
 
-<p>
-КБ-рейтинг
-</p>
+<p>КБ-рейтинг</p>
 
 </div>
 
-<div style="
-font-size:40px;
-">
+<div style="font-size:40px;">
 ⚔️
 </div>
 
@@ -2236,23 +1616,15 @@ font-size:40px;
 
 <div>
 
-<span>
-BATTLE ROYALE
-</span>
+<span>BATTLE ROYALE</span>
 
-<h3>
-S38
-</h3>
+<h3>S38</h3>
 
-<p>
-БО-рейтинг
-</p>
+<p>БО-рейтинг</p>
 
 </div>
 
-<div style="
-font-size:40px;
-">
+<div style="font-size:40px;">
 🏆
 </div>
 
@@ -2271,7 +1643,7 @@ margin-right:auto;
 <div class="screen-card reveal">
 
 <img
-src="ranked.jpg"
+src="ranked.jpeg"
 alt="Рейтинги Free Fire"
 onclick="openPhoto(this.src)"
 >
@@ -2279,7 +1651,6 @@ onclick="openPhoto(this.src)"
 <div class="screen-label">
 
 <strong>RANKED PROFILE</strong>
-
 <span>S53 / S38</span>
 
 </div>
@@ -2293,15 +1664,9 @@ onclick="openPhoto(this.src)"
 </section>
 
 
-
-<!-- =====================================================
-     RECENT MATCH
-===================================================== -->
-
 <section>
 
 <div class="container">
-
 
 <div class="section-head reveal">
 
@@ -2309,19 +1674,13 @@ onclick="openPhoto(this.src)"
 05 / RECENT MATCH
 </div>
 
-<h2>
-Последняя игра
-</h2>
+<h2>Последняя игра</h2>
 
-<p>
-Один из последних результатов
-</p>
+<p>Один из последних результатов</p>
 
 </div>
 
-
 <div class="match-grid">
-
 
 <div class="match-highlight reveal">
 
@@ -2329,39 +1688,27 @@ onclick="openPhoto(this.src)"
 VICTORY
 </div>
 
-<h3>
-6 KILLS
-</h3>
+<h3>6 KILLS</h3>
 
 <div class="match-date">
 24.09.2026 • 21:38
 </div>
 
-
 <div class="match-stats">
 
 <div class="match-stat">
-
 <strong>6</strong>
-
 <span>KILLS</span>
-
 </div>
 
 <div class="match-stat">
-
 <strong>1436</strong>
-
 <span>DAMAGE</span>
-
 </div>
 
 <div class="match-stat">
-
 <strong>6</strong>
-
 <span>HEADSHOTS</span>
-
 </div>
 
 </div>
@@ -2372,7 +1719,7 @@ VICTORY
 <div class="screen-card reveal">
 
 <img
-src="matches.jpg"
+src="matches.jpeg"
 alt="История матчей"
 onclick="openPhoto(this.src)"
 >
@@ -2380,13 +1727,11 @@ onclick="openPhoto(this.src)"
 <div class="screen-label">
 
 <strong>MATCH HISTORY</strong>
-
 <span>24.09.2026</span>
 
 </div>
 
 </div>
-
 
 </div>
 
@@ -2395,15 +1740,9 @@ onclick="openPhoto(this.src)"
 </section>
 
 
-
-<!-- =====================================================
-     PRIME
-===================================================== -->
-
 <section id="prime">
 
 <div class="container">
-
 
 <div class="section-head reveal">
 
@@ -2411,19 +1750,13 @@ onclick="openPhoto(this.src)"
 06 / PRIME
 </div>
 
-<h2>
-Prime
-</h2>
+<h2>Prime</h2>
 
-<p>
-Текущий уровень Prime
-</p>
+<p>Текущий уровень Prime</p>
 
 </div>
 
-
 <div class="prime">
-
 
 <div class="prime-card reveal">
 
@@ -2431,14 +1764,10 @@ Prime
 CURRENT LEVEL
 </div>
 
-<h3>
-7
-</h3>
+<h3>7</h3>
 
 <div class="prime-progress">
-
 <div></div>
-
 </div>
 
 <div class="prime-number">
@@ -2451,21 +1780,17 @@ CURRENT LEVEL
 <div class="screen-card reveal">
 
 <img
-src="prime.jpg"
+src="prime.jpeg"
 alt="Prime 7"
 onclick="openPhoto(this.src)"
 >
 
 <div class="screen-label">
-
 <strong>PRIME 07</strong>
-
 <span>OPEN</span>
-
 </div>
 
 </div>
-
 
 </div>
 
@@ -2474,15 +1799,9 @@ onclick="openPhoto(this.src)"
 </section>
 
 
-
-<!-- =====================================================
-     GUILD
-===================================================== -->
-
 <section id="guild">
 
 <div class="container">
-
 
 <div class="section-head reveal">
 
@@ -2490,63 +1809,40 @@ onclick="openPhoto(this.src)"
 07 / CURRENT GUILD
 </div>
 
-<h2>
-2VN
-</h2>
+<h2>2VN</h2>
 
-<p>
-Гильдия, в которой я сейчас состою
-</p>
+<p>Гильдия, в которой я сейчас состою</p>
 
 </div>
 
-
 <div class="guild">
-
 
 <div class="guild-info reveal">
 
-<h3>
-2VN
-</h3>
+<h3>2VN</h3>
 
-<p>
-CURRENT GUILD
-</p>
-
+<p>CURRENT GUILD</p>
 
 <div class="guild-stats">
 
 <div class="guild-stat">
-
 <strong>5</strong>
-
 <span>Уровень гильдии</span>
-
 </div>
 
 <div class="guild-stat">
-
 <strong>38 / 55</strong>
-
 <span>Участники</span>
-
 </div>
 
 <div class="guild-stat">
-
 <strong>СНГ</strong>
-
 <span>Регион</span>
-
 </div>
 
 <div class="guild-stat">
-
 <strong>183 261</strong>
-
 <span>Очки гильдии</span>
-
 </div>
 
 </div>
@@ -2557,7 +1853,7 @@ CURRENT GUILD
 <div class="screen-card reveal">
 
 <img
-src="guild.jpg"
+src="guild.jpeg"
 alt="Гильдия 2VN"
 onclick="openPhoto(this.src)"
 >
@@ -2565,13 +1861,11 @@ onclick="openPhoto(this.src)"
 <div class="screen-label">
 
 <strong>2VN GUILD</strong>
-
 <span>LEVEL 5</span>
 
 </div>
 
 </div>
-
 
 </div>
 
@@ -2580,15 +1874,9 @@ onclick="openPhoto(this.src)"
 </section>
 
 
-
-<!-- =====================================================
-     SOCIAL
-===================================================== -->
-
 <section>
 
 <div class="container">
-
 
 <div class="section-head reveal">
 
@@ -2596,19 +1884,13 @@ onclick="openPhoto(this.src)"
 08 / SOCIAL
 </div>
 
-<h2>
-Связь
-</h2>
+<h2>Связь</h2>
 
-<p>
-Мои контакты и социальные сети
-</p>
+<p>Мои контакты и социальные сети</p>
 
 </div>
 
-
 <div class="social">
-
 
 <a
 href="https://www.tiktok.com/@erko_zr"
@@ -2617,13 +1899,8 @@ rel="noopener noreferrer"
 class="social-card reveal"
 >
 
-<strong>
-🎵 TikTok
-</strong>
-
-<span>
-@erko_zr
-</span>
+<strong>🎵 TikTok</strong>
+<span>@erko_zr</span>
 
 </a>
 
@@ -2635,13 +1912,8 @@ rel="noopener noreferrer"
 class="social-card reveal"
 >
 
-<strong>
-💬 WhatsApp
-</strong>
-
-<span>
-Написать мне
-</span>
+<strong>💬 WhatsApp</strong>
+<span>Написать мне</span>
 
 </a>
 
@@ -2651,16 +1923,10 @@ href="tel:+77053536952"
 class="social-card reveal"
 >
 
-<strong>
-📞 Телефон
-</strong>
-
-<span>
-Позвонить
-</span>
+<strong>📞 Телефон</strong>
+<span>Позвонить</span>
 
 </a>
-
 
 </div>
 
@@ -2668,11 +1934,6 @@ class="social-card reveal"
 
 </section>
 
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
 
 <footer>
 
@@ -2686,11 +1947,6 @@ class="social-card reveal"
 
 </footer>
 
-
-
-<!-- =====================================================
-     IMAGE VIEWER
-===================================================== -->
 
 <div
 id="viewer"
@@ -2715,12 +1971,7 @@ onclick="event.stopPropagation()"
 </div>
 
 
-
 <script>
-
-/* =====================================================
-   IMAGE VIEWER
-===================================================== */
 
 function openPhoto(src){
 
@@ -2761,10 +2012,6 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   SCROLL ANIMATION
-===================================================== */
-
 const elements =
     document.querySelectorAll(".reveal");
 
@@ -2803,7 +2050,6 @@ elements.forEach(
 );
 
 </script>
-
 
 </body>
 </html>
