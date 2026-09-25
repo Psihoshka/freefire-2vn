@@ -9,10 +9,6 @@
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
     margin:0;
     padding:0;
@@ -24,67 +20,46 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 
-    color:#111;
+    color:#f2f2f2;
 
-    background:#111;
+    background:#080808;
 
     min-height:100vh;
 
     overflow-x:hidden;
 }
 
-:root{
-    --yellow:#ffd400;
-    --red:#e52b2b;
-    --black:#111;
-}
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
 body::before{
     content:"";
 
     position:fixed;
+
     inset:0;
 
-    z-index:-2;
+    z-index:-3;
 
-    background-image:var(--bg-image);
-
-    background-size:cover;
     background-position:center;
-    background-attachment:fixed;
+    background-size:cover;
+    background-repeat:no-repeat;
 }
 
 body::after{
     content:"";
 
     position:fixed;
+
     inset:0;
 
-    z-index:-1;
+    z-index:-2;
 
-    background:rgba(0,0,0,.12);
-
-    pointer-events:none;
+    background:rgba(0,0,0,.45);
 }
 
-/* =========================================================
-   CONTAINER
-========================================================= */
-
-.container{
-    width:min(1080px,calc(100% - 32px));
-    margin:auto;
-}
-
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
+===================================================== */
 
 header{
     position:sticky;
@@ -93,620 +68,446 @@ header{
 
     z-index:1000;
 
-    background:rgba(255,255,255,.94);
+    background:rgba(8,8,8,.94);
+
+    border-bottom:1px solid rgba(255,193,7,.35);
 
     backdrop-filter:blur(12px);
-
-    border-bottom:3px solid #111;
 }
 
 .nav{
-    height:66px;
+    width:min(1080px,92%);
+
+    min-height:68px;
+
+    margin:auto;
 
     display:flex;
 
-    align-items:center;
-
     justify-content:space-between;
+
+    align-items:center;
 }
 
 .logo{
-    text-decoration:none;
-
-    color:#111;
-
-    font-size:21px;
-
-    font-weight:1000;
+    font-size:22px;
+    font-weight:900;
 }
 
 .logo span{
-    color:var(--red);
+    color:#ff3030;
 }
 
 .nav-links{
     display:flex;
-
-    gap:7px;
+    gap:8px;
 }
 
 .nav-links a{
+    color:#eee;
+
     text-decoration:none;
 
-    color:#111;
+    font-size:14px;
+
+    font-weight:800;
 
     padding:10px 14px;
 
+    border-radius:9px;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    background:#ffc400;
+
+    color:#080808;
+}
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main{
+    width:min(1080px,92%);
+
+    margin:auto;
+
+    padding:42px 0 120px;
+}
+
+section{
+    margin-bottom:34px;
+}
+
+.title{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:15px;
+
+    font-size:24px;
+
+    font-weight:900;
+}
+
+.title::before{
+    content:"";
+
+    width:5px;
+    height:27px;
+
+    border-radius:5px;
+
+    background:linear-gradient(
+        #ff3030 0 50%,
+        #ffc400 50%
+    );
+}
+
+/* =====================================================
+   GUILD BANNER — SMALL
+===================================================== */
+
+.guild-banner{
+
+    width:min(700px,100%);
+
+    height:230px;
+
+    margin:0 auto;
+
+    background:#050505;
+
+    border:1px solid rgba(255,193,7,.45);
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.4);
+}
+
+.guild-banner img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:contain;
+}
+
+/* =====================================================
+   GUILD INFO
+===================================================== */
+
+.guild-info{
+
+    margin-top:15px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:9px;
+}
+
+.info{
+    background:rgba(8,8,8,.88);
+
+    border:1px solid #292929;
+
     border-radius:10px;
 
+    padding:13px;
+
+    text-align:center;
+}
+
+.info b{
+    display:block;
+
+    color:#ffc400;
+
+    font-size:18px;
+
+    margin-bottom:4px;
+}
+
+.info small{
+    color:#999;
+
+    font-size:11px;
+}
+
+/* =====================================================
+   GUILD SCREENSHOT — SMALL
+===================================================== */
+
+.guild-screen-card{
+
+    width:min(620px,100%);
+
+    margin:0 auto;
+
+    background:#050505;
+
+    border:1px solid rgba(255,193,7,.35);
+
+    border-radius:14px;
+
+    overflow:hidden;
+}
+
+.guild-screen-card img{
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    max-height:400px;
+
+    object-fit:contain;
+}
+
+/* =====================================================
+   PLAYERS
+===================================================== */
+
+.players{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+}
+
+.player{
+
+    background:rgba(8,8,8,.9);
+
+    border:1px solid #292929;
+
+    border-radius:11px;
+
+    padding:14px;
+}
+
+.player-name{
+
+    font-weight:900;
+
+    margin-bottom:5px;
+}
+
+.player-name span{
+    color:#ff3030;
+}
+
+.player p{
+
+    color:#999;
+
     font-size:12px;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.guild-link{
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    padding:11px 17px;
+
+    border-radius:9px;
+
+    text-decoration:none;
+
+    background:#ffc400;
+
+    color:#080808;
 
     font-weight:900;
 
     transition:.2s;
 }
 
-.nav-links a:hover{
-    background:#111;
-    color:#fff;
+.guild-link:hover{
+
+    background:#ff3030;
+
+    color:white;
 }
 
-.nav-links .active{
-    background:#111;
-    color:#fff;
+/* =====================================================
+   FIXED SOCIAL
+===================================================== */
 
-    border-bottom:3px solid var(--yellow);
-}
+.social-bar{
 
-/* =========================================================
-   HERO
-========================================================= */
+    position:fixed;
 
-.hero{
-    padding:38px 0 22px;
-}
+    left:50%;
 
-.guild-hero{
-    width:min(900px,100%);
+    bottom:15px;
 
-    margin:auto;
+    transform:translateX(-50%);
 
-    display:grid;
-
-    grid-template-columns:43% 57%;
-
-    background:rgba(255,255,255,.95);
-
-    border:3px solid #111;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.25);
-}
-
-/* GUILD SCREENSHOT — COMPACT */
-
-.guild-screen{
-    background:#080808;
+    z-index:2000;
 
     display:flex;
 
-    align-items:center;
+    gap:8px;
 
-    justify-content:center;
-
-    padding:10px;
-}
-
-.guild-screen img{
-    display:block;
-
-    width:100%;
-    height:auto;
-
-    max-height:390px;
-
-    object-fit:contain;
-
-    border-radius:8px;
-}
-
-.guild-intro{
-    padding:32px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-}
-
-.guild-kicker{
     width:max-content;
 
-    padding:6px 9px;
-
-    background:var(--yellow);
-
-    border-radius:6px;
-
-    font-size:9px;
-
-    font-weight:1000;
-
-    letter-spacing:1px;
+    max-width:calc(100% - 24px);
 }
 
-.guild-intro h1{
-    margin-top:12px;
+.social-button{
 
-    font-size:53px;
-
-    line-height:.9;
-
-    font-weight:1000;
-}
-
-.guild-intro h1 span{
-    color:var(--red);
-}
-
-.guild-intro p{
-    margin-top:13px;
-
-    color:#666;
-
-    font-size:12px;
-
-    line-height:1.6;
-}
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section{
-    padding:22px 0;
-}
-
-.section-title{
-    margin-bottom:13px;
-
-    font-size:29px;
-
-    font-weight:1000;
-}
-
-.section-title span{
-    color:var(--red);
-}
-
-/* =========================================================
-   BANNER — COMPACT
-========================================================= */
-
-.banner-card{
-    width:min(650px,100%);
-
-    margin:auto;
-
-    background:#080808;
-
-    border:2px solid var(--yellow);
-
-    border-radius:17px;
-
-    padding:7px;
-
-    box-shadow:
-        0 18px 40px rgba(0,0,0,.3);
-}
-
-.banner-card img{
-    display:block;
-
-    width:100%;
-    height:auto;
-
-    border-radius:11px;
-
-    object-fit:contain;
-}
-
-/* =========================================================
-   GUILD STATS ACCORDION
-========================================================= */
-
-.guild-toggle{
-    width:min(900px,100%);
-
-    margin:auto;
+    min-width:145px;
 
     display:flex;
 
     align-items:center;
 
-    justify-content:space-between;
+    justify-content:center;
 
-    padding:15px 18px;
+    padding:12px 17px;
 
-    border:0;
-
-    border-left:5px solid var(--yellow);
-
-    border-radius:12px;
-
-    background:#111;
-
-    color:#fff;
-
-    cursor:pointer;
-
-    font-family:inherit;
-
-    font-size:13px;
-
-    font-weight:1000;
-}
-
-.guild-toggle-symbol{
-    color:var(--yellow);
-
-    font-size:20px;
-}
-
-.guild-accordion{
-    width:min(900px,100%);
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-rows:0fr;
-
-    transition:grid-template-rows .4s ease;
-}
-
-.guild-accordion.open{
-    grid-template-rows:1fr;
-}
-
-.guild-accordion-inner{
-    overflow:hidden;
-
-    padding-top:0;
-
-    transition:.4s;
-}
-
-.guild-accordion.open .guild-accordion-inner{
-    padding-top:9px;
-}
-
-.info-grid{
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:7px;
-}
-
-.info{
-    background:rgba(255,255,255,.95);
-
-    border-radius:11px;
-
-    border-top:4px solid var(--red);
-
-    padding:13px;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.12);
-}
-
-.info small{
-    display:block;
-
-    color:#777;
-
-    font-size:8px;
-
-    font-weight:900;
-
-    text-transform:uppercase;
-}
-
-.info strong{
-    display:block;
-
-    margin-top:4px;
-
-    font-size:17px;
-
-    font-weight:1000;
-}
-
-/* =========================================================
-   PLAYERS
-========================================================= */
-
-.players-card{
-    width:min(900px,100%);
-
-    margin:auto;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:15px;
-
-    background:#111;
-
-    color:#fff;
-
-    border-radius:16px;
-
-    padding:18px;
-
-    border:2px solid #222;
-
-    border-left:5px solid var(--red);
-}
-
-.player-avatar{
-    width:62px;
-    height:62px;
-
-    flex:0 0 62px;
-
-    border-radius:12px;
-
-    overflow:hidden;
-
-    border:2px solid var(--yellow);
-}
-
-.player-avatar img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-}
-
-.player-info{
-    flex:1;
-}
-
-.player-info small{
-    color:var(--yellow);
-
-    font-size:8px;
-
-    font-weight:1000;
-
-    text-transform:uppercase;
-}
-
-.player-info strong{
-    display:block;
-
-    margin-top:4px;
-
-    font-size:17px;
-}
-
-.player-info span{
-    display:block;
-
-    margin-top:3px;
-
-    color:#aaa;
-
-    font-size:9px;
-}
-
-/* =========================================================
-   GUILD WEBSITE
-========================================================= */
-
-.guild-link-card{
-    width:min(900px,100%);
-
-    margin:auto;
-
-    background:rgba(255,255,255,.95);
-
-    border-radius:16px;
-
-    padding:20px;
-
-    border:2px solid #111;
-
-    text-align:center;
-}
-
-.guild-link-card p{
-    color:#666;
-
-    font-size:11px;
-
-    line-height:1.5;
-}
-
-.future-button{
-    display:inline-block;
-
-    margin-top:12px;
-
-    padding:10px 16px;
-
-    background:#111;
-
-    color:#fff;
+    border-radius:10px;
 
     text-decoration:none;
 
-    border-radius:9px;
+    font-weight:900;
 
-    font-size:10px;
+    font-size:13px;
 
-    font-weight:1000;
-
-    border-bottom:3px solid var(--yellow);
+    box-shadow:0 7px 25px rgba(0,0,0,.55);
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+.social-tiktok{
 
-footer{
-    padding:30px 0 40px;
-
-    text-align:center;
+    background:#111;
 
     color:#fff;
 }
 
-footer strong{
-    color:var(--yellow);
+.social-whatsapp{
+
+    background:#ffc400;
+
+    color:#080808;
 }
 
-footer p{
-    margin-top:5px;
-
-    color:#aaa;
-
-    font-size:9px;
-}
-
-/* =========================================================
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
-@media(max-width:800px){
-
-    .container{
-        width:min(100% - 18px,600px);
-    }
+@media(max-width:700px){
 
     .nav{
-        height:58px;
+        min-height:60px;
     }
 
     .logo{
-        font-size:17px;
-    }
-
-    .nav-links{
-        gap:2px;
+        font-size:18px;
     }
 
     .nav-links a{
         padding:8px;
-
-        font-size:9px;
+        font-size:11px;
     }
 
-    .hero{
-        padding:20px 0 13px;
+    main{
+        width:94%;
+
+        padding-top:25px;
+
+        padding-bottom:105px;
     }
 
-    /*
-       Фото гильдии + текст рядом,
-       а не гигантское изображение.
-    */
+    /* SMALL BANNER */
 
-    .guild-hero{
-        grid-template-columns:43% 57%;
+    .guild-banner{
 
-        border-radius:16px;
+        width:100%;
+
+        height:145px;
+
+        border-radius:11px;
     }
 
-    .guild-screen{
-        padding:6px;
-    }
+    .guild-info{
 
-    .guild-screen img{
-        max-height:none;
-    }
-
-    .guild-intro{
-        padding:17px 12px;
-    }
-
-    .guild-intro h1{
-        font-size:30px;
-    }
-
-    .guild-intro p{
-        font-size:8px;
-
-        line-height:1.45;
-    }
-
-    .section{
-        padding:16px 0;
-    }
-
-    .section-title{
-        font-size:23px;
-    }
-
-    /*
-       Баннер ещё меньше
-    */
-
-    .banner-card{
-        width:min(520px,100%);
-
-        padding:5px;
-
-        border-radius:13px;
-    }
-
-    .banner-card img{
-        border-radius:9px;
-    }
-
-    .info-grid{
         grid-template-columns:repeat(2,1fr);
 
-        gap:5px;
+        gap:7px;
     }
 
     .info{
+
         padding:10px;
     }
 
-    .info strong{
-        font-size:14px;
+    .info b{
+
+        font-size:16px;
     }
 
-    .players-card{
-        padding:12px;
+    .guild-screen-card{
+
+        width:100%;
     }
 
-    .player-avatar{
-        width:50px;
-        height:50px;
+    .guild-screen-card img{
 
-        flex-basis:50px;
+        max-height:300px;
     }
 
-    .player-info strong{
-        font-size:14px;
+    .players{
+
+        grid-template-columns:1fr 1fr;
     }
 
-    .player-info span{
-        font-size:8px;
+    .social-button{
+
+        min-width:135px;
+
+        padding:11px 12px;
+
+        font-size:12px;
+    }
+}
+
+@media(max-width:380px){
+
+    .guild-banner{
+        height:125px;
     }
 
+    .players{
+        grid-template-columns:1fr;
+    }
+
+    .social-button{
+
+        min-width:125px;
+
+        font-size:11px;
+    }
 }
 
 </style>
@@ -716,13 +517,13 @@ footer p{
 
 <header>
 
-<div class="container nav">
+<nav class="nav">
 
-    <a href="index.html" class="logo">
+    <div class="logo">
         <span>2V</span> Психошка
-    </a>
+    </div>
 
-    <nav class="nav-links">
+    <div class="nav-links">
 
         <a href="about.html">
             Обо мне
@@ -736,26 +537,92 @@ footer p{
             2VN
         </a>
 
-    </nav>
+    </div>
 
-</div>
+</nav>
 
 </header>
 
 
 <main>
 
+
 <!-- =====================================================
-     GUILD HERO
+     BANNER
 ===================================================== -->
 
-<section class="hero">
+<section>
 
-<div class="container">
+    <div class="guild-banner">
 
-<div class="guild-hero">
+        <img
+            src="guild-banner.jpg"
+            alt="2VN The Best Guild"
+        >
 
-    <div class="guild-screen">
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INFO
+===================================================== -->
+
+<section>
+
+    <h2 class="title">
+        2VN — Гильдия
+    </h2>
+
+    <div class="guild-info">
+
+        <div class="info">
+            <b>2VN</b>
+            <small>Название</small>
+        </div>
+
+        <div class="info">
+            <b>5</b>
+            <small>Уровень</small>
+        </div>
+
+        <div class="info">
+            <b>38 / 55</b>
+            <small>Игроки</small>
+        </div>
+
+        <div class="info">
+            <b>СНГ</b>
+            <small>Регион</small>
+        </div>
+
+        <div class="info">
+            <b>3084263454</b>
+            <small>ID гильдии</small>
+        </div>
+
+        <div class="info">
+            <b>2V Психошка</b>
+            <small>Игрок</small>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GUILD SCREENSHOT
+===================================================== -->
+
+<section>
+
+    <h2 class="title">
+        Профиль гильдии
+    </h2>
+
+    <div class="guild-screen-card">
 
         <img
             src="guild.jpg"
@@ -764,136 +631,6 @@ footer p{
 
     </div>
 
-
-    <div class="guild-intro">
-
-        <div class="guild-kicker">
-            GUILD 2VN
-        </div>
-
-        <h1>
-            <span>2V</span>N
-        </h1>
-
-        <p>
-            Гильдия СНГ в Free Fire.
-            Уровень 5. 38 из 55 участников.
-        </p>
-
-    </div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     BANNER
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-<h2 class="section-title">
-    <span>2VN</span> — The Best Guild
-</h2>
-
-<div class="banner-card">
-
-    <img
-        src="guild-banner.jpg"
-        alt="2VN — The Best Guild in the World"
-    >
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     STATS
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-<button
-    class="guild-toggle"
-    id="guildToggle"
->
-
-    <span id="guildToggleText">
-        Информация о гильдии
-    </span>
-
-    <span
-        class="guild-toggle-symbol"
-        id="guildToggleSymbol"
-    >
-        ＋
-    </span>
-
-</button>
-
-
-<div
-    class="guild-accordion"
-    id="guildAccordion"
->
-
-<div class="guild-accordion-inner">
-
-    <div class="info-grid">
-
-        <div class="info">
-
-            <small>Уровень</small>
-
-            <strong>5</strong>
-
-        </div>
-
-
-        <div class="info">
-
-            <small>Участники</small>
-
-            <strong>38 / 55</strong>
-
-        </div>
-
-
-        <div class="info">
-
-            <small>Регион</small>
-
-            <strong>СНГ</strong>
-
-        </div>
-
-
-        <div class="info">
-
-            <small>Guild ID</small>
-
-            <strong>3084263454</strong>
-
-        </div>
-
-    </div>
-
-</div>
-
-</div>
-
-</div>
-
 </section>
 
 
@@ -901,105 +638,102 @@ footer p{
      PLAYERS
 ===================================================== -->
 
-<section class="section">
+<section>
 
-<div class="container">
+    <h2 class="title">
+        Игроки
+    </h2>
 
-<h2 class="section-title">
-    <span>Игроки</span>
-</h2>
+    <div class="players">
 
+        <div class="player">
 
-<div class="players-card">
+            <div class="player-name">
+                <span>2V</span> Психошка
+            </div>
 
-    <div class="player-avatar">
+            <p>
+                Основной игрок
+            </p>
 
-        <img
-            src="my-photo.jpg"
-            alt="2V Психошка"
-        >
+        </div>
+
+        <div class="player">
+
+            <div class="player-name">
+                2VN
+            </div>
+
+            <p>
+                Участник гильдии
+            </p>
+
+        </div>
+
+        <div class="player">
+
+            <div class="player-name">
+                2VN
+            </div>
+
+            <p>
+                Участник гильдии
+            </p>
+
+        </div>
 
     </div>
-
-
-    <div class="player-info">
-
-        <small>Участник 2VN</small>
-
-        <strong>
-            2V Психошка
-        </strong>
-
-        <span>
-            Основной профиль игрока
-        </span>
-
-    </div>
-
-</div>
-
-</div>
 
 </section>
 
 
 <!-- =====================================================
-     GUILD SITE
+     BACK
 ===================================================== -->
 
-<section class="section">
-
-<div class="container">
-
-<h2 class="section-title">
-    Сайт <span>2VN</span>
-</h2>
-
-
-<div class="guild-link-card">
-
-    <p>
-        Отдельный сайт гильдии будет добавлен сюда.
-    </p>
-
-    <!-- Когда появится настоящий URL,
-         просто замени # на него -->
+<section>
 
     <a
-        href="#"
-        class="future-button"
-        onclick="return false;"
+        class="guild-link"
+        href="index.html"
     >
-        Сайт гильдии →
+        ← Вернуться в профиль
     </a>
 
-</div>
-
-</div>
-
 </section>
+
 
 </main>
 
 
-<footer>
+<!-- =====================================================
+     FIXED SOCIAL
+===================================================== -->
 
-    <strong>2VN</strong>
+<div class="social-bar">
 
-    <p>
-        Guild · СНГ · Free Fire
-    </p>
+    <a
+        class="social-button social-tiktok"
+        href="https://www.tiktok.com/@erko_zr"
+        target="_blank"
+    >
+        🎵 TikTok @erko_zr
+    </a>
 
-</footer>
+    <a
+        class="social-button social-whatsapp"
+        href="https://wa.me/77053536952"
+        target="_blank"
+    >
+        💬 WhatsApp
+    </a>
+
+</div>
 
 
 <script>
 
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-const pcBackgrounds = [
+const desktopBackgrounds = [
     "bg-pc-1.jpg",
     "bg-pc-2.jpg",
     "bg-pc-3.jpg",
@@ -1015,56 +749,18 @@ const mobileBackgrounds = [
     "bg-mobile-5.jpg"
 ];
 
-const backgrounds =
-    window.innerWidth <= 800
-        ? mobileBackgrounds
-        : pcBackgrounds;
+const list =
+    window.innerWidth <= 700
+    ? mobileBackgrounds
+    : desktopBackgrounds;
 
-const selected =
-    backgrounds[
-        Math.floor(
-            Math.random() * backgrounds.length
-        )
-    ];
+const image =
+    list[Math.floor(Math.random()*list.length)];
 
-document.documentElement.style.setProperty(
-    "--bg-image",
-    `url("${selected}")`
+document.body.style.setProperty(
+    "background-image",
+    `url("${image}")`
 );
-
-
-/* =========================================================
-   GUILD STATS
-========================================================= */
-
-const guildToggle =
-    document.getElementById("guildToggle");
-
-const guildAccordion =
-    document.getElementById("guildAccordion");
-
-const guildToggleText =
-    document.getElementById("guildToggleText");
-
-const guildToggleSymbol =
-    document.getElementById("guildToggleSymbol");
-
-guildToggle.addEventListener("click",function(){
-
-    const opened =
-        guildAccordion.classList.toggle("open");
-
-    guildToggleText.textContent =
-        opened
-            ? "Скрыть информацию"
-            : "Информация о гильдии";
-
-    guildToggleSymbol.textContent =
-        opened
-            ? "−"
-            : "＋";
-
-});
 
 </script>
 
