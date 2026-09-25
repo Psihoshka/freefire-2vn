@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>2VN — Гильдия</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
+    color:#fff;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(0,0,0,.94),
+            rgba(25,5,2,.82),
+            rgba(0,0,0,.96)
+        ),
+        url("guild-bg.jpg") center/cover;
+}
+
+nav{
+    height:70px;
+
+    display:flex;
+    align-items:center;
+
+    background:rgba(0,0,0,.82);
+
+    border-bottom:1px solid rgba(255,200,0,.12);
+}
+
+.nav{
+    width:min(1200px,92%);
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:21px;
+    font-weight:900;
+}
+
+.logo::after{
+    content:".";
+    color:#ffd000;
+}
+
+.links{
+    display:flex;
+    gap:25px;
+}
+
+.links a{
+    color:#888;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.5px;
+}
+
+.links a:hover,
+.links .active{
+    color:#ffd000;
+}
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+}
+
+.hero{
+    min-height:80vh;
+
+    display:grid;
+
+    grid-template-columns:1.2fr .8fr;
+
+    align-items:center;
+
+    gap:60px;
+
+    padding:100px 0;
+}
+
+.hero-text small{
+    color:#ffd000;
+    letter-spacing:4px;
+    font-size:10px;
+}
+
+.hero-text h1{
+    margin-top:10px;
+
+    font-size:clamp(80px,13vw,170px);
+
+    line-height:.8;
+
+    letter-spacing:-8px;
+}
+
+.hero-text p{
+    max-width:600px;
+
+    margin-top:30px;
+
+    color:#888;
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+.guild-image{
+    position:relative;
+
+    aspect-ratio:1/1;
+
+    overflow:hidden;
+
+    border-radius:50%;
+
+    border:2px solid #ffd000;
+
+    box-shadow:
+        0 0 60px rgba(255,190,0,.15);
+}
+
+.guild-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.guild-image::after{
+    content:"";
+
+    position:absolute;
+    inset:15px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:50%;
+}
+
+.stats{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:8px;
+
+    margin-top:30px;
+}
+
+.stat{
+    padding:25px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.stat b{
+    display:block;
+
+    font-size:27px;
+
+    color:#ffd000;
+}
+
+.stat span{
+    display:block;
+
+    margin-top:7px;
+
+    color:#666;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.section{
+    padding:90px 0;
+}
+
+.title small{
+    color:#ffd000;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+}
+
+.title h2{
+    margin-top:8px;
+
+    font-size:55px;
+
+    text-transform:uppercase;
+}
+
+.future{
+    margin-top:30px;
+
+    padding:45px;
+
+    background:#0a0a0a;
+
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.future h3{
+    font-size:25px;
+}
+
+.future p{
+    margin-top:10px;
+
+    max-width:650px;
+
+    color:#777;
+
+    line-height:1.7;
+
+    font-size:12px;
+}
+
+@media(max-width:800px){
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .guild-image{
+        width:75%;
+        margin:auto;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="nav">
+
+<a href="index.html" class="logo">
+    Психошка
+</a>
+
+<div class="links">
+
+<a href="about.html">
+    Обо мне
+</a>
+
+<a href="index.html">
+    Профиль
+</a>
+
+<a href="guild.html" class="active">
+    2VN
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+
+<main>
+
+<section class="hero">
+
+<div class="hero-text">
+
+<small>ГИЛЬДИЯ</small>
+
+<h1>2VN</h1>
+
+<p>
+    Гильдия, частью которой является Психошка.
+    Здесь позже можно будет собрать полноценную
+    страницу состава, игроков, фотографий,
+    достижений и истории команды.
+</p>
+
+
+<div class="stats">
+
+<div class="stat">
+    <b>5</b>
+    <span>Уровень</span>
+</div>
+
+<div class="stat">
+    <b>38/55</b>
+    <span>Участники</span>
+</div>
+
+<div class="stat">
+    <b>34 187</b>
+    <span>Активность</span>
+</div>
+
+<div class="stat">
+    <b>СНГ</b>
+    <span>Регион</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="guild-image">
+
+<img src="guild.jpg" alt="2VN">
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="container">
+
+<div class="title">
+
+<small>2VN</small>
+
+<h2>Гильдия</h2>
+
+</div>
+
+
+<div class="future">
+
+<h3>
+    Здесь будет развиваться 2VN
+</h3>
+
+<p>
+    В дальнейшем сюда можно добавить игроков,
+    фотографии состава, ники участников,
+    достижения гильдии, историю КВ и другие
+    материалы. Сейчас это отдельная страница,
+    посвящённая именно гильдии.
+</p>
+
+<p style="margin-top:15px">
+    ID гильдии: <strong style="color:#fff">
+    3084263454
+    </strong>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+</body>
+</html>
