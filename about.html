@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Психошка — Обо мне</title>
+<title>Обо мне | Психошка</title>
 
 <style>
 *{
@@ -13,283 +13,412 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#050505;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#080808;
     color:#fff;
+    line-height:1.6;
 }
 
-a{
-    color:inherit;
-    text-decoration:none;
-}
+/* =========================
+   HEADER
+========================= */
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-2;
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(0,0,0,.94),
-            rgba(35,5,3,.8),
-            rgba(0,0,0,.96)
-        ),
-        url("freefire-bg.jpg") center/cover;
-}
-
-nav{
-    height:70px;
-
-    border-bottom:1px solid rgba(255,200,0,.12);
-
-    background:rgba(0,0,0,.8);
-
+header{
+    height:76px;
+    background:rgba(5,5,5,.96);
+    border-bottom:1px solid rgba(255,205,0,.18);
     display:flex;
     align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .nav{
-    width:min(1200px,92%);
+    width:min(1180px, calc(100% - 40px));
     margin:auto;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
 .logo{
-    font-size:21px;
+    font-size:24px;
     font-weight:900;
+    letter-spacing:-1px;
 }
 
-.logo::after{
-    content:".";
+.logo span{
     color:#ffd000;
 }
 
-.links{
+nav{
     display:flex;
-    gap:25px;
+    gap:32px;
 }
 
-.links a{
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:1.5px;
+nav a{
     color:#888;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1px;
+    transition:.2s;
 }
 
-.links a:hover,
-.links .active{
+nav a:hover,
+nav a.active{
     color:#ffd000;
 }
 
-.container{
-    width:min(1100px,92%);
-    margin:auto;
-}
+/* =========================
+   HERO
+========================= */
 
-.hero{
-    min-height:75vh;
-
-    display:grid;
-    grid-template-columns:.9fr 1.1fr;
-
+.about-hero{
+    min-height:430px;
+    display:flex;
     align-items:center;
-
-    gap:70px;
-
-    padding:100px 0;
-}
-
-.photo{
     position:relative;
-
-    height:520px;
-
     overflow:hidden;
-
-    border:1px solid rgba(255,208,0,.35);
+    background:
+        linear-gradient(90deg,
+            #080808 0%,
+            rgba(8,8,8,.94) 42%,
+            rgba(8,8,8,.72) 100%
+        ),
+        url("freefire-bg.jpg") center/cover no-repeat;
 }
 
-.photo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.photo::after{
+.about-hero::after{
     content:"";
     position:absolute;
     inset:0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.55),
-            transparent 55%
-        );
+    background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.15),
+        #080808 100%
+    );
+    pointer-events:none;
 }
 
-.text small{
+.about-wrap{
+    width:min(1180px, calc(100% - 40px));
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+/* =========================
+   MAIN HERO CONTENT
+========================= */
+
+.about-main{
+    display:grid;
+    grid-template-columns:380px 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+/* PHOTO */
+
+.photo-box{
+    width:100%;
+    height:440px;
+    overflow:hidden;
+    border:1px solid rgba(255,208,0,.45);
+    background:#111;
+    position:relative;
+}
+
+.photo-box::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        180deg,
+        transparent 65%,
+        rgba(0,0,0,.45)
+    );
+}
+
+.photo-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+}
+
+/* TEXT */
+
+.eyebrow{
     color:#ffd000;
+    font-size:12px;
+    font-weight:800;
     letter-spacing:4px;
-    font-size:10px;
+    margin-bottom:14px;
 }
 
-.text h1{
-    margin-top:12px;
-
-    font-size:clamp(55px,8vw,100px);
-
-    line-height:.85;
-
-    letter-spacing:-5px;
+h1{
+    font-size:clamp(52px, 7vw, 88px);
+    line-height:.9;
+    letter-spacing:-4px;
+    margin-bottom:25px;
 }
 
-.text h1 span{
+h1 span{
     color:#ffd000;
 }
 
-.text p{
-    max-width:600px;
-
-    margin-top:30px;
-
-    color:#999;
-
-    font-size:15px;
-
-    line-height:1.9;
+.description{
+    color:#aaa;
+    font-size:16px;
+    max-width:620px;
+    margin-bottom:30px;
 }
+
+.description strong{
+    color:#fff;
+}
+
+/* =========================
+   FACTS
+========================= */
 
 .facts{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:8px;
-
-    margin-top:30px;
+    grid-template-columns:repeat(4, 1fr);
+    gap:10px;
 }
 
 .fact{
-    padding:20px;
-
+    min-height:86px;
+    border:1px solid rgba(255,255,255,.10);
     background:rgba(255,255,255,.035);
-
-    border:1px solid rgba(255,255,255,.07);
+    padding:16px;
 }
 
-.fact b{
+.fact strong{
     display:block;
     color:#ffd000;
     font-size:20px;
+    margin-bottom:3px;
 }
 
 .fact span{
-    display:block;
-
-    margin-top:6px;
-
     color:#777;
-
-    font-size:9px;
+    font-size:10px;
     text-transform:uppercase;
     letter-spacing:1px;
 }
 
-.specialization{
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    width:min(1180px, calc(100% - 40px));
+    margin:0 auto;
     padding:80px 0;
 }
 
-.title small{
-    color:#ffd000;
-    letter-spacing:4px;
-    font-size:10px;
+.section-title{
+    margin-bottom:35px;
 }
 
-.title h2{
-    margin-top:8px;
-
-    font-size:55px;
-
-    text-transform:uppercase;
-}
-
-.spec-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-
-    gap:8px;
-
-    margin-top:30px;
-}
-
-.spec{
-    padding:30px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    background:#0b0b0b;
-}
-
-.spec strong{
+.section-title small{
     display:block;
-
-    font-size:27px;
+    color:#ffd000;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:4px;
+    margin-bottom:8px;
 }
 
-.spec p{
-    margin-top:8px;
+.section-title h2{
+    font-size:38px;
+    line-height:1;
+}
 
+/* =========================
+   SPECIALIZATION
+========================= */
+
+.specialization{
+    display:grid;
+    grid-template-columns:1.3fr .7fr;
+    gap:18px;
+}
+
+.spec-card{
+    border:1px solid rgba(255,255,255,.10);
+    background:#0d0d0d;
+    padding:32px;
+}
+
+.spec-card h3{
+    color:#ffd000;
+    font-size:25px;
+    margin-bottom:12px;
+}
+
+.spec-card p{
+    color:#999;
+    font-size:15px;
+}
+
+.spec-list{
+    display:grid;
+    gap:10px;
+}
+
+.spec-item{
+    padding:18px;
+    background:#111;
+    border-left:2px solid #ffd000;
+}
+
+.spec-item strong{
+    display:block;
+    font-size:16px;
+}
+
+.spec-item span{
     color:#777;
-
     font-size:12px;
-
-    line-height:1.6;
 }
+
+/* =========================
+   CONTACTS
+========================= */
 
 .contacts{
-    padding:70px 0;
-}
-
-.contact-grid{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-
-    margin-top:25px;
+    margin-top:70px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
 }
 
 .contact{
-    padding:15px 22px;
-
-    border:1px solid rgba(255,255,255,.1);
-
-    background:#0a0a0a;
-
-    font-size:11px;
+    text-decoration:none;
+    color:#fff;
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.09);
+    padding:24px;
+    transition:.2s;
 }
 
 .contact:hover{
     border-color:#ffd000;
+    transform:translateY(-3px);
 }
 
-@media(max-width:800px){
+.contact small{
+    color:#777;
+    display:block;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-bottom:5px;
+}
 
-    .hero{
+.contact strong{
+    font-size:17px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:25px;
+    text-align:center;
+    color:#555;
+    font-size:12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+    .about-main{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .photo-box{
+        width:min(420px,100%);
+        height:420px;
+        margin:auto;
+    }
+
+    .about-hero{
+        padding:60px 0;
+    }
+
+    .facts{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .specialization{
         grid-template-columns:1fr;
     }
 
-    .photo{
-        order:-1;
-        height:450px;
+    .contacts{
+        grid-template-columns:1fr;
     }
 
-    .spec-grid{
-        grid-template-columns:1fr;
+    nav{
+        gap:14px;
+    }
+
+    nav a{
+        font-size:11px;
+    }
+}
+
+@media(max-width:500px){
+
+    .nav{
+        width:calc(100% - 24px);
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    nav{
+        gap:10px;
+    }
+
+    .about-wrap,
+    .content{
+        width:calc(100% - 24px);
+    }
+
+    h1{
+        font-size:54px;
+        letter-spacing:-3px;
+    }
+
+    .photo-box{
+        height:360px;
+    }
+
+    .facts{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .fact{
+        padding:13px;
     }
 }
 </style>
@@ -297,214 +426,184 @@ nav{
 
 <body>
 
-<nav>
+<header>
+    <div class="nav">
 
-<div class="nav">
+        <div class="logo">
+            Психошка<span>.</span>
+        </div>
 
-<a href="index.html" class="logo">
-    Психошка
-</a>
+        <nav>
+            <a href="about.html" class="active">ОБО МНЕ</a>
+            <a href="index.html">ПРОФИЛЬ</a>
+            <a href="guild.html">2VN</a>
+        </nav>
 
-<div class="links">
-
-<a href="about.html" class="active">
-    Обо мне
-</a>
-
-<a href="index.html">
-    Профиль
-</a>
-
-<a href="guild.html">
-    2VN
-</a>
-
-</div>
-
-</div>
-
-</nav>
+    </div>
+</header>
 
 
-<main>
+<section class="about-hero">
 
-<section class="hero">
+    <div class="about-wrap">
 
-<div class="photo">
+        <div class="about-main">
 
-<img src="my-photo.jpg" alt="Психошка">
+            <div class="photo-box">
+                <img src="my-photo.jpg" alt="Психошка">
+            </div>
 
-</div>
+            <div>
 
+                <div class="eyebrow">ОБО МНЕ</div>
 
-<div class="text">
+                <h1>
+                    ПСИХО<span>ШКА</span>
+                </h1>
 
-<small>ОБО МНЕ</small>
+                <p class="description">
+                    Я игрок <strong>Free Fire из Казахстана</strong>.
+                    В игре уже около <strong>8 лет</strong>.
+                    За это время основной упор сделал на механику,
+                    скорость реакции и игру один на один.
+                </p>
 
-<h1>
-    ПСИХО<span>ШКА</span>
-</h1>
+                <p class="description">
+                    Мой основной профиль — <strong>1v1 и КВ</strong>.
+                    Играю на двух пальцах и стараюсь брать преимущество
+                    именно за счёт скорости, реакции и механики.
+                </p>
 
-<p>
-    Я игрок Free Fire из Казахстана.
-    В игре уже около 8 лет. За это время
-    основной упор сделал на механику,
-    скорость и игру один на один.
-</p>
+                <div class="facts">
 
-<p>
-    Мой основной профиль — <strong style="color:#fff">
-    1v1 и КВ</strong>.
-    Играю на двух пальцах и стараюсь
-    брать преимущество именно за счёт
-    скорости реакции и механики.
-</p>
+                    <div class="fact">
+                        <strong>8 лет</strong>
+                        <span>В Free Fire</span>
+                    </div>
 
+                    <div class="fact">
+                        <strong>1v1</strong>
+                        <span>Основная специализация</span>
+                    </div>
 
-<div class="facts">
+                    <div class="fact">
+                        <strong>КВ</strong>
+                        <span>Командные игры</span>
+                    </div>
 
-<div class="fact">
-    <b>8 лет</b>
-    <span>В Free Fire</span>
-</div>
+                    <div class="fact">
+                        <strong>2 пальца</strong>
+                        <span>Стиль управления</span>
+                    </div>
 
-<div class="fact">
-    <b>1v1</b>
-    <span>Основная специализация</span>
-</div>
+                </div>
 
-<div class="fact">
-    <b>КВ</b>
-    <span>Командные игры</span>
-</div>
+            </div>
 
-<div class="fact">
-    <b>2 пальца</b>
-    <span>Стиль управления</span>
-</div>
+        </div>
 
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<section class="specialization">
+<main class="content">
 
-<div class="container">
-
-<div class="title">
-
-<small>МОЙ СТИЛЬ</small>
-
-<h2>Специализация</h2>
-
-</div>
+    <div class="section-title">
+        <small>ИГРОВОЙ СТИЛЬ</small>
+        <h2>Моя специализация</h2>
+    </div>
 
 
-<div class="spec-grid">
+    <div class="specialization">
 
-<div class="spec">
-<strong>1v1</strong>
+        <div class="spec-card">
 
-<p>
-Основное направление.
-Игра один на один,
-где решают реакция,
-движение и механика.
-</p>
-</div>
+            <h3>Скорость + механика</h3>
 
+            <p>
+                Основной стиль игры — быстрые действия,
+                хорошая реакция и контроль ситуации.
+                Больше всего внимания уделяю дуэлям
+                и игре один на один.
+            </p>
 
-<div class="spec">
-<strong>КВ</strong>
+            <br>
 
-<p>
-Командные противостояния,
-тактика и постоянное
-давление на соперника.
-</p>
-</div>
+            <p>
+                В КВ предпочитаю играть активно,
+                искать возможность для первого преимущества
+                и использовать механику персонажа и оружия
+                максимально эффективно.
+            </p>
 
-
-<div class="spec">
-<strong>СКОРОСТЬ</strong>
-
-<p>
-Быстрые действия,
-перемещение и реакция —
-важная часть моего стиля.
-</p>
-</div>
+        </div>
 
 
-<div class="spec">
-<strong>МЕХАНИКА</strong>
+        <div class="spec-list">
 
-<p>
-Стараюсь выигрывать
-не количеством кнопок,
-а контролем и техникой.
-</p>
-</div>
+            <div class="spec-item">
+                <strong>1v1</strong>
+                <span>Основное направление</span>
+            </div>
 
-</div>
+            <div class="spec-item">
+                <strong>КВ</strong>
+                <span>Командные сражения</span>
+            </div>
 
-</div>
+            <div class="spec-item">
+                <strong>Скорость</strong>
+                <span>Быстрая реакция и движение</span>
+            </div>
 
-</section>
+            <div class="spec-item">
+                <strong>Механика</strong>
+                <span>Контроль и точность</span>
+            </div>
 
+        </div>
 
-<section class="contacts">
-
-<div class="container">
-
-<div class="title">
-
-<small>СВЯЗЬ</small>
-
-<h2>Контакты</h2>
-
-</div>
+    </div>
 
 
-<div class="contact-grid">
+    <div class="contacts">
 
-<a
-href="https://www.tiktok.com/@erko_zr"
-target="_blank"
-class="contact"
->
-🎵 TikTok · @erko_zr
-</a>
+        <a class="contact"
+           href="https://www.tiktok.com/@erko_zr"
+           target="_blank">
 
-<a
-href="https://wa.me/77053536952"
-target="_blank"
-class="contact"
->
-WhatsApp
-</a>
+            <small>TIKTOK</small>
+            <strong>@erko_zr</strong>
 
-<a
-href="tel:+77053536952"
-class="contact"
->
-Позвонить
-</a>
+        </a>
 
-<div class="contact">
-🇰🇿 Казахстан
-</div>
 
-</div>
+        <a class="contact"
+           href="https://wa.me/77053536952"
+           target="_blank">
 
-</div>
+            <small>WHATSAPP</small>
+            <strong>Написать мне</strong>
 
-</section>
+        </a>
+
+
+        <div class="contact">
+
+            <small>СТРАНА</small>
+            <strong>Казахстан 🇰🇿</strong>
+
+        </div>
+
+    </div>
 
 </main>
+
+
+<footer>
+    © Психошка — Free Fire Player
+</footer>
 
 </body>
 </html>
