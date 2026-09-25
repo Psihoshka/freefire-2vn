@@ -4,13 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>2V Психошка | Free Fire Player</title>
+<title>Психошка — Free Fire Profile</title>
 
 <style>
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
     margin:0;
     padding:0;
@@ -22,8 +18,8 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#07060b;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
     color:#fff;
     overflow-x:hidden;
 }
@@ -33,181 +29,146 @@ a{
     text-decoration:none;
 }
 
-img{
-    max-width:100%;
-    display:block;
-}
-
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
 body::before{
     content:"";
     position:fixed;
     inset:0;
-    z-index:-5;
+    z-index:-3;
 
     background:
         linear-gradient(
-            135deg,
-            rgba(5,4,10,.94),
-            rgba(18,5,28,.82),
-            rgba(5,5,9,.96)
+            120deg,
+            rgba(0,0,0,.93),
+            rgba(10,8,4,.82),
+            rgba(0,0,0,.95)
         ),
-        url("freefire-bg.jpg") center/cover no-repeat;
+        url("freefire-bg.jpg") center/cover;
 
-    filter:saturate(1.25);
+    filter:saturate(.9);
 }
 
 body::after{
     content:"";
     position:fixed;
     inset:0;
-    z-index:-4;
+    z-index:-2;
     pointer-events:none;
 
     background:
         radial-gradient(
-            circle at 20% 15%,
-            rgba(156,54,255,.18),
-            transparent 30%
+            circle at 75% 20%,
+            rgba(255,30,20,.14),
+            transparent 28%
         ),
         radial-gradient(
-            circle at 85% 70%,
-            rgba(255,50,100,.13),
+            circle at 20% 70%,
+            rgba(255,190,0,.08),
             transparent 30%
         );
 }
 
+/* NAV */
 
-/* =========================================================
-   SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar{
-    width:8px;
-}
-
-::-webkit-scrollbar-track{
-    background:#07060b;
-}
-
-::-webkit-scrollbar-thumb{
-    background:linear-gradient(#a33cff,#ff315f);
-    border-radius:20px;
-}
-
-
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-.nav{
+nav{
     position:fixed;
     top:0;
     left:0;
     right:0;
-    z-index:1000;
+    z-index:100;
 
-    display:flex;
-    justify-content:center;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(15px);
 
-    padding:15px 20px;
-
-    background:rgba(5,4,9,.72);
-    backdrop-filter:blur(18px);
-
-    border-bottom:1px solid rgba(255,255,255,.07);
+    border-bottom:1px solid rgba(255,190,0,.12);
 }
 
 .nav-inner{
-    width:min(1180px,100%);
+    width:min(1200px,92%);
+    margin:auto;
+
+    height:70px;
 
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 }
 
 .logo{
+    font-size:21px;
     font-weight:900;
-    letter-spacing:2px;
-    font-size:18px;
+    letter-spacing:1px;
 }
 
-.logo span{
-    color:#b94cff;
+.logo::after{
+    content:".";
+    color:#ffd000;
 }
 
 .nav-links{
     display:flex;
-    gap:25px;
+    gap:28px;
 }
 
 .nav-links a{
-    font-size:12px;
+    font-size:11px;
     text-transform:uppercase;
-    letter-spacing:1px;
-    opacity:.7;
+    letter-spacing:1.5px;
+    color:#aaa;
     transition:.25s;
 }
 
-.nav-links a:hover{
-    opacity:1;
-    color:#c75aff;
+.nav-links a:hover,
+.nav-links .active{
+    color:#ffd000;
 }
 
-@media(max-width:760px){
+@media(max-width:650px){
     .nav-links{
-        display:none;
+        gap:12px;
+    }
+
+    .nav-links a{
+        font-size:9px;
     }
 }
 
-
-/* =========================================================
-   GENERAL
-========================================================= */
+/* GENERAL */
 
 .container{
-    width:min(1180px,92%);
+    width:min(1200px,92%);
     margin:auto;
 }
 
 section{
-    padding:110px 0;
+    padding:100px 0;
 }
 
-.section-title{
-    margin-bottom:45px;
+.title{
+    margin-bottom:35px;
 }
 
-.section-title .small{
-    color:#bd50ff;
-    font-size:11px;
+.title small{
+    color:#ffd000;
     letter-spacing:4px;
-    text-transform:uppercase;
-    margin-bottom:10px;
+    font-size:10px;
 }
 
-.section-title h2{
+.title h2{
+    margin-top:8px;
     font-size:clamp(35px,6vw,70px);
-    line-height:.95;
     text-transform:uppercase;
     letter-spacing:-3px;
 }
 
-.section-title p{
-    margin-top:15px;
+.title p{
     max-width:650px;
-    color:#a9a5b0;
+    margin-top:15px;
+    color:#858585;
     line-height:1.7;
+    font-size:13px;
 }
 
-
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 
 .hero{
     min-height:100vh;
@@ -219,770 +180,203 @@ section{
 
 .hero-grid{
     display:grid;
-    grid-template-columns:1.15fr .85fr;
-    gap:50px;
+    grid-template-columns:1fr .75fr;
+    gap:70px;
     align-items:center;
 }
 
-.hero-label{
-    display:inline-flex;
-    gap:10px;
-    align-items:center;
-
-    padding:8px 13px;
-
-    border:1px solid rgba(190,74,255,.35);
-    background:rgba(115,30,170,.12);
-
-    color:#d17aff;
-
+.hero-kicker{
+    color:#ffd000;
     font-size:11px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-
+    letter-spacing:4px;
     margin-bottom:25px;
 }
 
-.hero-label::before{
-    content:"";
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    background:#d457ff;
-    box-shadow:0 0 12px #d457ff;
-}
-
 .hero h1{
-    font-size:clamp(60px,10vw,135px);
+    font-size:clamp(65px,10vw,130px);
     line-height:.78;
     letter-spacing:-7px;
-    text-transform:uppercase;
-
-    margin-left:-5px;
 }
 
 .hero h1 span{
     display:block;
+
     color:transparent;
 
-    -webkit-text-stroke:1px rgba(255,255,255,.55);
-
-    background:
-        linear-gradient(
-            120deg,
-            #fff,
-            #b73eff,
-            #ff3d75
-        );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    -webkit-text-stroke:0;
+    -webkit-text-stroke:1px #ffd000;
 }
 
-.hero-sub{
-    margin-top:30px;
-    max-width:620px;
+.hero-description{
+    margin-top:35px;
+    max-width:570px;
 
-    color:#b8b4c0;
-    font-size:16px;
+    color:#aaa;
     line-height:1.8;
+    font-size:15px;
 }
 
-.hero-sub strong{
+.hero-description strong{
     color:#fff;
 }
 
 .hero-buttons{
-    margin-top:30px;
     display:flex;
-    gap:12px;
+    gap:10px;
+    margin-top:30px;
     flex-wrap:wrap;
 }
 
 .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
     padding:13px 20px;
 
-    border:1px solid rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.15);
 
-    font-size:12px;
+    font-size:10px;
     font-weight:bold;
-    letter-spacing:1px;
     text-transform:uppercase;
+    letter-spacing:1.5px;
 
     transition:.3s;
-}
-
-.btn-primary{
-    background:linear-gradient(135deg,#a735ff,#e63d73);
-    box-shadow:0 12px 35px rgba(173,50,255,.2);
-}
-
-.btn-secondary{
-    background:rgba(255,255,255,.04);
 }
 
 .btn:hover{
     transform:translateY(-3px);
 }
 
-
-/* =========================================================
-   COMPACT PROFILE
-========================================================= */
-
-.profile-wrap{
-    position:relative;
-    display:flex;
-    justify-content:center;
+.btn-yellow{
+    color:#050505;
+    background:#ffd000;
 }
 
-.profile-card{
+.btn-dark{
+    background:rgba(255,255,255,.04);
+}
+
+/* MY PHOTO */
+
+.hero-photo{
     position:relative;
 
-    width:350px;
-    max-width:100%;
+    width:100%;
+    max-width:420px;
+    margin:auto;
 
     aspect-ratio:4/5;
 
     overflow:hidden;
 
-    clip-path:polygon(
-        7% 0,
-        100% 0,
-        100% 91%,
-        91% 100%,
-        0 100%,
-        0 8%
-    );
+    border:1px solid rgba(255,208,0,.35);
 
-    border:1px solid rgba(255,255,255,.15);
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent 30%,
-            rgba(0,0,0,.92)
-        ),
-        url("profile.jpg") center/cover no-repeat;
-
-    box-shadow:
-        0 35px 100px rgba(0,0,0,.7),
-        0 0 60px rgba(164,46,255,.16);
+    background:#111;
 }
 
-.profile-card::before{
+.hero-photo::before{
     content:"";
+
     position:absolute;
     inset:0;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(177,49,255,.15),
-            transparent 40%,
-            rgba(255,46,91,.16)
-        );
-
-    mix-blend-mode:screen;
-}
-
-.profile-card::after{
-    content:"";
-    position:absolute;
-    inset:0;
+    z-index:1;
 
     background:
         linear-gradient(
             to top,
-            rgba(4,3,8,.98),
-            rgba(4,3,8,.1) 60%
+            rgba(0,0,0,.85),
+            transparent 55%
         );
 }
 
-.profile-info{
+.hero-photo::after{
+    content:"";
+
+    position:absolute;
+    inset:10px;
+
+    border:1px solid rgba(255,208,0,.22);
+
+    pointer-events:none;
+}
+
+.hero-photo img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center;
+
+    filter:saturate(.85) contrast(1.08);
+}
+
+.photo-caption{
     position:absolute;
     z-index:2;
+
     left:25px;
-    right:25px;
-    bottom:24px;
+    bottom:25px;
 }
 
-.profile-info .tag{
-    color:#ca63ff;
-    font-size:10px;
-    letter-spacing:2px;
+.photo-caption small{
+    color:#ffd000;
+    letter-spacing:3px;
+    font-size:9px;
 }
 
-.profile-info h3{
-    font-size:31px;
-    margin:7px 0;
+.photo-caption h3{
+    margin-top:5px;
+    font-size:28px;
 }
 
-.profile-info p{
-    font-size:12px;
-    color:#aaa5b3;
-    line-height:1.6;
-}
+/* PROFILE PREVIEW */
 
-.profile-meta{
-    margin-top:15px;
-
+.profile-preview{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:7px;
-}
-
-.meta{
-    padding:9px;
-
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.07);
-
-    backdrop-filter:blur(10px);
-}
-
-.meta b{
-    display:block;
-    font-size:15px;
-}
-
-.meta span{
-    display:block;
-    margin-top:3px;
-
-    color:#85818d;
-    font-size:8px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-.stats{
-    position:relative;
-}
-
-.stats-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-}
-
-.stat{
-    min-height:145px;
-
-    position:relative;
-    overflow:hidden;
+    grid-template-columns:.8fr 1.2fr;
+    gap:30px;
 
     padding:25px;
 
-    background:rgba(255,255,255,.035);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    transition:.3s;
+    background:rgba(10,10,10,.75);
+    border:1px solid rgba(255,208,0,.15);
 }
 
-.stat:hover{
-    transform:translateY(-5px);
-
-    border-color:rgba(193,67,255,.45);
-
-    background:rgba(120,30,160,.08);
-}
-
-.stat::after{
-    content:"";
-    position:absolute;
-
-    width:100px;
-    height:100px;
-
-    right:-45px;
-    bottom:-50px;
-
-    border-radius:50%;
-
-    background:rgba(189,61,255,.12);
-
-    filter:blur(15px);
-}
-
-.stat-value{
-    font-size:42px;
-    font-weight:900;
-    letter-spacing:-2px;
-}
-
-.stat-label{
-    margin-top:7px;
-
-    color:#898591;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:1.5px;
-}
-
-.stat-desc{
-    margin-top:18px;
-
-    color:#aaa6b0;
-    font-size:11px;
-}
-
-@media(max-width:850px){
-    .stats-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-
-@media(max-width:500px){
-    .stats-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .stat{
-        padding:18px;
-        min-height:125px;
-    }
-
-    .stat-value{
-        font-size:31px;
-    }
-}
-
-
-/* =========================================================
-   PLAYER DNA
-========================================================= */
-
-.player-dna{
-    display:grid;
-    grid-template-columns:.9fr 1.1fr;
-    gap:30px;
-}
-
-.dna-card{
-    position:relative;
+.profile-image{
     min-height:420px;
 
-    padding:35px;
-
-    overflow:hidden;
-
-    border:1px solid rgba(255,255,255,.09);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(132,42,190,.16),
-            rgba(255,255,255,.025)
-        );
-}
-
-.dna-card::before{
-    content:"65%";
-
-    position:absolute;
-    right:-20px;
-    bottom:-35px;
-
-    font-size:180px;
-    font-weight:900;
-
-    color:rgba(255,255,255,.025);
-}
-
-.role-name{
-    color:#c75cff;
-
-    font-size:12px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-}
-
-.role-big{
-    font-size:85px;
-    font-weight:900;
-    line-height:.9;
-
-    margin:15px 0;
-}
-
-.role-title{
-    font-size:28px;
-    font-weight:bold;
-}
-
-.role-text{
-    margin-top:18px;
-    color:#aaa6b1;
-    line-height:1.7;
-    font-size:13px;
-}
-
-.role-list{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-
-.role-row{
-    display:grid;
-    grid-template-columns:100px 1fr 45px;
-    align-items:center;
-    gap:12px;
-}
-
-.role-row span{
-    font-size:11px;
-    color:#aaa6b0;
-}
-
-.bar{
-    height:4px;
-    background:rgba(255,255,255,.08);
-}
-
-.bar i{
-    display:block;
-    height:100%;
-
-    background:linear-gradient(90deg,#a735ff,#ff4775);
-}
-
-.role-row b{
-    font-size:11px;
-    text-align:right;
-}
-
-@media(max-width:850px){
-    .player-dna{
-        grid-template-columns:1fr;
-    }
-}
-
-
-/* =========================================================
-   WEAPONS
-========================================================= */
-
-.weapon-layout{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-.weapon-panel{
-    position:relative;
-    min-height:460px;
-
-    overflow:hidden;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    background:#09080d;
-}
-
-.weapon-panel::before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(6,5,9,.95),
-            rgba(6,5,9,.45),
-            rgba(6,5,9,.9)
-        ),
-        url("weapons-br.jpg") center/cover;
-
-    opacity:.55;
-
-    filter:saturate(.8);
-}
-
-.weapon-panel.cs::before{
-    background:
-        linear-gradient(
-            90deg,
-            rgba(6,5,9,.95),
-            rgba(6,5,9,.45),
-            rgba(6,5,9,.9)
-        ),
-        url("weapons-cs.jpg") center/cover;
-}
-
-.weapon-content{
-    position:relative;
-    z-index:2;
-
-    padding:30px;
-}
-
-.weapon-type{
-    font-size:10px;
-    color:#bd5cff;
-    letter-spacing:3px;
-}
-
-.weapon-panel h3{
-    font-size:42px;
-    margin-top:7px;
-}
-
-.weapon-panel > .weapon-content > p{
-    color:#8e8996;
-    font-size:12px;
-    margin-top:8px;
-}
-
-.weapon-list{
-    margin-top:30px;
-    display:flex;
-    flex-direction:column;
-}
-
-.weapon{
-    display:grid;
-    grid-template-columns:1fr 70px 70px;
-    align-items:center;
-
-    padding:13px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.07);
-}
-
-.weapon-name{
-    font-weight:bold;
-    font-size:13px;
-}
-
-.weapon-info{
-    color:#88838e;
-    font-size:9px;
-    text-align:right;
-}
-
-.weapon-kills{
-    color:#fff;
-    font-weight:bold;
-    font-size:13px;
-    text-align:right;
-}
-
-@media(max-width:760px){
-    .weapon-layout{
-        grid-template-columns:1fr;
-    }
-}
-
-
-/* =========================================================
-   MATCH HISTORY
-========================================================= */
-
-.matches{
-    position:relative;
-}
-
-.match-layout{
-    display:grid;
-    grid-template-columns:1fr .7fr;
-    gap:25px;
-}
-
-.match-list{
-    display:flex;
-    flex-direction:column;
-    gap:7px;
-}
-
-.match{
-    display:grid;
-    grid-template-columns:50px 1fr 70px;
-
-    align-items:center;
-
-    padding:17px 20px;
-
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,255,255,.06);
-
-    transition:.25s;
-}
-
-.match:hover{
-    background:rgba(156,47,208,.08);
-}
-
-.result{
-    width:30px;
-    height:30px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:11px;
-    font-weight:bold;
-
-    border-radius:50%;
-}
-
-.win{
-    background:rgba(67,220,145,.13);
-    color:#6ff0ae;
-}
-
-.loss{
-    background:rgba(255,63,96,.12);
-    color:#ff637e;
-}
-
-.match-name{
-    font-size:12px;
-    font-weight:bold;
-}
-
-.match-date{
-    margin-top:4px;
-    color:#77727e;
-    font-size:9px;
-}
-
-.match-kills{
-    text-align:right;
-}
-
-.match-kills b{
-    display:block;
-    font-size:17px;
-}
-
-.match-kills span{
-    color:#77727e;
-    font-size:8px;
-    text-transform:uppercase;
-}
-
-.highlight{
-    position:relative;
-    overflow:hidden;
-
-    min-height:350px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-
-    padding:30px;
-
     background:
         linear-gradient(
             to top,
-            rgba(4,3,8,1),
-            rgba(4,3,8,.15)
-        ),
-        url("matches.jpg") center/cover;
-
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.highlight .big{
-    font-size:72px;
-    font-weight:900;
-}
-
-.highlight p{
-    color:#a39da9;
-    font-size:11px;
-}
-
-@media(max-width:850px){
-    .match-layout{
-        grid-template-columns:1fr;
-    }
-}
-
-
-/* =========================================================
-   PROFILE / UID
-========================================================= */
-
-.identity{
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:25px;
-}
-
-.identity-image{
-    min-height:390px;
-
-    position:relative;
-    overflow:hidden;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(5,4,8,1),
+            rgba(0,0,0,.8),
             transparent
         ),
         url("profile.jpg") center/cover;
 
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
 }
 
-.identity-image::after{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(181,56,255,.2),
-            transparent 50%,
-            rgba(255,50,90,.15)
-        );
-}
-
-.identity-data{
+.profile-info{
     display:flex;
     flex-direction:column;
     justify-content:center;
-
-    padding:35px;
-
-    background:rgba(255,255,255,.025);
-    border:1px solid rgba(255,255,255,.07);
 }
 
-.identity-data .nickname{
-    font-size:52px;
-    font-weight:900;
-    line-height:.95;
+.profile-label{
+    color:#ffd000;
+    font-size:10px;
+    letter-spacing:3px;
 }
 
-.identity-data .uid{
-    margin-top:15px;
-    color:#9a949f;
+.profile-info h3{
+    margin-top:10px;
+    font-size:48px;
+}
+
+.profile-info p{
+    color:#777;
     font-size:12px;
+    margin-top:8px;
 }
 
-.data-grid{
+.profile-data{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:8px;
@@ -991,14 +385,16 @@ section{
 }
 
 .data{
-    padding:15px;
+    padding:17px;
 
-    background:rgba(255,255,255,.04);
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.07);
 }
 
 .data span{
     display:block;
-    color:#77717d;
+
+    color:#666;
     font-size:8px;
     text-transform:uppercase;
     letter-spacing:1px;
@@ -1006,121 +402,305 @@ section{
 
 .data b{
     display:block;
-    margin-top:5px;
-    font-size:19px;
+    margin-top:6px;
+    font-size:20px;
 }
 
-@media(max-width:850px){
-    .identity{
-        grid-template-columns:1fr;
-    }
-}
-
-
-/* =========================================================
-   PRIME
-========================================================= */
+/* PRIME */
 
 .prime{
     position:relative;
     overflow:hidden;
 
-    padding:45px;
+    min-height:330px;
 
-    border:1px solid rgba(255,190,65,.18);
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:35px;
+    align-items:center;
+
+    padding:40px;
 
     background:
         linear-gradient(
-            135deg,
-            rgba(255,188,45,.08),
-            rgba(255,255,255,.025)
+            120deg,
+            rgba(255,190,0,.13),
+            rgba(100,20,10,.12),
+            rgba(0,0,0,.7)
         );
+
+    border:1px solid rgba(255,190,0,.3);
 }
 
-.prime::after{
-    content:"7";
+.prime-badge{
+    position:relative;
 
-    position:absolute;
-    right:-20px;
-    bottom:-70px;
+    width:180px;
+    height:180px;
 
-    font-size:260px;
-    font-weight:900;
+    margin:auto;
 
-    color:rgba(255,193,54,.05);
-}
-
-.prime-top{
     display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:20px;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff0a0 0%,
+            #d79a00 35%,
+            #3c2800 70%,
+            #090909 72%
+        );
+
+    box-shadow:
+        0 0 35px rgba(255,190,0,.35),
+        inset 0 0 25px rgba(255,255,255,.25);
 }
 
-.prime-label{
-    color:#ffc83e;
+.prime-badge strong{
+    font-size:75px;
+    line-height:.8;
+    color:#100d05;
+}
+
+.prime-badge span{
+    margin-top:12px;
+
+    color:#120f08;
+
     font-size:11px;
+    font-weight:bold;
     letter-spacing:3px;
 }
 
-.prime h3{
-    margin-top:5px;
-    font-size:55px;
-}
-
-.prime-progress{
-    width:100%;
-    height:8px;
-
-    margin-top:30px;
-
-    background:rgba(255,255,255,.07);
-}
-
-.prime-progress i{
-    display:block;
-    width:64.65%;
-    height:100%;
-
-    background:linear-gradient(90deg,#e5a92e,#ffe17a);
-}
-
-.prime-bottom{
-    display:flex;
-    justify-content:space-between;
-
-    margin-top:10px;
-
-    color:#89838d;
+.prime-info small{
+    color:#ffd000;
+    letter-spacing:4px;
     font-size:10px;
 }
 
+.prime-info h3{
+    margin-top:7px;
 
-/* =========================================================
-   GUILD
-========================================================= */
+    font-size:60px;
+    letter-spacing:-3px;
+}
 
-.guild{
+.prime-info p{
+    color:#999;
+    line-height:1.7;
+    font-size:13px;
+    max-width:580px;
+    margin-top:15px;
+}
+
+.prime-number{
+    margin-top:25px;
+
+    font-size:30px;
+    font-weight:900;
+
+    color:#ffd000;
+}
+
+.prime-number span{
+    color:#777;
+    font-size:12px;
+    font-weight:normal;
+}
+
+@media(max-width:700px){
+    .prime{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .prime-info p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
+
+/* STATS */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+}
+
+.stat{
+    padding:25px;
+
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.07);
+
+    transition:.25s;
+}
+
+.stat:hover{
+    border-color:#ffd000;
+    transform:translateY(-4px);
+}
+
+.stat b{
+    font-size:38px;
+}
+
+.stat span{
+    display:block;
+
+    margin-top:8px;
+
+    color:#777;
+
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+}
+
+@media(max-width:800px){
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* WEAPON PREVIEW */
+
+.weapon-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.weapon{
     position:relative;
-
-    min-height:330px;
-
-    display:flex;
-    align-items:flex-end;
-
     overflow:hidden;
 
-    padding:35px;
+    min-height:190px;
+
+    padding:18px;
+
+    background:#0b0b0b;
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.weapon::before{
+    content:"";
+    position:absolute;
+    inset:0;
 
     background:
         linear-gradient(
             to top,
-            rgba(5,4,8,.97),
-            rgba(5,4,8,.1)
+            rgba(0,0,0,.95),
+            transparent 65%
+        ),
+        url("weapons-cs.jpg") center/cover;
+
+    opacity:.28;
+}
+
+.weapon-content{
+    position:relative;
+    z-index:2;
+}
+
+.weapon h3{
+    font-size:25px;
+}
+
+.weapon p{
+    margin-top:8px;
+    color:#888;
+    font-size:10px;
+}
+
+.weapon-accent{
+    margin-top:25px;
+
+    color:#ffd000;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+/* MATCHES */
+
+.matches{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.match{
+    display:grid;
+    grid-template-columns:55px 1fr 80px;
+
+    align-items:center;
+
+    padding:16px 20px;
+
+    background:rgba(255,255,255,.035);
+    border-left:3px solid #ffd000;
+}
+
+.match-result{
+    font-size:10px;
+    font-weight:bold;
+    color:#ffd000;
+}
+
+.match-name{
+    font-size:13px;
+    font-weight:bold;
+}
+
+.match-date{
+    margin-top:4px;
+    color:#666;
+    font-size:9px;
+}
+
+.match-kills{
+    text-align:right;
+    font-weight:bold;
+}
+
+/* GUILD PREVIEW */
+
+.guild-preview{
+    position:relative;
+    min-height:300px;
+
+    display:flex;
+    align-items:flex-end;
+
+    padding:35px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,208,0,.2);
+}
+
+.guild-preview::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.96),
+            rgba(0,0,0,.2)
         ),
         url("guild-bg.jpg") center/cover;
 
-    border:1px solid rgba(255,255,255,.08);
+    filter:saturate(.7);
 }
 
 .guild-content{
@@ -1128,1276 +708,506 @@ section{
     z-index:2;
 }
 
-.guild-tag{
-    color:#c05cff;
-    font-size:10px;
+.guild-content small{
+    color:#ffd000;
     letter-spacing:3px;
 }
 
-.guild h3{
-    margin-top:5px;
+.guild-content h3{
     font-size:65px;
-    letter-spacing:-3px;
+    margin-top:5px;
 }
 
-.guild p{
-    margin-top:10px;
-    color:#aaa5b0;
-    max-width:600px;
-    line-height:1.7;
+.guild-content p{
+    color:#999;
     font-size:12px;
+    margin-top:8px;
 }
 
-.guild-data{
-    margin-top:20px;
-
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-}
-
-.guild-data span{
-    padding:8px 11px;
-
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.07);
-
-    color:#bbb5bf;
-
-    font-size:9px;
-}
-
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.gallery{
-    display:grid;
-
-    grid-template-columns:
-        1.25fr
-        .75fr
-        .95fr;
-
-    grid-auto-rows:190px;
-
-    gap:10px;
-}
-
-.gallery-item{
-    position:relative;
-    overflow:hidden;
-
-    background:#111;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    transition:.4s;
-}
-
-.gallery-item.big{
-    grid-row:span 2;
-}
-
-.gallery-item.wide{
-    grid-column:span 2;
-}
-
-.gallery-item::before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.7),
-            transparent 60%
-        );
-
-    z-index:1;
-}
-
-.gallery-item img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    filter:
-        saturate(.8)
-        brightness(.75);
-
-    transition:.6s;
-}
-
-.gallery-item:hover img{
-    transform:scale(1.08);
-    filter:saturate(1.15) brightness(.9);
-}
-
-.gallery-item span{
-    position:absolute;
-    z-index:2;
-
-    left:17px;
-    bottom:15px;
-
-    font-size:10px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
-
-@media(max-width:700px){
-    .gallery{
-        grid-template-columns:1fr 1fr;
-        grid-auto-rows:150px;
-    }
-
-    .gallery-item.big{
-        grid-row:span 2;
-    }
-
-    .gallery-item.wide{
-        grid-column:span 2;
-    }
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact{
-    padding-bottom:70px;
-}
-
-.contact-box{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:30px;
-
-    padding:35px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(158,46,220,.12),
-            rgba(255,255,255,.025)
-        );
-}
-
-.contact-box h3{
-    font-size:35px;
-}
-
-.contact-box p{
-    margin-top:7px;
-    color:#89838f;
-    font-size:12px;
-}
-
-.contact-buttons{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-}
-
-@media(max-width:700px){
-    .contact-box{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER */
 
 footer{
-    padding:25px 0 40px;
+    padding:30px 0 50px;
 
-    border-top:1px solid rgba(255,255,255,.06);
+    border-top:1px solid rgba(255,255,255,.07);
 
-    color:#5f5a65;
+    color:#555;
 
     font-size:9px;
-    letter-spacing:1px;
     text-transform:uppercase;
+    letter-spacing:2px;
 }
 
-.footer-inner{
-    display:flex;
-    justify-content:space-between;
+@media(max-width:800px){
+
+    .hero-grid,
+    .profile-preview{
+        grid-template-columns:1fr;
+    }
+
+    .weapon-grid{
+        grid-template-columns:1fr 1fr;
+    }
 }
 
+@media(max-width:500px){
 
-/* =========================================================
-   REVEAL
-========================================================= */
+    .weapon-grid{
+        grid-template-columns:1fr;
+    }
 
-.reveal{
-    opacity:0;
-    transform:translateY(25px);
-    transition:.7s ease;
-}
-
-.reveal.show{
-    opacity:1;
-    transform:none;
+    .profile-info h3{
+        font-size:35px;
+    }
 }
 </style>
 </head>
 
-
 <body>
 
-<!-- =======================================================
-     NAVIGATION
-======================================================= -->
+<nav>
+<div class="nav-inner">
 
-<nav class="nav">
-    <div class="nav-inner">
+    <a href="index.html" class="logo">
+        Психошка
+    </a>
 
-        <div class="logo">
-            2V<span>.</span>
-        </div>
-
-        <div class="nav-links">
-            <a href="#about">Обо мне</a>
-            <a href="#stats">Статы</a>
-            <a href="#role">Роль</a>
-            <a href="#weapons">Оружие</a>
-            <a href="#matches">Матчи</a>
-            <a href="#profile">Профиль</a>
-            <a href="#guild">2VN</a>
-        </div>
-
+    <div class="nav-links">
+        <a href="about.html">Обо мне</a>
+        <a href="index.html" class="active">Профиль</a>
+        <a href="guild.html">2VN</a>
     </div>
+
+</div>
 </nav>
 
 
-<!-- =======================================================
-     HERO
-======================================================= -->
+<main>
 
-<header class="hero" id="about">
+<!-- HERO -->
 
-    <div class="container">
+<section class="hero">
 
-        <div class="hero-grid">
+<div class="container">
 
-            <div class="hero-text">
+<div class="hero-grid">
 
-                <div class="hero-label">
-                    FREE FIRE PLAYER • CIS
-                </div>
+<div>
 
-                <h1>
-                    2V
-                    <span>Психошка</span>
-                </h1>
-
-                <p class="hero-sub">
-                    <strong>8 лет в Free Fire.</strong>
-                    Основная специализация — 1v1 и КВ.
-                    Скорость, механика и игра на двух пальцах.
-                    Здесь не гильдия рассказывает обо мне —
-                    <strong>здесь мой игровой путь.</strong>
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="#stats" class="btn btn-primary">
-                        Смотреть статы
-                    </a>
-
-                    <a
-                        href="https://www.tiktok.com/@erko_zr"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn btn-secondary"
-                    >
-                        🎵 TikTok
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- COMPACT PROFILE -->
-
-            <div class="profile-wrap">
-
-                <div class="profile-card">
-
-                    <div class="profile-info">
-
-                        <div class="tag">
-                            PLAYER PROFILE
-                        </div>
-
-                        <h3>2V Психошка</h3>
-
-                        <p>
-                            LV.70 · 2VN · CIS
-                        </p>
-
-                        <div class="profile-meta">
-
-                            <div class="meta">
-                                <b>70</b>
-                                <span>Level</span>
-                            </div>
-
-                            <div class="meta">
-                                <b>9928</b>
-                                <span>Likes</span>
-                            </div>
-
-                            <div class="meta">
-                                <b>8Y</b>
-                                <span>Experience</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="hero-kicker">
+        FREE FIRE · PLAYER PROFILE
     </div>
 
-</header>
+    <h1>
+        2V
+        <span>ПСИХОШКА</span>
+    </h1>
 
+    <p class="hero-description">
+        Игровой профиль <strong>Психошки</strong>.
+        8 лет в Free Fire, основной стиль —
+        скорость, механика, 1v1 и КВ.
+    </p>
 
-<!-- =======================================================
-     STATS
-======================================================= -->
+    <div class="hero-buttons">
+        <a href="about.html" class="btn btn-yellow">
+            Обо мне
+        </a>
 
-<section id="stats" class="stats">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <div class="small">
-                01 / PERFORMANCE
-            </div>
-
-            <h2>
-                Battle Stats
-            </h2>
-
-            <p>
-                Основные показатели из игрового профиля.
-                Не просто цифры — это стиль игры, который за ними стоит.
-            </p>
-
-        </div>
-
-
-        <div class="stats-grid">
-
-            <div class="stat reveal">
-                <div class="stat-value">54.55%</div>
-                <div class="stat-label">Win Rate</div>
-                <div class="stat-desc">66 побед / 121 матч</div>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-value">370</div>
-                <div class="stat-label">Kills</div>
-                <div class="stat-desc">Основной показатель фрагов</div>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-value">1.64</div>
-                <div class="stat-label">KDA</div>
-                <div class="stat-desc">Общая эффективность</div>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-value">1488</div>
-                <div class="stat-label">Avg Damage</div>
-                <div class="stat-desc">Средний урон за матч</div>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-value">137</div>
-                <div class="stat-label">Headshots</div>
-                <div class="stat-desc">37.03% headshot rate</div>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-value">470</div>
-                <div class="stat-label">Knockdowns</div>
-                <div class="stat-desc">Общее количество ноков</div>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-value">149</div>
-                <div class="stat-label">Revives</div>
-                <div class="stat-desc">Возвращений тиммейтов</div>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-value">7.7</div>
-                <div class="stat-label">Rating</div>
-                <div class="stat-desc">Игровой рейтинг</div>
-            </div>
-
-        </div>
-
+        <a href="guild.html" class="btn btn-dark">
+            Гильдия 2VN
+        </a>
     </div>
+
+</div>
+
+
+<div class="hero-photo">
+
+    <img src="my-photo.jpg" alt="Психошка">
+
+    <div class="photo-caption">
+        <small>PLAYER</small>
+        <h3>Психошка</h3>
+    </div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =======================================================
-     ROLE / PLAYER DNA
-======================================================= -->
-
-<section id="role">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <div class="small">
-                02 / PLAYSTYLE
-            </div>
-
-            <h2>
-                Player DNA
-            </h2>
-
-            <p>
-                Главная игровая специализация — штурмовой стиль
-                и ближний бой.
-            </p>
-
-        </div>
-
-
-        <div class="player-dna">
-
-            <div class="dna-card reveal">
-
-                <div class="role-name">
-                    MAIN ROLE
-                </div>
-
-                <div class="role-big">
-                    65%
-                </div>
-
-                <div class="role-title">
-                    Штурмовик
-                </div>
-
-                <p class="role-text">
-                    Агрессивный стиль, быстрые входы в бой,
-                    давление на соперника и ставка на механику.
-                    Основное оружие — MP5.
-                </p>
-
-            </div>
-
-
-            <div class="dna-card reveal">
-
-                <div class="role-name">
-                    EXPERTISE
-                </div>
-
-                <div class="role-list">
-
-                    <div class="role-row">
-                        <span>Штурмовик</span>
-                        <div class="bar">
-                            <i style="width:100%"></i>
-                        </div>
-                        <b>10</b>
-                    </div>
-
-                    <div class="role-row">
-                        <span>Стрелок</span>
-                        <div class="bar">
-                            <i style="width:35%"></i>
-                        </div>
-                        <b>3</b>
-                    </div>
-
-                    <div class="role-row">
-                        <span>Снайпер</span>
-                        <div class="bar">
-                            <i style="width:20%"></i>
-                        </div>
-                        <b>2</b>
-                    </div>
-
-                    <div class="role-row">
-                        <span>Помощник</span>
-                        <div class="bar">
-                            <i style="width:40%"></i>
-                        </div>
-                        <b>4</b>
-                    </div>
-
-                    <div class="role-row">
-                        <span>Гренадер</span>
-                        <div class="bar">
-                            <i style="width:20%"></i>
-                        </div>
-                        <b>2</b>
-                    </div>
-
-                </div>
-
-
-                <div style="margin-top:35px">
-
-                    <div class="role-name">
-                        CLOSE COMBAT
-                    </div>
-
-                    <div style="
-                        font-size:42px;
-                        font-weight:900;
-                        margin-top:8px;
-                    ">
-                        233
-                    </div>
-
-                    <div style="
-                        color:#817b87;
-                        font-size:10px;
-                        margin-top:3px;
-                    ">
-                        KILLS IN CLOSE COMBAT
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     WEAPONS
-======================================================= -->
-
-<section id="weapons">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <div class="small">
-                03 / LOADOUT
-            </div>
-
-            <h2>
-                Weapons
-            </h2>
-
-            <p>
-                Оружие, которое чаще всего появляется
-                в моих матчах.
-            </p>
-
-        </div>
-
-
-        <div class="weapon-layout">
-
-            <!-- BR -->
-
-            <div class="weapon-panel reveal">
-
-                <div class="weapon-content">
-
-                    <div class="weapon-type">
-                        BATTLE ROYALE
-                    </div>
-
-                    <h3>BR</h3>
-
-                    <p>
-                        Основные показатели оружия
-                    </p>
-
-
-                    <div class="weapon-list">
-
-                        <div class="weapon">
-                            <div class="weapon-name">MP5</div>
-                            <div class="weapon-info">HS 33.33%</div>
-                            <div class="weapon-kills">6</div>
-                        </div>
-
-                        <div class="weapon">
-                            <div class="weapon-name">MAC10</div>
-                            <div class="weapon-info">HS 0%</div>
-                            <div class="weapon-kills">3</div>
-                        </div>
-
-                        <div class="weapon">
-                            <div class="weapon-name">Desert Eagle</div>
-                            <div class="weapon-info">HS 45.45%</div>
-                            <div class="weapon-kills">11</div>
-                        </div>
-
-                        <div class="weapon">
-                            <div class="weapon-name">MP40</div>
-                            <div class="weapon-info">HS 50%</div>
-                            <div class="weapon-kills">2</div>
-                        </div>
-
-                        <div class="weapon">
-                            <div class="weapon-name">Mini-Uzi</div>
-                            <div class="weapon-info">HS 0%</div>
-                            <div class="weapon-kills">0</div>
-                        </div>
-
-                        <div class="weapon">
-                            <div class="weapon-name">Ястреб</div>
-                            <div class="weapon-info">HS 0%</div>
-                            <div class="weapon-kills">1</div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- CS -->
-
-            <div class="weapon-panel cs reveal">
-
-                <div class="weapon-content">
-
-                    <div class="weapon-type">
-                        CLASH SQUAD
-                    </div>
-
-                    <h3>CS</h3>
-
-                    <p>
-                        Основные показатели оружия
-                    </p>
-
-
-                    <div class="weapon-list">
-
-                        <div class="weapon">
-                            <div class="weapon-name">MP5</div>
-                            <div class="weapon-info">HS 33.33%</div>
-                            <div class="weapon-kills">60</div>
-                        </div>
-
-                        <div class="weapon">
-                            <div class="weapon-name">M500</div>
-                            <div class="weapon-info">HS 76.19%</div>
-                            <div class="weapon-kills">21</div>
-                        </div>
-
-                        <div class="weapon">
-                            <div class="weapon-name">MP40</div>
-                            <div class="weapon-info">HS 18.75%</div>
-                            <div class="weapon-kills">48</div>
-                        </div>
-
-                        <div class="weapon">
-                            <div class="weapon-name">M590</div>
-                            <div class="weapon-info">HS 18.18%</div>
-                            <div class="weapon-kills">55</div>
-                        </div>
-
-                        <div class="weapon">
-                            <div class="weapon-name">M1873</div>
-                            <div class="weapon-info">HS 18.92%</div>
-                            <div class="weapon-kills">37</div>
-                        </div>
-
-                        <div class="weapon">
-                            <div class="weapon-name">UMP</div>
-                            <div class="weapon-info">HS 63.16%</div>
-                            <div class="weapon-kills">19</div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     MATCHES
-======================================================= -->
-
-<section id="matches">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <div class="small">
-                04 / RECENT FORM
-            </div>
-
-            <h2>
-                Recent Matches
-            </h2>
-
-            <p>
-                Последние зафиксированные матчи.
-            </p>
-
-        </div>
-
-
-        <div class="match-layout">
-
-            <div class="match-list">
-
-                <div class="match reveal">
-                    <div class="result win">W</div>
-
-                    <div>
-                        <div class="match-name">
-                            ТА-УЛЬТИМАТУМ
-                        </div>
-                        <div class="match-date">
-                            24.09.2026 · 21:38
-                        </div>
-                    </div>
-
-                    <div class="match-kills">
-                        <b>6</b>
-                        <span>kills</span>
-                    </div>
-                </div>
-
-
-                <div class="match reveal">
-                    <div class="result win">W</div>
-
-                    <div>
-                        <div class="match-name">
-                            НАБОР ОЧКОВ
-                        </div>
-                        <div class="match-date">
-                            24.09.2026 · 21:28
-                        </div>
-                    </div>
-
-                    <div class="match-kills">
-                        <b>12</b>
-                        <span>kills</span>
-                    </div>
-                </div>
-
-
-                <div class="match reveal">
-                    <div class="result loss">L</div>
-
-                    <div>
-                        <div class="match-name">
-                            ЖИТЬ (ЗАБРОШЕН)
-                        </div>
-                        <div class="match-date">
-                            24.09.2026 · 20:51
-                        </div>
-                    </div>
-
-                    <div class="match-kills">
-                        <b>5</b>
-                        <span>kills</span>
-                    </div>
-                </div>
-
-
-                <div class="match reveal">
-                    <div class="result win">W</div>
-
-                    <div>
-                        <div class="match-name">
-                            ТА-УЛЬТИМАТУМ
-                        </div>
-                        <div class="match-date">
-                            24.09.2026 · 20:07
-                        </div>
-                    </div>
-
-                    <div class="match-kills">
-                        <b>5</b>
-                        <span>kills</span>
-                    </div>
-                </div>
-
-
-                <div class="match reveal">
-                    <div class="result win">W</div>
-
-                    <div>
-                        <div class="match-name">
-                            ТА-УЛЬТИМАТУМ
-                        </div>
-                        <div class="match-date">
-                            24.09.2026 · 20:01
-                        </div>
-                    </div>
-
-                    <div class="match-kills">
-                        <b>4</b>
-                        <span>kills</span>
-                    </div>
-                </div>
-
-
-                <div class="match reveal">
-                    <div class="result win">W</div>
-
-                    <div>
-                        <div class="match-name">
-                            БО-РЕЙТИНГ
-                        </div>
-                        <div class="match-date">
-                            24.09.2026 · 19:53
-                        </div>
-                    </div>
-
-                    <div class="match-kills">
-                        <b>3</b>
-                        <span>kills</span>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="highlight reveal">
-
-                <div class="big">
-                    6
-                </div>
-
-                <p>
-                    KILLS · 1436 DAMAGE · 6 HEADSHOTS
-                </p>
-
-                <p style="margin-top:7px">
-                    Последний выбранный матч
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     PROFILE
-======================================================= -->
-
-<section id="profile">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <div class="small">
-                05 / IDENTITY
-            </div>
-
-            <h2>
-                Profile
-            </h2>
-
-        </div>
-
-
-        <div class="identity">
-
-            <div class="identity-image reveal"></div>
-
-
-            <div class="identity-data reveal">
-
-                <div class="nickname">
-                    2V<br>
-                    Психошка
-                </div>
-
-                <div class="uid">
-                    UID · 492468395
-                </div>
-
-
-                <div class="data-grid">
-
-                    <div class="data">
-                        <span>Level</span>
-                        <b>70</b>
-                    </div>
-
-                    <div class="data">
-                        <span>Guild</span>
-                        <b>2VN</b>
-                    </div>
-
-                    <div class="data">
-                        <span>Likes</span>
-                        <b>9928</b>
-                    </div>
-
-                    <div class="data">
-                        <span>Platform</span>
-                        <b>Free Fire</b>
-                    </div>
-
-                </div>
-
-                <p style="
-                    margin-top:25px;
-                    color:#8e8994;
-                    line-height:1.7;
-                    font-size:12px;
-                ">
-                    «Люблю тебя моя Жузи &lt;3»
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     PRIME
-======================================================= -->
+<!-- PROFILE -->
 
 <section>
 
-    <div class="container">
+<div class="container">
 
-        <div class="prime reveal">
+<div class="title">
 
-            <div class="prime-top">
+    <small>ПРОФИЛЬ</small>
 
-                <div>
-                    <div class="prime-label">
-                        FREE FIRE PRIME
-                    </div>
+    <h2>Мой аккаунт</h2>
 
-                    <h3>
-                        PRIME 7
-                    </h3>
-                </div>
+    <p>
+        Основная информация моего профиля Free Fire.
+    </p>
 
-                <div style="
-                    color:#a59c89;
-                    font-size:11px;
-                ">
-                    129 311 / 200 000
-                </div>
+</div>
 
+
+<div class="profile-preview">
+
+    <div class="profile-image"></div>
+
+    <div class="profile-info">
+
+        <div class="profile-label">
+            FREE FIRE ACCOUNT
+        </div>
+
+        <h3>Психошка</h3>
+
+        <p>
+            2V · LV.70 · 2VN
+        </p>
+
+        <div class="profile-data">
+
+            <div class="data">
+                <span>UID</span>
+                <b>492468395</b>
             </div>
 
-
-            <div class="prime-progress">
-                <i></i>
+            <div class="data">
+                <span>Likes</span>
+                <b>9928</b>
             </div>
 
-            <div class="prime-bottom">
-                <span>Текущий прогресс</span>
-                <span>70 689 до PRIME 8</span>
+            <div class="data">
+                <span>Level</span>
+                <b>70</b>
+            </div>
+
+            <div class="data">
+                <span>Guild</span>
+                <b>2VN</b>
             </div>
 
         </div>
 
     </div>
 
-</section>
+</div>
 
-
-<!-- =======================================================
-     2VN
-======================================================= -->
-
-<section id="guild">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <div class="small">
-                06 / TEAM
-            </div>
-
-            <h2>
-                2VN
-            </h2>
-
-            <p>
-                Гильдия — часть игрового пути, но не центр этого сайта.
-            </p>
-
-        </div>
-
-
-        <div class="guild reveal">
-
-            <div class="guild-content">
-
-                <div class="guild-tag">
-                    GUILD
-                </div>
-
-                <h3>
-                    2VN
-                </h3>
-
-                <p>
-                    СНГ · уровень 5 · 38/55 участников.
-                    Здесь проходят КВ, совместные игры и тот самый
-                    игровой движ, частью которого является 2V Психошка.
-                </p>
-
-
-                <div class="guild-data">
-
-                    <span>LVL 5</span>
-                    <span>38 / 55</span>
-                    <span>СНГ</span>
-                    <span>34 187 ACTIVITY</span>
-                    <span>ID 3084263454</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- =======================================================
-     GALLERY
-======================================================= -->
+<!-- PRIME -->
 
 <section>
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-title reveal">
+<div class="prime">
 
-            <div class="small">
-                07 / VISUALS
-            </div>
+    <div class="prime-badge">
+        <strong>7</strong>
+        <span>PRIME</span>
+    </div>
 
-            <h2>
-                Game Files
-            </h2>
+    <div class="prime-info">
 
-            <p>
-                Игровые моменты и материалы профиля,
-                собранные в один визуальный блок.
-            </p>
+        <small>ПРЕМИАЛЬНЫЙ СТАТУС</small>
 
-        </div>
+        <h3>PRIME 7</h3>
 
+        <p>
+            Один из самых ценных элементов моего аккаунта.
+            Сейчас прогресс составляет 129 311 из 200 000
+            до следующего уровня.
+        </p>
 
-        <div class="gallery">
-
-            <div class="gallery-item big reveal">
-                <img src="profile.jpg" alt="Profile">
-                <span>Profile</span>
-            </div>
-
-            <div class="gallery-item reveal">
-                <img src="stats.jpg" alt="Stats">
-                <span>Stats</span>
-            </div>
-
-            <div class="gallery-item reveal">
-                <img src="roles.jpg" alt="Roles">
-                <span>Role</span>
-            </div>
-
-            <div class="gallery-item wide reveal">
-                <img src="matches.jpg" alt="Matches">
-                <span>Matches</span>
-            </div>
-
-            <div class="gallery-item reveal">
-                <img src="prime.jpg" alt="Prime">
-                <span>Prime</span>
-            </div>
-
-            <div class="gallery-item reveal">
-                <img src="guild.jpg" alt="Guild">
-                <span>2VN</span>
-            </div>
-
+        <div class="prime-number">
+            129 311
+            <span>/ 200 000</span>
         </div>
 
     </div>
 
+</div>
+
+</div>
+
 </section>
 
 
-<!-- =======================================================
-     CONTACT
-======================================================= -->
+<!-- STATS -->
 
-<section class="contact">
+<section>
 
-    <div class="container">
+<div class="container">
 
-        <div class="contact-box reveal">
+<div class="title">
 
-            <div>
+    <small>СТАТИСТИКА</small>
 
-                <h3>
-                    Let's play.
-                </h3>
+    <h2>Основные показатели</h2>
 
-                <p>
-                    2V Психошка · Free Fire · CIS
-                </p>
-
-            </div>
+</div>
 
 
-            <div class="contact-buttons">
+<div class="stats-grid">
 
-                <a
-                    href="https://www.tiktok.com/@erko_zr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-secondary"
-                >
-                    🎵 TikTok
-                </a>
+    <div class="stat">
+        <b>54.55%</b>
+        <span>Винрейт</span>
+    </div>
 
-                <a
-                    href="https://wa.me/77053536952"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary"
-                >
-                    WhatsApp
-                </a>
+    <div class="stat">
+        <b>370</b>
+        <span>Убийств</span>
+    </div>
 
-                <a
-                    href="tel:+77053536952"
-                    class="btn btn-secondary"
-                >
-                    Позвонить
-                </a>
+    <div class="stat">
+        <b>1.64</b>
+        <span>KDA</span>
+    </div>
 
-            </div>
+    <div class="stat">
+        <b>1488</b>
+        <span>Средний урон</span>
+    </div>
 
+    <div class="stat">
+        <b>137</b>
+        <span>Хедшоты</span>
+    </div>
+
+    <div class="stat">
+        <b>37.03%</b>
+        <span>Процент HS</span>
+    </div>
+
+    <div class="stat">
+        <b>470</b>
+        <span>Нокдаунов</span>
+    </div>
+
+    <div class="stat">
+        <b>7.7</b>
+        <span>Рейтинг</span>
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WEAPONS -->
+
+<section>
+
+<div class="container">
+
+<div class="title">
+
+    <small>ОРУЖИЕ</small>
+
+    <h2>Мой арсенал</h2>
+
+    <p>
+        Основное оружие из Battle Royale и Clash Squad.
+    </p>
+
+</div>
+
+
+<div class="weapon-grid">
+
+    <div class="weapon">
+        <div class="weapon-content">
+            <h3>MP5</h3>
+            <p>CS · 60 убийств</p>
+            <div class="weapon-accent">МАСТЕРСТВО LV.11</div>
         </div>
+    </div>
+
+    <div class="weapon">
+        <div class="weapon-content">
+            <h3>M500</h3>
+            <p>CS · 21 убийство</p>
+            <div class="weapon-accent">HS 76.19%</div>
+        </div>
+    </div>
+
+    <div class="weapon">
+        <div class="weapon-content">
+            <h3>MP40</h3>
+            <p>CS · 48 убийств</p>
+            <div class="weapon-accent">МАСТЕРСТВО LV.11</div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MATCHES -->
+
+<section>
+
+<div class="container">
+
+<div class="title">
+
+    <small>МАТЧИ</small>
+
+    <h2>Последние матчи</h2>
+
+</div>
+
+
+<div class="matches">
+
+    <div class="match">
+        <div class="match-result">ПОБЕДА</div>
+        <div>
+            <div class="match-name">
+                Комната — Ультиматум
+            </div>
+            <div class="match-date">
+                24.09.2026 · 21:38
+            </div>
+        </div>
+        <div class="match-kills">6 KILLS</div>
+    </div>
+
+    <div class="match">
+        <div class="match-result">ПОБЕДА</div>
+        <div>
+            <div class="match-name">
+                Комната — Ультиматум
+            </div>
+            <div class="match-date">
+                24.09.2026 · 21:28
+            </div>
+        </div>
+        <div class="match-kills">12 KILLS</div>
+    </div>
+
+    <div class="match">
+        <div class="match-result">—</div>
+        <div>
+            <div class="match-name">
+                Комната — Заброшена
+            </div>
+            <div class="match-date">
+                24.09.2026 · 20:51
+            </div>
+        </div>
+        <div class="match-kills">5 KILLS</div>
+    </div>
+
+    <div class="match">
+        <div class="match-result">ПОБЕДА</div>
+        <div>
+            <div class="match-name">
+                Комната — Ультиматум
+            </div>
+            <div class="match-date">
+                24.09.2026 · 20:07
+            </div>
+        </div>
+        <div class="match-kills">5 KILLS</div>
+    </div>
+
+    <div class="match">
+        <div class="match-result">ПОБЕДА</div>
+        <div>
+            <div class="match-name">
+                Комната — Ультиматум
+            </div>
+            <div class="match-date">
+                24.09.2026 · 20:01
+            </div>
+        </div>
+        <div class="match-kills">4 KILLS</div>
+    </div>
+
+    <div class="match">
+        <div class="match-result">ПОБЕДА</div>
+        <div>
+            <div class="match-name">
+                БО-РЕЙТИНГ
+            </div>
+            <div class="match-date">
+                24.09.2026 · 19:53
+            </div>
+        </div>
+        <div class="match-kills">3 KILLS</div>
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GUILD PREVIEW -->
+
+<section>
+
+<div class="container">
+
+<div class="guild-preview">
+
+    <div class="guild-content">
+
+        <small>ГИЛЬДИЯ</small>
+
+        <h3>2VN</h3>
+
+        <p>
+            Отдельная страница гильдии,
+            состава и будущих материалов.
+        </p>
+
+        <br>
+
+        <a href="guild.html" class="btn btn-yellow">
+            Открыть гильдию
+        </a>
 
     </div>
 
+</div>
+
+</div>
+
 </section>
 
+</main>
 
-<!-- =======================================================
-     FOOTER
-======================================================= -->
 
 <footer>
 
-    <div class="container">
-
-        <div class="footer-inner">
-
-            <span>
-                2V Психошка
-            </span>
-
-            <span>
-                FREE FIRE PLAYER · 2026
-            </span>
-
-        </div>
-
-    </div>
+<div class="container">
+    Психошка · Free Fire · Казахстан
+</div>
 
 </footer>
-
-
-<!-- =======================================================
-     JAVASCRIPT
-======================================================= -->
-
-<script>
-
-const observer = new IntersectionObserver(
-    entries => {
-
-        entries.forEach(entry => {
-
-            if(entry.isIntersecting){
-
-                entry.target.classList.add("show");
-
-            }
-
-        });
-
-    },
-    {
-        threshold:.08
-    }
-);
-
-
-document
-    .querySelectorAll(".reveal")
-    .forEach(el => observer.observe(el));
-
-
-</script>
 
 </body>
 </html>
