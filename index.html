@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>2VN — Гильдия</title>
+<title>2V Психошка | Free Fire</title>
 
 <style>
 
-/* =========================================================
+/* =====================================================
    RESET
-========================================================= */
+===================================================== */
 
 *{
     margin:0;
@@ -25,183 +24,230 @@ html{
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-
-    color:#111;
-
-    background:#111;
-
+    color:#f2f2f2;
+    background:#080808;
     min-height:100vh;
-
     overflow-x:hidden;
 }
 
-:root{
-    --yellow:#ffd400;
-    --red:#e52b2b;
-    --black:#111;
-}
-
-/* =========================================================
+/* =====================================================
    BACKGROUND
-========================================================= */
+===================================================== */
 
 body::before{
     content:"";
-
     position:fixed;
     inset:0;
-
-    z-index:-2;
-
-    background-image:var(--bg-image);
-
-    background-size:cover;
+    z-index:-3;
     background-position:center;
-    background-attachment:fixed;
+    background-size:cover;
+    background-repeat:no-repeat;
 }
 
 body::after{
     content:"";
-
     position:fixed;
     inset:0;
-
-    z-index:-1;
-
-    background:rgba(0,0,0,.12);
-
+    z-index:-2;
+    background:rgba(0,0,0,.43);
     pointer-events:none;
 }
 
-/* =========================================================
-   CONTAINER
-========================================================= */
-
-.container{
-    width:min(1080px,calc(100% - 32px));
-    margin:auto;
-}
-
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
+===================================================== */
 
 header{
     position:sticky;
-
     top:0;
-
     z-index:1000;
 
-    background:rgba(255,255,255,.94);
-
+    background:rgba(8,8,8,.94);
+    border-bottom:1px solid rgba(255,193,7,.35);
     backdrop-filter:blur(12px);
-
-    border-bottom:3px solid #111;
 }
 
 .nav{
-    height:66px;
+    width:min(1080px,92%);
+    margin:auto;
+
+    min-height:68px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
+    gap:20px;
 }
 
 .logo{
-    text-decoration:none;
-
-    color:#111;
-
-    font-size:21px;
-
-    font-weight:1000;
+    font-size:22px;
+    font-weight:900;
+    white-space:nowrap;
 }
 
 .logo span{
-    color:var(--red);
+    color:#ff3030;
 }
 
 .nav-links{
     display:flex;
-
-    gap:7px;
+    align-items:center;
+    gap:8px;
 }
 
 .nav-links a{
+    color:#eee;
     text-decoration:none;
-
-    color:#111;
+    font-size:14px;
+    font-weight:800;
 
     padding:10px 14px;
-
-    border-radius:10px;
-
-    font-size:12px;
-
-    font-weight:900;
+    border-radius:9px;
 
     transition:.2s;
 }
 
-.nav-links a:hover{
-    background:#111;
-    color:#fff;
+.nav-links a:hover,
+.nav-links a.active{
+    background:#ffc400;
+    color:#080808;
 }
 
-.nav-links .active{
-    background:#111;
-    color:#fff;
+/* =====================================================
+   MAIN
+===================================================== */
 
-    border-bottom:3px solid var(--yellow);
+main{
+    width:min(1080px,92%);
+    margin:auto;
+    padding:42px 0 120px;
 }
 
-/* =========================================================
+section{
+    margin-bottom:34px;
+}
+
+/* =====================================================
+   TITLES
+===================================================== */
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-bottom:15px;
+
+    font-size:23px;
+    font-weight:900;
+}
+
+.section-title::before{
+    content:"";
+    width:5px;
+    height:27px;
+
+    background:linear-gradient(
+        #ff3030 0 50%,
+        #ffc400 50% 100%
+    );
+
+    border-radius:5px;
+}
+
+/* =====================================================
    HERO
-========================================================= */
+===================================================== */
 
 .hero{
-    padding:38px 0 22px;
-}
-
-.guild-hero{
-    width:min(900px,100%);
-
-    margin:auto;
+    min-height:260px;
 
     display:grid;
+    grid-template-columns:300px 1fr;
+    align-items:center;
 
-    grid-template-columns:43% 57%;
+    gap:35px;
 
-    background:rgba(255,255,255,.95);
+    padding:28px;
 
-    border:3px solid #111;
+    background:rgba(10,10,10,.76);
 
-    border-radius:20px;
+    border:1px solid rgba(255,193,7,.35);
+    border-radius:18px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.4);
+}
+
+.hero-photo{
+    width:100%;
+    height:230px;
+
+    border-radius:14px;
 
     overflow:hidden;
 
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.25);
+    border:2px solid rgba(255,193,7,.7);
+
+    background:#111;
 }
 
-/* GUILD SCREENSHOT — COMPACT */
+.hero-photo img{
+    width:100%;
+    height:100%;
 
-.guild-screen{
-    background:#080808;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:10px;
+    object-fit:cover;
 }
 
-.guild-screen img{
+.hero-kicker{
+    color:#ffc400;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:7px;
+}
+
+.hero h1{
+    font-size:42px;
+    line-height:1;
+
+    margin-bottom:10px;
+}
+
+.hero h1 span{
+    color:#ff3030;
+}
+
+.hero p{
+    color:#cfcfcf;
+    line-height:1.6;
+    max-width:550px;
+}
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.profile-card{
+    background:rgba(8,8,8,.78);
+    border:1px solid rgba(255,193,7,.3);
+    border-radius:17px;
+    padding:20px;
+}
+
+.profile-image{
+    width:min(560px,100%);
+    margin:auto;
+
+    background:#050505;
+
+    border-radius:13px;
+    border:1px solid rgba(255,193,7,.45);
+
+    overflow:hidden;
+}
+
+.profile-image img{
     display:block;
 
     width:100%;
@@ -211,502 +257,605 @@ header{
 
     object-fit:contain;
 
-    border-radius:8px;
+    margin:auto;
 }
 
-.guild-intro{
-    padding:32px;
+.profile-info{
+    margin-top:15px;
 
     display:flex;
-
-    flex-direction:column;
-
+    flex-wrap:wrap;
     justify-content:center;
+
+    gap:8px;
 }
 
-.guild-kicker{
-    width:max-content;
+.profile-info span{
+    background:#111;
+    border:1px solid #292929;
 
-    padding:6px 9px;
+    border-radius:7px;
 
-    background:var(--yellow);
-
-    border-radius:6px;
-
-    font-size:9px;
-
-    font-weight:1000;
-
-    letter-spacing:1px;
-}
-
-.guild-intro h1{
-    margin-top:12px;
-
-    font-size:53px;
-
-    line-height:.9;
-
-    font-weight:1000;
-}
-
-.guild-intro h1 span{
-    color:var(--red);
-}
-
-.guild-intro p{
-    margin-top:13px;
-
-    color:#666;
+    padding:7px 11px;
 
     font-size:12px;
-
-    line-height:1.6;
+    color:#ddd;
 }
 
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section{
-    padding:22px 0;
+.profile-info strong{
+    color:#ffc400;
 }
 
-.section-title{
-    margin-bottom:13px;
+/* =====================================================
+   COLLAPSIBLE STATS
+===================================================== */
 
-    font-size:29px;
-
-    font-weight:1000;
-}
-
-.section-title span{
-    color:var(--red);
-}
-
-/* =========================================================
-   BANNER — COMPACT
-========================================================= */
-
-.banner-card{
-    width:min(650px,100%);
-
-    margin:auto;
-
-    background:#080808;
-
-    border:2px solid var(--yellow);
-
-    border-radius:17px;
-
-    padding:7px;
-
-    box-shadow:
-        0 18px 40px rgba(0,0,0,.3);
-}
-
-.banner-card img{
-    display:block;
-
+.toggle{
     width:100%;
-    height:auto;
-
-    border-radius:11px;
-
-    object-fit:contain;
-}
-
-/* =========================================================
-   GUILD STATS ACCORDION
-========================================================= */
-
-.guild-toggle{
-    width:min(900px,100%);
-
-    margin:auto;
 
     display:flex;
-
+    justify-content:space-between;
     align-items:center;
 
-    justify-content:space-between;
+    padding:15px 17px;
 
-    padding:15px 18px;
-
-    border:0;
-
-    border-left:5px solid var(--yellow);
-
-    border-radius:12px;
-
-    background:#111;
-
+    background:#0d0d0d;
     color:#fff;
+
+    border:1px solid rgba(255,193,7,.42);
+    border-radius:12px;
 
     cursor:pointer;
 
-    font-family:inherit;
+    font-size:15px;
+    font-weight:900;
 
-    font-size:13px;
-
-    font-weight:1000;
+    transition:.2s;
 }
 
-.guild-toggle-symbol{
-    color:var(--yellow);
-
-    font-size:20px;
+.toggle:hover{
+    border-color:#ffc400;
+    background:#131313;
 }
 
-.guild-accordion{
-    width:min(900px,100%);
+.toggle-symbol{
+    color:#ffc400;
+    font-size:22px;
+}
 
-    margin:auto;
-
+.collapsible{
     display:grid;
-
     grid-template-rows:0fr;
 
-    transition:grid-template-rows .4s ease;
+    transition:grid-template-rows .35s ease;
 }
 
-.guild-accordion.open{
+.collapsible.open{
     grid-template-rows:1fr;
 }
 
-.guild-accordion-inner{
+.collapsible-inner{
     overflow:hidden;
-
-    padding-top:0;
-
-    transition:.4s;
 }
 
-.guild-accordion.open .guild-accordion-inner{
-    padding-top:9px;
-}
+.stats-grid{
+    padding-top:13px;
 
-.info-grid{
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
-    gap:7px;
+    gap:9px;
 }
 
-.info{
-    background:rgba(255,255,255,.95);
+.stat{
+    background:rgba(12,12,12,.9);
 
-    border-radius:11px;
+    border:1px solid #272727;
 
-    border-top:4px solid var(--red);
+    border-radius:9px;
 
-    padding:13px;
+    padding:12px;
 
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.12);
+    text-align:center;
 }
 
-.info small{
+.stat b{
     display:block;
 
-    color:#777;
+    font-size:19px;
+    color:#ffc400;
 
-    font-size:8px;
-
-    font-weight:900;
-
-    text-transform:uppercase;
+    margin-bottom:4px;
 }
 
-.info strong{
-    display:block;
-
-    margin-top:4px;
-
-    font-size:17px;
-
-    font-weight:1000;
+.stat small{
+    color:#aaa;
+    font-size:11px;
 }
 
-/* =========================================================
-   PLAYERS
-========================================================= */
+/* =====================================================
+   PRIME
+===================================================== */
 
-.players-card{
-    width:min(900px,100%);
-
-    margin:auto;
-
-    display:flex;
-
+.prime{
+    display:grid;
+    grid-template-columns:260px 1fr;
+    gap:20px;
     align-items:center;
 
-    justify-content:space-between;
+    background:rgba(8,8,8,.8);
 
-    gap:15px;
-
-    background:#111;
-
-    color:#fff;
-
+    border:1px solid rgba(255,193,7,.3);
     border-radius:16px;
 
-    padding:18px;
-
-    border:2px solid #222;
-
-    border-left:5px solid var(--red);
+    padding:17px;
 }
 
-.player-avatar{
-    width:62px;
-    height:62px;
+.prime-image{
+    background:#050505;
 
-    flex:0 0 62px;
+    border-radius:12px;
+    overflow:hidden;
 
+    border:1px solid rgba(255,193,7,.4);
+}
+
+.prime-image img{
+    width:100%;
+    height:170px;
+
+    object-fit:contain;
+    display:block;
+}
+
+.prime-text h3{
+    font-size:25px;
+    color:#ffc400;
+    margin-bottom:7px;
+}
+
+.prime-text p{
+    color:#bbb;
+    margin-bottom:5px;
+}
+
+.prime-number{
+    font-size:27px;
+    font-weight:900;
+}
+
+.prime-number span{
+    color:#ff3030;
+}
+
+/* =====================================================
+   ROLE
+===================================================== */
+
+.role-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+}
+
+.role-card{
+    background:rgba(8,8,8,.8);
+
+    border:1px solid #292929;
+    border-radius:13px;
+
+    padding:18px;
+}
+
+.role-card h3{
+    color:#ffc400;
+    margin-bottom:10px;
+}
+
+.role-card p{
+    color:#ccc;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* =====================================================
+   WEAPONS
+===================================================== */
+
+.weapons-grid{
+    padding-top:14px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.weapon{
+    background:#080808;
+
+    border:1px solid #292929;
     border-radius:12px;
 
     overflow:hidden;
-
-    border:2px solid var(--yellow);
 }
 
-.player-avatar img{
+.weapon img{
     width:100%;
-    height:100%;
+    height:150px;
+
+    display:block;
 
     object-fit:cover;
 }
 
-.player-info{
-    flex:1;
+/* =====================================================
+   MATCHES
+===================================================== */
+
+.matches{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
 }
 
-.player-info small{
-    color:var(--yellow);
+.match{
+    background:rgba(9,9,9,.9);
 
-    font-size:8px;
+    border:1px solid #292929;
 
-    font-weight:1000;
+    border-radius:11px;
 
-    text-transform:uppercase;
+    padding:13px;
 }
 
-.player-info strong{
-    display:block;
+.match-top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
 
-    margin-top:4px;
-
-    font-size:17px;
+    margin-bottom:8px;
 }
 
-.player-info span{
-    display:block;
-
-    margin-top:3px;
-
-    color:#aaa;
-
-    font-size:9px;
+.win{
+    color:#ffc400;
+    font-weight:900;
 }
 
-/* =========================================================
-   GUILD WEBSITE
-========================================================= */
-
-.guild-link-card{
-    width:min(900px,100%);
-
-    margin:auto;
-
-    background:rgba(255,255,255,.95);
-
-    border-radius:16px;
-
-    padding:20px;
-
-    border:2px solid #111;
-
-    text-align:center;
+.loss{
+    color:#ff4040;
+    font-weight:900;
 }
 
-.guild-link-card p{
-    color:#666;
+.match small{
+    color:#888;
+}
 
-    font-size:11px;
-
+.match p{
+    color:#ccc;
+    font-size:13px;
     line-height:1.5;
 }
 
-.future-button{
+/* =====================================================
+   GUILD PREVIEW
+===================================================== */
+
+.guild-preview{
+    display:grid;
+    grid-template-columns:330px 1fr;
+    gap:20px;
+
+    align-items:center;
+
+    padding:16px;
+
+    background:rgba(8,8,8,.82);
+
+    border:1px solid rgba(255,193,7,.3);
+    border-radius:15px;
+}
+
+.guild-preview-image{
+    width:100%;
+    height:175px;
+
+    overflow:hidden;
+
+    border-radius:11px;
+
+    background:#050505;
+
+    border:1px solid #333;
+}
+
+.guild-preview-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+}
+
+.guild-preview h3{
+    color:#ffc400;
+    font-size:23px;
+    margin-bottom:8px;
+}
+
+.guild-preview p{
+    color:#bbb;
+    line-height:1.55;
+    margin-bottom:13px;
+}
+
+.guild-button{
     display:inline-block;
-
-    margin-top:12px;
-
-    padding:10px 16px;
-
-    background:#111;
-
-    color:#fff;
 
     text-decoration:none;
 
-    border-radius:9px;
+    background:#ffc400;
+    color:#080808;
 
-    font-size:10px;
+    font-weight:900;
 
-    font-weight:1000;
+    padding:10px 16px;
 
-    border-bottom:3px solid var(--yellow);
+    border-radius:8px;
+
+    transition:.2s;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    padding:30px 0 40px;
-
-    text-align:center;
-
-    color:#fff;
+.guild-button:hover{
+    background:#ff3030;
+    color:white;
 }
 
-footer strong{
-    color:var(--yellow);
+/* =====================================================
+   FIXED SOCIAL BAR
+===================================================== */
+
+.social-bar{
+    position:fixed;
+
+    left:50%;
+    bottom:15px;
+
+    transform:translateX(-50%);
+
+    z-index:2000;
+
+    display:flex;
+
+    gap:8px;
+
+    width:max-content;
+    max-width:calc(100% - 24px);
 }
 
-footer p{
-    margin-top:5px;
+.social-button{
+    min-width:145px;
 
-    color:#aaa;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    font-size:9px;
+    gap:7px;
+
+    padding:12px 17px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    font-weight:900;
+    font-size:13px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:0 7px 25px rgba(0,0,0,.55);
+
+    transition:.2s;
 }
 
-/* =========================================================
+.social-tiktok{
+    background:#111;
+    color:white;
+}
+
+.social-whatsapp{
+    background:#ffc400;
+    color:#080808;
+}
+
+.social-button:hover{
+    transform:translateY(-3px);
+}
+
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
-@media(max-width:800px){
-
-    .container{
-        width:min(100% - 18px,600px);
-    }
+@media(max-width:700px){
 
     .nav{
-        height:58px;
+        min-height:60px;
     }
 
     .logo{
-        font-size:17px;
-    }
-
-    .nav-links{
-        gap:2px;
+        font-size:18px;
     }
 
     .nav-links a{
-        padding:8px;
-
-        font-size:9px;
+        padding:8px 8px;
+        font-size:11px;
     }
+
+    main{
+        width:94%;
+        padding-top:25px;
+        padding-bottom:105px;
+    }
+
+    /* HERO REMAINS SIDE BY SIDE */
 
     .hero{
-        padding:20px 0 13px;
+        grid-template-columns:115px 1fr;
+
+        gap:15px;
+
+        padding:15px;
+
+        min-height:auto;
     }
 
-    /*
-       Фото гильдии + текст рядом,
-       а не гигантское изображение.
-    */
-
-    .guild-hero{
-        grid-template-columns:43% 57%;
-
-        border-radius:16px;
+    .hero-photo{
+        height:150px;
     }
 
-    .guild-screen{
-        padding:6px;
+    .hero h1{
+        font-size:25px;
     }
 
-    .guild-screen img{
-        max-height:none;
+    .hero-kicker{
+        font-size:9px;
+        letter-spacing:2px;
     }
 
-    .guild-intro{
-        padding:17px 12px;
-    }
-
-    .guild-intro h1{
-        font-size:30px;
-    }
-
-    .guild-intro p{
-        font-size:8px;
-
+    .hero p{
+        font-size:12px;
         line-height:1.45;
     }
 
-    .section{
-        padding:16px 0;
-    }
-
     .section-title{
-        font-size:23px;
+        font-size:19px;
     }
 
-    /*
-       Баннер ещё меньше
-    */
-
-    .banner-card{
-        width:min(520px,100%);
-
-        padding:5px;
-
-        border-radius:13px;
-    }
-
-    .banner-card img{
-        border-radius:9px;
-    }
-
-    .info-grid{
-        grid-template-columns:repeat(2,1fr);
-
-        gap:5px;
-    }
-
-    .info{
-        padding:10px;
-    }
-
-    .info strong{
-        font-size:14px;
-    }
-
-    .players-card{
+    .profile-card{
         padding:12px;
     }
 
-    .player-avatar{
-        width:50px;
-        height:50px;
-
-        flex-basis:50px;
+    .profile-image img{
+        max-height:260px;
     }
 
-    .player-info strong{
-        font-size:14px;
+    .profile-info{
+        gap:5px;
     }
 
-    .player-info span{
-        font-size:8px;
+    .profile-info span{
+        font-size:10px;
+        padding:6px 8px;
     }
 
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:7px;
+    }
+
+    .stat{
+        padding:9px;
+    }
+
+    .stat b{
+        font-size:16px;
+    }
+
+    .prime{
+        grid-template-columns:125px 1fr;
+        gap:12px;
+        padding:11px;
+    }
+
+    .prime-image img{
+        height:105px;
+    }
+
+    .prime-text h3{
+        font-size:19px;
+    }
+
+    .prime-number{
+        font-size:18px;
+    }
+
+    .prime-text p{
+        font-size:11px;
+    }
+
+    .role-box{
+        grid-template-columns:1fr;
+    }
+
+    .weapons-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:8px;
+    }
+
+    .weapon img{
+        height:105px;
+    }
+
+    .matches{
+        grid-template-columns:1fr;
+    }
+
+    .guild-preview{
+        grid-template-columns:135px 1fr;
+        gap:12px;
+        padding:11px;
+    }
+
+    .guild-preview-image{
+        height:100px;
+    }
+
+    .guild-preview h3{
+        font-size:18px;
+    }
+
+    .guild-preview p{
+        font-size:11px;
+    }
+
+    .guild-button{
+        padding:8px 10px;
+        font-size:11px;
+    }
+
+    .social-button{
+        min-width:135px;
+        padding:11px 12px;
+        font-size:12px;
+    }
+
+}
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media(max-width:380px){
+
+    .hero{
+        grid-template-columns:95px 1fr;
+        gap:10px;
+    }
+
+    .hero-photo{
+        height:125px;
+    }
+
+    .hero h1{
+        font-size:21px;
+    }
+
+    .hero p{
+        font-size:10px;
+    }
+
+    .social-button{
+        min-width:125px;
+        font-size:11px;
+    }
 }
 
 </style>
@@ -716,29 +865,19 @@ footer p{
 
 <header>
 
-<div class="container nav">
+    <nav class="nav">
 
-    <a href="index.html" class="logo">
-        <span>2V</span> Психошка
-    </a>
+        <div class="logo">
+            <span>2V</span> Психошка
+        </div>
 
-    <nav class="nav-links">
-
-        <a href="about.html">
-            Обо мне
-        </a>
-
-        <a href="index.html">
-            Профиль
-        </a>
-
-        <a href="guild.html" class="active">
-            2VN
-        </a>
+        <div class="nav-links">
+            <a href="about.html">Обо мне</a>
+            <a href="index.html" class="active">Профиль</a>
+            <a href="guild.html">2VN</a>
+        </div>
 
     </nav>
-
-</div>
 
 </header>
 
@@ -746,260 +885,502 @@ footer p{
 <main>
 
 <!-- =====================================================
-     GUILD HERO
+     HERO
 ===================================================== -->
 
-<section class="hero">
+<section>
 
-<div class="container">
+    <div class="hero">
 
-<div class="guild-hero">
-
-    <div class="guild-screen">
-
-        <img
-            src="guild.jpg"
-            alt="Профиль гильдии 2VN"
-        >
-
-    </div>
-
-
-    <div class="guild-intro">
-
-        <div class="guild-kicker">
-            GUILD 2VN
+        <div class="hero-photo">
+            <img src="my-photo.jpg" alt="Психошка">
         </div>
 
-        <h1>
-            <span>2V</span>N
-        </h1>
+        <div>
 
-        <p>
-            Гильдия СНГ в Free Fire.
-            Уровень 5. 38 из 55 участников.
-        </p>
+            <div class="hero-kicker">
+                FREE FIRE PLAYER
+            </div>
+
+            <h1>
+                <span>2V</span> Психошка
+            </h1>
+
+            <p>
+                Игрок Free Fire из Казахстана.
+                Основной стиль — скорость, механика,
+                1 на 1 и КВ.
+            </p>
+
+        </div>
 
     </div>
-
-</div>
-
-</div>
 
 </section>
 
 
 <!-- =====================================================
-     BANNER
+     PROFILE
 ===================================================== -->
 
-<section class="section">
+<section>
 
-<div class="container">
+    <h2 class="section-title">
+        Игровой профиль
+    </h2>
 
-<h2 class="section-title">
-    <span>2VN</span> — The Best Guild
-</h2>
+    <div class="profile-card">
 
-<div class="banner-card">
+        <div class="profile-image">
 
-    <img
-        src="guild-banner.jpg"
-        alt="2VN — The Best Guild in the World"
-    >
+            <a href="profile.jpg" target="_blank">
 
-</div>
+                <img
+                    src="profile.jpg"
+                    alt="Игровой профиль Психошки"
+                >
 
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     STATS
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-<button
-    class="guild-toggle"
-    id="guildToggle"
->
-
-    <span id="guildToggleText">
-        Информация о гильдии
-    </span>
-
-    <span
-        class="guild-toggle-symbol"
-        id="guildToggleSymbol"
-    >
-        ＋
-    </span>
-
-</button>
-
-
-<div
-    class="guild-accordion"
-    id="guildAccordion"
->
-
-<div class="guild-accordion-inner">
-
-    <div class="info-grid">
-
-        <div class="info">
-
-            <small>Уровень</small>
-
-            <strong>5</strong>
+            </a>
 
         </div>
 
+        <div class="profile-info">
 
-        <div class="info">
+            <span><strong>2V Психошка</strong></span>
 
-            <small>Участники</small>
+            <span>UID <strong>492468395</strong></span>
 
-            <strong>38 / 55</strong>
+            <span>LVL <strong>70</strong></span>
 
-        </div>
+            <span>Гильдия <strong>2VN</strong></span>
 
+            <span>Лайки <strong>9928</strong></span>
 
-        <div class="info">
-
-            <small>Регион</small>
-
-            <strong>СНГ</strong>
-
-        </div>
-
-
-        <div class="info">
-
-            <small>Guild ID</small>
-
-            <strong>3084263454</strong>
+            <span>TikTok <strong>@erko_zr</strong></span>
 
         </div>
 
     </div>
 
-</div>
+</section>
 
-</div>
 
-</div>
+<!-- =====================================================
+     MY STATS — COLLAPSIBLE
+===================================================== -->
+
+<section>
+
+    <h2 class="section-title">
+        Моя статистика
+    </h2>
+
+    <button class="toggle" onclick="toggleBlock('stats', this)">
+
+        <span>Показать статистику</span>
+
+        <span class="toggle-symbol">＋</span>
+
+    </button>
+
+    <div class="collapsible" id="stats">
+
+        <div class="collapsible-inner">
+
+            <div class="stats-grid">
+
+                <div class="stat">
+                    <b>121</b>
+                    <small>Матчей</small>
+                </div>
+
+                <div class="stat">
+                    <b>66</b>
+                    <small>Побед</small>
+                </div>
+
+                <div class="stat">
+                    <b>370</b>
+                    <small>Убийств</small>
+                </div>
+
+                <div class="stat">
+                    <b>1.64</b>
+                    <small>KDA</small>
+                </div>
+
+                <div class="stat">
+                    <b>7.7</b>
+                    <small>Рейтинг</small>
+                </div>
+
+                <div class="stat">
+                    <b>149</b>
+                    <small>Возрождений</small>
+                </div>
+
+                <div class="stat">
+                    <b>1488</b>
+                    <small>Средний урон</small>
+                </div>
+
+                <div class="stat">
+                    <b>137</b>
+                    <small>Хедшотов</small>
+                </div>
+
+                <div class="stat">
+                    <b>37.03%</b>
+                    <small>Хедшот rate</small>
+                </div>
+
+                <div class="stat">
+                    <b>470</b>
+                    <small>Нокдаунов</small>
+                </div>
+
+                <div class="stat">
+                    <b>54.55%</b>
+                    <small>Win rate</small>
+                </div>
+
+                <div class="stat">
+                    <b>6 / 18</b>
+                    <small>Золото / Серебро</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 <!-- =====================================================
-     PLAYERS
+     PRIME
 ===================================================== -->
 
-<section class="section">
+<section>
 
-<div class="container">
+    <h2 class="section-title">
+        Prime
+    </h2>
 
-<h2 class="section-title">
-    <span>Игроки</span>
-</h2>
+    <div class="prime">
 
+        <div class="prime-image">
 
-<div class="players-card">
+            <img
+                src="prime.jpg"
+                alt="Prime 7"
+            >
 
-    <div class="player-avatar">
+        </div>
 
-        <img
-            src="my-photo.jpg"
-            alt="2V Психошка"
-        >
+        <div class="prime-text">
+
+            <h3>Prime 7</h3>
+
+            <div class="prime-number">
+                129 311 <span>/ 200 000</span>
+            </div>
+
+            <p>
+                Прогресс до Prime 8
+            </p>
+
+            <p>
+                Осталось получить:
+                <strong style="color:#ffc400;">
+                    70 689
+                </strong>
+            </p>
+
+        </div>
 
     </div>
-
-
-    <div class="player-info">
-
-        <small>Участник 2VN</small>
-
-        <strong>
-            2V Психошка
-        </strong>
-
-        <span>
-            Основной профиль игрока
-        </span>
-
-    </div>
-
-</div>
-
-</div>
 
 </section>
 
 
 <!-- =====================================================
-     GUILD SITE
+     ROLE
 ===================================================== -->
 
-<section class="section">
+<section>
 
-<div class="container">
+    <h2 class="section-title">
+        Стиль игры
+    </h2>
 
-<h2 class="section-title">
-    Сайт <span>2VN</span>
-</h2>
+    <div class="role-box">
+
+        <div class="role-card">
+
+            <h3>Штурмовик — 65%</h3>
+
+            <p>
+                Основная роль — агрессивная игра,
+                быстрые размены и ближний бой.
+                233 убийства в ближнем бою.
+            </p>
+
+        </div>
+
+        <div class="role-card">
+
+            <h3>Основное оружие</h3>
+
+            <p>
+                MP5 — оружие с наибольшим количеством
+                убийств.
+            </p>
+
+            <p>
+                Экспертиза:
+                Штурмовик Lv.10 · Стрелок Lv.3 ·
+                Снайпер Lv.2 · Помощник Lv.4 ·
+                Гренадер Lv.2
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-<div class="guild-link-card">
+<!-- =====================================================
+     WEAPONS
+===================================================== -->
 
-    <p>
-        Отдельный сайт гильдии будет добавлен сюда.
-    </p>
+<section>
 
-    <!-- Когда появится настоящий URL,
-         просто замени # на него -->
+    <h2 class="section-title">
+        Оружие
+    </h2>
 
-    <a
-        href="#"
-        class="future-button"
-        onclick="return false;"
-    >
-        Сайт гильдии →
-    </a>
+    <button class="toggle" onclick="toggleBlock('weapons', this)">
 
-</div>
+        <span>Показать арсенал</span>
 
-</div>
+        <span class="toggle-symbol">＋</span>
+
+    </button>
+
+    <div class="collapsible" id="weapons">
+
+        <div class="collapsible-inner">
+
+            <div class="weapons-grid">
+
+                <div class="weapon">
+                    <img src="mp5.jpg" alt="MP5">
+                </div>
+
+                <div class="weapon">
+                    <img src="desert-eagle.jpg" alt="Desert Eagle">
+                </div>
+
+                <div class="weapon">
+                    <img src="mac10.jpg" alt="MAC10">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RECENT MATCHES
+===================================================== -->
+
+<section>
+
+    <h2 class="section-title">
+        Последние матчи
+    </h2>
+
+    <div class="matches">
+
+        <div class="match">
+            <div class="match-top">
+                <span class="win">ПОБЕДА</span>
+                <small>21:38</small>
+            </div>
+            <p>Комната — Ультиматум</p>
+            <p>6 убийств</p>
+        </div>
+
+        <div class="match">
+            <div class="match-top">
+                <span class="win">ПОБЕДА</span>
+                <small>21:28</small>
+            </div>
+            <p>Комната — Ультиматум</p>
+            <p>12 убийств</p>
+        </div>
+
+        <div class="match">
+            <div class="match-top">
+                <span class="loss">ПОКИНУТА</span>
+                <small>20:51</small>
+            </div>
+            <p>Комната — Заброшена</p>
+            <p>5 убийств</p>
+        </div>
+
+        <div class="match">
+            <div class="match-top">
+                <span class="win">ПОБЕДА</span>
+                <small>20:07</small>
+            </div>
+            <p>Комната — Ультиматум</p>
+            <p>5 убийств</p>
+        </div>
+
+        <div class="match">
+            <div class="match-top">
+                <span class="win">ПОБЕДА</span>
+                <small>20:01</small>
+            </div>
+            <p>Комната — Ультиматум</p>
+            <p>4 убийства</p>
+        </div>
+
+        <div class="match">
+            <div class="match-top">
+                <span class="win">ПОБЕДА</span>
+                <small>19:53</small>
+            </div>
+            <p>БО-РЕЙТИНГ</p>
+            <p>3 убийства</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GUILD
+===================================================== -->
+
+<section>
+
+    <h2 class="section-title">
+        Моя гильдия
+    </h2>
+
+    <div class="guild-preview">
+
+        <div class="guild-preview-image">
+
+            <img
+                src="guild-banner.jpg"
+                alt="2VN"
+            >
+
+        </div>
+
+        <div>
+
+            <h3>2VN</h3>
+
+            <p>
+                Гильдия СНГ, частью которой является
+                Психошка. Подробнее о составе,
+                уровне и игроках — на отдельной странице.
+            </p>
+
+            <a class="guild-button" href="guild.html">
+                Открыть гильдию →
+            </a>
+
+        </div>
+
+    </div>
 
 </section>
 
 </main>
 
 
-<footer>
+<!-- =====================================================
+     FIXED SOCIAL
+===================================================== -->
 
-    <strong>2VN</strong>
+<div class="social-bar">
 
-    <p>
-        Guild · СНГ · Free Fire
-    </p>
+    <a
+        class="social-button social-tiktok"
+        href="https://www.tiktok.com/@erko_zr"
+        target="_blank"
+    >
+        🎵 TikTok @erko_zr
+    </a>
 
-</footer>
+    <a
+        class="social-button social-whatsapp"
+        href="https://wa.me/77053536952"
+        target="_blank"
+    >
+        💬 WhatsApp
+    </a>
+
+</div>
 
 
 <script>
 
-/* =========================================================
-   BACKGROUND
-========================================================= */
+/* =====================================================
+   COLLAPSIBLES
+===================================================== */
 
-const pcBackgrounds = [
+function toggleBlock(id, button){
+
+    const block = document.getElementById(id);
+
+    const opened = block.classList.toggle("open");
+
+    const text = button.querySelector("span:first-child");
+    const symbol = button.querySelector(".toggle-symbol");
+
+    if(opened){
+
+        if(id === "stats"){
+            text.textContent = "Скрыть статистику";
+        }else{
+            text.textContent = "Скрыть оружие";
+        }
+
+        symbol.textContent = "−";
+
+    }else{
+
+        if(id === "stats"){
+            text.textContent = "Показать статистику";
+        }else{
+            text.textContent = "Показать арсенал";
+        }
+
+        symbol.textContent = "＋";
+    }
+
+}
+
+
+/* =====================================================
+   RANDOM BACKGROUND
+===================================================== */
+
+const desktopBackgrounds = [
     "bg-pc-1.jpg",
     "bg-pc-2.jpg",
     "bg-pc-3.jpg",
@@ -1015,56 +1396,30 @@ const mobileBackgrounds = [
     "bg-mobile-5.jpg"
 ];
 
-const backgrounds =
-    window.innerWidth <= 800
+function setBackground(){
+
+    const list =
+        window.innerWidth <= 700
         ? mobileBackgrounds
-        : pcBackgrounds;
+        : desktopBackgrounds;
 
-const selected =
-    backgrounds[
-        Math.floor(
-            Math.random() * backgrounds.length
-        )
-    ];
+    const random =
+        list[Math.floor(Math.random() * list.length)];
 
-document.documentElement.style.setProperty(
-    "--bg-image",
-    `url("${selected}")`
-);
+    document.body.style.setProperty(
+        "--background-image",
+        `url("${random}")`
+    );
 
+    document.body.style.setProperty(
+        "background-image",
+        `url("${random}")`
+    );
 
-/* =========================================================
-   GUILD STATS
-========================================================= */
+    document.body.style.backgroundAttachment = "fixed";
+}
 
-const guildToggle =
-    document.getElementById("guildToggle");
-
-const guildAccordion =
-    document.getElementById("guildAccordion");
-
-const guildToggleText =
-    document.getElementById("guildToggleText");
-
-const guildToggleSymbol =
-    document.getElementById("guildToggleSymbol");
-
-guildToggle.addEventListener("click",function(){
-
-    const opened =
-        guildAccordion.classList.toggle("open");
-
-    guildToggleText.textContent =
-        opened
-            ? "Скрыть информацию"
-            : "Информация о гильдии";
-
-    guildToggleSymbol.textContent =
-        opened
-            ? "−"
-            : "＋";
-
-});
+setBackground();
 
 </script>
 
