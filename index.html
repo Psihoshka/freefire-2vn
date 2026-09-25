@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
+
+    <!-- Адаптация под телефон -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FREE FIRE | 2VN</title>
+    <title>2VN | Free Fire Player</title>
 
     <style>
+        /* =========================================
+           ОСНОВА
+        ========================================= */
 
         * {
             margin: 0;
@@ -17,65 +21,162 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #050208;
-            color: white;
+            color: #fff;
+            background: #08030d;
             overflow-x: hidden;
         }
 
+        /* =========================================
+           ФИКСИРОВАННЫЙ BACKGROUND
+        ========================================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+
+            background-image:
+                linear-gradient(
+                    rgba(8, 2, 15, 0.48),
+                    rgba(8, 2, 15, 0.68)
+                ),
+                url("freefire-bg.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(145, 0, 255, 0.18),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(255, 0, 70, 0.18),
+                    transparent 35%
+                );
+        }
+
+        /* =========================================
+           ОБЩИЕ ЭЛЕМЕНТЫ
+        ========================================= */
+
         a {
+            color: inherit;
             text-decoration: none;
         }
 
-        /* =========================
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1150px, 90%);
+            margin: auto;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            display: block;
+            width: 70px;
+            height: 4px;
+            margin: auto;
+
+            background: linear-gradient(
+                90deg,
+                #8b00ff,
+                #ff1744
+            );
+
+            border-radius: 10px;
+        }
+
+        .section-title p {
+            margin-top: 18px;
+            color: #cfc5d8;
+        }
+
+        /* =========================================
            NAVIGATION
-        ========================= */
+        ========================================= */
 
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 18px 7%;
-
-            background: rgba(5, 2, 8, 0.95);
-
-            border-bottom: 1px solid #9b2cff;
-
-            box-shadow:
-                0 0 25px rgba(155, 44, 255, 0.35);
-
+            background: rgba(5, 2, 10, 0.82);
             backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-container {
+            width: min(1150px, 92%);
+            margin: auto;
+
+            min-height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
         }
 
         .logo {
-            font-size: 25px;
+            font-size: 23px;
             font-weight: 900;
             letter-spacing: 2px;
 
-            text-shadow:
-                0 0 12px #9b2cff;
-        }
+            background: linear-gradient(
+                90deg,
+                #b400ff,
+                #ff1744
+            );
 
-        .logo span {
-            color: #ff1744;
-
-            text-shadow:
-                0 0 12px #ff1744;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         nav ul {
             display: flex;
+            align-items: center;
             gap: 25px;
             list-style: none;
-            flex-wrap: wrap;
         }
 
         nav a {
@@ -87,670 +188,406 @@
 
         nav a:hover {
             color: #ff1744;
-
-            text-shadow:
-                0 0 12px #ff1744;
         }
 
-
-        /* =========================
+        /* =========================================
            HERO
-        ========================= */
+        ========================================= */
 
         .hero {
-            min-height: 760px;
-
-            position: relative;
+            min-height: 100vh;
 
             display: flex;
             align-items: center;
-            justify-content: center;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(3, 0, 8, 0.96),
-                    rgba(30, 5, 45, 0.45),
-                    rgba(5, 0, 10, 0.88)
-                ),
-                url("freefire-bg.jpg");
-
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero::after {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
-            background:
-                radial-gradient(
-                    circle,
-                    transparent 20%,
-                    rgba(0,0,0,0.65)
-                );
-
-            pointer-events: none;
+            padding-top: 100px;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
-
-            width: 90%;
-            max-width: 1250px;
-
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-
-            align-items: center;
-
-            gap: 60px;
+            max-width: 800px;
         }
 
-        .hero-small {
-            color: #ff1744;
+        .hero-label {
+            display: inline-block;
 
-            font-size: 17px;
-            font-weight: bold;
-
-            letter-spacing: 5px;
-
+            padding: 8px 15px;
             margin-bottom: 20px;
 
-            text-shadow:
-                0 0 15px #ff1744;
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 30px;
+
+            background: rgba(130,0,255,0.15);
+
+            color: #e6c8ff;
+            font-size: 13px;
+            letter-spacing: 2px;
         }
 
         .hero h1 {
-            font-size: clamp(55px, 8vw, 100px);
-
-            line-height: 0.9;
-
-            font-weight: 1000;
-
-            margin-bottom: 30px;
+            font-size: clamp(50px, 8vw, 90px);
+            line-height: 0.95;
+            text-transform: uppercase;
+            font-weight: 900;
         }
 
         .hero h1 span {
             display: block;
 
-            color: #9b2cff;
+            background: linear-gradient(
+                90deg,
+                #a600ff,
+                #ff1744
+            );
 
-            text-shadow:
-                0 0 10px #9b2cff,
-                0 0 30px #9b2cff,
-                0 0 60px rgba(155,44,255,0.7);
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
-        .hero p {
-            max-width: 600px;
+        .hero-text {
+            margin-top: 25px;
 
-            color: #d2cbd8;
+            max-width: 650px;
 
-            font-size: 19px;
+            color: #ddd;
+            font-size: 18px;
             line-height: 1.7;
-
-            margin-bottom: 35px;
         }
 
-
-        /* =========================
-           BUTTON
-        ========================= */
-
-        .button {
-            display: inline-block;
-
-            padding: 16px 32px;
-
-            color: white;
-
-            font-weight: bold;
-
-            border-radius: 5px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #9b2cff,
-                    #ff1744
-                );
-
-            box-shadow:
-                0 0 20px rgba(155,44,255,0.4);
-
-            transition: 0.3s;
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 35px;
         }
 
-        .button:hover {
-            transform:
-                translateY(-4px)
-                scale(1.03);
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
 
-            box-shadow:
-                0 0 30px #9b2cff,
-                0 0 40px #ff1744;
-        }
-
-
-        /* =========================
-           GAME PROFILE
-        ========================= */
-
-        .profile-card {
-            background:
-                rgba(10, 5, 18, 0.88);
-
-            border:
-                1px solid #9b2cff;
-
-            padding: 15px;
+            min-height: 48px;
+            padding: 0 25px;
 
             border-radius: 12px;
 
-            box-shadow:
-                0 0 30px rgba(155,44,255,0.45);
-
-            transform: rotate(1deg);
-
-            transition: 0.4s;
-        }
-
-        .profile-card:hover {
-            transform:
-                rotate(0deg)
-                scale(1.02);
-
-            box-shadow:
-                0 0 40px #9b2cff,
-                0 0 60px rgba(255,23,68,0.25);
-        }
-
-        .profile-card img {
-            width: 100%;
-            max-height: 500px;
-
-            object-fit: contain;
-
-            display: block;
-
-            border-radius: 7px;
-        }
-
-        .profile-label {
-            padding: 15px;
-
-            text-align: center;
-
             font-weight: bold;
 
-            letter-spacing: 2px;
+            transition:
+                transform 0.3s,
+                box-shadow 0.3s;
         }
 
-        .profile-label span {
-            color: #ff1744;
+        .btn-primary {
+            background: linear-gradient(
+                90deg,
+                #8b00ff,
+                #ff1744
+            );
+
+            box-shadow:
+                0 10px 30px rgba(180,0,255,0.25);
         }
 
-
-        /* =========================
-           GENERAL SECTIONS
-        ========================= */
-
-        section {
-            padding: 100px 7%;
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.06);
         }
 
-        .section-title {
-            text-align: center;
-
-            font-size:
-                clamp(34px, 5vw, 52px);
-
-            margin-bottom: 55px;
-
-            font-weight: 900;
+        .btn:hover {
+            transform: translateY(-4px);
         }
 
-        .section-title span {
-            color: #9b2cff;
-
-            text-shadow:
-                0 0 15px #9b2cff;
-        }
-
-
-        /* =========================
+        /* =========================================
            ABOUT
-        ========================= */
+        ========================================= */
 
-        .about {
-            background:
-                linear-gradient(
-                    180deg,
-                    #08050d,
-                    #100612
-                );
+        .glass {
+            background: rgba(10, 5, 18, 0.72);
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            backdrop-filter: blur(14px);
+
+            border-radius: 25px;
         }
 
         .about-box {
-            max-width: 950px;
-
-            margin: auto;
-
             padding: 45px;
-
-            background:
-                rgba(17, 8, 25, 0.9);
-
-            border-left:
-                5px solid #ff1744;
-
-            border-radius: 10px;
-
-            box-shadow:
-                0 0 30px rgba(255,23,68,0.12);
         }
 
-        .about-box p {
-            color: #c7bdca;
-
-            font-size: 18px;
-
-            line-height: 1.8;
-
-            margin-bottom: 15px;
-        }
-
-        .about-box strong {
-            color: #ff1744;
-        }
-
-
-        /* =========================
-           MY PHOTO
-        ========================= */
-
-        .my-photo-section {
-            padding: 100px 7%;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #08030d,
-                    #19051f,
-                    #09030c
-                );
-
-            border-top:
-                1px solid #9b2cff;
-
-            border-bottom:
-                1px solid #ff1744;
-        }
-
-        .my-photo-container {
-            max-width: 1100px;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns:
-                0.8fr 1.2fr;
-
-            align-items: center;
-
-            gap: 70px;
-        }
-
-        .my-photo {
-            padding: 8px;
-
-            border-radius: 15px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #9b2cff,
-                    #ff1744
-                );
-
-            box-shadow:
-                0 0 30px
-                rgba(155,44,255,0.45),
-
-                0 0 60px
-                rgba(255,23,68,0.2);
-
-            transform: rotate(-2deg);
-
-            transition: 0.4s;
-        }
-
-        .my-photo:hover {
-            transform:
-                rotate(0deg)
-                scale(1.03);
-
-            box-shadow:
-                0 0 40px #9b2cff,
-                0 0 70px rgba(255,23,68,0.4);
-        }
-
-        .my-photo img {
-            display: block;
-
-            width: 100%;
-
-            max-height: 600px;
-
-            object-fit: cover;
-
-            border-radius: 10px;
-        }
-
-        .my-photo-text h2 {
-            font-size:
-                clamp(45px, 6vw, 75px);
-
-            margin-bottom: 25px;
-
-            font-weight: 1000;
-        }
-
-        .my-photo-text h2 span {
-            color: #ff1744;
-
-            text-shadow:
-                0 0 15px #ff1744,
-                0 0 30px #ff1744;
-        }
-
-        .my-photo-text p {
-            color: #c8bdce;
-
-            font-size: 18px;
-
-            line-height: 1.8;
-
+        .about-box h3 {
+            font-size: 30px;
             margin-bottom: 20px;
         }
 
-
-        /* =========================
-           STATS
-        ========================= */
-
-        .stats {
-            background: #05030a;
+        .about-box h3 span {
+            color: #c000ff;
         }
 
-        .stats-grid {
-            max-width: 1100px;
+        .about-box p {
+            color: #ddd;
+            line-height: 1.8;
+            margin-bottom: 17px;
+            font-size: 17px;
+        }
 
-            margin: auto;
+        .about-highlight {
+            margin-top: 30px;
 
             display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
 
-            grid-template-columns:
-                repeat(4, 1fr);
+        .highlight {
+            padding: 22px;
 
-            gap: 20px;
+            background: rgba(255,255,255,0.045);
+
+            border-radius: 17px;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            text-align: center;
+        }
+
+        .highlight strong {
+            display: block;
+
+            font-size: 27px;
+
+            background: linear-gradient(
+                90deg,
+                #b400ff,
+                #ff1744
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .highlight small {
+            color: #aaa;
+            display: block;
+            margin-top: 6px;
+        }
+
+        /* =========================================
+           MY PHOTO
+        ========================================= */
+
+        .my-photo-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+
+            align-items: center;
+
+            padding: 35px;
+        }
+
+        .my-photo {
+            overflow: hidden;
+            border-radius: 22px;
+
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .my-photo img {
+            width: 100%;
+            transition: transform 0.6s;
+        }
+
+        .my-photo:hover img {
+            transform: scale(1.04);
+        }
+
+        .photo-text h3 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .photo-text p {
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        /* =========================================
+           STATS
+        ========================================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
         }
 
         .stat {
-            padding: 30px 15px;
+            padding: 30px 20px;
 
             text-align: center;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #16091d,
-                    #09050d
-                );
+            background: rgba(9,4,16,0.78);
 
-            border:
-                1px solid #3a174d;
+            border: 1px solid rgba(255,255,255,0.08);
 
-            border-radius: 10px;
+            border-radius: 20px;
 
             transition: 0.3s;
         }
 
         .stat:hover {
-            transform:
-                translateY(-7px);
+            transform: translateY(-7px);
 
-            border-color:
-                #9b2cff;
+            border-color: rgba(190,0,255,0.45);
 
             box-shadow:
-                0 0 25px
-                rgba(155,44,255,0.3);
+                0 15px 40px rgba(120,0,255,0.15);
         }
 
-        .stat strong {
-            display: block;
+        .stat-number {
+            font-size: 42px;
+            font-weight: 900;
 
-            color: #ff1744;
+            background: linear-gradient(
+                90deg,
+                #b400ff,
+                #ff1744
+            );
 
-            font-size: 38px;
-
-            margin-bottom: 8px;
-
-            text-shadow:
-                0 0 15px #ff1744;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
-        .stat span {
-            color: #888;
+        .stat p {
+            color: #aaa;
+            margin-top: 8px;
         }
 
-
-        /* =========================
+        /* =========================================
            GUILD
-        ========================= */
+        ========================================= */
 
-        .guild {
-            position: relative;
+        .guild-banner {
+            min-height: 300px;
 
-            overflow: hidden;
+            border-radius: 25px;
 
             background:
                 linear-gradient(
-                    rgba(8, 2, 18, 0.90),
-                    rgba(5, 1, 10, 0.96)
+                    rgba(5,2,12,0.62),
+                    rgba(5,2,12,0.82)
                 ),
                 url("guild-bg.jpg");
 
             background-size: cover;
-
             background-position: center;
 
-            border-top:
-                2px solid #9b2cff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            border-bottom:
-                2px solid #ff1744;
-        }
-
-        .guild-container {
-            position: relative;
-
-            z-index: 2;
-
-            max-width: 1150px;
-
-            margin: auto;
-        }
-
-        .guild-title {
             text-align: center;
 
-            font-size:
-                clamp(40px, 6vw, 65px);
-
-            font-weight: 1000;
-
-            margin-bottom: 15px;
-
-            text-shadow:
-                0 0 15px #9b2cff;
-        }
-
-        .guild-title span {
-            color: #ff1744;
-
-            text-shadow:
-                0 0 15px #ff1744,
-                0 0 35px #ff1744;
-        }
-
-        .guild-subtitle {
-            text-align: center;
-
-            color: #aaa;
-
-            letter-spacing: 4px;
-
-            margin-bottom: 50px;
-        }
-
-        .guild-intro {
             padding: 30px;
-
-            margin-bottom: 30px;
-
-            background:
-                rgba(10, 4, 20, 0.9);
-
-            border:
-                1px solid #9b2cff;
-
-            border-left:
-                5px solid #ff1744;
-
-            border-radius: 10px;
         }
 
-        .guild-intro h3 {
-            color: #ff1744;
+        .guild-banner h3 {
+            font-size: clamp(45px, 8vw, 80px);
+            font-weight: 900;
 
-            font-size: 26px;
+            background: linear-gradient(
+                90deg,
+                #c000ff,
+                #ff1744
+            );
 
-            margin-bottom: 15px;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
-        .guild-intro p {
-            color: #d0c7d5;
-
-            line-height: 1.7;
-
-            font-size: 17px;
+        .guild-banner p {
+            margin-top: 10px;
+            color: #ddd;
         }
 
-        .rules-box {
+        /* =========================================
+           GUILD INFO
+        ========================================= */
+
+        .guild-info {
+            margin-top: 25px;
+
             display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
 
-            grid-template-columns:
-                repeat(2, 1fr);
+        .guild-card {
+            padding: 30px;
+        }
 
+        .guild-card h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .guild-card ul {
+            list-style: none;
+        }
+
+        .guild-card li {
+            padding: 11px 0;
+
+            color: #d4d4d4;
+
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .guild-card li:last-child {
+            border-bottom: none;
+        }
+
+        .guild-card li::before {
+            content: "✦";
+            color: #ff1744;
+            margin-right: 10px;
+        }
+
+        /* =========================================
+           RULES
+        ========================================= */
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
 
         .rule-card {
-            padding: 28px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(25,8,35,0.96),
-                    rgba(9,3,15,0.96)
-                );
-
-            border:
-                1px solid #34164a;
-
-            border-radius: 10px;
-
-            transition: 0.3s;
-        }
-
-        .rule-card:hover {
-            transform:
-                translateY(-5px);
-
-            border-color:
-                #9b2cff;
-
-            box-shadow:
-                0 0 30px
-                rgba(155,44,255,0.25);
+            padding: 30px;
         }
 
         .rule-card h3 {
-            color: #9b2cff;
-
+            color: #d000ff;
             margin-bottom: 18px;
+        }
 
-            font-size: 22px;
+        .rule-card p,
+        .rule-card li {
+            color: #ccc;
+            line-height: 1.7;
         }
 
         .rule-card ul {
-            list-style: none;
+            padding-left: 20px;
         }
 
-        .rule-card li {
-            color: #d1cbd5;
-
-            padding: 9px 0;
-
-            line-height: 1.5;
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.05);
-        }
-
-        .rule-card li:last-child {
-            border-bottom: none;
-        }
-
-        .allowed {
-            color: #4cff8a;
-
-            font-weight: bold;
-        }
-
-        .forbidden {
-            color: #ff1744;
-
-            font-weight: bold;
-        }
-
-
-        /* =========================
+        /* =========================================
            GALLERY
-        ========================= */
+        ========================================= */
 
         .gallery {
-            background:
-                linear-gradient(
-                    180deg,
-                    #05030a,
-                    #0d0412
-                );
-        }
-
-        .gallery-grid {
-            max-width: 1100px;
-
-            margin: auto;
-
             display: grid;
 
             grid-template-columns:
@@ -760,399 +597,447 @@
         }
 
         .gallery-item {
-            height: 300px;
-
-            border-radius: 10px;
-
+            position: relative;
             overflow: hidden;
 
-            border:
-                1px solid #321343;
+            border-radius: 20px;
 
-            background:
-                #100515;
+            cursor: pointer;
 
-            transition: 0.3s;
-        }
+            border: 1px solid rgba(255,255,255,0.1);
 
-        .gallery-item:hover {
-            transform:
-                scale(1.03);
-
-            border-color:
-                #ff1744;
-
-            box-shadow:
-                0 0 25px
-                rgba(255,23,68,0.25);
+            background: #09040f;
         }
 
         .gallery-item img {
             width: 100%;
-            height: 100%;
+            height: 300px;
 
             object-fit: cover;
+
+            transition:
+                transform 0.6s,
+                filter 0.6s;
         }
 
+        .gallery-item:hover img {
+            transform: scale(1.07);
+            filter: brightness(1.15);
+        }
 
-        /* =========================
+        .gallery-label {
+            position: absolute;
+            left: 15px;
+            bottom: 15px;
+
+            padding: 8px 12px;
+
+            border-radius: 10px;
+
+            background: rgba(0,0,0,0.65);
+
+            font-size: 13px;
+        }
+
+        /* =========================================
+           PHOTO VIEWER
+        ========================================= */
+
+        .photo-viewer {
+            position: fixed;
+            inset: 0;
+
+            z-index: 9999;
+
+            display: none;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            background: rgba(0,0,0,0.94);
+        }
+
+        .photo-viewer.active {
+            display: flex;
+        }
+
+        .photo-viewer img {
+            max-width: 95vw;
+            max-height: 90vh;
+
+            object-fit: contain;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 0 60px rgba(170,0,255,0.3);
+        }
+
+        .close-photo {
+            position: absolute;
+
+            top: 15px;
+            right: 25px;
+
+            font-size: 45px;
+            color: white;
+
+            cursor: pointer;
+
+            line-height: 1;
+        }
+
+        /* =========================================
            CONTACT
-        ========================= */
+        ========================================= */
 
-        .contact {
+        .contact-box {
             text-align: center;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    #250a32,
-                    #07030b 65%
-                );
+            padding: 55px 30px;
         }
 
-        .contact h2 {
-            font-size:
-                clamp(35px, 5vw, 55px);
-
+        .contact-box h2 {
+            font-size: 38px;
             margin-bottom: 15px;
         }
 
-        .contact h2 span {
-            color: #ff1744;
-
-            text-shadow:
-                0 0 15px #ff1744;
-        }
-
-        .contact p {
+        .contact-box p {
             color: #aaa;
-
-            font-size: 18px;
-
-            margin-bottom: 25px;
-        }
-
-        .phone {
-            display: block;
-
-            color: white;
-
-            font-size: 27px;
-
-            font-weight: bold;
-
             margin-bottom: 30px;
-
-            transition: 0.3s;
         }
 
-        .phone:hover {
-            color: #9b2cff;
-
-            text-shadow:
-                0 0 15px #9b2cff;
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .whatsapp-button {
-            display: inline-block;
-
-            padding: 17px 35px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #9b2cff,
-                    #ff1744
-                );
-
-            color: white;
-
-            border-radius: 5px;
-
-            font-weight: bold;
-
-            box-shadow:
-                0 0 25px
-                rgba(155,44,255,0.35);
-
-            transition: 0.3s;
-        }
-
-        .whatsapp-button:hover {
-            transform:
-                translateY(-4px);
-
-            box-shadow:
-                0 0 30px #9b2cff,
-                0 0 45px rgba(255,23,68,0.5);
-        }
-
-
-        /* =========================
+        /* =========================================
            FOOTER
-        ========================= */
+        ========================================= */
 
         footer {
-            padding: 35px;
+            padding: 30px 15px;
 
             text-align: center;
 
-            background: #020106;
+            background: rgba(3,1,7,0.88);
 
-            border-top:
-                1px solid #9b2cff;
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            color: #888;
         }
 
-        footer h2 {
-            color: #9b2cff;
-
-            margin-bottom: 10px;
-
-            text-shadow:
-                0 0 10px #9b2cff;
+        footer strong {
+            color: #c000ff;
         }
 
-        footer p {
-            color: #666;
+        /* =========================================
+           SCROLL ANIMATIONS
+        ========================================= */
 
-            margin-top: 5px;
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(60px)
+                scale(0.97);
+
+            transition:
+                opacity 0.9s ease,
+                transform 0.9s ease;
         }
 
+        .reveal.active {
+            opacity: 1;
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+            transform:
+                translateY(0)
+                scale(1);
+        }
 
-        @media (max-width: 900px) {
+        .reveal-left {
+            opacity: 0;
+
+            transform: translateX(-70px);
+
+            transition:
+                opacity 0.9s ease,
+                transform 0.9s ease;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+
+            transform: translateX(70px);
+
+            transition:
+                opacity 0.9s ease,
+                transform 0.9s ease;
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-reveal {
+            opacity: 0;
+
+            transform: scale(0.75);
+
+            transition:
+                opacity 1s ease,
+                transform 1s ease;
+        }
+
+        .zoom-reveal.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 800px) {
 
             nav {
+                position: sticky;
+            }
+
+            .nav-container {
+                min-height: auto;
+
+                padding: 13px 0;
+
                 flex-direction: column;
-                gap: 15px;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-
-                text-align: center;
-
-                padding: 70px 0;
-            }
-
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .profile-card {
-                max-width: 500px;
-
-                width: 100%;
-
-                margin: auto;
-            }
-
-            .my-photo-container {
-                grid-template-columns: 1fr;
-
-                gap: 40px;
-
-                text-align: center;
-            }
-
-            .my-photo {
-                max-width: 450px;
-
-                margin: auto;
-            }
-
-            .stats-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .rules-box {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-
-        @media (max-width: 550px) {
-
-            section {
-                padding:
-                    70px 5%;
+                gap: 10px;
             }
 
             nav ul {
-                gap: 12px;
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+
+                gap: 8px 13px;
             }
 
             nav a {
-                font-size: 12px;
+                font-size: 11px;
             }
 
-            .stats-grid {
-                grid-template-columns: 1fr;
+            section {
+                padding: 70px 0;
             }
 
             .hero {
-                min-height: 700px;
+                min-height: 90vh;
+                padding-top: 60px;
             }
 
-            .profile-card img {
-                max-height: 420px;
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-text {
+                font-size: 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
             }
 
             .about-box {
-                padding: 25px;
+                padding: 25px 20px;
             }
 
-            .my-photo img {
-                max-height: 550px;
+            .about-box h3 {
+                font-size: 25px;
+            }
+
+            .about-box p {
+                font-size: 15px;
+            }
+
+            .about-highlight {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .highlight {
+                padding: 18px 10px;
+            }
+
+            .highlight strong {
+                font-size: 24px;
+            }
+
+            .my-photo-box {
+                grid-template-columns: 1fr;
+
+                padding: 20px;
+            }
+
+            .photo-text h3 {
+                font-size: 28px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat {
+                padding: 23px 12px;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .guild-info,
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guild-card,
+            .rule-card {
+                padding: 23px 20px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item img {
+                height: auto;
+                max-height: 500px;
+            }
+
+            .contact-box {
+                padding: 40px 20px;
+            }
+
+            .contact-box h2 {
+                font-size: 30px;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-buttons .btn {
+                width: 100%;
             }
         }
 
+        /* =========================================
+           VERY SMALL PHONES
+        ========================================= */
+
+        @media (max-width: 420px) {
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .about-highlight {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 6px 9px;
+            }
+
+            nav a {
+                font-size: 10px;
+            }
+        }
     </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
+<!-- =========================================
      NAVIGATION
-========================= -->
+========================================= -->
 
 <nav>
+    <div class="nav-container">
 
-    <div class="logo">
-        FREE <span>FIRE</span>
+        <a href="#home" class="logo">
+            2VN
+        </a>
+
+        <ul>
+            <li><a href="#about">Обо мне</a></li>
+            <li><a href="#photo">Фото</a></li>
+            <li><a href="#stats">Статы</a></li>
+            <li><a href="#guild">2VN</a></li>
+            <li><a href="#rules">Правила</a></li>
+            <li><a href="#gallery">Галерея</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+
     </div>
-
-    <ul>
-
-        <li>
-            <a href="#home">
-                Главная
-            </a>
-        </li>
-
-        <li>
-            <a href="#about">
-                Обо мне
-            </a>
-        </li>
-
-        <li>
-            <a href="#profile">
-                Профиль
-            </a>
-        </li>
-
-        <li>
-            <a href="#guild">
-                2VN
-            </a>
-        </li>
-
-        <li>
-            <a href="#gallery">
-                Галерея
-            </a>
-        </li>
-
-        <li>
-            <a href="#contact">
-                Контакты
-            </a>
-        </li>
-
-    </ul>
-
 </nav>
 
 
-<!-- =========================
+<!-- =========================================
      HERO
-========================= -->
+========================================= -->
 
-<section
-    class="hero"
-    id="home"
->
+<section id="home" class="hero">
 
-    <div class="hero-content">
+    <div class="container">
 
+        <div class="hero-content reveal">
 
-        <div class="hero-text">
-
-            <div class="hero-small">
+            <div class="hero-label">
                 FREE FIRE • 2VN
             </div>
 
-
             <h1>
-
                 MY
-
-                <span>
-                    FREE FIRE
-                </span>
-
-                WORLD
-
+                <span>GAME.</span>
             </h1>
 
-
-            <p>
-
-                Добро пожаловать на мой
-                персональный сайт Free Fire.
-                Здесь мой игровой профиль,
-                информация обо мне,
-                гильдия 2VN и наши правила.
-
+            <p class="hero-text">
+                8 лет в Free Fire. Опыт в СНС и КВ,
+                специализация 1v1 и быстрый стиль игры.
+                Два пальца — максимум механики.
             </p>
 
+            <div class="hero-buttons">
 
-            <a
-                href="#profile"
-                class="button"
-            >
+                <a href="#about" class="btn btn-primary">
+                    Узнать обо мне
+                </a>
 
-                СМОТРЕТЬ ПРОФИЛЬ
-
-            </a>
-
-        </div>
-
-
-        <!-- ИГРОВОЙ ПРОФИЛЬ -->
-
-        <div
-            class="profile-card"
-            id="profile"
-        >
-
-            <img
-                src="profile.jpg"
-                alt="Мой игровой профиль Free Fire"
-            >
-
-            <div class="profile-label">
-
-                FREE FIRE PROFILE
-
-                <br>
-
-                <span>
-                    2VN
-                </span>
+                <a href="#guild" class="btn btn-secondary">
+                    Гильдия 2VN
+                </a>
 
             </div>
 
@@ -1163,291 +1048,265 @@
 </section>
 
 
-<!-- =========================
+<!-- =========================================
      ABOUT
-========================= -->
+========================================= -->
 
-<section
-    class="about"
-    id="about"
->
+<section id="about">
 
-    <h2 class="section-title">
+    <div class="container">
 
-        ОБО <span>МНЕ</span>
+        <div class="section-title reveal">
 
-    </h2>
+            <h2>Обо мне</h2>
 
-
-    <div class="about-box">
-
-        <p>
-
-            🎮 Я активный игрок Free Fire
-            и являюсь ключевым игроком
-            гильдии <strong>2VN</strong>.
-
-        </p>
-
-        <p>
-
-            Для меня Free Fire — это
-            командная работа, тактика,
-            общение и постоянное развитие.
-
-        </p>
-
-        <p>
-
-            На этом сайте собрана
-            информация обо мне, моём
-            игровом профиле и нашей
-            гильдии.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     MY PHOTO
-========================= -->
-
-<section class="my-photo-section">
-
-    <div class="my-photo-container">
-
-
-        <div class="my-photo">
-
-            <img
-                src="my-photo.jpg"
-                alt="Моё фото"
-            >
-
-        </div>
-
-
-        <div class="my-photo-text">
-
-            <div class="hero-small">
-                PLAYER • 2VN
-            </div>
-
-
-            <h2>
-
-                ЭТО
-                <span>
-                    Я
-                </span>
-
-            </h2>
-
+            <span></span>
 
             <p>
-
-                Это мой личный игровой
-                сайт, посвящённый Free Fire
-                и моей команде.
-
-            </p>
-
-
-            <p>
-
-                🎮 Free Fire
-                <br>
-
-                ⚡ 2VN
-                <br>
-
-                🏆 Team Player
-                <br>
-
-                🔥 Gaming Life
-
+                Мой путь в Free Fire
             </p>
 
         </div>
 
-    </div>
 
-</section>
-
-
-<!-- =========================
-     STATS
-========================= -->
-
-<section class="stats">
-
-    <h2 class="section-title">
-
-        <span>MY</span> PROFILE
-
-    </h2>
-
-
-    <div class="stats-grid">
-
-
-        <div class="stat">
-
-            <strong>
-                2VN
-            </strong>
-
-            <span>
-                Гильдия
-            </span>
-
-        </div>
-
-
-        <div class="stat">
-
-            <strong>
-                FF
-            </strong>
-
-            <span>
-                Игра
-            </span>
-
-        </div>
-
-
-        <div class="stat">
-
-            <strong>
-                24/7
-            </strong>
-
-            <span>
-                Активность
-            </span>
-
-        </div>
-
-
-        <div class="stat">
-
-            <strong>
-                2V
-            </strong>
-
-            <span>
-                Команда
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     GUILD 2VN
-========================= -->
-
-<section
-    class="guild"
-    id="guild"
->
-
-    <div class="guild-container">
-
-
-        <h2 class="guild-title">
-
-            GUILD
-            <span>
-                2VN
-            </span>
-
-        </h2>
-
-
-        <p class="guild-subtitle">
-
-            THE BEST GUILD • FREE FIRE
-
-        </p>
-
-
-        <!-- ABOUT GUILD -->
-
-        <div class="guild-intro">
+        <div class="glass about-box reveal">
 
             <h3>
-                ⚡ Гильдия 2VN
+                8 лет в <span>Free Fire</span>
             </h3>
 
+            <p>
+                Я нахожусь в Free Fire уже 8 лет.
+                За это время игра стала для меня не просто
+                развлечением, а пространством, где я постоянно
+                развиваю свою механику, скорость и игровой стиль.
+            </p>
 
             <p>
+                Примерно половину своего игрового пути я посвятил
+                <strong>СНС и КВ-сферам</strong>. Именно там я получил
+                основной соревновательный опыт, научился играть
+                под давлением и принимать быстрые решения.
+            </p>
 
-                Я являюсь ключевым игроком
-                гильдии <strong>2VN</strong>.
-                Здесь представлены основные
-                правила нашей гильдии,
-                правила КВ и игровые
-                ограничения.
+            <p>
+                Моя главная специализация —
+                <strong>1v1</strong>. Именно в дуэлях я стараюсь
+                максимально раскрывать механику, реакцию и скорость.
+                При этом в КВ также уверенно показываю себя
+                и умею работать на результат команды.
+            </p>
 
+            <p>
+                Я играю всего на <strong>двух пальцах</strong>,
+                но мой стиль — это скорость. Я являюсь
+                <strong>спидстером</strong>: люблю быстрые движения,
+                резкие решения и агрессивный темп игры.
+            </p>
+
+
+            <div class="about-highlight">
+
+                <div class="highlight">
+                    <strong>8</strong>
+                    <small>лет в Free Fire</small>
+                </div>
+
+                <div class="highlight">
+                    <strong>1v1</strong>
+                    <small>моя специализация</small>
+                </div>
+
+                <div class="highlight">
+                    <strong>2</strong>
+                    <small>пальца</small>
+                </div>
+
+                <div class="highlight">
+                    <strong>⚡</strong>
+                    <small>Speedster</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     MY PHOTO
+========================================= -->
+
+<section id="photo">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <h2>Это я</h2>
+
+            <span></span>
+
+        </div>
+
+
+        <div class="glass my-photo-box">
+
+            <div class="my-photo reveal-left">
+
+                <img
+                    src="my-photo.jpg"
+                    alt="Моё фото"
+                    onclick="openPhoto(this.src)"
+                    style="cursor:pointer;"
+                >
+
+            </div>
+
+
+            <div class="photo-text reveal-right">
+
+                <h3>
+                    Игрок.
+                    <span style="color:#c000ff;">
+                        Скорость.
+                    </span>
+                    Механика.
+                </h3>
+
+                <p>
+                    За годы игры я сформировал свой собственный
+                    стиль. Мне нравится играть быстро,
+                    постоянно двигаться и использовать механику
+                    на максимум.
+                </p>
+
+                <p style="margin-top:15px;">
+                    Основной фокус — индивидуальная игра и
+                    1v1, но командный формат КВ также является
+                    важной частью моего опыта.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<section id="stats">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <h2>Мой стиль</h2>
+
+            <span></span>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat reveal">
+                <div class="stat-number">8</div>
+                <p>лет в игре</p>
+            </div>
+
+            <div class="stat reveal">
+                <div class="stat-number">1v1</div>
+                <p>главная специализация</p>
+            </div>
+
+            <div class="stat reveal">
+                <div class="stat-number">2</div>
+                <p>пальца</p>
+            </div>
+
+            <div class="stat reveal">
+                <div class="stat-number">⚡</div>
+                <p>Speedster</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     GUILD 2VN
+========================================= -->
+
+<section id="guild">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <h2>Гильдия</h2>
+
+            <span></span>
+
+            <p>
+                2VN
             </p>
 
         </div>
 
 
-        <div class="rules-box">
+        <div class="guild-banner zoom-reveal">
+
+            <div>
+
+                <h3>2VN</h3>
+
+                <p>
+                    Команда • Дисциплина • Результат
+                </p>
+
+            </div>
+
+        </div>
 
 
-            <!-- RULES -->
+        <div class="guild-info">
 
-            <div class="rule-card">
+            <div class="glass guild-card reveal-left">
 
-                <h3>
-                    🌵 Правила гильдии
-                </h3>
-
+                <h3>Состав руководства</h3>
 
                 <ul>
 
                     <li>
-                        🤝 Уважение между
-                        участниками
+                        Leader — 2V Delimova-7095
                     </li>
 
                     <li>
-                        🔄 Ник смена —
-                        7 дней
+                        ОФФ — Некси
                     </li>
 
                     <li>
-                        👑 Лидер —
-                        2V Delimova-7095
+                        ОФФ (Ка) — Талшын
                     </li>
 
                     <li>
-                        ⭐ ОФФ — Некси
+                        ОФФ (Ка) — Руся
                     </li>
 
                     <li>
-                        ⭐ ОФФ (Ка) —
-                        Талшын
-                    </li>
-
-                    <li>
-                        ⭐ ОФФ (Ка) —
-                        Руся
-                    </li>
-
-                    <li>
-                        🎯 КВ ответственный —
-                        по назначению
+                        КВ ответственный — по назначению
                     </li>
 
                 </ul>
@@ -1455,160 +1314,30 @@
             </div>
 
 
-            <!-- KV -->
+            <div class="glass guild-card reveal-right">
 
-            <div class="rule-card">
-
-                <h3>
-                    🌱 Правила КВ
-                </h3>
-
+                <h3>Основные принципы</h3>
 
                 <ul>
 
                     <li>
-                        📌 Оружие:
-                        <span class="allowed">
-                            UMP, Desert Eagle,
-                            M1887 ✓
-                        </span>
+                        Уважение между участниками
                     </li>
 
                     <li>
-                        📌 13 раундов
-                        <span class="allowed">
-                            ✓
-                        </span>
+                        Дисциплина
                     </li>
 
                     <li>
-                        📌 Ограничение
-                        патронов:
-                        <span class="allowed">
-                            НЕТ ✓
-                        </span>
+                        Соблюдение правил КВ
                     </li>
 
                     <li>
-                        📌 Шлем 2
-                        <span class="allowed">
-                            ✓
-                        </span>
+                        Командная работа
                     </li>
 
                     <li>
-                        📌 Авиапосылка
-                        <span class="forbidden">
-                            ✕
-                        </span>
-                    </li>
-
-                    <li>
-                        📌 Онли хед
-                        <span class="allowed">
-                            ✓
-                        </span>
-                    </li>
-
-                    <li>
-                        📌 Киберавиапосылка
-                        ТП
-                        <span class="forbidden">
-                            ✕
-                        </span>
-                    </li>
-
-                    <li>
-                        📌 Крыша,
-                        2–3 этаж:
-                        ТП
-                        <span class="forbidden">
-                            ✕
-                        </span>
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <!-- FORBIDDEN -->
-
-            <div class="rule-card">
-
-                <h3>
-                    🚫 Запрещено
-                </h3>
-
-
-                <ul>
-
-                    <li>
-                        🚫 Все виды гранат:
-                        ТП
-                    </li>
-
-                    <li>
-                        🚫 Баги, читы,
-                        сторонний софт:
-                        полный ТП
-                    </li>
-
-                    <li>
-                        🚫 ПК:
-                        ТП
-                    </li>
-
-                    <li>
-                        🚫 Нарушение
-                        правил КВ
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <!-- SKILLS -->
-
-            <div class="rule-card">
-
-                <h3>
-                    🎯 Навыки
-                </h3>
-
-
-                <ul>
-
-                    <li>
-                        🎮 Келли
-                    </li>
-
-                    <li>
-                        ⚡ Моко
-                    </li>
-
-                    <li>
-                        🌙 Максим
-                    </li>
-
-                    <li>
-                        🌙 Луна
-                    </li>
-
-                    <li>
-                        👑 Найр
-                    </li>
-
-                    <li>
-                        👸 Королина
-                    </li>
-
-                    <li>
-                        ⚡ АЛОК
-                        <span class="allowed">
-                            ✓
-                        </span>
+                        Развитие игроков
                     </li>
 
                 </ul>
@@ -1622,52 +1351,203 @@
 </section>
 
 
-<!-- =========================
+<!-- =========================================
+     RULES
+========================================= -->
+
+<section id="rules">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <h2>Правила 2VN</h2>
+
+            <span></span>
+
+        </div>
+
+
+        <div class="rules-grid">
+
+            <div class="glass rule-card reveal-left">
+
+                <h3>⚔️ Правила КВ</h3>
+
+                <ul>
+
+                    <li>Оружие: UMP, Desert Eagle, M1887</li>
+
+                    <li>13 раундов</li>
+
+                    <li>Без ограничения патронов</li>
+
+                    <li>Шлем — 2 уровень</li>
+
+                    <li>Аирдроп запрещён</li>
+
+                    <li>Только хедшоты</li>
+
+                    <li>Cyber Airdrop TP запрещён</li>
+
+                    <li>Roof / 2–3 floor TP запрещён</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="glass rule-card reveal-right">
+
+                <h3>🚫 Запрещено</h3>
+
+                <ul>
+
+                    <li>
+                        Все виды гранат — TP
+                    </li>
+
+                    <li>
+                        Баги и использование ошибок игры
+                    </li>
+
+                    <li>
+                        Читы и стороннее ПО — полный TP
+                    </li>
+
+                    <li>
+                        PC — TP
+                    </li>
+
+                    <li>
+                        Нарушение правил КВ
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="glass rule-card reveal-left">
+
+                <h3>🎯 Навыки</h3>
+
+                <ul>
+
+                    <li>Kelly</li>
+                    <li>Moco</li>
+                    <li>Maxim</li>
+                    <li>Luna</li>
+                    <li>Nair</li>
+                    <li>Carolina</li>
+                    <li>Alok</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="glass rule-card reveal-right">
+
+                <h3>📌 Дополнительно</h3>
+
+                <ul>
+
+                    <li>
+                        Ник смена — 7 дней
+                    </li>
+
+                    <li>
+                        Уважение ко всем участникам
+                    </li>
+
+                    <li>
+                        Соблюдение командной дисциплины
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
      GALLERY
-========================= -->
+========================================= -->
 
-<section
-    class="gallery"
-    id="gallery"
->
+<section id="gallery">
 
-    <h2 class="section-title">
+    <div class="container">
 
-        <span>FREE FIRE</span>
-        GALLERY
+        <div class="section-title reveal">
 
-    </h2>
+            <h2>Галерея</h2>
 
+            <span></span>
 
-    <div class="gallery-grid">
-
-
-        <div class="gallery-item">
-
-            <img
-                src="freefire-bg.jpg"
-                alt="Free Fire"
-            >
+            <p>
+                Нажми на фотографию, чтобы открыть её полностью
+            </p>
 
         </div>
 
 
-        <div class="gallery-item">
+        <div class="gallery">
 
-            <img
-                src="guild-bg.jpg"
-                alt="Guild 2VN"
+            <div
+                class="gallery-item zoom-reveal"
+                onclick="openPhoto('my-photo.jpg')"
             >
 
-        </div>
+                <img
+                    src="my-photo.jpg"
+                    alt="Моё фото"
+                >
+
+                <div class="gallery-label">
+                    Это я
+                </div>
+
+            </div>
 
 
-        <div class="gallery-item">
-
-            <img
-                src="my-photo.jpg"
-                alt="Моё фото"
+            <div
+                class="gallery-item zoom-reveal"
+                onclick="openPhoto('profile.jpg')"
             >
+
+                <img
+                    src="profile.jpg"
+                    alt="Free Fire профиль"
+                >
+
+                <div class="gallery-label">
+                    Free Fire Profile
+                </div>
+
+            </div>
+
+
+            <div
+                class="gallery-item zoom-reveal"
+                onclick="openPhoto('guild-bg.jpg')"
+            >
+
+                <img
+                    src="guild-bg.jpg"
+                    alt="2VN"
+                >
+
+                <div class="gallery-label">
+                    2VN
+                </div>
+
+            </div>
 
         </div>
 
@@ -1676,77 +1556,188 @@
 </section>
 
 
-<!-- =========================
+<!-- =========================================
      CONTACT
-========================= -->
+========================================= -->
 
-<section
-    class="contact"
-    id="contact"
->
+<section id="contact">
 
-    <h2>
+    <div class="container">
 
-        СВЯЗАТЬСЯ
-        <span>
-            СО МНОЙ
-        </span>
+        <div class="glass contact-box reveal">
 
-    </h2>
+            <h2>
+                Связаться со мной
+            </h2>
 
-
-    <p>
-
-        По вопросам гильдии,
-        КВ и сотрудничества
-
-    </p>
+            <p>
+                Если хочешь связаться со мной —
+                используй один из способов ниже.
+            </p>
 
 
-    <a
-        class="phone"
-        href="tel:+77053536952"
-    >
+            <div class="contact-buttons">
 
-        📞 +7 705 353 69 52
+                <a
+                    href="tel:+77053536952"
+                    class="btn btn-primary"
+                >
+                    📞 Позвонить
+                </a>
 
-    </a>
 
+                <a
+                    href="https://wa.me/77053536952"
+                    target="_blank"
+                    class="btn btn-secondary"
+                >
+                    💬 WhatsApp
+                </a>
 
-    <a
-        class="whatsapp-button"
-        href="https://wa.me/77053536952"
-        target="_blank"
-    >
+            </div>
 
-        💬 НАПИСАТЬ В WHATSAPP
+        </div>
 
-    </a>
+    </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =========================================
      FOOTER
-========================= -->
+========================================= -->
 
 <footer>
 
-    <h2>
-        FREE FIRE • 2VN
-    </h2>
-
     <p>
-        Gaming • Team • Respect • Victory
-    </p>
-
-    <p>
-        © 2026
+        © 2026 <strong>2VN</strong> • Free Fire Player
     </p>
 
 </footer>
 
 
-</body>
+<!-- =========================================
+     PHOTO VIEWER
+========================================= -->
 
+<div
+    id="photoViewer"
+    class="photo-viewer"
+    onclick="closePhoto()"
+>
+
+    <span
+        class="close-photo"
+        onclick="closePhoto()"
+    >
+        &times;
+    </span>
+
+
+    <img
+        id="bigPhoto"
+        src=""
+        alt="Просмотр фотографии"
+        onclick="event.stopPropagation()"
+    >
+
+</div>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+    /* =========================
+       АНИМАЦИЯ ПРИ СКРОЛЛЕ
+    ========================= */
+
+    const animatedElements =
+        document.querySelectorAll(
+            ".reveal, .reveal-left, .reveal-right, .zoom-reveal"
+        );
+
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("active");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+    animatedElements.forEach((element) => {
+
+        observer.observe(element);
+
+    });
+
+
+    /* =========================
+       ПРОСМОТР ФОТО
+    ========================= */
+
+    function openPhoto(src) {
+
+        const viewer =
+            document.getElementById("photoViewer");
+
+        const bigPhoto =
+            document.getElementById("bigPhoto");
+
+        bigPhoto.src = src;
+
+        viewer.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closePhoto() {
+
+        const viewer =
+            document.getElementById("photoViewer");
+
+        viewer.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    /* =========================
+       ESC — ЗАКРЫТЬ ФОТО
+    ========================= */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Escape") {
+
+                closePhoto();
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
 </html>
