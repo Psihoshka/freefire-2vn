@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Обо мне — Психошка</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --yellow:#ffd400;
+    --red:#e53935;
+    --black:#111;
+    --gray:#666;
+    --light:#f5f5f5;
+    --border:#e5e5e5;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--black);
+    background:#f5f5f5;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:
+        linear-gradient(rgba(255,255,255,.86),rgba(255,255,255,.86)),
+        var(--bg-image);
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1100px,calc(100% - 32px));
+    margin:auto;
+}
+
+/* NAV */
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+}
+
+.logo span{
+    color:var(--red);
+}
+
+.nav-links{
+    display:flex;
+    gap:7px;
+}
+
+.nav-links a{
+    padding:10px 15px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:700;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    background:#111;
+    color:white;
+}
+
+/* HERO */
+
+.hero{
+    padding:55px 0 35px;
+}
+
+.hero-card{
+    display:grid;
+    grid-template-columns:46% 54%;
+    min-height:500px;
+    background:#111;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
+}
+
+.hero-photo{
+    min-height:500px;
+}
+
+.hero-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-info{
+    color:white;
+    padding:55px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.kicker{
+    color:var(--yellow);
+    font-weight:900;
+    letter-spacing:3px;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(48px,7vw,82px);
+    line-height:.9;
+    letter-spacing:-5px;
+    margin-bottom:22px;
+}
+
+.hero h1 span{
+    color:var(--yellow);
+}
+
+.hero-role{
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.hero-place{
+    color:#aaa;
+    line-height:1.6;
+}
+
+.hero-description{
+    color:#ccc;
+    line-height:1.7;
+    margin-top:25px;
+    max-width:500px;
+}
+
+/* SECTIONS */
+
+.section{
+    padding:35px 0;
+}
+
+.section-title{
+    font-size:36px;
+    letter-spacing:-1.5px;
+    margin-bottom:18px;
+}
+
+.section-text{
+    color:#555;
+    line-height:1.75;
+    font-size:16px;
+}
+
+.about-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:30px;
+}
+
+/* STYLE */
+
+.style-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:22px;
+}
+
+.style-item{
+    background:#111;
+    color:white;
+    border-radius:18px;
+    padding:25px;
+    min-height:130px;
+}
+
+.style-item strong{
+    display:block;
+    color:var(--yellow);
+    font-size:24px;
+    margin-bottom:12px;
+}
+
+.style-item span{
+    color:#bbb;
+    font-size:13px;
+    line-height:1.5;
+}
+
+/* PHOTOS */
+
+.photos{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:15px;
+}
+
+.photos-left{
+    border-radius:22px;
+    overflow:hidden;
+    background:#111;
+}
+
+.photos-left img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.photos-right{
+    display:grid;
+    grid-template-rows:1fr 1fr;
+    gap:15px;
+}
+
+.photos-right div{
+    border-radius:22px;
+    overflow:hidden;
+    background:#111;
+}
+
+.photos-right img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* STORY */
+
+.story{
+    background:#111;
+    color:white;
+    border-radius:24px;
+    padding:40px;
+}
+
+.story .section-title{
+    color:white;
+}
+
+.story p{
+    color:#ccc;
+    line-height:1.8;
+    max-width:800px;
+}
+
+/* CONTACTS */
+
+.contacts{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.contact{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:22px;
+}
+
+.contact small{
+    display:block;
+    color:#888;
+    text-transform:uppercase;
+    font-size:10px;
+    font-weight:900;
+    margin-bottom:7px;
+}
+
+.contact strong{
+    font-size:17px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:#aaa;
+    padding:35px 0;
+    margin-top:50px;
+}
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .container{
+        width:calc(100% - 20px);
+    }
+
+    .nav-inner{
+        min-height:62px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .nav-links a{
+        padding:8px 9px;
+        font-size:11px;
+    }
+
+    .hero{
+        padding:25px 0;
+    }
+
+    /*
+       Фото + текст остаются рядом на телефоне.
+    */
+
+    .hero-card{
+        grid-template-columns:42% 58%;
+        min-height:290px;
+        border-radius:20px;
+    }
+
+    .hero-photo{
+        min-height:290px;
+    }
+
+    .hero-info{
+        padding:22px 17px;
+    }
+
+    .hero h1{
+        font-size:39px;
+        letter-spacing:-3px;
+    }
+
+    .hero-role{
+        font-size:14px;
+    }
+
+    .hero-place{
+        font-size:11px;
+    }
+
+    .hero-description{
+        font-size:11px;
+        line-height:1.5;
+        margin-top:14px;
+    }
+
+    .section{
+        padding:25px 0;
+    }
+
+    .section-title{
+        font-size:29px;
+    }
+
+    .about-card{
+        padding:22px;
+    }
+
+    .style-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .style-item{
+        min-height:110px;
+        padding:18px;
+    }
+
+    .photos{
+        grid-template-columns:1fr;
+    }
+
+    .photos-left{
+        height:350px;
+    }
+
+    .photos-right{
+        height:500px;
+    }
+
+    .contacts{
+        grid-template-columns:1fr;
+    }
+
+    .story{
+        padding:27px;
+    }
+
+    .footer{
+        flex-direction:column;
+        gap:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+<div class="container nav-inner">
+
+    <a class="logo" href="index.html">
+        <span>2V</span> Психошка
+    </a>
+
+    <div class="nav-links">
+        <a class="active" href="about.html">Обо мне</a>
+        <a href="index.html">Профиль</a>
+        <a href="guild.html">2VN</a>
+    </div>
+
+</div>
+</nav>
+
+
+<main>
+
+<section class="hero">
+<div class="container">
+
+    <div class="hero-card">
+
+        <div class="hero-photo">
+            <img src="my-photo.jpg" alt="Психошка">
+        </div>
+
+        <div class="hero-info">
+
+            <div class="kicker">PLAYER STORY</div>
+
+            <h1>
+                <span>Психошка</span>
+            </h1>
+
+            <div class="hero-role">
+                Игрок · Free Fire
+            </div>
+
+            <div class="hero-place">
+                Казахстан
+            </div>
+
+            <p class="hero-description">
+                Основной стиль игры — скорость, механика,
+                1 на 1 и КВ.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<section class="section">
+<div class="container">
+
+    <div class="about-card">
+
+        <div class="kicker">ABOUT</div>
+
+        <h2 class="section-title">Обо мне</h2>
+
+        <p class="section-text">
+            Я играю в Free Fire уже около 8 лет.
+            За это время основным направлением для меня
+            стали 1 на 1 и КВ. Мне нравится быстрый стиль
+            игры, где многое зависит от механики,
+            реакции и правильного движения.
+        </p>
+
+        <p class="section-text" style="margin-top:15px;">
+            Играю в два пальца. Основная специализация —
+            1v1, а КВ остаётся моей основной игровой сферой.
+        </p>
+
+    </div>
+
+</div>
+</section>
+
+
+<section class="section">
+<div class="container">
+
+    <div class="kicker">PLAYSTYLE</div>
+
+    <h2 class="section-title">Мой стиль</h2>
+
+    <div class="style-grid">
+
+        <div class="style-item">
+            <strong>01</strong>
+            <span>Скорость и быстрые решения во время боя.</span>
+        </div>
+
+        <div class="style-item">
+            <strong>02</strong>
+            <span>Механика и контроль движения.</span>
+        </div>
+
+        <div class="style-item">
+            <strong>03</strong>
+            <span>1v1 — основная специализация.</span>
+        </div>
+
+        <div class="style-item">
+            <strong>04</strong>
+            <span>КВ — основная сфера игры.</span>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<section class="section">
+<div class="container">
+
+    <div class="kicker">MOMENTS</div>
+
+    <h2 class="section-title">Несколько кадров</h2>
+
+    <div class="photos">
+
+        <div class="photos-left">
+            <img src="about-02.jpg" alt="Психошка">
+        </div>
+
+        <div class="photos-right">
+
+            <div>
+                <img src="about-03.jpg" alt="Психошка">
+            </div>
+
+            <div>
+                <img src="my-photo.jpg" alt="Психошка">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<section class="section">
+<div class="container">
+
+    <div class="story">
+
+        <div class="kicker">MY STORY</div>
+
+        <h2 class="section-title">Моя история</h2>
+
+        <p>
+            Я играю в Free Fire уже около 8 лет. За это время
+            основной упор сделал на 1v1 и КВ. Постепенно
+            именно эти направления стали тем, с чем я больше
+            всего себя связываю в игре.
+        </p>
+
+        <p style="margin-top:16px;">
+            Мне всегда был ближе быстрый стиль: движение,
+            механика, реакция и постоянная работа над собой.
+            Сейчас я продолжаю играть, развиваться и
+            представлять 2VN.
+        </p>
+
+    </div>
+
+</div>
+</section>
+
+
+<section class="section">
+<div class="container">
+
+    <div class="kicker">CONTACTS</div>
+
+    <h2 class="section-title">Контакты</h2>
+
+    <div class="contacts">
+
+        <a class="contact"
+           href="https://www.tiktok.com/@erko_zr"
+           target="_blank">
+
+            <small>TikTok</small>
+            <strong>@erko_zr</strong>
+
+        </a>
+
+        <a class="contact"
+           href="https://wa.me/77053536952"
+           target="_blank">
+
+            <small>WhatsApp</small>
+            <strong>Написать мне</strong>
+
+        </a>
+
+        <div class="contact">
+
+            <small>Страна</small>
+            <strong>🇰🇿 Казахстан</strong>
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+</main>
+
+
+<footer>
+<div class="container footer">
+
+    <strong style="color:white;">
+        <span style="color:#ffd400;">2V</span> Психошка
+    </strong>
+
+    <span>Free Fire · Kazakhstan</span>
+
+</div>
+</footer>
+
+
+<script>
+
+const pcBackgrounds = [
+    "bg-pc-01.jpg",
+    "bg-pc-02.jpg",
+    "bg-pc-03.jpg",
+    "bg-pc-04.jpg",
+    "bg-pc-05.jpg"
+];
+
+const mobileBackgrounds = [
+    "bg-mobile-01.jpg",
+    "bg-mobile-02.jpg",
+    "bg-mobile-03.jpg",
+    "bg-mobile-04.jpg",
+    "bg-mobile-05.jpg"
+];
+
+const list =
+    window.innerWidth <= 800
+    ? mobileBackgrounds
+    : pcBackgrounds;
+
+const selected =
+    list[Math.floor(Math.random() * list.length)];
+
+document.documentElement.style
+    .setProperty("--bg-image",`url("${selected}")`);
+
+</script>
+
+</body>
+</html>
