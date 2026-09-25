@@ -19,27 +19,50 @@ html{
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#070707;
     color:#fff;
+    background:#070707;
+    background-image:var(--page-bg);
+    background-size:cover;
+    background-position:center top;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    min-height:100vh;
 }
 
-/* =========================
-   HEADER
-========================= */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.9),
+            rgba(0,0,0,.62)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.35),
+            #070707 92%
+        );
+    z-index:-1;
+}
+
+/* HEADER */
 
 header{
     height:76px;
-    background:rgba(5,5,5,.97);
+    background:rgba(4,4,4,.93);
     border-bottom:1px solid rgba(255,208,0,.18);
     display:flex;
     align-items:center;
     position:sticky;
     top:0;
     z-index:100;
+    backdrop-filter:blur(12px);
 }
 
 .nav{
-    width:min(1180px, calc(100% - 40px));
+    width:min(1180px,calc(100% - 40px));
     margin:auto;
     display:flex;
     align-items:center;
@@ -58,15 +81,15 @@ header{
 
 nav{
     display:flex;
-    gap:32px;
+    gap:30px;
 }
 
 nav a{
     color:#888;
     text-decoration:none;
-    font-size:13px;
-    font-weight:700;
-    letter-spacing:1px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
 }
 
 nav a:hover,
@@ -74,135 +97,82 @@ nav a.active{
     color:#ffd000;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
-.guild-hero{
-    min-height:560px;
-    display:flex;
-    align-items:center;
-    position:relative;
-    overflow:hidden;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(5,5,5,.98) 0%,
-            rgba(5,5,5,.93) 45%,
-            rgba(5,5,5,.65) 100%
-        ),
-        url("guild-bg.jpg") center/cover no-repeat;
-}
-
-.guild-hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent 50%,
-            #070707 100%
-        );
-
-    pointer-events:none;
-}
-
-.guild-wrap{
-    width:min(1180px, calc(100% - 40px));
+.hero{
+    width:min(1180px,calc(100% - 40px));
     margin:auto;
-    position:relative;
-    z-index:2;
-}
-
-/* =========================
-   GUILD HERO CONTENT
-========================= */
-
-.guild-main{
+    min-height:540px;
     display:grid;
-    grid-template-columns:1fr 360px;
+    grid-template-columns:1fr 340px;
     gap:70px;
     align-items:center;
+    padding:70px 0;
 }
 
-/* TEXT */
-
-.guild-label{
+.label{
     color:#ffd000;
-    font-size:12px;
-    font-weight:800;
+    font-size:11px;
+    font-weight:900;
     letter-spacing:4px;
     margin-bottom:12px;
 }
 
-.guild-title{
-    font-size:clamp(70px, 9vw, 120px);
-    line-height:.85;
-    letter-spacing:-6px;
+h1{
+    font-size:clamp(75px,10vw,125px);
+    line-height:.82;
+    letter-spacing:-7px;
     margin-bottom:25px;
 }
 
-.guild-description{
+.description{
     max-width:620px;
     color:#999;
     font-size:16px;
     line-height:1.8;
 }
 
-.guild-description strong{
+.description strong{
     color:#fff;
 }
 
-/* =========================
-   GUILD IMAGE
-========================= */
+/* GUILD IMAGE */
 
 .guild-image{
-    width:360px;
-    height:360px;
+    width:340px;
+    height:340px;
     border-radius:50%;
     overflow:hidden;
-
     border:2px solid #ffd000;
-
     background:#111;
-
     box-shadow:
         0 0 0 8px rgba(255,208,0,.04),
-        0 20px 70px rgba(0,0,0,.8);
+        0 20px 70px rgba(0,0,0,.75);
 }
 
 .guild-image img{
     width:100%;
     height:100%;
-    display:block;
     object-fit:cover;
-    object-position:center;
+    display:block;
 }
 
-/* =========================
-   STATS
-========================= */
+/* STATS */
 
-.guild-stats{
-    width:min(1180px, calc(100% - 40px));
-    margin:-45px auto 0;
-    position:relative;
-    z-index:5;
-
+.stats{
+    width:min(1180px,calc(100% - 40px));
+    margin:auto;
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:10px;
 }
 
 .stat{
-    background:#0e0e0e;
-    border:1px solid rgba(255,255,255,.10);
-    padding:22px;
     min-height:105px;
+    padding:22px;
+    background:rgba(12,12,12,.84);
+    border:1px solid rgba(255,255,255,.09);
+    backdrop-filter:blur(8px);
 }
 
 .stat strong{
@@ -214,19 +184,17 @@ nav a.active{
 
 .stat span{
     color:#666;
-    font-size:10px;
-    letter-spacing:1.5px;
+    font-size:9px;
     text-transform:uppercase;
+    letter-spacing:1.5px;
 }
 
-/* =========================
-   CONTENT
-========================= */
+/* CONTENT */
 
 .content{
-    width:min(1180px, calc(100% - 40px));
+    width:min(1180px,calc(100% - 40px));
     margin:auto;
-    padding:90px 0;
+    padding:80px 0 100px;
 }
 
 .section-title{
@@ -234,36 +202,36 @@ nav a.active{
 }
 
 .section-title small{
+    display:block;
     color:#ffd000;
-    font-size:11px;
-    font-weight:800;
+    font-size:10px;
+    font-weight:900;
     letter-spacing:4px;
+    margin-bottom:8px;
 }
 
 .section-title h2{
-    margin-top:8px;
     font-size:38px;
 }
 
-/* =========================
-   INFO
-========================= */
+/* INFO */
 
 .info-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:15px;
+    gap:12px;
 }
 
 .info-card{
-    background:#0d0d0d;
+    padding:27px;
+    background:rgba(12,12,12,.82);
     border:1px solid rgba(255,255,255,.09);
-    padding:28px;
+    backdrop-filter:blur(8px);
 }
 
 .info-card h3{
-    font-size:20px;
-    margin-bottom:12px;
+    font-size:19px;
+    margin-bottom:10px;
 }
 
 .info-card p{
@@ -276,79 +244,77 @@ nav a.active{
     color:#ffd000;
 }
 
-/* =========================
-   PLAYER
-========================= */
+/* PLAYER */
 
 .player-card{
-    margin-top:15px;
-    background:#0d0d0d;
+    margin-top:12px;
+    padding:22px 27px;
+    background:rgba(12,12,12,.82);
     border:1px solid rgba(255,255,255,.09);
-    padding:28px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:30px;
 }
 
-.player-name{
+.player{
     display:flex;
     align-items:center;
-    gap:16px;
+    gap:15px;
 }
 
-.player-avatar{
-    width:58px;
-    height:58px;
+.avatar{
+    width:56px;
+    height:56px;
     border-radius:50%;
     overflow:hidden;
     border:1px solid #ffd000;
 }
 
-.player-avatar img{
+.avatar img{
     width:100%;
     height:100%;
     object-fit:cover;
 }
 
-.player-name strong{
+.player strong{
     display:block;
-    font-size:18px;
+    font-size:17px;
 }
 
-.player-name span{
+.player span{
     color:#666;
     font-size:11px;
 }
 
-.player-role{
+.role{
     color:#ffd000;
-    font-size:12px;
-    font-weight:700;
+    font-size:11px;
+    font-weight:800;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
     border-top:1px solid rgba(255,255,255,.08);
-    padding:25px;
+    padding:24px;
     text-align:center;
     color:#555;
-    font-size:12px;
+    font-size:11px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:850px){
 
-    .guild-main{
+    body{
+        background-attachment:scroll;
+    }
+
+    .hero{
         grid-template-columns:1fr;
         gap:40px;
+        padding:60px 0;
     }
 
     .guild-image{
@@ -357,7 +323,7 @@ footer{
         margin:auto;
     }
 
-    .guild-stats{
+    .stats{
         grid-template-columns:repeat(2,1fr);
     }
 
@@ -365,15 +331,14 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .player-card{
-        align-items:flex-start;
-        flex-direction:column;
-    }
 }
 
 @media(max-width:500px){
 
-    .nav{
+    .nav,
+    .hero,
+    .stats,
+    .content{
         width:calc(100% - 24px);
     }
 
@@ -382,27 +347,16 @@ footer{
     }
 
     nav{
-        gap:10px;
+        gap:11px;
     }
 
     nav a{
-        font-size:10px;
+        font-size:9px;
     }
 
-    .guild-wrap,
-    .guild-stats,
-    .content{
-        width:calc(100% - 24px);
-    }
-
-    .guild-hero{
-        min-height:auto;
-        padding:70px 0 80px;
-    }
-
-    .guild-title{
-        font-size:72px;
-        letter-spacing:-4px;
+    h1{
+        font-size:76px;
+        letter-spacing:-5px;
     }
 
     .guild-image{
@@ -410,21 +364,10 @@ footer{
         height:250px;
     }
 
-    .guild-stats{
-        margin:-25px auto 0;
-    }
-
-    .stat{
-        padding:16px;
-        min-height:90px;
-    }
-
-    .stat strong{
-        font-size:20px;
-    }
-
-    .content{
-        padding:60px 0;
+    .player-card{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:18px;
     }
 }
 </style>
@@ -451,45 +394,35 @@ footer{
 </header>
 
 
-<section class="guild-hero">
+<section class="hero">
 
-    <div class="guild-wrap">
+    <div>
 
-        <div class="guild-main">
-
-            <div>
-
-                <div class="guild-label">
-                    ГИЛЬДИЯ
-                </div>
-
-                <h1 class="guild-title">
-                    2VN
-                </h1>
-
-                <p class="guild-description">
-                    <strong>2VN</strong> — гильдия, частью которой является
-                    Психошка. Здесь собрана основная информация о команде,
-                    её активности и текущем составе.
-                </p>
-
-            </div>
-
-
-            <div class="guild-image">
-
-                <img src="guild.jpg" alt="Гильдия 2VN">
-
-            </div>
-
+        <div class="label">
+            ГИЛЬДИЯ
         </div>
+
+        <h1>2VN</h1>
+
+        <p class="description">
+            <strong>2VN</strong> — гильдия, частью которой является
+            Психошка. Здесь собрана основная информация о команде,
+            её составе и активности.
+        </p>
+
+    </div>
+
+
+    <div class="guild-image">
+
+        <img src="guild.jpg" alt="2VN">
 
     </div>
 
 </section>
 
 
-<section class="guild-stats">
+<section class="stats">
 
     <div class="stat">
         <strong>5</strong>
@@ -529,11 +462,11 @@ footer{
 
         <div class="info-card">
 
-            <h3>Основная информация</h3>
+            <h3>Состав</h3>
 
             <p>
                 Уровень гильдии — <strong>5</strong>.
-                Сейчас в составе находится <strong>38 из 55</strong>
+                В составе сейчас <strong>38 из 55</strong>
                 участников.
             </p>
 
@@ -545,9 +478,9 @@ footer{
             <h3>Активность</h3>
 
             <p>
-                Текущие очки активности:
+                Текущая активность —
                 <strong>34 187</strong>.
-                Регион гильдии — <strong>СНГ</strong>.
+                Регион — <strong>СНГ</strong>.
             </p>
 
         </div>
@@ -566,10 +499,10 @@ footer{
 
         <div class="info-card">
 
-            <h3>Психошка в 2VN</h3>
+            <h3>Психошка</h3>
 
             <p>
-                Игровой ник в составе гильдии:
+                Игровой ник в гильдии —
                 <strong>2V Психошка</strong>.
             </p>
 
@@ -580,9 +513,9 @@ footer{
 
     <div class="player-card">
 
-        <div class="player-name">
+        <div class="player">
 
-            <div class="player-avatar">
+            <div class="avatar">
                 <img src="my-photo.jpg" alt="Психошка">
             </div>
 
@@ -593,8 +526,7 @@ footer{
 
         </div>
 
-
-        <div class="player-role">
+        <div class="role">
             FREE FIRE PLAYER
         </div>
 
@@ -606,6 +538,32 @@ footer{
 <footer>
     © Психошка · 2VN
 </footer>
+
+
+<script>
+const desktopBackgrounds = [
+    "background-pc-1.jpg",
+    "background-pc-2.jpg"
+];
+
+const mobileBackgrounds = [
+    "background-mobile-1.jpg",
+    "background-mobile-2.jpg",
+    "background-mobile-3.jpg"
+];
+
+const backgrounds = window.matchMedia("(max-width: 768px)").matches
+    ? mobileBackgrounds
+    : desktopBackgrounds;
+
+const randomBackground =
+    backgrounds[Math.floor(Math.random() * backgrounds.length)];
+
+document.documentElement.style.setProperty(
+    "--page-bg",
+    `url("${randomBackground}")`
+);
+</script>
 
 </body>
 </html>
