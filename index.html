@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Обо мне | 2V Психошка</title>
+<title>Профиль | 2V Психошка</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -25,9 +27,9 @@ body{
     overflow-x:hidden;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
+/* =====================================================
+   FIXED BACKGROUND
+===================================================== */
 
 body::before{
     content:"";
@@ -47,13 +49,13 @@ body::after{
     inset:0;
     z-index:-9;
 
-    background:rgba(0,0,0,.35);
+    background:rgba(0,0,0,.30);
     pointer-events:none;
 }
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 header{
     position:sticky;
@@ -64,6 +66,7 @@ header{
     min-height:65px;
 
     background:rgba(5,5,5,.88);
+
     border-bottom:1px solid rgba(255,193,7,.35);
 
     backdrop-filter:blur(10px);
@@ -88,11 +91,14 @@ header{
     color:#ff3030;
 }
 
-/* =========================
+/* =====================================================
    MAIN
-========================= */
+===================================================== */
 
 main{
+    position:relative;
+    z-index:1;
+
     width:min(1000px,92%);
     margin:auto;
 
@@ -107,14 +113,15 @@ section{
     border:1px solid rgba(255,193,7,.28);
     border-radius:16px;
 
-    box-shadow:0 8px 24px rgba(0,0,0,.28);
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.28);
 
-    backdrop-filter:blur(4px);
+    backdrop-filter:blur(3px);
 }
 
-/* =========================
-   TITLES
-========================= */
+/* =====================================================
+   SECTION TITLE
+===================================================== */
 
 .section-title{
     display:flex;
@@ -141,57 +148,45 @@ section{
     );
 }
 
-/* =========================
-   ABOUT HERO
-========================= */
+/* =====================================================
+   HERO
+===================================================== */
 
-.about-hero{
+.hero{
+    min-height:235px;
+
     display:grid;
+    grid-template-columns:270px 1fr;
+    align-items:center;
 
-    grid-template-columns:300px 1fr;
-
-    gap:25px;
+    gap:27px;
 
     padding:22px;
 }
 
-.about-photo{
+.hero-photo{
     width:100%;
-    height:350px;
+    height:205px;
 
     overflow:hidden;
 
-    border-radius:14px;
+    border-radius:13px;
 
-    border:1px solid rgba(255,193,7,.50);
+    border:1px solid rgba(255,193,7,.55);
 
-    background:#050505;
-
-    box-shadow:0 8px 25px rgba(0,0,0,.40);
+    background:#080808;
 }
 
-.about-photo img{
+.hero-photo img{
     width:100%;
     height:100%;
 
     object-fit:cover;
 
     display:block;
-
-    transition:transform .4s ease;
 }
 
-.about-photo:hover img{
-    transform:scale(1.04);
-}
-
-.about-content{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.about-kicker{
+.hero-kicker{
     color:#ffc400;
 
     font-size:11px;
@@ -199,235 +194,415 @@ section{
 
     letter-spacing:2.5px;
 
-    margin-bottom:8px;
+    margin-bottom:7px;
 }
 
-.about-content h1{
-    font-size:42px;
+.hero h1{
+    font-size:39px;
     line-height:1;
 
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
-.about-content h1 span{
+.hero h1 span{
     color:#ff3030;
 }
 
-.about-content p{
-    color:#c8c8c8;
+.hero p{
+    max-width:540px;
 
-    font-size:15px;
-    line-height:1.7;
+    color:#c7c7c7;
 
-    margin-bottom:12px;
+    line-height:1.55;
+
+    font-size:14px;
 }
 
-/* =========================
-   INFO GRID
-========================= */
+/* =====================================================
+   PROFILE
+===================================================== */
 
-.info-grid{
+.profile-card{
     padding:18px;
+}
 
+.profile-image{
+    width:min(550px,100%);
+    margin:auto;
+
+    background:#030303;
+
+    border:1px solid rgba(255,193,7,.38);
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:0 7px 20px rgba(0,0,0,.35);
+}
+
+.profile-image img{
+    width:100%;
+    display:block;
+}
+
+/* =====================================================
+   PROFILE INFO
+===================================================== */
+
+.profile-info{
     display:grid;
 
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(3,1fr);
 
-    gap:12px;
+    gap:10px;
+
+    margin-top:14px;
 }
 
-.info-card{
-    padding:17px;
+.profile-info span{
+    padding:12px;
 
-    background:rgba(0,0,0,.30);
+    background:rgba(0,0,0,.32);
 
     border:1px solid rgba(255,255,255,.07);
 
-    border-radius:12px;
+    border-radius:10px;
 
-    transition:.2s;
+    color:#aaa;
+
+    font-size:13px;
+
+    text-align:center;
 }
 
-.info-card:hover{
-    transform:translateY(-2px);
-
-    border-color:rgba(255,193,7,.30);
+.profile-info strong{
+    color:#ffc400;
 }
 
-.info-card-title{
+/* =====================================================
+   STATS
+===================================================== */
+
+.toggle{
+    width:calc(100% - 36px);
+
+    margin:14px 18px;
+
+    padding:12px 14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border:none;
+    border-radius:10px;
+
+    background:rgba(255,193,7,.10);
+
+    border:1px solid rgba(255,193,7,.30);
+
     color:#ffc400;
 
     font-size:14px;
     font-weight:900;
 
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.toggle:hover{
+    background:rgba(255,193,7,.18);
+}
+
+.toggle-symbol{
+    font-size:20px;
+}
+
+.collapsible{
+    max-height:0;
+    overflow:hidden;
+
+    transition:max-height .35s ease;
+}
+
+.collapsible.open{
+    max-height:1000px;
+}
+
+.collapsible-inner{
+    padding:0 18px 18px;
+}
+
+.stats-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:10px;
+}
+
+.stat{
+    padding:14px 8px;
+
+    text-align:center;
+
+    background:rgba(0,0,0,.32);
+
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:10px;
+}
+
+.stat b{
+    display:block;
+
+    color:#ffc400;
+
+    font-size:20px;
+
+    margin-bottom:5px;
+}
+
+.stat small{
+    color:#999;
+
+    font-size:11px;
+}
+
+/* =====================================================
+   PRIME
+===================================================== */
+
+.prime{
+    margin:14px 18px 18px;
+
+    display:grid;
+
+    grid-template-columns:250px 1fr;
+
+    gap:18px;
+
+    padding:12px;
+
+    background:rgba(0,0,0,.28);
+
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:12px;
+}
+
+.prime-image{
+    overflow:hidden;
+
+    border-radius:10px;
+}
+
+.prime-image img{
+    width:100%;
+    height:180px;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.prime-text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.prime-number{
+    color:#ffc400;
+
+    font-size:18px;
+    font-weight:900;
+
     margin-bottom:8px;
 }
 
-.info-card p{
-    color:#aaa;
+.prime-text h3{
+    font-size:22px;
 
-    font-size:13px;
-    line-height:1.55;
+    margin-bottom:8px;
 }
 
-/* =========================
-   GAME HISTORY
-========================= */
-
-.history{
-    padding:18px;
-}
-
-.history-item{
-    position:relative;
-
-    padding:0 0 22px 25px;
-
-    border-left:2px solid rgba(255,193,7,.30);
-}
-
-.history-item:last-child{
-    padding-bottom:0;
-}
-
-.history-item::before{
-    content:"";
-
-    position:absolute;
-
-    left:-6px;
-    top:2px;
-
-    width:10px;
-    height:10px;
-
-    border-radius:50%;
-
-    background:#ffc400;
-
-    box-shadow:0 0 12px rgba(255,193,7,.45);
-}
-
-.history-year{
-    color:#ff3030;
-
-    font-size:12px;
-    font-weight:900;
-
-    margin-bottom:5px;
-}
-
-.history-item h3{
-    font-size:17px;
-
-    margin-bottom:5px;
-}
-
-.history-item p{
+.prime-text p{
     color:#aaa;
 
     font-size:13px;
     line-height:1.5;
 }
 
-/* =========================
-   STYLE
-========================= */
+/* =====================================================
+   WEAPONS
+===================================================== */
 
-.style-grid{
-    padding:18px;
+.weapons-grid{
+    padding:0 18px 18px;
 
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
 
     gap:12px;
 }
 
-.style-card{
-    min-height:130px;
+.weapon{
+    overflow:hidden;
 
-    display:flex;
-    flex-direction:column;
+    background:rgba(0,0,0,.28);
 
-    justify-content:center;
-    align-items:center;
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:11px;
+}
+
+.weapon img{
+    width:100%;
+    height:150px;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.weapon-name{
+    padding:10px;
+
+    color:#ffc400;
 
     text-align:center;
 
-    padding:15px;
+    font-size:13px;
+    font-weight:900;
+}
 
-    background:rgba(0,0,0,.30);
+/* =====================================================
+   MATCHES
+===================================================== */
+
+.matches{
+    padding:0 18px 18px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:10px;
+}
+
+.match{
+    padding:13px;
+
+    text-align:center;
+
+    background:rgba(0,0,0,.28);
+
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:10px;
+}
+
+.match b{
+    display:block;
+
+    color:#ffc400;
+
+    font-size:20px;
+
+    margin-bottom:4px;
+}
+
+.match span{
+    color:#999;
+
+    font-size:11px;
+}
+
+/* =====================================================
+   GUILD PREVIEW
+===================================================== */
+
+.guild-preview{
+    margin:0 18px 18px;
+
+    display:grid;
+
+    grid-template-columns:190px 1fr;
+
+    gap:16px;
+
+    padding:12px;
+
+    background:rgba(0,0,0,.28);
 
     border:1px solid rgba(255,255,255,.07);
 
     border-radius:12px;
-
-    transition:.2s;
 }
 
-.style-card:hover{
-    transform:translateY(-3px);
+.guild-preview-image{
+    height:130px;
 
-    border-color:rgba(255,193,7,.35);
+    overflow:hidden;
+
+    border-radius:10px;
 }
 
-.style-icon{
-    font-size:30px;
+.guild-preview-image img{
+    width:100%;
+    height:100%;
 
-    margin-bottom:9px;
+    object-fit:cover;
+
+    display:block;
 }
 
-.style-card h3{
+.guild-preview-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.guild-preview h3{
     color:#ffc400;
 
-    font-size:15px;
+    font-size:21px;
 
-    margin-bottom:5px;
+    margin-bottom:7px;
 }
 
-.style-card p{
-    color:#999;
+.guild-preview p{
+    color:#aaa;
 
-    font-size:11px;
+    font-size:13px;
+    line-height:1.5;
 
-    line-height:1.4;
+    margin-bottom:12px;
 }
 
-/* =========================
-   QUOTE
-========================= */
+.guild-button{
+    width:max-content;
 
-.quote{
-    padding:28px 25px;
+    padding:8px 12px;
 
-    text-align:center;
+    border-radius:8px;
+
+    background:#ffc400;
+
+    color:#050505;
+
+    text-decoration:none;
+
+    font-size:12px;
+    font-weight:900;
 }
 
-.quote-text{
-    color:#eee;
-
-    font-size:22px;
-    font-weight:800;
-
-    line-height:1.45;
-}
-
-.quote-text span{
-    color:#ffc400;
-}
-
-.quote-author{
-    color:#777;
-
-    font-size:11px;
-
-    margin-top:10px;
-}
-
-/* =========================
+/* =====================================================
    SOCIAL
-========================= */
+===================================================== */
 
 .social-bar{
     position:fixed;
@@ -490,9 +665,9 @@ section{
     transform:translateY(-2px);
 }
 
-/* =========================
+/* =====================================================
    SIDE MENU
-========================= */
+===================================================== */
 
 .menu-button{
     position:fixed;
@@ -561,6 +736,7 @@ section{
     background:rgba(0,0,0,.58);
 
     opacity:0;
+
     visibility:hidden;
 
     transition:.25s;
@@ -568,6 +744,7 @@ section{
 
 .side-overlay.open{
     opacity:1;
+
     visibility:visible;
 }
 
@@ -616,6 +793,7 @@ section{
 
 .side-menu a{
     display:flex;
+
     align-items:center;
 
     gap:12px;
@@ -641,6 +819,7 @@ section{
 .side-menu a:hover,
 .side-menu a.active{
     background:#ffc400;
+
     color:#050505;
 }
 
@@ -663,9 +842,9 @@ body.menu-open{
     overflow:hidden;
 }
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:700px){
 
@@ -683,84 +862,138 @@ body.menu-open{
 
     main{
         width:94%;
+
         padding-top:22px;
     }
 
-    .about-hero{
+    .hero{
         grid-template-columns:115px 1fr;
 
-        gap:13px;
+        gap:12px;
 
-        padding:13px;
+        padding:12px;
     }
 
-    .about-photo{
-        height:170px;
+    .hero-photo{
+        height:125px;
     }
 
-    .about-kicker{
+    .hero h1{
+        font-size:22px;
+    }
+
+    .hero p{
+        font-size:10px;
+    }
+
+    .hero-kicker{
         font-size:8px;
+
         letter-spacing:1.5px;
     }
 
-    .about-content h1{
-        font-size:24px;
+    .profile-info{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .about-content p{
-        font-size:10px;
-        line-height:1.5;
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .info-grid{
-        grid-template-columns:1fr;
+    .prime{
+        grid-template-columns:115px 1fr;
+
+        gap:10px;
     }
 
-    .style-grid{
-        grid-template-columns:1fr;
+    .prime-image img{
+        height:105px;
     }
 
-    .style-card{
-        min-height:105px;
-    }
-
-    .quote-text{
+    .prime-text h3{
         font-size:17px;
+    }
+
+    .prime-number{
+        font-size:15px;
+    }
+
+    .prime-text p{
+        font-size:10px;
+    }
+
+    .weapons-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .weapon img{
+        height:105px;
+    }
+
+    .matches{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .guild-preview{
+        grid-template-columns:120px 1fr;
+
+        gap:10px;
+    }
+
+    .guild-preview-image{
+        height:90px;
+    }
+
+    .guild-preview h3{
+        font-size:17px;
+    }
+
+    .guild-preview p{
+        font-size:9px;
+    }
+
+    .guild-button{
+        padding:7px 9px;
+
+        font-size:9px;
     }
 
     .social-button{
         min-width:135px;
 
-        padding:10px;
+        padding:10px 10px;
 
         font-size:11px;
     }
+
 }
 
 @media(max-width:380px){
 
-    .about-hero{
+    .hero{
         grid-template-columns:90px 1fr;
 
         gap:9px;
     }
 
-    .about-photo{
-        height:145px;
+    .hero-photo{
+        height:125px;
     }
 
-    .about-content h1{
+    .hero h1{
         font-size:20px;
     }
 
-    .about-content p{
+    .hero p{
         font-size:9px;
     }
 
     .social-button{
         min-width:125px;
+
         font-size:10px;
     }
+
 }
 
 </style>
@@ -768,9 +1001,9 @@ body.menu-open{
 
 <body>
 
-<!-- =========================
+<!-- =====================================================
      SIDE MENU
-========================= -->
+===================================================== -->
 
 <button
     class="menu-button"
@@ -798,78 +1031,63 @@ body.menu-open{
         <span>2V</span> Психошка
     </div>
 
-    <a
-        href="about.html"
-        data-page="about"
-    >
+    <a href="about.html" data-page="about">
         Обо мне
     </a>
 
-    <a
-        href="index.html"
-        data-page="profile"
-    >
+    <a href="index.html" data-page="profile">
         Профиль
     </a>
 
-    <a
-        href="guild.html"
-        data-page="guild"
-    >
+    <a href="guild.html" data-page="guild">
         Гильдия
     </a>
 
-    <a
-        href="memories.html"
-        data-page="memories"
-    >
+    <a href="memories.html" data-page="memories">
         Воспоминания
     </a>
 
 </aside>
 
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
-    <nav class="nav">
+<nav class="nav">
 
-        <div class="logo">
-            <span>2V</span> Психошка
-        </div>
+    <div class="logo">
+        <span>2V</span> Психошка
+    </div>
 
-    </nav>
+</nav>
 
 </header>
 
 
 <main>
 
-<!-- =========================
-     ABOUT
-========================= -->
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section>
 
-    <div class="about-hero">
+    <div class="hero">
 
-        <div class="about-photo">
+        <div class="hero-photo">
 
             <img
-                src="about-photo.jpg"
+                src="my-photo.jpg"
                 alt="Психошка"
             >
 
         </div>
 
 
-        <div class="about-content">
+        <div>
 
-            <div class="about-kicker">
-                ABOUT ME
+            <div class="hero-kicker">
+                FREE FIRE PLAYER
             </div>
 
             <h1>
@@ -877,21 +1095,9 @@ body.menu-open{
             </h1>
 
             <p>
-                Я играю в Free Fire уже много лет
-                и за это время прошёл через разные
-                режимы, гильдии и игровые этапы.
-            </p>
-
-            <p>
-                Моя основная специализация —
-                <strong>1v1</strong>.
-                Также я хорошо играю в КВ и
-                командных режимах.
-            </p>
-
-            <p>
-                Играю на двух пальцах и предпочитаю
-                быстрый стиль игры.
+                Игрок Free Fire.
+                Основной стиль — скорость,
+                механика, 1 на 1 и КВ.
             </p>
 
         </div>
@@ -901,103 +1107,204 @@ body.menu-open{
 </section>
 
 
-<!-- =========================
-     ABOUT INFO
-========================= -->
+<!-- =====================================================
+     PROFILE
+===================================================== -->
 
 <section>
 
     <h2 class="section-title">
-        Немного обо мне
+        Игровой профиль
     </h2>
 
-    <div class="info-grid">
+    <div class="profile-card">
 
-        <div class="info-card">
+        <div class="profile-image">
 
-            <div class="info-card-title">
-                🎮 Free Fire
-            </div>
+            <a href="profile.jpg" target="_blank">
 
-            <p>
-                Играю в Free Fire около 8 лет.
-                За это время накопил большой
-                игровой опыт и множество воспоминаний.
-            </p>
+                <img
+                    src="profile.jpg"
+                    alt="Игровой профиль"
+                >
 
-        </div>
-
-
-        <div class="info-card">
-
-            <div class="info-card-title">
-                ⚡ Мой стиль
-            </div>
-
-            <p>
-                Предпочитаю скорость, движение,
-                резкие действия и постоянный
-                контроль ситуации.
-            </p>
+            </a>
 
         </div>
 
 
-        <div class="info-card">
+        <div class="profile-info">
 
-            <div class="info-card-title">
-                🎯 1v1
+            <span>
+                <strong>2V Психошка</strong>
+            </span>
+
+            <span>
+                UID <strong>492468395</strong>
+            </span>
+
+            <span>
+                LVL <strong>70</strong>
+            </span>
+
+            <span>
+                Гильдия <strong>2VN</strong>
+            </span>
+
+            <span>
+                Лайки <strong>9928</strong>
+            </span>
+
+            <span>
+                TikTok <strong>@erko_zr</strong>
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section>
+
+    <h2 class="section-title">
+        Моя статистика
+    </h2>
+
+    <button
+        class="toggle"
+        onclick="toggleBlock('stats',this)"
+    >
+
+        <span>
+            Показать статистику
+        </span>
+
+        <span class="toggle-symbol">
+            ＋
+        </span>
+
+    </button>
+
+
+    <div
+        class="collapsible"
+        id="stats"
+    >
+
+        <div class="collapsible-inner">
+
+            <div class="stats-grid">
+
+                <div class="stat">
+                    <b>121</b>
+                    <small>Матчей</small>
+                </div>
+
+                <div class="stat">
+                    <b>66</b>
+                    <small>Побед</small>
+                </div>
+
+                <div class="stat">
+                    <b>370</b>
+                    <small>Убийств</small>
+                </div>
+
+                <div class="stat">
+                    <b>1.64</b>
+                    <small>KDA</small>
+                </div>
+
+                <div class="stat">
+                    <b>7.7</b>
+                    <small>Рейтинг</small>
+                </div>
+
+                <div class="stat">
+                    <b>149</b>
+                    <small>Возрождений</small>
+                </div>
+
+                <div class="stat">
+                    <b>1488</b>
+                    <small>Средний урон</small>
+                </div>
+
+                <div class="stat">
+                    <b>137</b>
+                    <small>Хедшотов</small>
+                </div>
+
+                <div class="stat">
+                    <b>37.03%</b>
+                    <small>Headshot rate</small>
+                </div>
+
+                <div class="stat">
+                    <b>470</b>
+                    <small>Нокдаунов</small>
+                </div>
+
+                <div class="stat">
+                    <b>54.55%</b>
+                    <small>Win rate</small>
+                </div>
+
+                <div class="stat">
+                    <b>6 / 18</b>
+                    <small>Золото / Серебро</small>
+                </div>
+
             </div>
 
-            <p>
-                Основная специализация —
-                дуэли один на один.
-                Именно этому стилю уделяю
-                большое внимание.
-            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PRIME
+===================================================== -->
+
+<section>
+
+    <h2 class="section-title">
+        Prime
+    </h2>
+
+    <div class="prime">
+
+        <div class="prime-image">
+
+            <img
+                src="prime.jpg"
+                alt="Prime"
+            >
 
         </div>
 
 
-        <div class="info-card">
+        <div class="prime-text">
 
-            <div class="info-card-title">
-                🏆 КВ
+            <div class="prime-number">
+                PRIME
             </div>
 
-            <p>
-                Помимо 1v1, участвую в КВ
-                и командных сражениях.
-            </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-            <div class="info-card-title">
-                👆 Управление
-            </div>
+            <h3>
+                Мой игровой стиль
+            </h3>
 
             <p>
-                Играю на двух пальцах.
-                Такой способ управления
-                стал частью моего игрового стиля.
-            </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-            <div class="info-card-title">
-                🚀 Speedster
-            </div>
-
-            <p>
-                Люблю быстрый темп игры,
-                поэтому скорость и мобильность —
-                важная часть моего стиля.
+                Скорость, механика, движение,
+                реакция и контроль боя.
             </p>
 
         </div>
@@ -1007,234 +1314,155 @@ body.menu-open{
 </section>
 
 
-<!-- =========================
-     HISTORY
-========================= -->
+<!-- =====================================================
+     WEAPONS
+===================================================== -->
 
 <section>
 
     <h2 class="section-title">
-        Мой игровой путь
+        Арсенал
     </h2>
 
-    <div class="history">
+    <div class="weapons-grid">
 
-        <div class="history-item">
+        <div class="weapon">
 
-            <div class="history-year">
-                НАЧАЛО
+            <img
+                src="MP5.png"
+                alt="MP5"
+            >
+
+            <div class="weapon-name">
+                MP5
             </div>
-
-            <h3>
-                Первые шаги в Free Fire
-            </h3>
-
-            <p>
-                Именно с этого началась моя история
-                в игре и знакомство с её механиками.
-            </p>
 
         </div>
 
 
-        <div class="history-item">
+        <div class="weapon">
 
-            <div class="history-year">
-                ДАЛЬШЕ
+            <img
+                src="M1887.png"
+                alt="M1887"
+            >
+
+            <div class="weapon-name">
+                M1887
             </div>
-
-            <h3>
-                1v1 и развитие механики
-            </h3>
-
-            <p>
-                Постепенно 1v1 стал одним из главных
-                направлений моего игрового стиля.
-            </p>
 
         </div>
 
 
-        <div class="history-item">
+        <div class="weapon">
 
-            <div class="history-year">
-                КВ
+            <img
+                src="Desert Eagle.png"
+                alt="Desert Eagle"
+            >
+
+            <div class="weapon-name">
+                Desert Eagle
             </div>
-
-            <h3>
-                Командные сражения
-            </h3>
-
-            <p>
-                Появился опыт игры в КВ и командных
-                форматах.
-            </p>
 
         </div>
 
 
-        <div class="history-item">
+        <div class="weapon">
 
-            <div class="history-year">
-                СЕЙЧАС
+            <img
+                src="G18.png"
+                alt="G18"
+            >
+
+            <div class="weapon-name">
+                G18
             </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MATCHES
+===================================================== -->
+
+<section>
+
+    <h2 class="section-title">
+        Игровые показатели
+    </h2>
+
+    <div class="matches">
+
+        <div class="match">
+            <b>1v1</b>
+            <span>Основная специализация</span>
+        </div>
+
+        <div class="match">
+            <b>КВ</b>
+            <span>Командные бои</span>
+        </div>
+
+        <div class="match">
+            <b>2</b>
+            <span>Пальца</span>
+        </div>
+
+        <div class="match">
+            <b>8+</b>
+            <span>Лет в игре</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GUILD
+===================================================== -->
+
+<section>
+
+    <h2 class="section-title">
+        Моя гильдия
+    </h2>
+
+    <div class="guild-preview">
+
+        <div class="guild-preview-image">
+
+            <img
+                src="guild.jpg"
+                alt="2VN"
+            >
+
+        </div>
+
+
+        <div class="guild-preview-info">
 
             <h3>
                 2VN
             </h3>
 
             <p>
-                Сейчас 2VN является важной частью
-                моей игровой истории.
+                Моя основная гильдия и часть
+                игровой истории.
             </p>
 
-        </div>
+            <a
+                href="guild.html"
+                class="guild-button"
+            >
+                Открыть гильдию →
+            </a>
 
-    </div>
-
-</section>
-
-
-<!-- =========================
-     STYLE
-========================= -->
-
-<section>
-
-    <h2 class="section-title">
-        Мой игровой стиль
-    </h2>
-
-    <div class="style-grid">
-
-        <div class="style-card">
-
-            <div class="style-icon">
-                ⚡
-            </div>
-
-            <h3>
-                Скорость
-            </h3>
-
-            <p>
-                Быстрое перемещение
-                и реакция.
-            </p>
-
-        </div>
-
-
-        <div class="style-card">
-
-            <div class="style-icon">
-                🎯
-            </div>
-
-            <h3>
-                Точность
-            </h3>
-
-            <p>
-                Контроль стрельбы
-                и прицеливания.
-            </p>
-
-        </div>
-
-
-        <div class="style-card">
-
-            <div class="style-icon">
-                🔥
-            </div>
-
-            <h3>
-                Агрессия
-            </h3>
-
-            <p>
-                Не люблю пассивный
-                стиль игры.
-            </p>
-
-        </div>
-
-
-        <div class="style-card">
-
-            <div class="style-icon">
-                🥊
-            </div>
-
-            <h3>
-                1v1
-            </h3>
-
-            <p>
-                Моя основная
-                специализация.
-            </p>
-
-        </div>
-
-
-        <div class="style-card">
-
-            <div class="style-icon">
-                👥
-            </div>
-
-            <h3>
-                КВ
-            </h3>
-
-            <p>
-                Умею работать
-                в команде.
-            </p>
-
-        </div>
-
-
-        <div class="style-card">
-
-            <div class="style-icon">
-                👆
-            </div>
-
-            <h3>
-                2 пальца
-            </h3>
-
-            <p>
-                Мой привычный
-                способ управления.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     QUOTE
-========================= -->
-
-<section>
-
-    <div class="quote">
-
-        <div class="quote-text">
-            «Играй в своём стиле.
-            <span>Развивай механику.</span>
-            Не останавливайся.»
-        </div>
-
-        <div class="quote-author">
-            — 2V Психошка
         </div>
 
     </div>
@@ -1245,9 +1473,9 @@ body.menu-open{
 </main>
 
 
-<!-- =========================
+<!-- =====================================================
      SOCIAL
-========================= -->
+===================================================== -->
 
 <div class="social-bar">
 
@@ -1258,6 +1486,7 @@ body.menu-open{
     >
         🎵 TikTok @erko_zr
     </a>
+
 
     <a
         class="social-button social-whatsapp"
@@ -1272,17 +1501,51 @@ body.menu-open{
 
 <script>
 
-/* =========================
-   SIDE MENU
-========================= */
+/* =====================================================
+   COLLAPSIBLE
+===================================================== */
 
-const menuButton =
+function toggleBlock(id,button){
+
+    const block=document.getElementById(id);
+
+    const opened=block.classList.toggle("open");
+
+    const text=
+        button.querySelector("span:first-child");
+
+    const symbol=
+        button.querySelector(".toggle-symbol");
+
+
+    if(opened){
+
+        text.textContent="Скрыть статистику";
+
+        symbol.textContent="−";
+
+    }else{
+
+        text.textContent="Показать статистику";
+
+        symbol.textContent="＋";
+
+    }
+
+}
+
+
+/* =====================================================
+   SIDE MENU
+===================================================== */
+
+const menuButton=
     document.getElementById("menuButton");
 
-const sideMenu =
+const sideMenu=
     document.getElementById("sideMenu");
 
-const sideOverlay =
+const sideOverlay=
     document.getElementById("sideOverlay");
 
 
@@ -1317,6 +1580,7 @@ function setMenu(open){
         "aria-hidden",
         open ? "false" : "true"
     );
+
 }
 
 
@@ -1341,18 +1605,20 @@ sideOverlay.addEventListener(
 document.addEventListener(
     "keydown",
     (e)=>{
+
         if(e.key==="Escape"){
             setMenu(false);
         }
+
     }
 );
 
 
-/* =========================
+/* =====================================================
    ACTIVE PAGE
-========================= */
+===================================================== */
 
-const pageName =
+const pageName=
     (
         location.pathname
         .split("/")
@@ -1362,7 +1628,7 @@ const pageName =
     ).toLowerCase();
 
 
-const pageMap = {
+const pageMap={
 
     "about.html":"about",
 
@@ -1375,7 +1641,7 @@ const pageMap = {
 };
 
 
-const activePage =
+const activePage=
     pageMap[pageName];
 
 
@@ -1384,7 +1650,7 @@ document
     .forEach(link=>{
 
         if(
-            link.dataset.page ===
+            link.dataset.page===
             activePage
         ){
 
@@ -1395,11 +1661,11 @@ document
     });
 
 
-/* =========================
-   RANDOM BACKGROUND
-========================= */
+/* =====================================================
+   RANDOM FIXED BACKGROUND
+===================================================== */
 
-const pcBackgrounds = [
+const pcBackgrounds=[
 
     "bg-pc-1.jpg",
     "bg-pc-2.jpg",
@@ -1410,7 +1676,7 @@ const pcBackgrounds = [
 ];
 
 
-const mobileBackgrounds = [
+const mobileBackgrounds=[
 
     "bg-mobile-1.jpg",
     "bg-mobile-2.jpg",
@@ -1421,18 +1687,18 @@ const mobileBackgrounds = [
 ];
 
 
-const backgrounds =
-    window.innerWidth <= 700
+const backgrounds=
+    window.innerWidth<=700
     ?
     mobileBackgrounds
     :
     pcBackgrounds;
 
 
-const selected =
+const selected=
     backgrounds[
         Math.floor(
-            Math.random() *
+            Math.random()*
             backgrounds.length
         )
     ];
