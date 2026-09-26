@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>2V Психошка | Free Fire</title>
+<title>Профиль | 2V Психошка</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -19,7 +21,7 @@ html{
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    color:#f5f5f5;
+    color:#fff;
     background:#050505;
     min-height:100vh;
     overflow-x:hidden;
@@ -58,16 +60,16 @@ body::after{
 header{
     position:sticky;
     top:0;
-    z-index:1000;
+    z-index:2000;
 
     width:100%;
+    min-height:65px;
 
     background:rgba(5,5,5,.88);
+
     border-bottom:1px solid rgba(255,193,7,.35);
 
     backdrop-filter:blur(10px);
-
-    box-shadow:0 5px 20px rgba(0,0,0,.22);
 }
 
 .nav{
@@ -77,43 +79,16 @@ header{
 
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    gap:15px;
+    justify-content:center;
 }
 
 .logo{
     font-size:21px;
     font-weight:900;
-    white-space:nowrap;
 }
 
 .logo span{
     color:#ff3030;
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:7px;
-}
-
-.nav-links a{
-    color:#eee;
-    text-decoration:none;
-
-    font-size:13px;
-    font-weight:800;
-
-    padding:9px 13px;
-    border-radius:8px;
-
-    transition:.2s;
-}
-
-.nav-links a:hover,
-.nav-links a.active{
-    background:#ffc400;
-    color:#050505;
 }
 
 /* =====================================================
@@ -262,41 +237,42 @@ section{
 
     overflow:hidden;
 
-    box-shadow:0 7px 20px rgba(0,0,0,.25);
+    box-shadow:0 7px 20px rgba(0,0,0,.35);
 }
 
 .profile-image img{
-    display:block;
-
     width:100%;
-    height:auto;
-
-    max-height:390px;
-
-    object-fit:contain;
+    display:block;
 }
 
+/* =====================================================
+   PROFILE INFO
+===================================================== */
+
 .profile-info{
-    margin-top:12px;
+    display:grid;
 
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
+    grid-template-columns:repeat(3,1fr);
 
-    gap:6px;
+    gap:10px;
+
+    margin-top:14px;
 }
 
 .profile-info span{
-    background:#101010;
+    padding:12px;
 
-    border:1px solid #292929;
+    background:rgba(0,0,0,.32);
 
-    border-radius:7px;
+    border:1px solid rgba(255,255,255,.07);
 
-    padding:6px 9px;
+    border-radius:10px;
 
-    font-size:11px;
-    color:#ccc;
+    color:#aaa;
+
+    font-size:13px;
+
+    text-align:center;
 }
 
 .profile-info strong{
@@ -304,82 +280,78 @@ section{
 }
 
 /* =====================================================
-   TOGGLE
+   STATS
 ===================================================== */
 
 .toggle{
     width:calc(100% - 36px);
-    margin:14px 18px 18px;
+
+    margin:14px 18px;
+
+    padding:12px 14px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:12px 14px;
-
-    border:1px solid rgba(255,193,7,.35);
+    border:none;
     border-radius:10px;
 
-    background:#0d0d0d;
-    color:#fff;
+    background:rgba(255,193,7,.10);
+
+    border:1px solid rgba(255,193,7,.30);
+
+    color:#ffc400;
+
+    font-size:14px;
+    font-weight:900;
 
     cursor:pointer;
 
-    font-size:13px;
-    font-weight:900;
-
     transition:.2s;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.18);
 }
 
 .toggle:hover{
-    border-color:#ffc400;
+    background:rgba(255,193,7,.18);
 }
 
 .toggle-symbol{
-    color:#ffc400;
-    font-size:19px;
+    font-size:20px;
 }
 
 .collapsible{
-    display:grid;
-    grid-template-rows:0fr;
+    max-height:0;
+    overflow:hidden;
 
-    transition:grid-template-rows .35s ease;
+    transition:max-height .35s ease;
 }
 
 .collapsible.open{
-    grid-template-rows:1fr;
+    max-height:1000px;
 }
 
 .collapsible-inner{
-    overflow:hidden;
+    padding:0 18px 18px;
 }
 
-/* =====================================================
-   STATS
-===================================================== */
-
 .stats-grid{
-    padding:0 18px 18px;
-
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
 
-    gap:7px;
+    gap:10px;
 }
 
 .stat{
-    padding:10px;
+    padding:14px 8px;
 
     text-align:center;
 
-    background:#0c0c0c;
+    background:rgba(0,0,0,.32);
 
-    border:1px solid #252525;
+    border:1px solid rgba(255,255,255,.07);
 
-    border-radius:8px;
+    border-radius:10px;
 }
 
 .stat b{
@@ -387,14 +359,15 @@ section{
 
     color:#ffc400;
 
-    font-size:17px;
+    font-size:20px;
 
-    margin-bottom:3px;
+    margin-bottom:5px;
 }
 
 .stat small{
     color:#999;
-    font-size:10px;
+
+    font-size:11px;
 }
 
 /* =====================================================
@@ -402,103 +375,64 @@ section{
 ===================================================== */
 
 .prime{
-    margin:15px 18px 18px;
+    margin:14px 18px 18px;
 
     display:grid;
-    grid-template-columns:235px 1fr;
 
-    align-items:center;
+    grid-template-columns:250px 1fr;
+
     gap:18px;
 
-    padding:13px;
+    padding:12px;
 
-    background:#090909;
+    background:rgba(0,0,0,.28);
 
-    border:1px solid #292929;
+    border:1px solid rgba(255,255,255,.07);
+
     border-radius:12px;
-
-    box-shadow:0 6px 18px rgba(0,0,0,.20);
 }
 
 .prime-image{
     overflow:hidden;
 
-    border-radius:9px;
-
-    background:#030303;
+    border-radius:10px;
 }
 
 .prime-image img{
-    display:block;
-
     width:100%;
-    height:150px;
+    height:180px;
 
-    object-fit:contain;
+    object-fit:cover;
+
+    display:block;
 }
 
-.prime-text h3{
-    color:#ffc400;
-
-    font-size:23px;
-
-    margin-bottom:6px;
+.prime-text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
 .prime-number{
-    font-size:23px;
+    color:#ffc400;
+
+    font-size:18px;
     font-weight:900;
 
-    margin-bottom:5px;
+    margin-bottom:8px;
 }
 
-.prime-number span{
-    color:#ff3030;
+.prime-text h3{
+    font-size:22px;
+
+    margin-bottom:8px;
 }
 
 .prime-text p{
     color:#aaa;
-    font-size:12px;
+
+    font-size:13px;
     line-height:1.5;
-}
-
-/* =====================================================
-   ROLE
-===================================================== */
-
-.role-box{
-    padding:15px 18px 18px;
-
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-.role-card{
-    padding:14px;
-
-    background:#090909;
-
-    border:1px solid #292929;
-    border-radius:10px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.16);
-}
-
-.role-card h3{
-    color:#ffc400;
-    font-size:15px;
-
-    margin-bottom:7px;
-}
-
-.role-card p{
-    color:#bbb;
-
-    font-size:12px;
-    line-height:1.55;
-
-    margin-bottom:5px;
 }
 
 /* =====================================================
@@ -509,28 +443,40 @@ section{
     padding:0 18px 18px;
 
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:12px;
 }
 
 .weapon{
     overflow:hidden;
 
-    background:#050505;
+    background:rgba(0,0,0,.28);
 
-    border:1px solid #292929;
-    border-radius:10px;
+    border:1px solid rgba(255,255,255,.07);
 
-    box-shadow:0 6px 18px rgba(0,0,0,.22);
+    border-radius:11px;
 }
 
 .weapon img{
-    display:block;
-
     width:100%;
-    height:135px;
+    height:150px;
 
     object-fit:cover;
+
+    display:block;
+}
+
+.weapon-name{
+    padding:10px;
+
+    color:#ffc400;
+
+    text-align:center;
+
+    font-size:13px;
+    font-weight:900;
 }
 
 /* =====================================================
@@ -538,52 +484,41 @@ section{
 ===================================================== */
 
 .matches{
-    padding:14px 18px 18px;
+    padding:0 18px 18px;
 
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:10px;
 }
 
 .match{
-    padding:11px;
+    padding:13px;
 
-    background:#090909;
+    text-align:center;
 
-    border:1px solid #292929;
-    border-radius:9px;
+    background:rgba(0,0,0,.28);
 
-    box-shadow:0 5px 14px rgba(0,0,0,.18);
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:10px;
 }
 
-.match-top{
-    display:flex;
-    justify-content:space-between;
+.match b{
+    display:block;
 
-    margin-bottom:7px;
-}
-
-.win{
     color:#ffc400;
-    font-weight:900;
-    font-size:11px;
+
+    font-size:20px;
+
+    margin-bottom:4px;
 }
 
-.loss{
-    color:#ff4040;
-    font-weight:900;
-    font-size:11px;
-}
-
-.match small{
-    color:#777;
-}
-
-.match p{
-    color:#bbb;
+.match span{
+    color:#999;
 
     font-size:11px;
-    line-height:1.45;
 }
 
 /* =====================================================
@@ -591,44 +526,44 @@ section{
 ===================================================== */
 
 .guild-preview{
-    margin:14px 18px 18px;
+    margin:0 18px 18px;
 
     display:grid;
 
-    grid-template-columns:285px 1fr;
+    grid-template-columns:190px 1fr;
 
-    align-items:center;
+    gap:16px;
 
-    gap:17px;
+    padding:12px;
 
-    padding:13px;
+    background:rgba(0,0,0,.28);
 
-    background:#090909;
+    border:1px solid rgba(255,255,255,.07);
 
-    border:1px solid #292929;
     border-radius:12px;
-
-    box-shadow:0 6px 18px rgba(0,0,0,.22);
 }
 
 .guild-preview-image{
-    width:100%;
-    height:150px;
+    height:130px;
 
     overflow:hidden;
 
-    border-radius:9px;
-
-    background:#030303;
+    border-radius:10px;
 }
 
 .guild-preview-image img{
-    display:block;
-
     width:100%;
     height:100%;
 
-    object-fit:contain;
+    object-fit:cover;
+
+    display:block;
+}
+
+.guild-preview-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
 .guild-preview h3{
@@ -642,38 +577,31 @@ section{
 .guild-preview p{
     color:#aaa;
 
-    font-size:12px;
+    font-size:13px;
     line-height:1.5;
 
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 .guild-button{
-    display:inline-block;
+    width:max-content;
 
     padding:8px 12px;
+
+    border-radius:8px;
 
     background:#ffc400;
 
     color:#050505;
 
-    border-radius:7px;
-
     text-decoration:none;
 
-    font-size:11px;
+    font-size:12px;
     font-weight:900;
-
-    transition:.2s;
-}
-
-.guild-button:hover{
-    background:#ff3030;
-    color:#fff;
 }
 
 /* =====================================================
-   FIXED SOCIAL
+   SOCIAL
 ===================================================== */
 
 .social-bar{
@@ -690,39 +618,228 @@ section{
 
     gap:7px;
 
-    width:max-content;
-    max-width:calc(100% - 20px);
+    padding:7px;
+
+    background:rgba(8,8,8,.90);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:13px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.40);
+
+    backdrop-filter:blur(12px);
 }
 
 .social-button{
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
     min-width:145px;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:11px 14px;
+    padding:9px 14px;
 
     border-radius:9px;
 
     text-decoration:none;
 
-    font-size:12px;
+    font-size:13px;
     font-weight:900;
 
-    box-shadow:0 7px 22px rgba(0,0,0,.55);
+    transition:.2s;
 }
 
 .social-tiktok{
     background:#111;
     color:#fff;
-
-    border:1px solid #444;
 }
 
 .social-whatsapp{
+    background:#20c763;
+    color:#fff;
+}
+
+.social-button:hover{
+    transform:translateY(-2px);
+}
+
+/* =====================================================
+   SIDE MENU
+===================================================== */
+
+.menu-button{
+    position:fixed;
+
+    top:14px;
+    left:14px;
+
+    z-index:5000;
+
+    width:44px;
+    height:44px;
+
+    border:1px solid rgba(255,193,7,.45);
+
+    border-radius:11px;
+
+    background:rgba(8,8,8,.90);
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:5px;
+
+    cursor:pointer;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+
+.menu-button span{
+    display:block;
+
+    width:22px;
+    height:2px;
+
+    border-radius:2px;
+
+    background:#fff;
+
+    transition:.25s;
+}
+
+.menu-button.open span:nth-child(1){
+    transform:translateY(7px) rotate(45deg);
+}
+
+.menu-button.open span:nth-child(2){
+    opacity:0;
+}
+
+.menu-button.open span:nth-child(3){
+    transform:translateY(-7px) rotate(-45deg);
+}
+
+.side-overlay{
+    position:fixed;
+
+    inset:0;
+
+    z-index:4800;
+
+    background:rgba(0,0,0,.58);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.25s;
+}
+
+.side-overlay.open{
+    opacity:1;
+
+    visibility:visible;
+}
+
+.side-menu{
+    position:fixed;
+
+    top:0;
+    left:0;
+    bottom:0;
+
+    z-index:4900;
+
+    width:min(310px,82vw);
+
+    padding:82px 18px 24px;
+
+    background:rgba(7,7,7,.97);
+
+    border-right:1px solid rgba(255,193,7,.35);
+
+    box-shadow:10px 0 35px rgba(0,0,0,.45);
+
+    backdrop-filter:blur(16px);
+
+    transform:translateX(-105%);
+
+    transition:transform .28s ease;
+}
+
+.side-menu.open{
+    transform:translateX(0);
+}
+
+.side-menu-title{
+    color:#fff;
+
+    font-size:22px;
+    font-weight:900;
+
+    margin:0 8px 22px;
+}
+
+.side-menu-title span{
+    color:#ff3030;
+}
+
+.side-menu a{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+
+    padding:14px 13px;
+
+    margin-bottom:7px;
+
+    border-radius:11px;
+
+    color:#eee;
+
+    text-decoration:none;
+
+    font-size:15px;
+    font-weight:800;
+
+    transition:.2s;
+}
+
+.side-menu a:hover,
+.side-menu a.active{
     background:#ffc400;
+
     color:#050505;
+}
+
+.side-menu a::before{
+    content:"";
+
+    width:4px;
+    height:18px;
+
+    border-radius:4px;
+
+    background:#ff3030;
+}
+
+.side-menu a.active::before{
+    background:#050505;
+}
+
+body.menu-open{
+    overflow:hidden;
 }
 
 /* =====================================================
@@ -731,149 +848,81 @@ section{
 
 @media(max-width:700px){
 
+    header{
+        min-height:58px;
+    }
+
     .nav{
-        min-height:59px;
+        min-height:58px;
     }
 
     .logo{
-        font-size:17px;
-    }
-
-    .nav-links{
-        gap:3px;
-    }
-
-    .nav-links a{
-        padding:7px 8px;
-        font-size:10px;
+        font-size:18px;
     }
 
     main{
         width:94%;
-        padding-top:23px;
-        padding-bottom:100px;
-    }
 
-    .section-title{
-        font-size:18px;
-        padding:14px 14px 0;
+        padding-top:22px;
     }
-
-    .section-title::before{
-        height:20px;
-    }
-
-    /* HERO */
 
     .hero{
-        grid-template-columns:105px 1fr;
+        grid-template-columns:115px 1fr;
 
         gap:12px;
 
-        min-height:auto;
-
-        padding:14px;
+        padding:12px;
     }
 
     .hero-photo{
-        height:140px;
+        height:125px;
     }
 
     .hero h1{
-        font-size:23px;
-    }
-
-    .hero-kicker{
-        font-size:8px;
-        letter-spacing:1.5px;
+        font-size:22px;
     }
 
     .hero p{
         font-size:10px;
-        line-height:1.45;
     }
 
-    /* PROFILE */
+    .hero-kicker{
+        font-size:8px;
 
-    .profile-card{
-        padding:12px;
-    }
-
-    .profile-image img{
-        max-height:270px;
+        letter-spacing:1.5px;
     }
 
     .profile-info{
-        justify-content:flex-start;
-    }
-
-    .profile-info span{
-        font-size:9px;
-        padding:5px 7px;
-    }
-
-    /* STATS */
-
-    .toggle{
-        width:calc(100% - 28px);
-        margin:11px 14px 14px;
-    }
-
-    .stats-grid{
-        padding:0 14px 14px;
-
         grid-template-columns:repeat(2,1fr);
     }
 
-    .stat{
-        padding:8px;
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
     }
-
-    .stat b{
-        font-size:15px;
-    }
-
-    /* PRIME */
 
     .prime{
-        margin:11px 14px 14px;
-
         grid-template-columns:115px 1fr;
 
         gap:10px;
-
-        padding:9px;
     }
 
     .prime-image img{
-        height:100px;
+        height:105px;
     }
 
     .prime-text h3{
-        font-size:18px;
+        font-size:17px;
     }
 
     .prime-number{
-        font-size:16px;
+        font-size:15px;
     }
 
     .prime-text p{
-        font-size:9px;
+        font-size:10px;
     }
-
-    /* ROLE */
-
-    .role-box{
-        padding:11px 14px 14px;
-
-        grid-template-columns:1fr;
-    }
-
-    /* WEAPONS */
 
     .weapons-grid{
-        padding:0 14px 14px;
-
         grid-template-columns:repeat(2,1fr);
     }
 
@@ -881,24 +930,14 @@ section{
         height:105px;
     }
 
-    /* MATCHES */
-
     .matches{
-        padding:11px 14px 14px;
-
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:repeat(2,1fr);
     }
 
-    /* GUILD */
-
     .guild-preview{
-        margin:11px 14px 14px;
-
         grid-template-columns:120px 1fr;
 
         gap:10px;
-
-        padding:9px;
     }
 
     .guild-preview-image{
@@ -915,10 +954,9 @@ section{
 
     .guild-button{
         padding:7px 9px;
+
         font-size:9px;
     }
-
-    /* SOCIAL */
 
     .social-button{
         min-width:135px;
@@ -927,12 +965,14 @@ section{
 
         font-size:11px;
     }
+
 }
 
 @media(max-width:380px){
 
     .hero{
         grid-template-columns:90px 1fr;
+
         gap:9px;
     }
 
@@ -950,13 +990,65 @@ section{
 
     .social-button{
         min-width:125px;
+
         font-size:10px;
     }
+
 }
+
 </style>
 </head>
 
 <body>
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
+
+<button
+    class="menu-button"
+    id="menuButton"
+    aria-label="Открыть меню"
+    aria-expanded="false"
+>
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<div
+    class="side-overlay"
+    id="sideOverlay"
+></div>
+
+<aside
+    class="side-menu"
+    id="sideMenu"
+    aria-hidden="true"
+>
+
+    <div class="side-menu-title">
+        <span>2V</span> Психошка
+    </div>
+
+    <a href="about.html" data-page="about">
+        Обо мне
+    </a>
+
+    <a href="index.html" data-page="profile">
+        Профиль
+    </a>
+
+    <a href="guild.html" data-page="guild">
+        Гильдия
+    </a>
+
+    <a href="memories.html" data-page="memories">
+        Воспоминания
+    </a>
+
+</aside>
+
 
 <header>
 
@@ -966,13 +1058,6 @@ section{
         <span>2V</span> Психошка
     </div>
 
-    <div class="nav-links">
-        <a href="about.html">Обо мне</a>
-        <a href="index.html" class="active">Профиль</a>
-        <a href="guild.html">2VN</a>
-        <a href="memories.html">Воспоминания</a>
-    </div>
-
 </nav>
 
 </header>
@@ -980,15 +1065,24 @@ section{
 
 <main>
 
-<!-- HERO -->
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section>
 
     <div class="hero">
 
         <div class="hero-photo">
-            <img src="my-photo.jpg" alt="Психошка">
+
+            <img
+                src="my-photo.jpg"
+                alt="Психошка"
+            >
+
         </div>
+
 
         <div>
 
@@ -1013,7 +1107,9 @@ section{
 </section>
 
 
-<!-- PROFILE -->
+<!-- =====================================================
+     PROFILE
+===================================================== -->
 
 <section>
 
@@ -1024,19 +1120,44 @@ section{
     <div class="profile-card">
 
         <div class="profile-image">
+
             <a href="profile.jpg" target="_blank">
-                <img src="profile.jpg" alt="Игровой профиль">
+
+                <img
+                    src="profile.jpg"
+                    alt="Игровой профиль"
+                >
+
             </a>
+
         </div>
+
 
         <div class="profile-info">
 
-            <span><strong>2V Психошка</strong></span>
-            <span>UID <strong>492468395</strong></span>
-            <span>LVL <strong>70</strong></span>
-            <span>Гильдия <strong>2VN</strong></span>
-            <span>Лайки <strong>9928</strong></span>
-            <span>TikTok <strong>@erko_zr</strong></span>
+            <span>
+                <strong>2V Психошка</strong>
+            </span>
+
+            <span>
+                UID <strong>492468395</strong>
+            </span>
+
+            <span>
+                LVL <strong>70</strong>
+            </span>
+
+            <span>
+                Гильдия <strong>2VN</strong>
+            </span>
+
+            <span>
+                Лайки <strong>9928</strong>
+            </span>
+
+            <span>
+                TikTok <strong>@erko_zr</strong>
+            </span>
 
         </div>
 
@@ -1045,7 +1166,9 @@ section{
 </section>
 
 
-<!-- STATS -->
+<!-- =====================================================
+     STATS
+===================================================== -->
 
 <section>
 
@@ -1053,31 +1176,90 @@ section{
         Моя статистика
     </h2>
 
-    <button class="toggle" onclick="toggleBlock('stats',this)">
-        <span>Показать статистику</span>
-        <span class="toggle-symbol">＋</span>
+    <button
+        class="toggle"
+        onclick="toggleBlock('stats',this)"
+    >
+
+        <span>
+            Показать статистику
+        </span>
+
+        <span class="toggle-symbol">
+            ＋
+        </span>
+
     </button>
 
-    <div class="collapsible" id="stats">
+
+    <div
+        class="collapsible"
+        id="stats"
+    >
 
         <div class="collapsible-inner">
 
             <div class="stats-grid">
 
-                <div class="stat"><b>121</b><small>Матчей</small></div>
-                <div class="stat"><b>66</b><small>Побед</small></div>
-                <div class="stat"><b>370</b><small>Убийств</small></div>
-                <div class="stat"><b>1.64</b><small>KDA</small></div>
+                <div class="stat">
+                    <b>121</b>
+                    <small>Матчей</small>
+                </div>
 
-                <div class="stat"><b>7.7</b><small>Рейтинг</small></div>
-                <div class="stat"><b>149</b><small>Возрождений</small></div>
-                <div class="stat"><b>1488</b><small>Средний урон</small></div>
-                <div class="stat"><b>137</b><small>Хедшотов</small></div>
+                <div class="stat">
+                    <b>66</b>
+                    <small>Побед</small>
+                </div>
 
-                <div class="stat"><b>37.03%</b><small>Headshot rate</small></div>
-                <div class="stat"><b>470</b><small>Нокдаунов</small></div>
-                <div class="stat"><b>54.55%</b><small>Win rate</small></div>
-                <div class="stat"><b>6 / 18</b><small>Золото / Серебро</small></div>
+                <div class="stat">
+                    <b>370</b>
+                    <small>Убийств</small>
+                </div>
+
+                <div class="stat">
+                    <b>1.64</b>
+                    <small>KDA</small>
+                </div>
+
+                <div class="stat">
+                    <b>7.7</b>
+                    <small>Рейтинг</small>
+                </div>
+
+                <div class="stat">
+                    <b>149</b>
+                    <small>Возрождений</small>
+                </div>
+
+                <div class="stat">
+                    <b>1488</b>
+                    <small>Средний урон</small>
+                </div>
+
+                <div class="stat">
+                    <b>137</b>
+                    <small>Хедшотов</small>
+                </div>
+
+                <div class="stat">
+                    <b>37.03%</b>
+                    <small>Headshot rate</small>
+                </div>
+
+                <div class="stat">
+                    <b>470</b>
+                    <small>Нокдаунов</small>
+                </div>
+
+                <div class="stat">
+                    <b>54.55%</b>
+                    <small>Win rate</small>
+                </div>
+
+                <div class="stat">
+                    <b>6 / 18</b>
+                    <small>Золото / Серебро</small>
+                </div>
 
             </div>
 
@@ -1088,7 +1270,9 @@ section{
 </section>
 
 
-<!-- PRIME -->
+<!-- =====================================================
+     PRIME
+===================================================== -->
 
 <section>
 
@@ -1099,24 +1283,28 @@ section{
     <div class="prime">
 
         <div class="prime-image">
-            <img src="prime.jpg" alt="Prime 7">
+
+            <img
+                src="prime.jpg"
+                alt="Prime"
+            >
+
         </div>
+
 
         <div class="prime-text">
 
-            <h3>Prime 7</h3>
-
             <div class="prime-number">
-                129 311 <span>/ 200 000</span>
+                PRIME
             </div>
 
-            <p>Прогресс до Prime 8</p>
+            <h3>
+                Мой игровой стиль
+            </h3>
 
             <p>
-                Осталось:
-                <strong style="color:#ffc400">
-                    70 689
-                </strong>
+                Скорость, механика, движение,
+                реакция и контроль боя.
             </p>
 
         </div>
@@ -1126,79 +1314,69 @@ section{
 </section>
 
 
-<!-- ROLE -->
+<!-- =====================================================
+     WEAPONS
+===================================================== -->
 
 <section>
 
     <h2 class="section-title">
-        Стиль игры
+        Арсенал
     </h2>
 
-    <div class="role-box">
+    <div class="weapons-grid">
 
-        <div class="role-card">
+        <div class="weapon">
 
-            <h3>Штурмовик — 65%</h3>
+            <img
+                src="MP5.png"
+                alt="MP5"
+            >
 
-            <p>
-                Основная роль — агрессивная игра,
-                быстрые размены и ближний бой.
-            </p>
-
-            <p>
-                233 убийства в ближнем бою.
-            </p>
+            <div class="weapon-name">
+                MP5
+            </div>
 
         </div>
 
-        <div class="role-card">
 
-            <h3>Основное оружие — MP5</h3>
+        <div class="weapon">
 
-            <p>
-                Штурмовик Lv.10 · Стрелок Lv.3 ·
-                Снайпер Lv.2 · Помощник Lv.4 ·
-                Гренадер Lv.2
-            </p>
+            <img
+                src="M1887.png"
+                alt="M1887"
+            >
+
+            <div class="weapon-name">
+                M1887
+            </div>
 
         </div>
 
-    </div>
 
-</section>
+        <div class="weapon">
+
+            <img
+                src="Desert Eagle.png"
+                alt="Desert Eagle"
+            >
+
+            <div class="weapon-name">
+                Desert Eagle
+            </div>
+
+        </div>
 
 
-<!-- WEAPONS -->
+        <div class="weapon">
 
-<section>
+            <img
+                src="G18.png"
+                alt="G18"
+            >
 
-    <h2 class="section-title">
-        Оружие
-    </h2>
-
-    <button class="toggle" onclick="toggleBlock('weapons',this)">
-        <span>Показать арсенал</span>
-        <span class="toggle-symbol">＋</span>
-    </button>
-
-    <div class="collapsible" id="weapons">
-
-        <div class="collapsible-inner">
-
-            <div class="weapons-grid">
-
-                <div class="weapon">
-                    <img src="mp5.jpg" alt="MP5">
-                </div>
-
-                <div class="weapon">
-                    <img src="desert-eagle.jpg" alt="Desert Eagle">
-                </div>
-
-                <div class="weapon">
-                    <img src="mac10.jpg" alt="MAC10">
-                </div>
-
+            <div class="weapon-name">
+                G18
             </div>
 
         </div>
@@ -1208,68 +1386,36 @@ section{
 </section>
 
 
-<!-- MATCHES -->
+<!-- =====================================================
+     MATCHES
+===================================================== -->
 
 <section>
 
     <h2 class="section-title">
-        Последние матчи
+        Игровые показатели
     </h2>
 
     <div class="matches">
 
         <div class="match">
-            <div class="match-top">
-                <span class="win">ПОБЕДА</span>
-                <small>21:38</small>
-            </div>
-            <p>Комната — Ультиматум</p>
-            <p>6 убийств</p>
+            <b>1v1</b>
+            <span>Основная специализация</span>
         </div>
 
         <div class="match">
-            <div class="match-top">
-                <span class="win">ПОБЕДА</span>
-                <small>21:28</small>
-            </div>
-            <p>Комната — Ультиматум</p>
-            <p>12 убийств</p>
+            <b>КВ</b>
+            <span>Командные бои</span>
         </div>
 
         <div class="match">
-            <div class="match-top">
-                <span class="loss">ПОКИНУТА</span>
-                <small>20:51</small>
-            </div>
-            <p>Комната — Заброшена</p>
-            <p>5 убийств</p>
+            <b>2</b>
+            <span>Пальца</span>
         </div>
 
         <div class="match">
-            <div class="match-top">
-                <span class="win">ПОБЕДА</span>
-                <small>20:07</small>
-            </div>
-            <p>Комната — Ультиматум</p>
-            <p>5 убийств</p>
-        </div>
-
-        <div class="match">
-            <div class="match-top">
-                <span class="win">ПОБЕДА</span>
-                <small>20:01</small>
-            </div>
-            <p>Комната — Ультиматум</p>
-            <p>4 убийства</p>
-        </div>
-
-        <div class="match">
-            <div class="match-top">
-                <span class="win">ПОБЕДА</span>
-                <small>19:53</small>
-            </div>
-            <p>БО-РЕЙТИНГ</p>
-            <p>3 убийства</p>
+            <b>8+</b>
+            <span>Лет в игре</span>
         </div>
 
     </div>
@@ -1277,7 +1423,9 @@ section{
 </section>
 
 
-<!-- GUILD -->
+<!-- =====================================================
+     GUILD
+===================================================== -->
 
 <section>
 
@@ -1288,20 +1436,30 @@ section{
     <div class="guild-preview">
 
         <div class="guild-preview-image">
-            <img src="guild-banner.jpg" alt="2VN">
+
+            <img
+                src="guild.jpg"
+                alt="2VN"
+            >
+
         </div>
 
-        <div>
 
-            <h3>2VN</h3>
+        <div class="guild-preview-info">
+
+            <h3>
+                2VN
+            </h3>
 
             <p>
-                Гильдия СНГ, частью которой является
-                Психошка. Подробнее о составе и
-                игроках — на отдельной странице.
+                Моя основная гильдия и часть
+                игровой истории.
             </p>
 
-            <a class="guild-button" href="guild.html">
+            <a
+                href="guild.html"
+                class="guild-button"
+            >
                 Открыть гильдию →
             </a>
 
@@ -1311,10 +1469,13 @@ section{
 
 </section>
 
+
 </main>
 
 
-<!-- FIXED SOCIAL -->
+<!-- =====================================================
+     SOCIAL
+===================================================== -->
 
 <div class="social-bar">
 
@@ -1325,6 +1486,7 @@ section{
     >
         🎵 TikTok @erko_zr
     </a>
+
 
     <a
         class="social-button social-whatsapp"
@@ -1349,30 +1511,154 @@ function toggleBlock(id,button){
 
     const opened=block.classList.toggle("open");
 
-    const text=button.querySelector("span:first-child");
-    const symbol=button.querySelector(".toggle-symbol");
+    const text=
+        button.querySelector("span:first-child");
+
+    const symbol=
+        button.querySelector(".toggle-symbol");
+
 
     if(opened){
 
-        if(id==="stats"){
-            text.textContent="Скрыть статистику";
-        }else{
-            text.textContent="Скрыть оружие";
-        }
+        text.textContent="Скрыть статистику";
 
         symbol.textContent="−";
 
     }else{
 
-        if(id==="stats"){
-            text.textContent="Показать статистику";
-        }else{
-            text.textContent="Показать арсенал";
-        }
+        text.textContent="Показать статистику";
 
         symbol.textContent="＋";
+
     }
+
 }
+
+
+/* =====================================================
+   SIDE MENU
+===================================================== */
+
+const menuButton=
+    document.getElementById("menuButton");
+
+const sideMenu=
+    document.getElementById("sideMenu");
+
+const sideOverlay=
+    document.getElementById("sideOverlay");
+
+
+function setMenu(open){
+
+    menuButton.classList.toggle(
+        "open",
+        open
+    );
+
+    sideMenu.classList.toggle(
+        "open",
+        open
+    );
+
+    sideOverlay.classList.toggle(
+        "open",
+        open
+    );
+
+    document.body.classList.toggle(
+        "menu-open",
+        open
+    );
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        open ? "true" : "false"
+    );
+
+    sideMenu.setAttribute(
+        "aria-hidden",
+        open ? "false" : "true"
+    );
+
+}
+
+
+menuButton.addEventListener(
+    "click",
+    ()=>{
+        setMenu(
+            !sideMenu.classList.contains("open")
+        );
+    }
+);
+
+
+sideOverlay.addEventListener(
+    "click",
+    ()=>{
+        setMenu(false);
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    (e)=>{
+
+        if(e.key==="Escape"){
+            setMenu(false);
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ACTIVE PAGE
+===================================================== */
+
+const pageName=
+    (
+        location.pathname
+        .split("/")
+        .pop()
+        ||
+        "index.html"
+    ).toLowerCase();
+
+
+const pageMap={
+
+    "about.html":"about",
+
+    "index.html":"profile",
+
+    "guild.html":"guild",
+
+    "memories.html":"memories"
+
+};
+
+
+const activePage=
+    pageMap[pageName];
+
+
+document
+    .querySelectorAll(".side-menu a")
+    .forEach(link=>{
+
+        if(
+            link.dataset.page===
+            activePage
+        ){
+
+            link.classList.add("active");
+
+        }
+
+    });
 
 
 /* =====================================================
@@ -1380,30 +1666,43 @@ function toggleBlock(id,button){
 ===================================================== */
 
 const pcBackgrounds=[
+
     "bg-pc-1.jpg",
     "bg-pc-2.jpg",
     "bg-pc-3.jpg",
     "bg-pc-4.jpg",
     "bg-pc-5.jpg"
+
 ];
 
+
 const mobileBackgrounds=[
+
     "bg-mobile-1.jpg",
     "bg-mobile-2.jpg",
     "bg-mobile-3.jpg",
     "bg-mobile-4.jpg",
     "bg-mobile-5.jpg"
+
 ];
+
 
 const backgrounds=
     window.innerWidth<=700
-    ? mobileBackgrounds
-    : pcBackgrounds;
+    ?
+    mobileBackgrounds
+    :
+    pcBackgrounds;
+
 
 const selected=
     backgrounds[
-        Math.floor(Math.random()*backgrounds.length)
+        Math.floor(
+            Math.random()*
+            backgrounds.length
+        )
     ];
+
 
 document.documentElement.style.setProperty(
     "--bg",
