@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>2VN — Гильдия</title>
+<title>Гильдия | 2V Психошка</title>
 
 <style>
 
@@ -21,30 +21,23 @@ html{
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-
-    color:#f5f5f5;
-
+    color:#fff;
     background:#050505;
-
     min-height:100vh;
-
     overflow-x:hidden;
 }
 
 /* =====================================================
-   FIXED BACKGROUND
+   BACKGROUND
 ===================================================== */
 
 body::before{
     content:"";
-
     position:fixed;
     inset:0;
-
     z-index:-10;
 
     background-image:var(--bg);
-
     background-position:center;
     background-size:cover;
     background-repeat:no-repeat;
@@ -52,13 +45,12 @@ body::before{
 
 body::after{
     content:"";
-
     position:fixed;
     inset:0;
-
     z-index:-9;
 
-    background:rgba(0,0,0,.30);
+    background:rgba(0,0,0,.35);
+    pointer-events:none;
 }
 
 /* =====================================================
@@ -67,32 +59,27 @@ body::after{
 
 header{
     position:sticky;
-
     top:0;
+    z-index:2000;
 
-    z-index:1000;
+    width:100%;
+    min-height:65px;
 
     background:rgba(5,5,5,.88);
 
     border-bottom:1px solid rgba(255,193,7,.35);
 
     backdrop-filter:blur(10px);
-
-    box-shadow:0 5px 20px rgba(0,0,0,.22);
 }
 
 .nav{
     width:min(1050px,92%);
-
     min-height:65px;
-
     margin:auto;
 
     display:flex;
-
     align-items:center;
-
-    justify-content:space-between;
+    justify-content:center;
 }
 
 .logo{
@@ -104,31 +91,6 @@ header{
     color:#ff3030;
 }
 
-.nav-links{
-    display:flex;
-    gap:7px;
-}
-
-.nav-links a{
-    color:#eee;
-
-    text-decoration:none;
-
-    font-size:13px;
-
-    font-weight:800;
-
-    padding:9px 13px;
-
-    border-radius:8px;
-}
-
-.nav-links a:hover,
-.nav-links a.active{
-    background:#ffc400;
-    color:#050505;
-}
-
 /* =====================================================
    MAIN
 ===================================================== */
@@ -138,7 +100,6 @@ main{
     z-index:1;
 
     width:min(1000px,92%);
-
     margin:auto;
 
     padding:34px 0 120px;
@@ -147,25 +108,24 @@ main{
 section{
     margin-bottom:22px;
 
-    background:rgba(7,7,7,.80);
+    background:rgba(7,7,7,.82);
 
     border:1px solid rgba(255,193,7,.28);
 
     border-radius:16px;
 
     box-shadow:
-        0 8px 24px rgba(0,0,0,.28);
+        0 8px 24px rgba(0,0,0,.30);
 
-    backdrop-filter:blur(3px);
+    backdrop-filter:blur(4px);
 }
 
 /* =====================================================
-   TITLES
+   SECTION TITLE
 ===================================================== */
 
-.title{
+.section-title{
     display:flex;
-
     align-items:center;
 
     gap:10px;
@@ -173,11 +133,10 @@ section{
     padding:18px 18px 0;
 
     font-size:21px;
-
     font-weight:900;
 }
 
-.title::before{
+.section-title::before{
     content:"";
 
     width:4px;
@@ -187,42 +146,86 @@ section{
 
     background:linear-gradient(
         #ff3030 0 50%,
-        #ffc400 50%
+        #ffc400 50% 100%
     );
 }
 
 /* =====================================================
-   BANNER
+   GUILD HERO
 ===================================================== */
 
-.banner-box{
-    padding:18px;
+.guild-hero{
+    padding:22px;
+
+    display:grid;
+
+    grid-template-columns:300px 1fr;
+
+    gap:25px;
+
+    align-items:center;
 }
 
-.guild-banner{
-    width:min(650px,100%);
-    height:205px;
-
-    margin:0 auto;
+.guild-logo{
+    width:100%;
+    height:300px;
 
     overflow:hidden;
 
-    background:#030303;
+    border-radius:15px;
 
-    border:1px solid rgba(255,193,7,.40);
+    border:1px solid rgba(255,193,7,.50);
 
-    border-radius:12px;
+    background:#050505;
 
-    box-shadow:0 7px 20px rgba(0,0,0,.25);
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.45);
 }
 
-.guild-banner img{
+.guild-logo img{
     width:100%;
     height:100%;
 
+    object-fit:cover;
+
     display:block;
 
-    object-fit:contain;
+    transition:transform .4s ease;
+}
+
+.guild-logo:hover img{
+    transform:scale(1.04);
+}
+
+.guild-kicker{
+    color:#ffc400;
+
+    font-size:11px;
+    font-weight:900;
+
+    letter-spacing:2.5px;
+
+    margin-bottom:8px;
+}
+
+.guild-hero h1{
+    font-size:44px;
+
+    line-height:1;
+
+    margin-bottom:12px;
+}
+
+.guild-hero h1 span{
+    color:#ff3030;
+}
+
+.guild-hero p{
+    color:#c5c5c5;
+
+    font-size:14px;
+
+    line-height:1.65;
 }
 
 /* =====================================================
@@ -230,209 +233,249 @@ section{
 ===================================================== */
 
 .guild-info{
-    padding:14px 18px 18px;
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:8px;
-}
-
-.info{
-    padding:11px;
-
-    text-align:center;
-
-    background:#090909;
-
-    border:1px solid #292929;
-
-    border-radius:9px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.18);
-}
-
-.info b{
-    display:block;
-
-    color:#ffc400;
-
-    font-size:16px;
-
-    margin-bottom:4px;
-}
-
-.info small{
-    color:#888;
-
-    font-size:10px;
-}
-
-/* =====================================================
-   PROFILE SCREEN
-===================================================== */
-
-.profile-layout{
-
-    padding:14px 18px 18px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:18px;
-}
-
-.guild-screen-card{
-
-    flex:0 0 330px;
-
-    width:330px;
-
-    height:220px;
-
-    overflow:hidden;
-
-    background:#030303;
-
-    border:1px solid rgba(255,193,7,.35);
-
-    border-radius:11px;
-
-    box-shadow:0 6px 18px rgba(0,0,0,.22);
-}
-
-.guild-screen-card img{
-
-    display:block;
-
-    width:100%;
-    height:100%;
-
-    object-fit:contain;
-}
-
-.profile-description{
-
-    flex:1;
-
-    min-width:0;
-}
-
-.profile-description h3{
-
-    color:#ffc400;
-
-    font-size:21px;
-
-    margin-bottom:8px;
-}
-
-.profile-description p{
-
-    color:#aaa;
-
-    font-size:12px;
-
-    line-height:1.6;
-
-    margin-bottom:7px;
-}
-
-/* =====================================================
-   PLAYERS
-===================================================== */
-
-.players{
-
-    padding:14px 18px 18px;
+    padding:18px;
 
     display:grid;
 
     grid-template-columns:repeat(3,1fr);
 
-    gap:9px;
+    gap:12px;
 }
 
-.player{
+.info-card{
+    padding:17px;
 
-    padding:13px;
+    background:rgba(0,0,0,.30);
 
-    background:#090909;
+    border:1px solid rgba(255,255,255,.07);
 
-    border:1px solid #292929;
+    border-radius:12px;
 
-    border-radius:9px;
+    text-align:center;
 
-    box-shadow:0 5px 15px rgba(0,0,0,.18);
+    transition:.2s;
 }
 
-.player-name{
+.info-card:hover{
+    transform:translateY(-3px);
 
-    font-size:13px;
-
-    font-weight:900;
-
-    margin-bottom:5px;
+    border-color:rgba(255,193,7,.35);
 }
 
-.player-name span{
-    color:#ff3030;
+.info-card-icon{
+    font-size:27px;
+
+    margin-bottom:8px;
 }
 
-.player p{
+.info-card h3{
+    color:#ffc400;
 
-    color:#888;
+    font-size:15px;
 
-    font-size:10px;
+    margin-bottom:6px;
+}
+
+.info-card p{
+    color:#999;
+
+    font-size:11px;
+
+    line-height:1.45;
 }
 
 /* =====================================================
-   BUTTON
+   GUILD STORY
 ===================================================== */
 
-.guild-link-box{
-
-    padding:0 18px 18px;
+.guild-story{
+    padding:18px;
 }
 
-.guild-link{
+.guild-story p{
+    color:#bdbdbd;
 
-    display:inline-block;
+    font-size:14px;
 
-    padding:10px 14px;
+    line-height:1.7;
+
+    margin-bottom:12px;
+}
+
+.guild-story p:last-child{
+    margin-bottom:0;
+}
+
+/* =====================================================
+   RULES
+===================================================== */
+
+.rules{
+    padding:18px;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:12px;
+}
+
+.rule{
+    padding:16px;
+
+    display:flex;
+
+    gap:12px;
+
+    background:rgba(0,0,0,.30);
+
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:11px;
+}
+
+.rule-number{
+    min-width:30px;
+    height:30px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:8px;
 
     background:#ffc400;
 
     color:#050505;
 
-    border-radius:8px;
+    font-size:13px;
+    font-weight:900;
+}
+
+.rule-content h3{
+    font-size:14px;
+
+    margin-bottom:5px;
+}
+
+.rule-content p{
+    color:#999;
+
+    font-size:11px;
+
+    line-height:1.45;
+}
+
+/* =====================================================
+   GUILD PHOTOS
+===================================================== */
+
+.guild-gallery{
+    padding:18px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+}
+
+.guild-gallery-item{
+    height:190px;
+
+    overflow:hidden;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:#050505;
+}
+
+.guild-gallery-item img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
+
+.guild-gallery-item:hover img{
+    transform:scale(1.06);
+
+    filter:brightness(1.08);
+}
+
+/* =====================================================
+   JOIN
+===================================================== */
+
+.join{
+    padding:25px;
+
+    text-align:center;
+}
+
+.join h2{
+    font-size:24px;
+
+    margin-bottom:8px;
+}
+
+.join h2 span{
+    color:#ffc400;
+}
+
+.join p{
+    color:#999;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+    margin-bottom:18px;
+}
+
+.join-button{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    background:#ffc400;
+
+    color:#050505;
 
     text-decoration:none;
 
-    font-size:12px;
-
+    font-size:13px;
     font-weight:900;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.25);
 
     transition:.2s;
 }
 
-.guild-link:hover{
+.join-button:hover{
+    transform:translateY(-2px);
 
-    background:#ff3030;
-
-    color:#fff;
+    box-shadow:
+        0 6px 20px rgba(255,193,7,.20);
 }
 
 /* =====================================================
-   FIXED SOCIAL
+   SOCIAL
 ===================================================== */
 
 .social-bar{
-
     position:fixed;
 
     left:50%;
@@ -446,46 +489,238 @@ section{
 
     gap:7px;
 
-    width:max-content;
+    padding:7px;
 
-    max-width:calc(100% - 20px);
+    background:rgba(8,8,8,.90);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:13px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.40);
+
+    backdrop-filter:blur(12px);
 }
 
 .social-button{
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
 
     min-width:145px;
 
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    padding:11px 14px;
+    padding:9px 14px;
 
     border-radius:9px;
 
     text-decoration:none;
 
-    font-size:12px;
+    font-size:13px;
     font-weight:900;
 
-    box-shadow:0 7px 22px rgba(0,0,0,.55);
+    transition:.2s;
 }
 
 .social-tiktok{
-
     background:#111;
 
     color:#fff;
-
-    border:1px solid #444;
 }
 
 .social-whatsapp{
+    background:#20c763;
 
+    color:#fff;
+}
+
+.social-button:hover{
+    transform:translateY(-2px);
+}
+
+/* =====================================================
+   SIDE MENU
+===================================================== */
+
+.menu-button{
+    position:fixed;
+
+    top:14px;
+    left:14px;
+
+    z-index:5000;
+
+    width:44px;
+    height:44px;
+
+    border:1px solid rgba(255,193,7,.45);
+
+    border-radius:11px;
+
+    background:rgba(8,8,8,.90);
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:5px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.35);
+}
+
+.menu-button span{
+    display:block;
+
+    width:22px;
+    height:2px;
+
+    border-radius:2px;
+
+    background:#fff;
+
+    transition:.25s;
+}
+
+.menu-button.open span:nth-child(1){
+    transform:
+        translateY(7px)
+        rotate(45deg);
+}
+
+.menu-button.open span:nth-child(2){
+    opacity:0;
+}
+
+.menu-button.open span:nth-child(3){
+    transform:
+        translateY(-7px)
+        rotate(-45deg);
+}
+
+.side-overlay{
+    position:fixed;
+
+    inset:0;
+
+    z-index:4800;
+
+    background:rgba(0,0,0,.58);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.25s;
+}
+
+.side-overlay.open{
+    opacity:1;
+
+    visibility:visible;
+}
+
+.side-menu{
+    position:fixed;
+
+    top:0;
+    left:0;
+    bottom:0;
+
+    z-index:4900;
+
+    width:min(310px,82vw);
+
+    padding:82px 18px 24px;
+
+    background:rgba(7,7,7,.97);
+
+    border-right:1px solid rgba(255,193,7,.35);
+
+    box-shadow:
+        10px 0 35px rgba(0,0,0,.45);
+
+    backdrop-filter:blur(16px);
+
+    transform:translateX(-105%);
+
+    transition:
+        transform .28s ease;
+}
+
+.side-menu.open{
+    transform:translateX(0);
+}
+
+.side-menu-title{
+    color:#fff;
+
+    font-size:22px;
+    font-weight:900;
+
+    margin:0 8px 22px;
+}
+
+.side-menu-title span{
+    color:#ff3030;
+}
+
+.side-menu a{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+
+    padding:14px 13px;
+
+    margin-bottom:7px;
+
+    border-radius:11px;
+
+    color:#eee;
+
+    text-decoration:none;
+
+    font-size:15px;
+    font-weight:800;
+
+    transition:.2s;
+}
+
+.side-menu a:hover,
+.side-menu a.active{
     background:#ffc400;
 
     color:#050505;
+}
+
+.side-menu a::before{
+    content:"";
+
+    width:4px;
+    height:18px;
+
+    border-radius:4px;
+
+    background:#ff3030;
+}
+
+.side-menu a.active::before{
+    background:#050505;
+}
+
+body.menu-open{
+    overflow:hidden;
 }
 
 /* =====================================================
@@ -494,151 +729,69 @@ section{
 
 @media(max-width:700px){
 
+    header{
+        min-height:58px;
+    }
+
     .nav{
-        min-height:59px;
+        min-height:58px;
     }
 
     .logo{
-        font-size:17px;
-    }
-
-    .nav-links{
-        gap:3px;
-    }
-
-    .nav-links a{
-        padding:7px 8px;
-        font-size:10px;
+        font-size:18px;
     }
 
     main{
         width:94%;
 
-        padding-top:23px;
-        padding-bottom:100px;
+        padding-top:22px;
     }
 
-    .title{
-        font-size:18px;
+    .guild-hero{
+        grid-template-columns:115px 1fr;
 
-        padding:14px 14px 0;
+        gap:13px;
+
+        padding:13px;
     }
 
-    .title::before{
-        height:20px;
+    .guild-logo{
+        height:170px;
     }
 
-    /* SMALL BANNER */
+    .guild-kicker{
+        font-size:8px;
 
-    .banner-box{
-        padding:14px;
+        letter-spacing:1.5px;
     }
 
-    .guild-banner{
-
-        width:100%;
-
-        height:135px;
-
-        margin:0;
-
-        border-radius:10px;
+    .guild-hero h1{
+        font-size:25px;
     }
 
-    /* INFO */
+    .guild-hero p{
+        font-size:10px;
+
+        line-height:1.45;
+    }
 
     .guild-info{
+        grid-template-columns:1fr;
+    }
 
-        padding:11px 14px 14px;
+    .rules{
+        grid-template-columns:1fr;
+    }
 
+    .guild-gallery{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .info{
-        padding:9px;
+    .guild-gallery-item{
+        height:130px;
     }
-
-    .info b{
-        font-size:14px;
-    }
-
-    /* =================================================
-       IMPORTANT:
-       PHOTO LEFT + TEXT RIGHT
-       BOTH ON SAME LEVEL
-    ================================================= */
-
-    .profile-layout{
-
-        padding:11px 14px 14px;
-
-        display:flex;
-
-        flex-direction:row;
-
-        align-items:center;
-
-        justify-content:flex-start;
-
-        gap:10px;
-    }
-
-    .guild-screen-card{
-
-        flex:0 0 125px;
-
-        width:125px;
-
-        height:115px;
-
-        margin:0;
-
-        align-self:center;
-    }
-
-    .profile-description{
-
-        flex:1;
-
-        min-width:0;
-
-        align-self:center;
-    }
-
-    .profile-description h3{
-
-        font-size:16px;
-
-        margin-bottom:5px;
-    }
-
-    .profile-description p{
-
-        font-size:9px;
-
-        line-height:1.45;
-
-        margin-bottom:4px;
-    }
-
-    /* PLAYERS */
-
-    .players{
-
-        padding:11px 14px 14px;
-
-        grid-template-columns:1fr 1fr;
-    }
-
-    .player{
-
-        padding:10px;
-    }
-
-    /* SOCIAL */
 
     .social-button{
-
         min-width:135px;
 
         padding:10px;
@@ -649,25 +802,31 @@ section{
 
 @media(max-width:380px){
 
-    .guild-screen-card{
+    .guild-hero{
+        grid-template-columns:90px 1fr;
 
-        flex-basis:110px;
-
-        width:110px;
-
-        height:105px;
+        gap:9px;
     }
 
-    .profile-description h3{
-        font-size:14px;
+    .guild-logo{
+        height:145px;
     }
 
-    .profile-description p{
-        font-size:8px;
+    .guild-hero h1{
+        font-size:21px;
+    }
+
+    .guild-hero p{
+        font-size:9px;
+    }
+
+    .guild-gallery-item{
+        height:110px;
     }
 
     .social-button{
         min-width:125px;
+
         font-size:10px;
     }
 }
@@ -677,32 +836,86 @@ section{
 
 <body>
 
-<header>
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
 
-<nav class="nav">
+<button
+    class="menu-button"
+    id="menuButton"
+    aria-label="Открыть меню"
+    aria-expanded="false"
+>
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
 
-    <div class="logo">
+
+<div
+    class="side-overlay"
+    id="sideOverlay"
+></div>
+
+
+<aside
+    class="side-menu"
+    id="sideMenu"
+    aria-hidden="true"
+>
+
+    <div class="side-menu-title">
         <span>2V</span> Психошка
     </div>
 
-    <div class="nav-links">
 
-        <a href="about.html">
-            Обо мне
-        </a>
+    <a
+        href="about.html"
+        data-page="about"
+    >
+        Обо мне
+    </a>
 
-        <a href="index.html">
-            Профиль
-        </a>
 
-        <a href="guild.html" class="active">
-            2VN
-        </a>
-        <a href="memories.html">Воспоминания</a>
+    <a
+        href="index.html"
+        data-page="profile"
+    >
+        Профиль
+    </a>
 
-    </div>
 
-</nav>
+    <a
+        href="guild.html"
+        data-page="guild"
+    >
+        Гильдия
+    </a>
+
+
+    <a
+        href="memories.html"
+        data-page="memories"
+    >
+        Воспоминания
+    </a>
+
+</aside>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <nav class="nav">
+
+        <div class="logo">
+            <span>2V</span> Психошка
+        </div>
+
+    </nav>
 
 </header>
 
@@ -711,19 +924,41 @@ section{
 
 
 <!-- =====================================================
-     BANNER
+     GUILD HERO
 ===================================================== -->
 
 <section>
 
-    <div class="banner-box">
+    <div class="guild-hero">
 
-        <div class="guild-banner">
+        <div class="guild-logo">
 
             <img
-                src="guild-banner.jpg"
-                alt="2VN The Best Guild"
+                src="guild.jpg"
+                alt="Гильдия 2VN"
             >
+
+        </div>
+
+
+        <div>
+
+            <div class="guild-kicker">
+                FREE FIRE GUILD
+            </div>
+
+
+            <h1>
+                <span>2VN</span>
+            </h1>
+
+
+            <p>
+                2VN — часть моей игровой истории.
+                Здесь собраны информация о гильдии,
+                её атмосфере, правилах и моментах,
+                связанных с нашей командой.
+            </p>
 
         </div>
 
@@ -738,40 +973,64 @@ section{
 
 <section>
 
-    <h2 class="title">
-        2VN — Гильдия
+    <h2 class="section-title">
+        О гильдии
     </h2>
+
 
     <div class="guild-info">
 
-        <div class="info">
-            <b>2VN</b>
-            <small>Название</small>
+        <div class="info-card">
+
+            <div class="info-card-icon">
+                🏆
+            </div>
+
+            <h3>
+                Команда
+            </h3>
+
+            <p>
+                Игроки, которые объединены
+                общей игровой историей.
+            </p>
+
         </div>
 
-        <div class="info">
-            <b>5</b>
-            <small>Уровень</small>
+
+        <div class="info-card">
+
+            <div class="info-card-icon">
+                ⚔️
+            </div>
+
+            <h3>
+                КВ
+            </h3>
+
+            <p>
+                Командные сражения,
+                где важна сыгранность.
+            </p>
+
         </div>
 
-        <div class="info">
-            <b>38 / 55</b>
-            <small>Игроки</small>
-        </div>
 
-        <div class="info">
-            <b>СНГ</b>
-            <small>Регион</small>
-        </div>
+        <div class="info-card">
 
-        <div class="info">
-            <b>3084263454</b>
-            <small>ID гильдии</small>
-        </div>
+            <div class="info-card-icon">
+                🔥
+            </div>
 
-        <div class="info">
-            <b>2V Психошка</b>
-            <small>Игрок</small>
+            <h3>
+                Атмосфера
+            </h3>
+
+            <p>
+                Общение, игра и
+                совместные воспоминания.
+            </p>
+
         </div>
 
     </div>
@@ -780,45 +1039,216 @@ section{
 
 
 <!-- =====================================================
-     GUILD PROFILE
+     STORY
 ===================================================== -->
 
 <section>
 
-    <h2 class="title">
-        Профиль гильдии
+    <h2 class="section-title">
+        Наша история
     </h2>
 
-    <div class="profile-layout">
 
-        <div class="guild-screen-card">
+    <div class="guild-story">
+
+        <p>
+            Гильдия 2VN является одной из важных
+            частей моего пути в Free Fire.
+        </p>
+
+
+        <p>
+            Здесь были КВ, обычные игровые сессии,
+            тренировки, дуэли и просто моменты,
+            которые остаются в памяти.
+        </p>
+
+
+        <p>
+            Поэтому этот раздел посвящён не только
+            названию гильдии, но и людям и моментам,
+            которые сделали её частью моей истории.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RULES
+===================================================== -->
+
+<section>
+
+    <h2 class="section-title">
+        Правила
+    </h2>
+
+
+    <div class="rules">
+
+        <div class="rule">
+
+            <div class="rule-number">
+                01
+            </div>
+
+            <div class="rule-content">
+
+                <h3>
+                    Уважение
+                </h3>
+
+                <p>
+                    Уважать участников гильдии
+                    и не создавать лишних конфликтов.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="rule">
+
+            <div class="rule-number">
+                02
+            </div>
+
+            <div class="rule-content">
+
+                <h3>
+                    Активность
+                </h3>
+
+                <p>
+                    По возможности участвовать
+                    в жизни команды.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="rule">
+
+            <div class="rule-number">
+                03
+            </div>
+
+            <div class="rule-content">
+
+                <h3>
+                    Командная игра
+                </h3>
+
+                <p>
+                    В КВ важны связь,
+                    взаимопомощь и сыгранность.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="rule">
+
+            <div class="rule-number">
+                04
+            </div>
+
+            <div class="rule-content">
+
+                <h3>
+                    Без токсичности
+                </h3>
+
+                <p>
+                    Сохраняем нормальную атмосферу
+                    внутри команды.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GUILD PHOTOS
+===================================================== -->
+
+<section>
+
+    <h2 class="section-title">
+        Моменты 2VN
+    </h2>
+
+
+    <div class="guild-gallery">
+
+        <div class="guild-gallery-item">
 
             <img
-                src="guild.jpg"
-                alt="Профиль 2VN"
+                src="2VN-1.jpg"
+                alt="2VN момент"
             >
 
         </div>
 
-        <div class="profile-description">
 
-            <h3>2VN</h3>
+        <div class="guild-gallery-item">
 
-            <p>
-                Гильдия уровня 5.
-            </p>
+            <img
+                src="2VN-2.jpg"
+                alt="2VN момент"
+            >
 
-            <p>
-                В составе — до 55 игроков,
-                сейчас занято 38 мест.
-            </p>
+        </div>
 
-            <p>
-                Игрок:
-                <strong style="color:#ffc400;">
-                    2V Психошка
-                </strong>
-            </p>
+
+        <div class="guild-gallery-item">
+
+            <img
+                src="2VN-3.jpg"
+                alt="2VN момент"
+            >
+
+        </div>
+
+
+        <div class="guild-gallery-item">
+
+            <img
+                src="2VN-4.jpg"
+                alt="2VN момент"
+            >
+
+        </div>
+
+
+        <div class="guild-gallery-item">
+
+            <img
+                src="2VN-5.jpg"
+                alt="2VN момент"
+            >
+
+        </div>
+
+
+        <div class="guild-gallery-item">
+
+            <img
+                src="2VN-6.jpg"
+                alt="2VN момент"
+            >
 
         </div>
 
@@ -828,67 +1258,30 @@ section{
 
 
 <!-- =====================================================
-     PLAYERS
+     JOIN / CONTACT
 ===================================================== -->
 
 <section>
 
-    <h2 class="title">
-        Игроки
-    </h2>
+    <div class="join">
 
-    <div class="players">
-
-        <div class="player">
-
-            <div class="player-name">
-                <span>2V</span> Психошка
-            </div>
-
-            <p>
-                Основной игрок
-            </p>
-
-        </div>
-
-        <div class="player">
-
-            <div class="player-name">
-                2VN
-            </div>
-
-            <p>
-                Участник гильдии
-            </p>
-
-        </div>
-
-        <div class="player">
-
-            <div class="player-name">
-                2VN
-            </div>
-
-            <p>
-                Участник гильдии
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
+        <h2>
+            <span>2VN</span> — наша история
+        </h2>
 
 
-<section>
+        <p>
+            Больше игровых моментов и фотографий
+            будут появляться в разделе
+            «Воспоминания».
+        </p>
 
-    <div class="guild-link-box">
 
         <a
-            class="guild-link"
-            href="index.html"
+            href="memories.html"
+            class="join-button"
         >
-            ← Вернуться в профиль
+            Перейти к воспоминаниям →
         </a>
 
     </div>
@@ -899,7 +1292,9 @@ section{
 </main>
 
 
-<!-- FIXED SOCIAL -->
+<!-- =====================================================
+     SOCIAL
+===================================================== -->
 
 <div class="social-bar">
 
@@ -910,6 +1305,7 @@ section{
     >
         🎵 TikTok @erko_zr
     </a>
+
 
     <a
         class="social-button social-whatsapp"
@@ -924,31 +1320,185 @@ section{
 
 <script>
 
-const pcBackgrounds=[
+/* =====================================================
+   SIDE MENU
+===================================================== */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+const sideOverlay =
+    document.getElementById("sideOverlay");
+
+
+function setMenu(open){
+
+    menuButton.classList.toggle(
+        "open",
+        open
+    );
+
+
+    sideMenu.classList.toggle(
+        "open",
+        open
+    );
+
+
+    sideOverlay.classList.toggle(
+        "open",
+        open
+    );
+
+
+    document.body.classList.toggle(
+        "menu-open",
+        open
+    );
+
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        open ? "true" : "false"
+    );
+
+
+    sideMenu.setAttribute(
+        "aria-hidden",
+        open ? "false" : "true"
+    );
+
+}
+
+
+menuButton.addEventListener(
+    "click",
+    ()=>{
+
+        setMenu(
+            !sideMenu.classList.contains("open")
+        );
+
+    }
+);
+
+
+sideOverlay.addEventListener(
+    "click",
+    ()=>{
+
+        setMenu(false);
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    (e)=>{
+
+        if(e.key==="Escape"){
+
+            setMenu(false);
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ACTIVE PAGE
+===================================================== */
+
+const pageName =
+    (
+        location.pathname
+        .split("/")
+        .pop()
+        ||
+        "index.html"
+    ).toLowerCase();
+
+
+const pageMap = {
+
+    "about.html":"about",
+
+    "index.html":"profile",
+
+    "guild.html":"guild",
+
+    "memories.html":"memories"
+
+};
+
+
+const activePage =
+    pageMap[pageName];
+
+
+document
+    .querySelectorAll(".side-menu a")
+    .forEach(link=>{
+
+        if(
+            link.dataset.page ===
+            activePage
+        ){
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+
+/* =====================================================
+   RANDOM BACKGROUND
+===================================================== */
+
+const pcBackgrounds = [
+
     "bg-pc-1.jpg",
     "bg-pc-2.jpg",
     "bg-pc-3.jpg",
     "bg-pc-4.jpg",
     "bg-pc-5.jpg"
+
 ];
 
-const mobileBackgrounds=[
+
+const mobileBackgrounds = [
+
     "bg-mobile-1.jpg",
     "bg-mobile-2.jpg",
     "bg-mobile-3.jpg",
     "bg-mobile-4.jpg",
     "bg-mobile-5.jpg"
+
 ];
 
-const backgrounds=
-    window.innerWidth<=700
-    ? mobileBackgrounds
-    : pcBackgrounds;
 
-const selected=
+const backgrounds =
+    window.innerWidth <= 700
+    ?
+    mobileBackgrounds
+    :
+    pcBackgrounds;
+
+
+const selected =
     backgrounds[
-        Math.floor(Math.random()*backgrounds.length)
+        Math.floor(
+            Math.random() *
+            backgrounds.length
+        )
     ];
+
 
 document.documentElement.style.setProperty(
     "--bg",
