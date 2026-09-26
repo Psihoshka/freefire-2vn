@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>2V Психошка | Free Fire</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    color:#f5f5f5;
+    background:#050505;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* =====================================================
+   FIXED BACKGROUND
+===================================================== */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-10;
+
+    background-image:var(--bg);
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-9;
+
+    background:rgba(0,0,0,.30);
+    pointer-events:none;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    width:100%;
+
+    background:rgba(5,5,5,.88);
+    border-bottom:1px solid rgba(255,193,7,.35);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:0 5px 20px rgba(0,0,0,.22);
+}
+
+.nav{
+    width:min(1050px,92%);
+    min-height:65px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:21px;
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.logo span{
+    color:#ff3030;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.nav-links a{
+    color:#eee;
+    text-decoration:none;
+
+    font-size:13px;
+    font-weight:800;
+
+    padding:9px 13px;
+    border-radius:8px;
+
+    transition:.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    background:#ffc400;
+    color:#050505;
+}
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main{
+    position:relative;
+    z-index:1;
+
+    width:min(1000px,92%);
+    margin:auto;
+
+    padding:34px 0 120px;
+}
+
+section{
+    margin-bottom:22px;
+
+    background:rgba(7,7,7,.80);
+
+    border:1px solid rgba(255,193,7,.28);
+    border-radius:16px;
+
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.28);
+
+    backdrop-filter:blur(3px);
+}
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:18px 18px 0;
+
+    font-size:21px;
+    font-weight:900;
+}
+
+.section-title::before{
+    content:"";
+
+    width:4px;
+    height:23px;
+
+    border-radius:5px;
+
+    background:linear-gradient(
+        #ff3030 0 50%,
+        #ffc400 50% 100%
+    );
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:235px;
+
+    display:grid;
+    grid-template-columns:270px 1fr;
+    align-items:center;
+
+    gap:27px;
+
+    padding:22px;
+}
+
+.hero-photo{
+    width:100%;
+    height:205px;
+
+    overflow:hidden;
+
+    border-radius:13px;
+
+    border:1px solid rgba(255,193,7,.55);
+
+    background:#080808;
+}
+
+.hero-photo img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.hero-kicker{
+    color:#ffc400;
+
+    font-size:11px;
+    font-weight:900;
+
+    letter-spacing:2.5px;
+
+    margin-bottom:7px;
+}
+
+.hero h1{
+    font-size:39px;
+    line-height:1;
+
+    margin-bottom:10px;
+}
+
+.hero h1 span{
+    color:#ff3030;
+}
+
+.hero p{
+    max-width:540px;
+
+    color:#c7c7c7;
+
+    line-height:1.55;
+
+    font-size:14px;
+}
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.profile-card{
+    padding:18px;
+}
+
+.profile-image{
+    width:min(550px,100%);
+    margin:auto;
+
+    background:#030303;
+
+    border:1px solid rgba(255,193,7,.38);
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:0 7px 20px rgba(0,0,0,.25);
+}
+
+.profile-image img{
+    display:block;
+
+    width:100%;
+    height:auto;
+
+    max-height:390px;
+
+    object-fit:contain;
+}
+
+.profile-info{
+    margin-top:12px;
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+
+    gap:6px;
+}
+
+.profile-info span{
+    background:#101010;
+
+    border:1px solid #292929;
+
+    border-radius:7px;
+
+    padding:6px 9px;
+
+    font-size:11px;
+    color:#ccc;
+}
+
+.profile-info strong{
+    color:#ffc400;
+}
+
+/* =====================================================
+   TOGGLE
+===================================================== */
+
+.toggle{
+    width:calc(100% - 36px);
+    margin:14px 18px 18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:12px 14px;
+
+    border:1px solid rgba(255,193,7,.35);
+    border-radius:10px;
+
+    background:#0d0d0d;
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:13px;
+    font-weight:900;
+
+    transition:.2s;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.18);
+}
+
+.toggle:hover{
+    border-color:#ffc400;
+}
+
+.toggle-symbol{
+    color:#ffc400;
+    font-size:19px;
+}
+
+.collapsible{
+    display:grid;
+    grid-template-rows:0fr;
+
+    transition:grid-template-rows .35s ease;
+}
+
+.collapsible.open{
+    grid-template-rows:1fr;
+}
+
+.collapsible-inner{
+    overflow:hidden;
+}
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats-grid{
+    padding:0 18px 18px;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:7px;
+}
+
+.stat{
+    padding:10px;
+
+    text-align:center;
+
+    background:#0c0c0c;
+
+    border:1px solid #252525;
+
+    border-radius:8px;
+}
+
+.stat b{
+    display:block;
+
+    color:#ffc400;
+
+    font-size:17px;
+
+    margin-bottom:3px;
+}
+
+.stat small{
+    color:#999;
+    font-size:10px;
+}
+
+/* =====================================================
+   PRIME
+===================================================== */
+
+.prime{
+    margin:15px 18px 18px;
+
+    display:grid;
+    grid-template-columns:235px 1fr;
+
+    align-items:center;
+    gap:18px;
+
+    padding:13px;
+
+    background:#090909;
+
+    border:1px solid #292929;
+    border-radius:12px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.20);
+}
+
+.prime-image{
+    overflow:hidden;
+
+    border-radius:9px;
+
+    background:#030303;
+}
+
+.prime-image img{
+    display:block;
+
+    width:100%;
+    height:150px;
+
+    object-fit:contain;
+}
+
+.prime-text h3{
+    color:#ffc400;
+
+    font-size:23px;
+
+    margin-bottom:6px;
+}
+
+.prime-number{
+    font-size:23px;
+    font-weight:900;
+
+    margin-bottom:5px;
+}
+
+.prime-number span{
+    color:#ff3030;
+}
+
+.prime-text p{
+    color:#aaa;
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* =====================================================
+   ROLE
+===================================================== */
+
+.role-box{
+    padding:15px 18px 18px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.role-card{
+    padding:14px;
+
+    background:#090909;
+
+    border:1px solid #292929;
+    border-radius:10px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.16);
+}
+
+.role-card h3{
+    color:#ffc400;
+    font-size:15px;
+
+    margin-bottom:7px;
+}
+
+.role-card p{
+    color:#bbb;
+
+    font-size:12px;
+    line-height:1.55;
+
+    margin-bottom:5px;
+}
+
+/* =====================================================
+   WEAPONS
+===================================================== */
+
+.weapons-grid{
+    padding:0 18px 18px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.weapon{
+    overflow:hidden;
+
+    background:#050505;
+
+    border:1px solid #292929;
+    border-radius:10px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.22);
+}
+
+.weapon img{
+    display:block;
+
+    width:100%;
+    height:135px;
+
+    object-fit:cover;
+}
+
+/* =====================================================
+   MATCHES
+===================================================== */
+
+.matches{
+    padding:14px 18px 18px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.match{
+    padding:11px;
+
+    background:#090909;
+
+    border:1px solid #292929;
+    border-radius:9px;
+
+    box-shadow:0 5px 14px rgba(0,0,0,.18);
+}
+
+.match-top{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:7px;
+}
+
+.win{
+    color:#ffc400;
+    font-weight:900;
+    font-size:11px;
+}
+
+.loss{
+    color:#ff4040;
+    font-weight:900;
+    font-size:11px;
+}
+
+.match small{
+    color:#777;
+}
+
+.match p{
+    color:#bbb;
+
+    font-size:11px;
+    line-height:1.45;
+}
+
+/* =====================================================
+   GUILD PREVIEW
+===================================================== */
+
+.guild-preview{
+    margin:14px 18px 18px;
+
+    display:grid;
+
+    grid-template-columns:285px 1fr;
+
+    align-items:center;
+
+    gap:17px;
+
+    padding:13px;
+
+    background:#090909;
+
+    border:1px solid #292929;
+    border-radius:12px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.22);
+}
+
+.guild-preview-image{
+    width:100%;
+    height:150px;
+
+    overflow:hidden;
+
+    border-radius:9px;
+
+    background:#030303;
+}
+
+.guild-preview-image img{
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+}
+
+.guild-preview h3{
+    color:#ffc400;
+
+    font-size:21px;
+
+    margin-bottom:7px;
+}
+
+.guild-preview p{
+    color:#aaa;
+
+    font-size:12px;
+    line-height:1.5;
+
+    margin-bottom:10px;
+}
+
+.guild-button{
+    display:inline-block;
+
+    padding:8px 12px;
+
+    background:#ffc400;
+
+    color:#050505;
+
+    border-radius:7px;
+
+    text-decoration:none;
+
+    font-size:11px;
+    font-weight:900;
+
+    transition:.2s;
+}
+
+.guild-button:hover{
+    background:#ff3030;
+    color:#fff;
+}
+
+/* =====================================================
+   FIXED SOCIAL
+===================================================== */
+
+.social-bar{
+    position:fixed;
+
+    left:50%;
+    bottom:13px;
+
+    transform:translateX(-50%);
+
+    z-index:3000;
+
+    display:flex;
+
+    gap:7px;
+
+    width:max-content;
+    max-width:calc(100% - 20px);
+}
+
+.social-button{
+    min-width:145px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:11px 14px;
+
+    border-radius:9px;
+
+    text-decoration:none;
+
+    font-size:12px;
+    font-weight:900;
+
+    box-shadow:0 7px 22px rgba(0,0,0,.55);
+}
+
+.social-tiktok{
+    background:#111;
+    color:#fff;
+
+    border:1px solid #444;
+}
+
+.social-whatsapp{
+    background:#ffc400;
+    color:#050505;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+    .nav{
+        min-height:59px;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .nav-links{
+        gap:3px;
+    }
+
+    .nav-links a{
+        padding:7px 8px;
+        font-size:10px;
+    }
+
+    main{
+        width:94%;
+        padding-top:23px;
+        padding-bottom:100px;
+    }
+
+    .section-title{
+        font-size:18px;
+        padding:14px 14px 0;
+    }
+
+    .section-title::before{
+        height:20px;
+    }
+
+    /* HERO */
+
+    .hero{
+        grid-template-columns:105px 1fr;
+
+        gap:12px;
+
+        min-height:auto;
+
+        padding:14px;
+    }
+
+    .hero-photo{
+        height:140px;
+    }
+
+    .hero h1{
+        font-size:23px;
+    }
+
+    .hero-kicker{
+        font-size:8px;
+        letter-spacing:1.5px;
+    }
+
+    .hero p{
+        font-size:10px;
+        line-height:1.45;
+    }
+
+    /* PROFILE */
+
+    .profile-card{
+        padding:12px;
+    }
+
+    .profile-image img{
+        max-height:270px;
+    }
+
+    .profile-info{
+        justify-content:flex-start;
+    }
+
+    .profile-info span{
+        font-size:9px;
+        padding:5px 7px;
+    }
+
+    /* STATS */
+
+    .toggle{
+        width:calc(100% - 28px);
+        margin:11px 14px 14px;
+    }
+
+    .stats-grid{
+        padding:0 14px 14px;
+
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stat{
+        padding:8px;
+    }
+
+    .stat b{
+        font-size:15px;
+    }
+
+    /* PRIME */
+
+    .prime{
+        margin:11px 14px 14px;
+
+        grid-template-columns:115px 1fr;
+
+        gap:10px;
+
+        padding:9px;
+    }
+
+    .prime-image img{
+        height:100px;
+    }
+
+    .prime-text h3{
+        font-size:18px;
+    }
+
+    .prime-number{
+        font-size:16px;
+    }
+
+    .prime-text p{
+        font-size:9px;
+    }
+
+    /* ROLE */
+
+    .role-box{
+        padding:11px 14px 14px;
+
+        grid-template-columns:1fr;
+    }
+
+    /* WEAPONS */
+
+    .weapons-grid{
+        padding:0 14px 14px;
+
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .weapon img{
+        height:105px;
+    }
+
+    /* MATCHES */
+
+    .matches{
+        padding:11px 14px 14px;
+
+        grid-template-columns:1fr 1fr;
+    }
+
+    /* GUILD */
+
+    .guild-preview{
+        margin:11px 14px 14px;
+
+        grid-template-columns:120px 1fr;
+
+        gap:10px;
+
+        padding:9px;
+    }
+
+    .guild-preview-image{
+        height:90px;
+    }
+
+    .guild-preview h3{
+        font-size:17px;
+    }
+
+    .guild-preview p{
+        font-size:9px;
+    }
+
+    .guild-button{
+        padding:7px 9px;
+        font-size:9px;
+    }
+
+    /* SOCIAL */
+
+    .social-button{
+        min-width:135px;
+
+        padding:10px 10px;
+
+        font-size:11px;
+    }
+}
+
+@media(max-width:380px){
+
+    .hero{
+        grid-template-columns:90px 1fr;
+        gap:9px;
+    }
+
+    .hero-photo{
+        height:125px;
+    }
+
+    .hero h1{
+        font-size:20px;
+    }
+
+    .hero p{
+        font-size:9px;
+    }
+
+    .social-button{
+        min-width:125px;
+        font-size:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<nav class="nav">
+
+    <div class="logo">
+        <span>2V</span> Психошка
+    </div>
+
+    <div class="nav-links">
+        <a href="about.html">Обо мне</a>
+        <a href="index.html" class="active">Профиль</a>
+        <a href="guild.html">2VN</a>
+        <a href="memories.html">Воспоминания</a>
+    </div>
+
+</nav>
+
+</header>
+
+
+<main>
+
+<!-- HERO -->
+
+<section>
+
+    <div class="hero">
+
+        <div class="hero-photo">
+            <img src="my-photo.jpg" alt="Психошка">
+        </div>
+
+        <div>
+
+            <div class="hero-kicker">
+                FREE FIRE PLAYER
+            </div>
+
+            <h1>
+                <span>2V</span> Психошка
+            </h1>
+
+            <p>
+                Игрок Free Fire.
+                Основной стиль — скорость,
+                механика, 1 на 1 и КВ.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section>
+
+    <h2 class="section-title">
+        Игровой профиль
+    </h2>
+
+    <div class="profile-card">
+
+        <div class="profile-image">
+            <a href="profile.jpg" target="_blank">
+                <img src="profile.jpg" alt="Игровой профиль">
+            </a>
+        </div>
+
+        <div class="profile-info">
+
+            <span><strong>2V Психошка</strong></span>
+            <span>UID <strong>492468395</strong></span>
+            <span>LVL <strong>70</strong></span>
+            <span>Гильдия <strong>2VN</strong></span>
+            <span>Лайки <strong>9928</strong></span>
+            <span>TikTok <strong>@erko_zr</strong></span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section>
+
+    <h2 class="section-title">
+        Моя статистика
+    </h2>
+
+    <button class="toggle" onclick="toggleBlock('stats',this)">
+        <span>Показать статистику</span>
+        <span class="toggle-symbol">＋</span>
+    </button>
+
+    <div class="collapsible" id="stats">
+
+        <div class="collapsible-inner">
+
+            <div class="stats-grid">
+
+                <div class="stat"><b>121</b><small>Матчей</small></div>
+                <div class="stat"><b>66</b><small>Побед</small></div>
+                <div class="stat"><b>370</b><small>Убийств</small></div>
+                <div class="stat"><b>1.64</b><small>KDA</small></div>
+
+                <div class="stat"><b>7.7</b><small>Рейтинг</small></div>
+                <div class="stat"><b>149</b><small>Возрождений</small></div>
+                <div class="stat"><b>1488</b><small>Средний урон</small></div>
+                <div class="stat"><b>137</b><small>Хедшотов</small></div>
+
+                <div class="stat"><b>37.03%</b><small>Headshot rate</small></div>
+                <div class="stat"><b>470</b><small>Нокдаунов</small></div>
+                <div class="stat"><b>54.55%</b><small>Win rate</small></div>
+                <div class="stat"><b>6 / 18</b><small>Золото / Серебро</small></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRIME -->
+
+<section>
+
+    <h2 class="section-title">
+        Prime
+    </h2>
+
+    <div class="prime">
+
+        <div class="prime-image">
+            <img src="prime.jpg" alt="Prime 7">
+        </div>
+
+        <div class="prime-text">
+
+            <h3>Prime 7</h3>
+
+            <div class="prime-number">
+                129 311 <span>/ 200 000</span>
+            </div>
+
+            <p>Прогресс до Prime 8</p>
+
+            <p>
+                Осталось:
+                <strong style="color:#ffc400">
+                    70 689
+                </strong>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ROLE -->
+
+<section>
+
+    <h2 class="section-title">
+        Стиль игры
+    </h2>
+
+    <div class="role-box">
+
+        <div class="role-card">
+
+            <h3>Штурмовик — 65%</h3>
+
+            <p>
+                Основная роль — агрессивная игра,
+                быстрые размены и ближний бой.
+            </p>
+
+            <p>
+                233 убийства в ближнем бою.
+            </p>
+
+        </div>
+
+        <div class="role-card">
+
+            <h3>Основное оружие — MP5</h3>
+
+            <p>
+                Штурмовик Lv.10 · Стрелок Lv.3 ·
+                Снайпер Lv.2 · Помощник Lv.4 ·
+                Гренадер Lv.2
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WEAPONS -->
+
+<section>
+
+    <h2 class="section-title">
+        Оружие
+    </h2>
+
+    <button class="toggle" onclick="toggleBlock('weapons',this)">
+        <span>Показать арсенал</span>
+        <span class="toggle-symbol">＋</span>
+    </button>
+
+    <div class="collapsible" id="weapons">
+
+        <div class="collapsible-inner">
+
+            <div class="weapons-grid">
+
+                <div class="weapon">
+                    <img src="mp5.jpg" alt="MP5">
+                </div>
+
+                <div class="weapon">
+                    <img src="desert-eagle.jpg" alt="Desert Eagle">
+                </div>
+
+                <div class="weapon">
+                    <img src="mac10.jpg" alt="MAC10">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MATCHES -->
+
+<section>
+
+    <h2 class="section-title">
+        Последние матчи
+    </h2>
+
+    <div class="matches">
+
+        <div class="match">
+            <div class="match-top">
+                <span class="win">ПОБЕДА</span>
+                <small>21:38</small>
+            </div>
+            <p>Комната — Ультиматум</p>
+            <p>6 убийств</p>
+        </div>
+
+        <div class="match">
+            <div class="match-top">
+                <span class="win">ПОБЕДА</span>
+                <small>21:28</small>
+            </div>
+            <p>Комната — Ультиматум</p>
+            <p>12 убийств</p>
+        </div>
+
+        <div class="match">
+            <div class="match-top">
+                <span class="loss">ПОКИНУТА</span>
+                <small>20:51</small>
+            </div>
+            <p>Комната — Заброшена</p>
+            <p>5 убийств</p>
+        </div>
+
+        <div class="match">
+            <div class="match-top">
+                <span class="win">ПОБЕДА</span>
+                <small>20:07</small>
+            </div>
+            <p>Комната — Ультиматум</p>
+            <p>5 убийств</p>
+        </div>
+
+        <div class="match">
+            <div class="match-top">
+                <span class="win">ПОБЕДА</span>
+                <small>20:01</small>
+            </div>
+            <p>Комната — Ультиматум</p>
+            <p>4 убийства</p>
+        </div>
+
+        <div class="match">
+            <div class="match-top">
+                <span class="win">ПОБЕДА</span>
+                <small>19:53</small>
+            </div>
+            <p>БО-РЕЙТИНГ</p>
+            <p>3 убийства</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GUILD -->
+
+<section>
+
+    <h2 class="section-title">
+        Моя гильдия
+    </h2>
+
+    <div class="guild-preview">
+
+        <div class="guild-preview-image">
+            <img src="guild-banner.jpg" alt="2VN">
+        </div>
+
+        <div>
+
+            <h3>2VN</h3>
+
+            <p>
+                Гильдия СНГ, частью которой является
+                Психошка. Подробнее о составе и
+                игроках — на отдельной странице.
+            </p>
+
+            <a class="guild-button" href="guild.html">
+                Открыть гильдию →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FIXED SOCIAL -->
+
+<div class="social-bar">
+
+    <a
+        class="social-button social-tiktok"
+        href="https://www.tiktok.com/@erko_zr"
+        target="_blank"
+    >
+        🎵 TikTok @erko_zr
+    </a>
+
+    <a
+        class="social-button social-whatsapp"
+        href="https://wa.me/77053536952"
+        target="_blank"
+    >
+        💬 WhatsApp
+    </a>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   COLLAPSIBLE
+===================================================== */
+
+function toggleBlock(id,button){
+
+    const block=document.getElementById(id);
+
+    const opened=block.classList.toggle("open");
+
+    const text=button.querySelector("span:first-child");
+    const symbol=button.querySelector(".toggle-symbol");
+
+    if(opened){
+
+        if(id==="stats"){
+            text.textContent="Скрыть статистику";
+        }else{
+            text.textContent="Скрыть оружие";
+        }
+
+        symbol.textContent="−";
+
+    }else{
+
+        if(id==="stats"){
+            text.textContent="Показать статистику";
+        }else{
+            text.textContent="Показать арсенал";
+        }
+
+        symbol.textContent="＋";
+    }
+}
+
+
+/* =====================================================
+   RANDOM FIXED BACKGROUND
+===================================================== */
+
+const pcBackgrounds=[
+    "bg-pc-1.jpg",
+    "bg-pc-2.jpg",
+    "bg-pc-3.jpg",
+    "bg-pc-4.jpg",
+    "bg-pc-5.jpg"
+];
+
+const mobileBackgrounds=[
+    "bg-mobile-1.jpg",
+    "bg-mobile-2.jpg",
+    "bg-mobile-3.jpg",
+    "bg-mobile-4.jpg",
+    "bg-mobile-5.jpg"
+];
+
+const backgrounds=
+    window.innerWidth<=700
+    ? mobileBackgrounds
+    : pcBackgrounds;
+
+const selected=
+    backgrounds[
+        Math.floor(Math.random()*backgrounds.length)
+    ];
+
+document.documentElement.style.setProperty(
+    "--bg",
+    `url("${selected}")`
+);
+
+</script>
+
+</body>
+</html>
